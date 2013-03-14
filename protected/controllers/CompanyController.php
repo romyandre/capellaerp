@@ -81,11 +81,6 @@ class CompanyController extends Controller
       $this->DeleteLockCloseForm($this->menuname, $_POST['Company'], $_POST['Company']['companyid']);
     }
 	
-	protected function gridData($data,$row)
-  {     
-    $model = Company::model()->findByPk($data->companyid); 
-    return $this->renderPartial('_view',array('model'=>$model),true); 
-  }
 
 	public function actionWrite()
 	{
@@ -166,6 +161,12 @@ class CompanyController extends Controller
 				));
         Yii::app()->end();
 	}
+	
+		protected function gridData($data,$row)
+  {     
+    $model = Company::model()->findByPk($data->companyid); 
+    return $this->renderPartial('_view',array('model'=>$model),true); 
+  }
 
 	/**
 	 * Lists all models.
