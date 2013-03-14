@@ -1,0 +1,172 @@
+"currencyid","countryid","currencyname","symbol","recordstatus"
+1,1,"Andoran peseta","ADP",0
+2,2,"United Arab Emirates Dirham","AED",0
+3,3,"Afghani (Old)","AFA",0
+4,3,"Afghani","AFN",0
+5,6,"Albanian Lek","ALL",0
+6,7,"Armenian Dram","AMD",0
+7,9,"Angolanische Kwanza","AOA",0
+8,9,"Angolan New Kwanza (Old)","AON",0
+9,9,"Angolan Kwanza Reajustado (Old)","AOR",0
+10,11,"Argentine Peso","ARS",0
+11,13,"Austrian Schilling","ATS",0
+12,14,"Australian Dollar","AUD",0
+13,15,"Aruban Guilder","AWG",0
+14,16,"Azerbaijan Manat","AZM",0
+15,17,"Bosnia and Herzegovina Convertible Mark","BAM",0
+16,18,"Barbados Dollar","BBD",0
+17,19,"Bangladesh Taka","BDT",0
+18,20,"Belgian Franc","BEF",0
+19,22,"Bulgarian Lev","BGN",0
+20,23,"Bahrain Dinar","BHD",0
+21,24,"Burundi Franc","BIF",0
+22,26,"Bermudan Dollar","BMD",0
+23,27,"Brunei Dollar","BND",0
+24,28,"Boliviano","BOB",0
+25,12,"American Samoa","USD",0
+26,21,"Communaute Financiere Africaine franc CFA Franc","XOF",0
+27,25,"Communaute Financiere Africaine franc","XOF",0
+28,29,"Real","BRL",0
+29,4,"East Caribbean dollar","XCD",0
+30,5,"East Caribbean dollar","XCD",0
+31,30,"Bahamian dollar","BSD",0
+32,31,"ngultrum","BTN",0
+33,31,"Indian Rupee","INR",0
+34,33,"Pula","BWP",0
+35,34,"Belarusian ruble","BYB",0
+36,35,"Belizean dollar","BZD",0
+37,36,"Canadian Dollar","CAD",0
+38,37,"Australian dollar","AUD",0
+39,38,"Congolese franc","CDF",0
+40,92,"Rupiah","Rp.",1
+41,209,"United States Dollar","USD",1
+42,208,"Poundsterling","GBP",0
+43,179,"Singapore Dollar","SGD",1
+44,39,"Communaute Financiere Africaine franc","XAF",0
+45,40,"Communaute Financiere Africaine franc","XAF",0
+46,41,"Swiss franc","CHF",0
+47,42,"Communaute Financiere Africaine franc","XAF",0
+48,43,"New Zealand dollar","NZD",0
+49,44,"Chilean peso","CLP",0
+50,45,"Communaute Financiere Africaine franc","XAF",0
+51,46,"Yuan","CNY",0
+52,47,"Colombian peso","COP",0
+53,48,"Costa Rican colon","CRC",0
+54,49,"Cuban peso","CUP",0
+55,50,"Cape Verdean escudo","CVE",0
+56,51,"Australian dollar","AUD",0
+57,52,"Cypriot pound","CYP",0
+58,52,"Turkish lira","TRL",0
+59,53,"Czech Koruna","CZK",0
+60,54,"Euro","EUR",0
+61,55,"Djiboutian franc","DJF",0
+62,56,"Danish krone","DKK",0
+63,57,"East Caribbean dollar","XCD",0
+64,58,"Dominican peso","DOP",0
+65,59,"Algerian dinar","DZD",0
+66,60,"United States Dollar","USD",0
+67,61,"Euro","EUR",0
+68,62,"Egyptian pound","EGP",0
+69,63,"Nakfa","ERN",0
+70,64,"Euro","EUR",0
+71,65,"Birr","ETB",0
+72,66,"Euro","EUR",0
+73,67,"Fijian dollar","FJD",0
+74,68,"United States Dollar","USD",0
+75,70,"Euro","EUR",0
+76,71,"Communaute Financiere Africaine franc","XAF",0
+77,72,"East Caribbean dollar","XCD",0
+78,73,"Lari","GEL",0
+79,74,"Euro","EUR",0
+80,75,"Cedi","GHS",0
+81,76,"Gibraltar pound","GIP",0
+82,77,"Danish krone","DKK",0
+83,78,"Dalasi","GMD",0
+84,79,"Guniean Franc","GNF",0
+85,80,"Euro","EUR",0
+86,81,"Communaute Financiere Africaine franc","XAF",0
+87,82,"Euro","EUR",0
+88,83,"quetzal","GTQ",0
+89,83,"United States Dollar","USD",0
+90,84,"United States Dollar","USD",0
+91,85,"Communaute Financiere Africaine franc","XOF",0
+92,86,"Guyanese dollar","GYD",0
+93,87,"Yuan","CNY",0
+94,88,"Lempira","NHL",0
+95,89,"Kuna","HRK",0
+96,90,"Gourde","HTG",0
+97,91,"Forint","HUF",0
+98,93,"Euro","EUR",0
+99,94,"new Israeli shekel","ILS",0
+100,95,"Indian rupee","INR",0
+101,96,"British Poundsterling","GBP",0
+102,96,"United States Dollar","USD",0
+103,97,"Iraqi dinar","IQD",0
+104,98,"Iranian rial","IRR",0
+105,99,"Icelandic krona","ISK",0
+106,100,"Euro","EUR",0
+107,101,"Jamaican dollar","JMD",0
+108,102,"Jordanian dinar","JOD",0
+109,103,"Yen","JPY",1
+110,104,"Kenyan shilling","KES",0
+111,105,"Kyrgyzstani som","KGS",0
+112,106,"Riel","KHR",0
+113,107,"Australian dollar","AUD",0
+114,108,"Comoran franc","KMF",0
+115,109,"North Korean won","KPW",0
+116,110,"South Korean won","KRW",0
+117,111,"Kuwaiti dinar","KWD",0
+118,112,"Caymanian dollar","KYD",0
+119,113,"Tenge","KZT",0
+120,114,"Kip","LAK",0
+121,115,"Lebanese pound","LBP",0
+122,116,"Swiss franc","CHF",0
+123,117,"Sri Lankan rupee","LKR",0
+124,118,"Liberian dollar","LRD",0
+125,119,"Loti","LSL",0
+126,120,"South African Rand","ZAR",0
+127,121,"Litas","LTL",0
+128,122,"Euro","EUR",0
+129,123,"Libyan dinar","LYD",0
+130,124,"Moroccan dirham","MAD",0
+131,125,"Euro","EUR",0
+132,126,"Moldovan Leu","MDL",0
+133,127,"Ariary","MGA",0
+134,128,"United States Dollar","USD",0
+135,129,"Macedonian denar","MKD",0
+136,130,"Communaute Financiere Africaine franc","XOF",0
+137,132,"togrog/tugrik","MNT",0
+138,133,"Yuan","CNY",0
+139,134,"Euro","EUR",0
+140,135,"ouguiya","MRO",0
+141,136,"East Caribbean dollar","XCD",0
+142,137,"Euro","EUR",0
+143,138,"Mauritian rupee","MUR",0
+144,139,"rufiyaa","MVR",0
+145,140,"Malawian kwacha","MWK",0
+146,141,"Mexican peso","MXN",0
+147,142,"Ringgit","MYR",0
+148,143,"Metical","MZM",0
+149,144,"Namibian dollar","NAD",0
+150,144,"South African Rand","ZAR",0
+151,145,"Comptoirs Francais du Pacifique franc","XPF",0
+152,146,"Communaute Financiere Africaine franc","XOF",0
+153,147,"Australian dollar","AUD",0
+154,148,"naira","NGN",0
+155,149,"gold cordoba","NIO",0
+156,150,"Euro","EUR",0
+157,151,"Norwegian krone","NOK",0
+158,152,"Nepalese rupee","NPR",0
+159,153,"Austrailian Dollar","AUD",0
+160,154,"New Zealand dollar","NZD",0
+161,155,"New Zealand dollar","NZD",0
+162,156,"Omani rial","OMR",0
+163,157,"Panama Balboa","PAB",0
+164,157,"United States Dollar","USD",0
+165,158,"nuevo sol","PEN",0
+166,159,"Comptoirs Francais du Pacifique franc","XPF",0
+167,160,"kina","PGK",0
+168,161,"Philippine peso","PHP",0
+169,162,"Pakistani rupee","PKR",0
+170,163,"zloty","PLN",0
+171,164,"New Zealand dollar","NZD",0

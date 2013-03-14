@@ -1,0 +1,97 @@
+"useraccessid","username","realname","password","salt","email","phoneno","recordstatus","employeeid","languageid"
+1,"admin","Administrator","7ae0afad7fd47b372fd7c444b3afe251","4f08d56f6ff6e3.40159955","roni@nw-industries.co.id","",1,54,1
+45,"sandi","sandi","ac6dd95ee027aabfe3eea0724f448503","50aee9a67c2c85.94074936","prc@nw-industries.co.id","",1,0,1
+46,"asih","asih","91ceb95309138716c195de00efe03425","50aeea4a3a6746.33689213","prc@nw-industries.co.id","",0,0,1
+47,"eri","eri","f404672dac4550b18168a8ffebbdc18c","50aeeadbc0ba89.47578137","eri@nw-industries.co.id","",1,0,1
+48,"indri","indri","e9a5bcfd6abb63989834e7444781dd14","50aeeb000e1e22.01237680","prc@nw-industries.co.id","",1,0,1
+49,"steza","steza","a51cde41b9e605adbf2619a8bad7e0cd","50aeeb4f262ef4.74432334","ga@nw-industries.co.id","",1,0,1
+50,"gunawan","gunawan","b93003dba5eb4469d318f4e95fdbb49e","50aeecac282e65.85631834","prc@nw-industries.co.id","",1,0,1
+51,"purbo","purbo","beb30b367f4a6da80d31fd7cf99ef69e","50aeecd12ef631.57306607","hrd@nw-industries.co.id","",1,0,1
+53,"lisa","lisa","ede9ae6f844f5ae0faabc0a6b734a317","50aef0c83d30e6.00956015","hrd@nw-industries.co.id","",1,0,1
+54,"novi","novi","1ca5f82bf974c37672bf17cdb7870da5","50aef0e8964b41.05569182","hrd@nw-industries.co.id","",1,0,1
+55,"andhy","andhy","e98da4d9a630ead0d1a1f37e18485845","50aef140c78051.45499025","ga@nw-industries","",1,0,1
+56,"ratna","ratna","6bc729b03a131d59e0243beb17ee09e5","50aef1830d1c93.08349271","ga@nw-industries","",1,0,1
+57,"mamik","mamik","ff29d51e059b999d40210ee8936701e2","50aef5aed7e772.80066665","mamik@nw-industries.co.id","",1,0,1
+58,"iin","iin","047079f29106a4d0b90250792ed0f9a7","50aef5e7f16a53.72781948","iinmuttaqin@nw-industries.co.id","",1,0,1
+59,"roesmono","roesmono","762c1c164c6ca61877b0fa56a68416e1","50af155d1687c2.76816814","roesmono@nw-industries.co.id","",1,0,1
+60,"andhys","Andhy S","c1313a47f1da837947063a8e0ab18a06","50af1587644381.75589389","andhy@nw-industries.co.id","",1,0,1
+61,"erwin","erwin","f6d486d91789fb2da3578ab03aafe1bc","50af1606748088.81662816","erwin@nw-industri.co.id","",1,0,1
+62,"eko yulianto","eko yulianto","d3e94e785e39051e303faef3a3d3937d","50af167b2ed937.04198852","yulianto@nw-industries.co.id","",1,0,1
+63,"hadi","hadi","f42370c974feb4afb3af800a02b0e20b","50af16aae38e48.54725487","hadi@nw-industries.co.id","",1,0,1
+64,"yaya","yaya","9ed8af7ba8fc335c24eddb42c4ca99c0","50af16f0591a03.19009875","hernandia@nw-industries.co.id","",1,0,1
+65,"nurul","nurul","11803ed9594bdb6b4e27246c9223e42f","50af1729691301.71905687","nurul@nw-industries.co.id","",1,0,1
+66,"ehwan","ehwan","af5385e1a106bcd73d37ec360cf06fcb","50af177b49a5e2.31641175","ehwan@nw-industries.co.id","",1,0,1
+67,"nunik","nunik","7bb6b23a2433cd466e8f7be65f11feb0","50af17a39e84e7.63069499","adm@al-azharhi.sch.id","",1,0,1
+68,"candra","candra","ea574f0ce99cb48e7db90e2235a6781d","50b97c29137ef7.96687717","candra@nw-industries.co.id","",1,0,1
+69,"andhini","andhini","3c4da215d2f90b715820ddbacd4642c5","50d7ea5a984cb0.72375085","prc@nw-industries.co.id","",1,0,1
+72,"dewinta","dewinta","65e155ddaa9cf4712499fdd6b62289e1","50d7f498832a04.38157143","dewinta@nw-industries.co.id","",1,0,1
+74,"eko riyadi","eko riyadi","8124a5918918a9f922d476e419ef1242","50d7f4bc61f5a2.55174112","it@nw-industries.co.id","",1,0,1
+75,"tahroni","tahroni","07042be156444649d6a5555945603266","50d7f4ec39a4e8.11446187","roni@nw-industries.co.id","",1,0,1
+76,"lika ","lika reni","81ec00e3e22b4d2e61d38466976ab6ce","50d7f4fb6a7809.11587031","it@nw-industries.co.id","",1,0,1
+77,"triesno","Triesno","dadcfb51c30f0b5c3dc1ac0f227b21cd","50d8211843d818.17667067","triesno@nw-industries.co.id","",1,0,1
+78,"teddy","Teddy Sujarwanto","a6403b2a7dc8eec66b17e0179f6f26c4","50d821f5f13d62.52782901","teddy@nw-industries.co.id","",1,0,1
+79,"iswan","Iswan Priyatna","34bed49fa5b37a94a5e6151f1d00f196","50dd3ff15c2772.38188797","inventory@nw-industries.co.id","",1,0,1
+80,"yudi","Yudi Bintoro","45baf10024405ce36a7ae58046e97ec1","50dd40713b8216.33558771","ppic@nw-industries.co.id","",1,0,1
+81,"hasym","Hasym","9ba46357ef7c601031297d82700f3241","50dd41859f4313.38441629","service@nw-industries.co.id","",1,0,1
+82,"iwan","Iwan Sumediono","ae0ac8ab28ffa49c2a6d1a10a79bf6b3","50dd41ff114148.01845143","iwan@nw-industries.co.id","",1,0,1
+83,"nani","Nani Wahyuni","01706435ad8be6941c99d3bbd56103ee","50dd43cf86e9d8.39670216","nani@nw-industries.co.id","",1,0,1
+84,"teguh","Teguh Sumaryadi","ad615219f42f0a2225bef1b1524cfac8","50dd46338e4791.10247235","teguh@nw-industries.co.id","",1,0,1
+85,"tenno","Tenno","14b5890d0b6b8b2ba5e07797c16259e1","50dd467138ea82.79795891","tenno@nw-industries.co.id","",1,0,1
+86,"rico","Rico Sujarwanto","c59dc61fb815ea2e5d59606bc80c222e","50dd46b5b8b262.04200748","rico@nw-industreis.co.id","",1,0,1
+87,"trijunarso","Tri Junarso","0121768332d63107b3aa955393cbbc50","50dd47335a1bb8.04385552","trijunarso@nw-industries.co.id","",1,0,1
+88,"soebagio","Soebagio","ba1671e2c7bda393368972e36c1cdbf5","50dd47afc12398.19783193","soebagio@nw-industries.co.id","",1,0,1
+89,"budihardjo","Budihardjo","3c09b521c5ec71b0976ada55f91c356e","50dd4848500975.22847354","budihardjo@nw-industries.co.id","",1,0,1
+90,"sutrisno","Sutrisno","40ce09366e605bdb2b4c35f75224d202","50dd4882a93c38.58543994","sutrisno@nw-industries.co.id","",1,0,1
+91,"wahyudi","Wahyudi","24479b3e69d665b963f495213528ff84","50dd4a48486d14.19029060","wahyudi@nw-industries.co.id","",1,0,1
+92,"fajar","Fajar Kurniadi","3b900743028fa22eb985c17b9bee6b53","50dd4ab7381454.78539163","fajar@nw-industries.co.id","",1,0,1
+93,"henny","Henny Sirait","3089808ea570590fe8d7ab3254a7139a","50dd4bc6670fc0.20366310","service@nw-industries.co.id","",1,0,1
+94,"ikhfan","Noor Ikhfan","e8c69c58e72831a1155ec901e5952bc8","50dd4c818aae95.10728054","service@nw-industries.co.id","",1,0,1
+95,"dani","Dani Saputra","9326403bf6546ebcd6b891fc61d7e7dd","50dd4cf8e85178.31379833","service@nw-industries.co.id","",1,0,1
+96,"rizki","Rizki Arif Zulkarnain","bf6239ba05a89f97be08e45a02dccf37","50dd4d33010977.64376797","service@nw-industries.co.id","",1,0,1
+97,"wawan","Wawan Ridwan","d6df616ba91f46c87f4da6cf5101cc49","50dd4ec17421e5.68509244","wawan@nw-industries.co.id","",1,0,1
+98,"dede","Dede Hari Budiman","921182e3b0fb0e6276e9fa60ed300b6c","50dd4f2d3be9f9.22927951","qaqc@nw-industries.co.id","",1,0,1
+99,"edi","Edi Prawoto","e25d8f0f68993ed2ab2c58e1035c91d3","50dd4f637c56f1.78455805","edi@nw-industries.co.id","",1,0,1
+100,"muslih","Muslih Yulianto","070c64c6519083027f76acfaf167befc","50dd4f938a76e9.91019367","engpp1@nw-industries.co.id","",1,0,1
+101,"redy","Redy Fajar","4c713b00401f1b180489b71fc5248fbd","50dd4fb9b96676.65957924","engpp2@nw-industries.co.id","",1,0,1
+102,"handri","Handri Hamdani","6fdbb9337759cf27bff20caa1ada7475","50dd4ff7a809a8.71762557","engpp2@nw-industries.co.id","",1,0,1
+103,"helmi","Helmi Setiawan","27c4085a64d4eb599d4b005aa2790e81","50dd5142aff693.59221387","engpp2@nw-industries.co.id","",1,0,1
+104,"umam","Mahrij Khairul Umam","db75d724f00c8d36368a1ff042a2d4d7","50dd5554ede5c0.04601221","engpp1@nw-industries.co.id","",1,0,1
+105,"wahyudin","Wahyudin","912bda1fb108695fd68fba060a44fb89","50dd55878f75f3.87315969","engpp1@nw-industries.co.id","",1,0,1
+106,"saleh","Saleh Sudrajat","e8b86ae439eea26ae349972edef9615e","50dd55b229b344.66099703","eng1@nw-industries.co.id","",1,0,1
+107,"novian","Novian Hartono","f03e26899cc1726610cf80411b06497c","50dd55fa0c7db7.51227682","engpp1@nw-industries.co.id","",1,0,1
+108,"dila","Aldila Devi","4d582d06624a9ef7d9e1d324be907c5c","50dd56451fdbd2.29720785","project@nw-industries.co.id","",1,0,1
+109,"guntur","Guntur Sitompul","dee36e2fdb53b1f99f6765b545b02d0b","50dd5813074b55.72530356","sitompul@nw-industries.co.id","",1,0,1
+110,"hany","Hany Siraid","a580c7eff82e88357235308e05e5ff86","50e78b3b9eb4d9.12257491","service@nw-industries.co.id","",0,0,1
+111,"ivan","Nur Ivan","8acf4f322ef4d87e1749ea5a0f0794e9","50e78bcb992fa0.61932388","service@nw-industries.co.id","",1,0,1
+114,"victor","victor sitohang","847a6bc45cd23c6a0a2906248afde0c9","50ebce685ecac9.19710450","victor@nw-industries.co.id","",1,0,1
+115,"elizabeth","Elizabeth Gultom","4f2ba559d569cc6b84b7a9d3738bce3b","50ebcee0761ce8.30272244","elizabeth@albok-boiler.com","",1,0,1
+116,"yudho","Yudho Handoko","efe76d09a888a116c854a8dbcf17edae","50ebcf0cb3b648.55478270","yudo@nw-industries.co.id","",1,0,1
+117,"riko","Riko Ismeldi","67b2def4b11ecb7cfe8bf0251dc94538","50ebcf4123a809.96061369","riko@nw-industries.co.id","",1,0,1
+118,"adyson","Adyson","5ab42c152b3e83e983c5eb763b91ddc4","50ebcf6ac98812.78851576","adyson@albok-boiler.com","",1,0,1
+119,"nurul a","Nurul Afidah","f65e23baa9919ef84b6b3606e8f45c80","50ebcfc24469c5.07259250","nurul_a@albok-boiler.com","",1,0,1
+120,"laode","laode","e187a7583410eba0180f9388bd0ea093","50ebd73b611332.83268512","laode@nw-industries.co.id","",1,0,1
+121,"herman","herman ismail","9ceeb04c79c612756776288433c006a5","50ee47dd25da11.94319560","herman@nw-industries.co.id","",1,0,1
+122,"herdiyanto","herdiyanto","b75123a8e393e6e04a51593a6314d61e","50ee482801a9f2.64806878","herdiyanto@nw-industries.co.id","",1,0,1
+123,"riski","riski andri","eecce68dc43601dd97f30587bdd7c1d3","50ee5b76168e69.06099534","riski@nw-industries.co.id","",1,0,1
+124,"hasyim","Hasyim","6bb1dadc44cec8d1d40e6524f03dc032","50f508131c9111.24364435","service@nw-industries.co.id","",1,0,1
+125,"hanan","Hanan","7e9ec29b0bae4ba62781238d1690f1c2","50f530512f0db7.48373832","hanan@nw-abadi.com","",1,0,1
+126,"Andi","Andi Rubiyanto","f89447a04d81319c4b7c4c5def645350","50f64739984d30.93259844","rubiyanto@nw-industries.co.id","",1,0,1
+127,"dita","Dita","56e748126e216791330cdb458fdb789b","50fdf2571571d7.44910420","prc@nw-industries.co.id","",1,0,1
+128,"lilis","Lilis Handayani","e1c4add2aab97f05b81a5cdd346429db","5100b762bd94e6.51426220","acc@nw-industries.co.id","",1,0,1
+129,"karti","Karti","87b411c292e8ba3ed2df1237ce2c3258","510c7a51395755.45143308","hrd@nw-industries.co.id","",1,0,1
+130,"wbw","Wahyu Budi W","d502a2274203ac5ecb851e30be599ee4","510cc2a2ec80f6.02840720","budi@al-azharhi.sch.id","",1,0,1
+131,"pkl1","PKL 1","ee89173118d128ba3bc7f3d009c70a47","510f09f14d93a8.16681500","pkl@nw-industries.co.id","",1,0,1
+132,"pkl2","PKL 2","f51b122d6fc8631aafd77b42453b7ef7","510f09ff974fd1.68209534","pkl@nw-industries.co.id","",1,0,1
+133,"lukman","Lukmanul","0455e45fff884e60930bceec7bd3b20d","5110688247cef7.29870329","lukman@nw-industries.co.id","",1,0,1
+134,"abdul","Abdullah","1fa9f572642a0c07c1a14a4a9f7216a2","511068b9495ce5.44611865","abdul@nw-industries.co.id","",1,0,1
+135,"yusuf","Yusuf","2d510a2a3b7753e00d43ebb95d79ab0f","511071ae1d1571.09291120","yusuf@nw-industries.co.id","",0,0,1
+136,"siswadi","Siswadi","95b88eb03eefb23e2ba22ad3d5d0e72e","5110dfb10674d3.38490702","siswadi@nw-industries.co.id","",1,0,1
+137,"icang","Icang","01bfc4e9a7526077c10ececb0ada4a03","5110e01e7635e2.62182152","icang@nw-indus","",1,0,1
+138,"ririn","Ririn","45c2309820cc4851eb86f9516a69d6c9","5110e1915df6c5.39122923","ririn@nw-abadi.com","",1,0,1
+139,"jumadi","Jumadi","94854fdd551f2a64598cd42851d6b7d8","5110e1bf2b0d89.36542285","jumadi@nw-abadi.com","",1,0,1
+141,"herman a","Herman A","7e5e1811af075dfc3f645432d4cbe540","5110e1fd4cd189.56636989","herman@al-azharhi.sch.id","",1,0,1
+142,"viki","Viki","3ba060b956f76c68909a6a8ee67100ab","5110e29ad42b38.06223231","viki@al-azharhi.sch.id","",1,0,1
+143,"tanto","Tanto","7415664c25fd3f6eee66d28f2a65e2ec","5110e31bd4fd15.76528783","tanto@nw-industries.co.id","",1,0,1
+144,"GA Faryan","Faryan E","4f7942bb16a018077b820e2df815816c","5111af4b140229.13970479","ga@nw-industries.co.id","",1,0,1
+145,"PRC Adi","Adi","c58c0922f280f3f3a90a31d22a2c07eb","5111afa52d4e00.89814906","prc@nw-industries.co.id","",1,0,1
+146,"Legal Gherry","Dimas Gherry","c5cdc818f179a159bc21ca66502b8065","5111b133080362.10510228","gherry@nw-industries.co.id","",1,0,1

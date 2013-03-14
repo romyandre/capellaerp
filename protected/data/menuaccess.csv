@@ -1,0 +1,284 @@
+"menuaccessid","menucode","menuname","description","menuurl","recordstatus"
+1,"hrtas","absstatus","Absence Status","/absstatus",1
+2,"mmmd","product","Material Master","/product",1
+3,"mmacc","productacc","Material Master - Accounting View","/productacc",1
+4,"emer","eventrequest","Event Request","/eventrequest",1
+5,"emep","eventproperty","Event Property","/eventproperty",1
+6,"emepa","eventparticipant","Event Participant","/eventparticipant",1
+7,"emeco","eventconsump","Event Consumption","/eventconsump",1
+8,"woos","workorderstaff","Work Order Staff","/workorderstaff",1
+9,"wowo","workorder","Work Order","/workorder",1
+10,"womy","myworkorder","My Work Order","/myworkorder",1
+11,"soma","menuaccess","Menu Access","/menuaccess",1
+12,"soga","groupaccess","Group Access","/groupaccess",1
+13,"sogm","groupmenu","Group Menu","/groupmenu",1
+14,"sua","useraccess","User Access","/useraccess",1
+15,"hrtmar","absrule","Absence Rule","/absrule",1
+16,"hrtmas","absschedule","Absence Schedule","/absschedule",1
+17,"aacc","account","Chart of Account","/account",1
+18,"aap","accperiod","Account Period","/accperiod",1
+19,"coab","addressbook","Address Book","/addressbook",1
+20,"coat","addresstype","Address Type","/addresstype",1
+21,"hrap","applicant","Applicant","/applicant",1
+22,"hrape","applicanteducation","Applicant Education","/applicanteducation",1
+23,"hrapf","applicantfamily","Applicant Family","/applicantfamily",1
+24,"hrapfr","applicantforeignlanguage","Applicant Foreign Language","/applicantforeignlanguage",1
+25,"hrapit","applicantidentity","Applicant Identity","/applicantidentity",1
+26,"hrapin","applicantinformal","Applicant Informal","/applicantinformal",1
+27,"hrapins","applicantinsurance","Applicant Insurance","/applicantinsurance",1
+28,"hrapj","applicantjamsostek","Applicant Jamsostek","/applicantjamsostek",1
+29,"smsasph","assphonegroup","Phone Group Assignment","/assphonegroup",1
+30,"cobn","bank","Bank","/bank",1
+31,"coba","bankaddress","Bank Address","/bankaddress",1
+32,"cobc","bankcontact","Bank Contact","/bankcontact",1
+33,"hrmbt","bloodtype","Blood Type","/bloodtype",1
+34,"ibs","bsheader","Beginning Stock","/bsheader",1
+35,"abu","budget","Budget","/budget",1
+36,"hrmcv","capabilityvalue","Capability Value","/capabilityvalue",1
+37,"hrfmc","catering","Catering","/catering",1
+38,"hrfmca","cateringaddress","Catering Address","/cateringaddress",1
+39,"hrfmcc","cateringcontact","Catering Contact","/cateringcontact",1
+40,"hrfmcm","cateringmenu","Catering Menu","/cateringmenu",1
+41,"hrfmcmt","catmenutype","Catering Menu Type","/catmenutype",1
+42,"ccci","city","City","/city",1
+43,"sco","company","Company","/company",1
+44,"hrpmco","concerning","Concerning","/concerning",1
+45,"ccty","contacttype","Contact Type","/contacttype",1
+46,"cco","country","Country","/country",1
+47,"ccu","currency","Currency","/currency",1
+48,"ccur","currencyrate","Currency Rate","/currencyrate",1
+49,"scu","customer","Customer","/customer",1
+50,"scua","customeraddress","Customer Address","/customeraddress",1
+51,"wowos","workorderstatus","Work Order Status","/workorderstatus",1
+52,"mms","supplier","Supplier","/supplier",1
+53,"souf","userfav","User Favourite","/userfav",1
+54,"sddc","distchannel","Distribution Channel","/distchannel",1
+55,"sddv","division","Division","/division",1
+56,"hrme","education","Education","/education",1
+57,"hrmem","educationmajor","Education Major","/educationmajor",1
+58,"hee","employee","Employee","/employee",1
+59,"heeb","employeebroadcast","Employee Broadcast","/employeebroadcast",1
+60,"heee","employeeeducation","Employee Education","/employeeducation",1
+61,"heef","employeefamily","Employee Family","/employeefamily",1
+62,"heefr","employeeforeignlanguage","Employee Foreign Language","/employeeforeignlanguage",1
+63,"heei","employeeinsurance","Employee Insurance","/employeeinsurance",1
+64,"heej","employeejamsostek","Employee Jamsostek","/employeejamsostek",1
+65,"hfek","employeekey","Employee Key","/employeekey",1
+66,"hfem","employeemeal","Employee Meal","/employeemeal",1
+67,"htes","employeeschedule","Employee Schedule","/employeeschedule",1
+68,"hrmes","employeestatus","Employee Status","/employeestatus",1
+69,"hfet","employeetransport","Employee Transport","/employeetransport",1
+70,"hrmet","employeetype","Employee Type","/employeetype",1
+71,"hpew","employeewage","Employee Wage","/employeewage",1
+72,"hrmfr","familyrelation","Family Relation","/familyrelation",1
+73,"agj","genjournal","General Journal","/genjournal",1
+74,"igi","giheader","Goods Issue","/giheader",1
+75,"igr","grheader","Goods Receipt","/grheader",1
+76,"hrtmh","hospital","Hospital","/hospital",1
+77,"cit","identitytype","Identity Type","/identitytype",1
+78,"cin","industry","Industry","/industry",1
+79,"cins","insurance","Insurance","/insurance",1
+80,"hrtmjr","judgerule","Judge Rule","/judgerule",1
+81,"ccssd","kelurahan","Kelurahan","/subdistrict",1
+82,"sla","language","Language","/language",1
+83,"hmlv","languagevalue","Language Value","/languagevalue",1
+84,"hfllb","lockerbox","Locker Box","/lockerbox",1
+85,"hfllk","lockerkey","Locker Key","/lockerkey",1
+86,"hfllls","lockerstaff","Locker Staff","/lockerstaff",1
+87,"hmms","maritalstatus","Marital Status","/maritalstatus",1
+88,"pmmg","materialgroup","Material Group","/materialgroup",1
+89,"pmmt","materialtype","Material Type","/materialtype",1
+90,"hmoc","occupation","Occupation","/occupation",1
+91,"hpaolt","onleavetype","Onleave Type","/onleavetype",1
+92,"hoos","orgstructure","Organization Structure","/orgstructure",1
+93,"sp","parameter","Parameter","/parameter",1
+94,"apt","paymentmethod","Payment Method","/paymentmethod",1
+95,"hpape","permitexit","Permit Exit","/permitexit",1
+96,"hpapi","permitin","Permit In","/permitin",1
+97,"cpl","plant","Plant","/plant",1
+98,"sdpoc","pocheader","PO Customer","/pocheader",1
+99,"hompo","position","Position","/position",1
+100,"hfmpt","pricetype","Price Type","/pricetype",1
+101,"mmpb","productbasic","Material Master - Basic","/productbasic",1
+102,"mmpc","productconversion","Material Master - Conversion","/productconversion",1
+103,"mmpl","productlot","Material Master - Lot","/productlot",1
+104,"mmpp","productplant","Material Master - Plant","/productplant",1
+105,"mmpr","productpurchase","Material Master - Purchase","/productpurchase",1
+106,"mmps","productstock","Material Master - Stock","/productstock",1
+107,"cpr","province","Province","/province",1
+108,"ppg","purchasinggroup","Purchasing Group","/purchasinggroup",1
+109,"ppo","purchasingorg","Purchasing Organization","/purchasingorg",1
+110,"ppir","purchinforec","Purchasing Info Record","/purchinforec",1
+111,"hmro","readingoften","Reading Often","/readingoften",1
+112,"hmre","religion","Religion","/religion",1
+113,"ireby","requestedby","Requested By","/requestedby",1
+114,"cro","romawi","Romawi","/romawi",1
+115,"sso","salesorg","Sales Organization","/salesorg",1
+116,"hmsx","sex","Sex","/sex",1
+117,"isl","sloc","Storage Location","/sloc",1
+118,"ssnro","snro","Snro","/snro",1
+119,"ssnrodet","snrodet","Snro Detail","/snrodet",1
+120,"hmmso","social","Social","/social",1
+121,"ccspt","sptwil","SPT","/sptwil",1
+122,"ccsd","subdistrict","Subdistrict","/subdistrict",1
+123,"soug","usergroup","User Group","/usergroup",1
+124,"hppp","payrollprocess","Payroll Process","/payrollprocess",1
+125,"hrtmt","tribe","Tribe","/tribe",1
+126,"hremi","employeeidentity","Employee Identity","/employeeidentity",1
+127,"hremif","employeeinformal","Employee Informal","/employeeinsurance",1
+128,"hrtrin","reportin","Report Absence In","/reportin",1
+129,"hrtro","reportout","Report Absence Out","/reportout",1
+130,"hrtrj","reportjamsostek","Report Jamsostek","/reportjamsostek",1
+131,"hrtrp","reportperday","Report Perday","/reportperday",1
+132,"hrpast","sicktrans","Sickness Transaction","/sicknesstrans",1
+133,"hrpaot","onleavetrans","Onleave Transaction","/onleavetrans",1
+134,"hrpapet","permitexittrans","Permit Exit Transaction","/permitexittrans",1
+135,"ium","unitofmeasure","Unit of Measure","/unitofmeasure",1
+136,"mmpo","poheader","Purchase Order","/poheader",1
+137,"ipr","prheader","Purchase Requisition","/prheader",1
+138,"sdso","soheader","Sales Order","/soheader",1
+139,"sddo","doheader","Delivery Order","/doheader",1
+140,"ppro","project","Project","/project",1
+141,"ainv","invoice","Invoice","/invoice",1
+142,"apc","pettycash","Petty Cash","/pettycash",1
+143,"swfg","wfgroup","Workflow Group","/wfgroup",1
+144,"sct","catalogsys","Catalog Translation","/catalogsys",1
+145,"homjo","jobs","Jobs","/jobs",1
+146,"swf","workflow","Workflow","/workflow",1
+147,"its","transstock","Transfer Stock Exchange","/transstock",1
+148,"stlck","translock","Transaction Lock","/translock",1
+149,"ipt","prodtranstype","Production Transaction Type","/prodtranstype",1
+150,"hrptru","transunitprice","Transport Unit Price","/transunitprice",1
+151,"hrptu","unitprice","Unit Price","/unitprice",1
+152,"ppt","projecttype","Project Type","/projecttype",1
+153,"ppwt","prowotemplate","Project Work Template","/proworktemplate",1
+154,"iprrep","reportpr","Report PR","/reportpr",1
+155,"mporep","reportpo","Report PO","/reportpo",1
+156,"ppdt","prodoctemplate","Project Document Template","/prodoctemplate",1
+157,"igrrep","reportgr","Report GR","/reportgr",1
+158,"igirep","reportgi","Report GI","/reportgl",1
+159,"agjrep","reportgl","Report Journal","/reportgi",1
+160,"aaea","employeeakun","Employee Account","/employeeakun",1
+161,"suma","menuauth","Menu Object Authentication","/menuauth",1
+162,"sogmo","groupmenuauth","Group Menu Object Authentication","/groupmenuauth",1
+163,"arpl","repprofitloss","Report Profit Loss","/repprofitloss",1
+164,"arpn","repneraca","Report Neraca","/repneraca",1
+165,"agl","genledger","","/genledger",1
+166,"hteo","employeeover","Employee Overtime","/employeeover",1
+167,"pps","projectstatus","Project Status","/projectstatus",1
+169,"pdt","documenttype","","/documenttype",1
+170,"pit","installtype","Install Type","/installtype",1
+171,"holo","levelorg","","/levelorg",1
+172,"hraad","applicantaddress","","/applicantaddress",1
+173,"hread","employeeaddress","","/employeeaddress",1
+174,"aat","accounttype","Account Type","/accounttype",1
+175,"hrfft","facilitytype","","/facilitytype",1
+176,"hrfef","employeefacility","","/employeefacility",1
+177,"hpapit","permitintrans","","/permitintrans",1
+178,"hrpwt","wagetype","Wage Type","/wagetype",1
+179,"iprd","productdetail","Product Detail","/productdetail",1
+180,"hrpeb","employeebenefit","Employee Benefit","/employeebenefit",1
+181,"hrpet","employeetax","Employee Tax","/employeetax",1
+182,"hrptwp","taxwageprogressif","Tax Wage Progressif","/taxwageprogressif",1
+183,"tax","tax","Tax","/tax",1
+184,"hrtat","abstrans","Absence Transaction","/abstrans",1
+185,"hrrot","reportonleavetrans","Report Onleave Trans","/reportonleavetrans",1
+186,"hpaeo","employeeonleave","Employee Onleave","/employeeonleave",1
+187,"ida","deliveryadvice","Form Request","/deliveryadvice",1
+188,"swfs","wfstatus","Workflow Status","/wfstatus",1
+189,"hprg","rinciangaji","Laporan Rincian Gaji","/rinciangaji",1
+190,"hptg","totalgaji","Total Gaji","/totalgaji",1
+191,"hptrg","totalrincigaji","Total Rincian Gaji","/totalrincigaji",1
+192,"hpyp","payrollperiod","Payroll Period","/payrollperiod",1
+193,"hmsp","splettertype","SP Letter Type","/splettertype",1
+194,"heec","employeeclaim","Employee Claim","/employeeclaim",1
+195,"heesp","employeespletter","Employee SP","/employeespletter",1
+196,"irts","reportts","Report Trans Stock","/reportts",1
+197,"irbs","reportbs","Report Beginning Stock","/reportbs",1
+198,"htmrta","reportabs","Report Terlambat / Alpa","/reportabs",1
+199,"system","system","System","/",1
+200,"objectauth","objectauth","Object Authentication","/objectauth",1
+201,"citizen","citizen","Citizen","/citizen",1
+202,"common","common","Common","/common",1
+203,"hr","hr","Human Resource","/hr",1
+204,"hrparam","hrparam","HR Parameter","/hrparameter",1
+205,"orgmgmt","orgmanagement","Organization Management","/orgmanagement",1
+206,"acc","accounting","Accounting","/accounting",1
+207,"hrtrans","hrtrans","HR Transaction","/hrtrans",1
+208,"timemgmt","timemgmt","Time Management","/timemgmt",1
+209,"hrpresent","hrpresent","HR Present Attendances","/hrpresent",1
+210,"hrsickness","hrsickness","HR Sickness Transaction","/hrsickness",1
+211,"hronleave","hronleave","HR Onleave","/hronleave",1
+212,"hrprmexit","hrpermitexit","HR Permit Exit","/hrpermitexit",1
+213,"hrprmin","hrpermitin","HR Permit In","/hrpermitin",1
+214,"hrempover","hremployeeover","HR Employee Over","/hremployeeover",1
+215,"hrfacility","hrfacility","HR Facility","/hrfacility",1
+216,"hrpayroll","hrpayroll","HR Payroll","/hrpayroll",1
+217,"matmast","materialmaster","Material Master","/matmaster",1
+218,"purchasing","purchasing","Purchasing","/purchasing",1
+219,"po","purchaseorder","Purchase Order","/purchaseorder",1
+220,"inv","inventory","Inventory","/inventory",1
+221,"pr","purchaserequest","Purchase Request","/purchaserequest",1
+222,"gr","goodsreceived","Goods Received","",1
+223,"gi","goodsissue","Goods Issue","",1
+224,"begstock","beginningstock","Beginning Stock","",1
+225,"trsstock","transferstock","Transfer Stock","/transferstock",1
+226,"hrmp1","hrmp1","Master Personnel Part 1","/hrmp1",1
+227,"hrmp2","hrmp2","Master Personnel Part 2","/hrmp2",1
+228,"hremployee","hremployee","HR Employee","/hremployee",1
+229,"idarep","reportda","Report Form Request","/reportda",1
+230,"hrpeo","repempover","Report Employee Overtime","/repempover",1
+231,"hrempwo","employeewo","Employee Working Experience","/employeewo",1
+232,"hrrepsick","reportsicktrans","Report Sickness Transaction","/reportsicktrans",1
+233,"pprm","purparam","Purchasing Parameter","/purparam",1
+234,"pprt","purtrans","Purchasing Transaction","/purtrans",1
+235,"invprm","invparam","Inventory Parameter","/invparam",1
+236,"invtrans","invtrans","Inventory Transaction","/invtrans",1
+237,"stl","translog","Transaction Log","/translog",1
+238,"hrrptpwr","reportkekuatan","Report Kekuatan Pegawai","/reportkekuatan",1
+239,"hrrptjms","reportjamsostek","Report Jamsostek","/reportjamsostek",1
+240,"hrrpdplk","reportdplk","Report DPLK","/reportdplk",1
+241,"pmms","materialstatus","Material Status","/materialstatus",1
+242,"mmow","ownership","Ownership","/ownership",1
+243,"orm","ordermanagement","Order Management","/orm",1
+244,"omparam","omparam","Order Management Parameter","/orm",1
+245,"omtrans","omtrans","Order Management Transaction","/orm",1
+246,"omsrf","srf","Service Request Form","/srf",1
+247,"oct","contractterm","Contract Term","/contractterm",1
+248,"orf","requestfor","Request For","/requestfor",1
+249,"oam","accessmethod","Access Method","/accessmethod",1
+250,"ost","servicetype","Service Type","/servicetype",1
+251,"orsrf","repproject","Report SRF","/repproject",1
+252,"ssd","servicedelivery","Service Delivery","/servicedelivery",1
+253,"ssprice","srfprice","Service Delivery Price Tab","",1
+254,"baol","baol","Berita Acara Online","/baol",1
+255,"repbaol","repbaol","Report BAOL","/repbaol",1
+256,"repsd","repservicedelivery","Report Service Delivery","/repservicedelivery",1
+257,"operation","operation","Operation","operation",1
+258,"oprtrans","oprtrans","Operation Transaction","oprtrans",1
+259,"oprtt","troubleticket","Trouble Ticket","/troubleticket",1
+260,"repoprtt","reptroubleticket","Report Trouble Ticket","/reptroubleticket",1
+261,"sdrso","reportso","Report Sales Order","/reportso/index",1
+262,"ap","ap","Account Payable","ap/index",1
+263,"arap","repinvap","Report Account Payable","repinvap/index",1
+264,"ainvap","invoiceap","Invoice Supplier","invoiceap/index",1
+265,"ar","ar","Account Receivable","ar/index",1
+266,"ariar","repinvar","Report Account Receivable","repinvar/index",1
+267,"ainvar","invoicear","Invoice Customer","invoicear/index",1
+268,"accb","cashbank","Cash & Bank","cashbank/index",1
+269,"acrcbin","repcbin","Report Cash Bank Receipt","repcbin/index",1
+270,"acrcbo","repcbout","Report Cash Bank Payment","repcbout/index",1
+271,"accbin","cbin","Cash Bank Receipt","cashbankin/index",1
+272,"accbout","cbout","Cash Bank Payment","cashbankout/index",1
+273,"afp","fakturpajak","Customer Tax","/fakturpajak",1
+274,"arvir","repvatinput","VAT Input Report","/repvatinput",1
+275,"arvout","repvatoutput","VAT Output Report","/repvatoutput",1
+276,"acrs","repsundry","Sundry Debtor Report","/repsundry",1
+277,"arprp","repreqpay","Request Payment Report","/repreqpay",1
+278,"arcb","repcashbank","Cash / Bank List Report","/repcashbank",1
+279,"cbdtr","repdaily","Daily Transaction Report","/repdaily",1
+280,"cbrs","repsales","Monthly Sales Report","/repsales",1
+281,"ppos","repposummary","PO Summary","/repposummary",1
+282,"arppnin","reportppnmasuk","Report VAT In","/reportppnmasuk",1
+283,"arppnout","reportppnkeluar","Report VAT Out","/reportppnkeluar",1
+284,"arprr","reprealpay","Report Payment Realization","/reprealpay",1

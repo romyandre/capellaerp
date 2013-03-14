@@ -1,0 +1,68 @@
+"groupaccessid","groupname","recordstatus"
+1,"Administrator",1
+37,"Admin PRC Workflow",1
+38,"Admin PRC Trans",1
+39,"Admin Invent Param",1
+40,"Dir PRC Workflow",1
+41,"Dirut Workflow",1
+42,"General Inventory",1
+43,"Admin PRC Param",1
+44,"Spv1 Prc Workflow",1
+45,"Spv2 Prc Workflow",1
+46,"Admin PRC Report",1
+47,"Admin IT Workflow",1
+48,"SPV IT Workflow",1
+49,"Admin Invent Trans",1
+50,"Admin Invent Workflow",1
+51,"Admin Invent Report",1
+52,"Spv1 Invent Workflow",1
+53,"Admin ACC Tax",1
+54,"Admin ACC Param",1
+55,"Admin ACC Trans",1
+56,"Admin ACC Workflow",1
+57,"SPV1 ACC Workflow",1
+58,"SPV2 ACC Workflow",1
+59,"Admin HRD Tax",0
+60,"Admin HRD Param",0
+62,"Admin HRD Trans",0
+63,"Admin HRD Report",0
+64,"Admin HRD Workflow",1
+65,"SPV1 HRD Workflow",1
+66,"Admin HRD Pay",0
+67,"Report ACC",1
+68,"Admin ACC Pay",1
+69,"Admin ACC Trans General Journal",1
+70,"Admin ACC Trans Account Payabel",1
+71,"Admin ACC Trans Account Receivable",1
+72,"Admin ACC Trans Cash and Bank",1
+73,"Admin ACC Trans Report",1
+74,"Admin SO Param",1
+75,"Admin SO Trans",1
+76,"Admin SO Workflow",1
+77,"SPV1 SO Workflow",1
+79,"Admin HRD 1",1
+80,"Admin HRD 2",1
+82,"Spv 1 HRD",1
+83,"Admin MKT",1
+84,"Manager MKT",1
+85,"Admin MKT Workflow",1
+86,"Manager MKT Workflow",1
+87,"Admin ENG Workflow",1
+88,"Spv 1 ENG Workflow",1
+89,"Spv 2 ENG Workflow",1
+90,"Admin PROJ Workflow",1
+91,"Spv 1 PROJ Workflow",1
+92,"Spv 2 PROJ Workflow",1
+93,"Report Inventory",1
+94,"General HRD",1
+95,"Direktur Keuangan Workflow",1
+96,"GM SO",1
+97,"GM SO Workflow",1
+98,"Admin GA Workflow",1
+99,"Spv GA Workflow",0
+100,"admin nwi",1
+101,"SPV PPIC Workflow",1
+102,"Admin QAQC Workflow",1
+103,"Spv QAQC Workflow",1
+104,"Admin Alharin Workflow",1
+105,"Spv Alharin Workflow",1
