@@ -1,13 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Groupaccesses',
+	'Workflows',
 );
 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
 ?>
 <script type="text/javascript">
-function adddata() {
-<?php echo CHtml::ajax(array(
-			'url'=>array('groupaccess/create'),
+// here is the magic
+function adddata()
+{
+    <?php echo CHtml::ajax(array(
+			'url'=>array('workflow/create'),
             'data'=> "js:$(this).serialize()",
             'type'=>'post',
             'dataType'=>'json',
@@ -16,8 +18,11 @@ function adddata() {
 document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
-					$('#Groupaccess_groupaccessid').val('');
-                $('#Groupaccess_groupname').val('');
+					$('#Workflow_workflowid').val('');
+					$('#Workflow_wfname').val('');
+					$('#Workflow_wfdesc').val('');
+					$('#Workflow_wfminstat').val('');
+					$('#Workflow_wfmaxstat').val('');
                     $('#createdialog').dialog('open');
                 }
                 else
@@ -30,9 +35,11 @@ document.getElementById('messages').innerHTML = '';
 }
 </script>
 <script type="text/javascript">
-function editdata(value) {
-<?php echo CHtml::ajax(array(
-			'url'=>array('groupaccess/update'),
+function editdata(value)
+{
+    <?php
+	echo CHtml::ajax(array(
+			'url'=>array('workflow/update'),
             'data'=> array('id'=>'js:value'),
             'type'=>'post',
             'dataType'=>'json',
@@ -41,13 +48,20 @@ function editdata(value) {
 document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
-$('#Groupaccess_groupaccessid').val(data.groupaccessid);
-                $('#Groupaccess_groupname').val(data.groupname);
-                if (data.recordstatus == '1') {
-                    document.forms[1].elements[3].checked = true;
-                } else {
-                    document.forms[1].elements[3].checked = false;
-                }
+					$('#Workflow_workflowid').val(data.workflowid);
+					$('#Workflow_wfname').val(data.wfname);
+					$('#Workflow_wfdesc').val(data.wfdesc);
+					$('#Workflow_wfminstat').val(data.wfminstat);
+					$('#Workflow_wfmaxstat').val(data.wfmaxstat);
+					if (data.recordstatus == '1')
+					{
+					  document.forms[0].elements[6].checked=true;
+					}
+					else
+					{
+					  document.forms[0].elements[6].checked=false;
+					}
+                          // Here is the trick: on submit-> once again this function!
                     $('#createdialog').dialog('open');
                 }
                 else
@@ -62,29 +76,26 @@ $('#Groupaccess_groupaccessid').val(data.groupaccessid);
 <script type="text/javascript">
 function deletedata(value)
 {
-<?php echo CHtml::ajax(array(
-			'url'=>array('groupaccess/delete'),
+    <?php
+	echo CHtml::ajax(array(
+			'url'=>array('workflow/delete'),
             'data'=> array('id'=>'js:value'),
             'type'=>'post',
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
-                if (data.status == 'success')
-                {
-                    js:$.fn.yiiGridView.update('datagrid');
-                }
-                else
-                {
-                    document.getElementById('messages').innerHTML = data.div;
-                }
+$.fn.yiiGridView.update('datagrid');
             } ",
-            ))?>;
-return false;}
+            ))?>;	
+    return false;
+}
 </script>
 <script type="text/javascript">
 function refreshdata()
-{$.fn.yiiGridView.update('datagrid');return false;}
+{
+    $.fn.yiiGridView.update('datagrid');
+    return false;
+}
 </script>
 <script type="text/javascript">
 function searchdata()
@@ -100,8 +111,8 @@ function helpdata(value) {
 }
 </script>
 <script type="text/javascript">
-function downloaddata(value) {
-	window.open('index.php?r=groupaccess/download&id='+$.fn.yiiGridView.getSelection("datagrid"));
+function downloaddata() {
+	window.open('index.php?r=workflow/download&id='+value);
 }
 </script>
 <?php $this->beginWidget('zii.widgets.jui.CJuiDialog', array( // the dialog
@@ -114,7 +125,7 @@ function downloaddata(value) {
         'height'=>'auto',
     ),
 ));?>
-<?php echo $this->renderPartial('_form', array('model'=>$model));?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 <?php $this->endWidget();?>
 <?php $this->beginWidget('zii.widgets.jui.CJuiDialog', array( // the dialog
     'id'=>'searchdialog',
@@ -140,35 +151,30 @@ function downloaddata(value) {
 ));?>
 <?php echo $this->renderPartial('_help'); ?>
 <?php $this->endWidget();?>
-<h1><?php echo Catalogsys::model()->GetCatalog('groupaccess') ?></h1>
+<h1><?php echo Catalogsys::model()->GetCatalog('workflow') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=groupaccess/upload',
+	'isUpload'=>true,'UrlUpload'=>'index.php?r=workflow/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
-?>
+?>	 
 		<?php
 $this->widget('RecentUpdate',array('menuname'=>$this->menuname));
-?>
+?> 
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
 	'hideHeader'=>true,
-	'selectableRows'=>1,
+'selectableRows'=>1,
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
-	  array(
-		'class'=>'CCheckBoxColumn',
-		'id'=>'groupaccessid',
-	  ),
-	  array(            
-            'name'=>'groupname',
+		array(            
+            'name'=>'workflowid',
             'type'=>'raw', 
             'value'=>array($this,'gridData'), 
-        ),	
-	),
-));
-?>
+        ),		
+	), 
+)); ?>

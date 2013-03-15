@@ -181,9 +181,9 @@ if((Yii::app()->user->id == null) || (Yii::app()->user->id == 'Guest')) {
 	protected function InsertTransLog()
 	{
 	  $connection=Yii::app()->db;
-	  $sql = "insert into translog (username,useraction,olddata,newdata) ".
+	  $sql = "insert into translog (username,useraction,olddata,newdata,menuname) ".
 		"values ('".Yii::app()->user->id."', '".$this->useraction."', '".implode(' ',$this->olddata)."','".
-		implode(' ',$this->newdata)."');"; 
+		implode(' ',$this->newdata)."','".$this->menuname."');"; 
 	  $command=$connection->createCommand($sql);
 	  $command->execute();	  
 	}

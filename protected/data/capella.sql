@@ -17,9 +17,9 @@ CREATE TABLE IF NOT EXISTS `catalogsys` (
   `catalogval` text NOT NULL,
   `recordstatus` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`catalogsysid`),
-  KEY `FK_catalogsys_mess` (`messagesid`),
-  KEY `ix_catalogsys` (`languageid`,`messagesid`,`catalogsysid`,`recordstatus`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+  KEY `FK_catalogsys_lang` (`languageid`),
+  KEY `FK_catalogsys_mess` (`messagesid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 INSERT INTO `catalogsys` (`catalogsysid`, `languageid`, `messagesid`, `catalogval`, `recordstatus`) VALUES
 (1, 1, 1, 'Nama Perusahaan', 1),
@@ -43,9 +43,7 @@ INSERT INTO `catalogsys` (`catalogsysid`, `languageid`, `messagesid`, `catalogva
 (19, 1, 19, 'Transaksi Terkunci', 1),
 (20, 1, 20, '<div id="help">\r\n<h1 class="h1help">Pendahuluan</h1>\r\n<p class="phelp">Modul Transaction Lock digunakan untuk melihat user yang sedang mengedit data</p>\r\n</div>', 1),
 (21, 1, 21, 'Sistem Penomoran', 1),
-(22, 1, 22, '<div id="help">\r\n<h1 class="h1help">Pendahuluan</h1>\r\n<p class="phelp">Modul Specific Number Range Object (SNRO) digunakan untuk menentukan <br/>\r\nno dokumen otomatis. No dokumen dapat disetting berulang per bulan dan <br/>\r\nper tahun, atau salah satu-nya.</p>\r\n<h1 class="h1help">Pasca Penggunaan Modul</h1>\r\n<p class="phelp">SNRO ini digunakan di berbagai modul yang membutuhkan running no, <br/>\r\nantara lain PR, PO, Surat Jalan, dan lain-lain. <br/>\r\nPenentuan SNRO dilakukan di awal implementasi dan sudah memperhitungkan <br/>\r\nrunning no untuk jangka waktu 5 tahun.\r\n</p>\r\n</div>', 1),
-(23, 1, 23, 'Isi Penomoran Aktif', 1),
-(24, 1, 24, '<div id="help">\r\n<h1 class="h1help">Pendahuluan</h1>\r\n<p class="phelp">Modul Detail of Specific Number Range Object (SNRO) digunakan untuk <br/>\r\nmengetahui / mengatur no terakhir yang dipakai oleh suatu modul. </p>\r\n</div>', 1);
+(22, 1, 22, '<div id="help">\r\n<h1 class="h1help">Pendahuluan</h1>\r\n<p class="phelp">Modul Specific Number Range Object (SNRO) digunakan untuk menentukan <br/>\r\nno dokumen otomatis. No dokumen dapat disetting berulang per bulan dan <br/>\r\nper tahun, atau salah satu-nya.</p>\r\n<h1 class="h1help">Pasca Penggunaan Modul</h1>\r\n<p class="phelp">SNRO ini digunakan di berbagai modul yang membutuhkan running no, <br/>\r\nantara lain PR, PO, Surat Jalan, dan lain-lain. <br/>\r\nPenentuan SNRO dilakukan di awal implementasi dan sudah memperhitungkan <br/>\r\nrunning no untuk jangka waktu 5 tahun.\r\n</p>\r\n</div>', 1);
 
 DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
@@ -55,8 +53,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   `recordstatus` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`cityid`),
   KEY `fk_city_province` (`provinceid`),
-  KEY `ix_city_name` (`cityname`),
-  KEY `ix_city` (`provinceid`,`cityname`,`cityid`,`recordstatus`) USING BTREE
+  KEY `ix_city_name` (`cityname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=419 ;
 
 INSERT INTO `city` (`cityid`, `provinceid`, `cityname`, `recordstatus`) VALUES
@@ -483,7 +480,7 @@ DROP TABLE IF EXISTS `company`;
 CREATE TABLE IF NOT EXISTS `company` (
   `companyid` int(11) NOT NULL AUTO_INCREMENT,
   `companyname` varchar(50) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `address` text NOT NULL,
   `city` varchar(50) NOT NULL,
   `zipcode` varchar(10) DEFAULT NULL,
   `taxno` varchar(50) DEFAULT NULL,
@@ -497,8 +494,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `recordstatus` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`companyid`),
   KEY `ix_company_name` (`companyname`),
-  KEY `ix_company_city` (`city`) USING BTREE,
-  KEY `ix_company` (`companyname`,`address`,`city`,`zipcode`,`taxno`,`currencyid`,`faxno`,`phoneno`,`webaddress`,`email`,`leftlogofile`,`rightlogofile`,`companyid`,`recordstatus`) USING BTREE
+  KEY `ix_company_city` (`city`) USING BTREE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 INSERT INTO `company` (`companyid`, `companyname`, `address`, `city`, `zipcode`, `taxno`, `currencyid`, `faxno`, `phoneno`, `webaddress`, `email`, `leftlogofile`, `rightlogofile`, `recordstatus`) VALUES
@@ -513,8 +509,7 @@ CREATE TABLE IF NOT EXISTS `country` (
   `recordstatus` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`countryid`),
   KEY `ix_country_code` (`countrycode`),
-  KEY `ix_country_name` (`countryname`),
-  KEY `ix_country` (`countrycode`,`countryname`,`countryid`,`recordstatus`) USING BTREE
+  KEY `ix_country_name` (`countryname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=223 ;
 
 INSERT INTO `country` (`countryid`, `countrycode`, `countryname`, `recordstatus`) VALUES
@@ -748,9 +743,7 @@ CREATE TABLE IF NOT EXISTS `currency` (
   `currencyname` varchar(50) NOT NULL,
   `symbol` varchar(3) NOT NULL,
   `recordstatus` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`currencyid`),
-  UNIQUE KEY `uq_currency_name` (`currencyname`,`countryid`),
-  KEY `ix_currency` (`currencyid`,`countryid`,`currencyname`,`symbol`)
+  PRIMARY KEY (`currencyid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=172 ;
 
 INSERT INTO `currency` (`currencyid`, `countryid`, `currencyname`, `symbol`, `recordstatus`) VALUES
@@ -783,6 +776,7 @@ INSERT INTO `currency` (`currencyid`, `countryid`, `currencyname`, `symbol`, `re
 (27, 25, 'Communaute Financiere Africaine franc', 'XOF', 1),
 (28, 29, 'Real', 'BRL', 1),
 (29, 4, 'East Caribbean dollar', 'XCD', 1),
+(30, 5, 'East Caribbean dollar', 'XCD', 1),
 (31, 30, 'Bahamian dollar', 'BSD', 1),
 (32, 31, 'ngultrum', 'BTN', 1),
 (33, 31, 'Indian Rupee', 'INR', 1),
@@ -932,8 +926,7 @@ CREATE TABLE IF NOT EXISTS `docprint` (
   `docprint` int(10) unsigned NOT NULL,
   `printdate` datetime NOT NULL,
   `printby` varchar(50) NOT NULL,
-  PRIMARY KEY (`doclistid`),
-  KEY `ix_docprint` (`docid`,`docprint`,`printdate`,`printby`,`doclistid`)
+  PRIMARY KEY (`doclistid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `groupaccess`;
@@ -942,8 +935,7 @@ CREATE TABLE IF NOT EXISTS `groupaccess` (
   `groupname` varchar(50) NOT NULL,
   `recordstatus` tinyint(4) NOT NULL,
   PRIMARY KEY (`groupaccessid`),
-  UNIQUE KEY `uq_groupname` (`groupname`) USING BTREE,
-  KEY `ix_group` (`groupaccessid`,`groupname`,`recordstatus`) USING BTREE
+  KEY `ix_groupname` (`groupname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 INSERT INTO `groupaccess` (`groupaccessid`, `groupname`, `recordstatus`) VALUES
@@ -961,10 +953,9 @@ CREATE TABLE IF NOT EXISTS `groupmenu` (
   `isupload` tinyint(4) NOT NULL DEFAULT '0',
   `isdownload` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`groupmenuid`),
-  UNIQUE KEY `uq_groupmenu_gm` (`groupaccessid`,`menuaccessid`),
-  KEY `FK_groupmenu_menu` (`menuaccessid`),
-  KEY `ix_groupmenu` (`groupmenuid`,`groupaccessid`,`menuaccessid`,`isread`,`iswrite`,`ispost`,`isreject`,`isupload`,`isdownload`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+  KEY `FK_groupmenu_group` (`groupaccessid`),
+  KEY `FK_groupmenu_menu` (`menuaccessid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 INSERT INTO `groupmenu` (`groupmenuid`, `groupaccessid`, `menuaccessid`, `isread`, `iswrite`, `ispost`, `isreject`, `isupload`, `isdownload`) VALUES
 (1, 1, 1, 1, 1, 1, 1, 1, 1),
@@ -978,8 +969,7 @@ INSERT INTO `groupmenu` (`groupmenuid`, `groupaccessid`, `menuaccessid`, `isread
 (9, 1, 9, 1, 1, 1, 1, 1, 1),
 (10, 1, 10, 1, 1, 1, 1, 1, 1),
 (11, 1, 11, 1, 1, 1, 1, 1, 1),
-(12, 1, 12, 1, 1, 1, 1, 1, 1),
-(13, 1, 13, 1, 1, 1, 1, 1, 1);
+(12, 1, 12, 1, 1, 1, 1, 1, 1);
 
 DROP TABLE IF EXISTS `groupmenuauth`;
 CREATE TABLE IF NOT EXISTS `groupmenuauth` (
@@ -988,10 +978,8 @@ CREATE TABLE IF NOT EXISTS `groupmenuauth` (
   `menuauthid` int(11) NOT NULL,
   `menuvalue` text NOT NULL,
   PRIMARY KEY (`groupmenuauthid`),
-  UNIQUE KEY `uq_gma_gm` (`groupaccessid`,`menuauthid`),
   KEY `fk_groupmenuauth_1` (`groupaccessid`),
-  KEY `fk_groupmenuauth_2` (`menuauthid`),
-  KEY `ix_gma` (`groupmenuauthid`,`groupaccessid`,`menuauthid`)
+  KEY `fk_groupmenuauth_2` (`menuauthid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `language`;
@@ -999,9 +987,7 @@ CREATE TABLE IF NOT EXISTS `language` (
   `languageid` int(11) NOT NULL AUTO_INCREMENT,
   `languagename` varchar(50) NOT NULL,
   `recordstatus` tinyint(4) NOT NULL,
-  PRIMARY KEY (`languageid`),
-  UNIQUE KEY `uq_language` (`languagename`),
-  KEY `ix_language` (`languageid`,`languagename`,`recordstatus`) USING BTREE
+  PRIMARY KEY (`languageid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 INSERT INTO `language` (`languageid`, `languagename`, `recordstatus`) VALUES
@@ -1020,9 +1006,8 @@ CREATE TABLE IF NOT EXISTS `menuaccess` (
   KEY `ix_menucode` (`menucode`),
   KEY `ix_menuname` (`menuname`),
   KEY `ix_description` (`description`),
-  KEY `ix_menuurl` (`menuurl`),
-  KEY `ix_menuaccess` (`menuaccessid`,`menucode`,`menuname`,`description`,`menuurl`,`recordstatus`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+  KEY `ix_menuurl` (`menuurl`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 INSERT INTO `menuaccess` (`menuaccessid`, `menucode`, `menuname`, `description`, `menuurl`, `recordstatus`) VALUES
 (1, 'system', 'system', 'System', '/system', 1),
@@ -1036,17 +1021,14 @@ INSERT INTO `menuaccess` (`menuaccessid`, `menucode`, `menuname`, `description`,
 (9, 'sogm', 'groupmenu', 'Group Menu', '/groupmenu', 1),
 (10, 'stl', 'translog', 'Transaction Log', '/translog', 1),
 (11, 'stlck', 'translock', 'Transaction Lock', '/translock', 1),
-(12, 'ssnro', 'snro', 'Specific Number Range Object', '/snro', 1),
-(13, 'ssnrodet', 'snrodet', 'SNRO Detail', '/snrodet', 1);
+(12, 'ssnro', 'snro', 'Specific Number Range Object', '/snro', 1);
 
 DROP TABLE IF EXISTS `menuauth`;
 CREATE TABLE IF NOT EXISTS `menuauth` (
   `menuauthid` int(11) NOT NULL,
   `menuobject` varchar(50) NOT NULL,
   `recordstatus` tinyint(4) NOT NULL,
-  PRIMARY KEY (`menuauthid`),
-  UNIQUE KEY `uq_menuobject` (`menuobject`),
-  KEY `ix_menuauth` (`menuauthid`,`menuobject`,`recordstatus`) USING BTREE
+  PRIMARY KEY (`menuauthid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `menuauth` (`menuauthid`, `menuobject`, `recordstatus`) VALUES
@@ -1059,10 +1041,8 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `messagename` varchar(50) NOT NULL,
   `description` varchar(150) NOT NULL,
   `recordstatus` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY (`messagesid`),
-  UNIQUE KEY `uq_messages_name` (`messagename`),
-  KEY `ix_messages` (`messagesid`,`messagename`,`description`,`recordstatus`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+  PRIMARY KEY (`messagesid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 INSERT INTO `messages` (`messagesid`, `messagename`, `description`, `recordstatus`) VALUES
 (1, 'company', 'Company', 1),
@@ -1086,9 +1066,7 @@ INSERT INTO `messages` (`messagesid`, `messagename`, `description`, `recordstatu
 (19, 'translock', 'Transaction Lock', 1),
 (20, 'translockhelp', 'Transaction Lock Help', 1),
 (21, 'snro', 'Specific Number Range Object', 1),
-(22, 'snrohelp', 'SNRO Help', 1),
-(23, 'snrodet', 'SNRO Detail', 1),
-(24, 'snrodethelp', 'SNRO Detail Help', 1);
+(22, 'snrohelp', 'SNRO Help', 1);
 
 DROP TABLE IF EXISTS `province`;
 CREATE TABLE IF NOT EXISTS `province` (
@@ -1097,10 +1075,8 @@ CREATE TABLE IF NOT EXISTS `province` (
   `provincename` varchar(50) NOT NULL,
   `recordstatus` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`provinceid`),
-  UNIQUE KEY `uq_province_cp` (`countryid`,`provincename`),
   KEY `fk_province_country` (`countryid`),
-  KEY `ix_province_name` (`provincename`),
-  KEY `ix_province` (`provinceid`,`countryid`,`provincename`,`recordstatus`) USING BTREE
+  KEY `ix_province_name` (`provincename`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 INSERT INTO `province` (`provinceid`, `countryid`, `provincename`, `recordstatus`) VALUES
@@ -1135,93 +1111,6 @@ INSERT INTO `province` (`provinceid`, `countryid`, `provincename`, `recordstatus
 (29, 92, 'SUMATERA SELATAN', 1),
 (30, 92, 'SUMATERA UTARA', 1);
 
-DROP TABLE IF EXISTS `snro`;
-CREATE TABLE IF NOT EXISTS `snro` (
-  `snroid` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(50) NOT NULL,
-  `formatdoc` varchar(50) NOT NULL,
-  `formatno` varchar(10) NOT NULL,
-  `repeatby` varchar(30) DEFAULT NULL,
-  `recordstatus` tinyint(4) NOT NULL,
-  PRIMARY KEY (`snroid`),
-  UNIQUE KEY `uq_snro_desc` (`description`),
-  KEY `ix_snro_format` (`description`,`formatdoc`,`formatno`,`repeatby`,`snroid`,`recordstatus`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Specific Number Range Object' AUTO_INCREMENT=64 ;
-
-INSERT INTO `snro` (`snroid`, `description`, `formatdoc`, `formatno`, `repeatby`, `recordstatus`) VALUES
-(25, 'Asset Kantor', '00000/AKNT/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(27, 'Asset Kursi', '00000/AKR/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(26, 'Asset Meja', '00000/AMJ/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(28, 'Asset Mobil', '00000/AMBL/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(29, 'Asset Motor', '00000/AMTR/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(24, 'Asset Ruangan', '00000/ARUANG/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(55, 'Bank In', '0000/BR/MM/YY', '0000', 'MMYY', 1),
-(53, 'Bank Out', '0000/BP/MM/YY', '0000', 'MMYY', 1),
-(44, 'BAOL No', '0000/SM-OPS/SSO/MMYY', '0000', 'MMYY', 1),
-(18, 'Beginning Stock', '00000/BS/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(47, 'Cash Bank Deposit', '00000/BKM/MM/YYYY', '00000', 'MMYYYY', 1),
-(51, 'Cash Bank In', '0000/CBR/MM/YY', '0000', 'MMYY', 1),
-(50, 'Cash Bank Out', '0000/CBP/MM/YY', '0000', 'MMYY', 1),
-(46, 'Cash Bank Withdrawal', '00000/BKK/MM/YYYY', '00000', 'MMYYYY', 1),
-(54, 'Cash In', '0000/CR/MM/YY', '0000', 'MMYY', 1),
-(52, 'Cash Out', '0000/CP/MM/YY', '0000', 'MMYY', 1),
-(14, 'Cuti Bencana Alam', '000/004/CBA/MONROM/YYYY', '000', 'MMYYYY', 1),
-(36, 'Cuti Besar', '000/004/CB/MONROM/YYYY', '000', 'MMYYYY', 1),
-(8, 'Cuti Duka Cita', '000/004/CD/MONROM/YYYY', '000', 'MMYYYY', 1),
-(12, 'Cuti Istri Keguguran', '000/004/CIK/MONROM/YYYY', '000', 'MMYYYY', 1),
-(11, 'Cuti Istri Melahirkan', '000/004/CIM/MONROM/YYYY', '000', 'MMYYYY', 1),
-(10, 'Cuti Keguguran', '000/004/CK/MONROM/YYYY', '000', 'MMYYYY', 1),
-(13, 'Cuti Khitan Anak', '000/004/CKA/MONROM/YYYY', '000', 'MMYYYY', 1),
-(7, 'Cuti Melahirkan', '000/004/CM/MONROM/YYYY', '000', 'MMYYYY', 1),
-(9, 'Cuti Menikah', '000/004/CN/MONROM/YYYY', '000', 'MMYYYY', 1),
-(6, 'Cuti Tahunan', '000/004/CT/MONROM/YYYY', '000', 'MMYYYY', 1),
-(35, 'Delivery Advice', 'QM/RQ/00000000/YY', '00000000', 'YY', 1),
-(23, 'Delivery Order', '00000/DO/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(33, 'Employee Overtime', 'EO/MM/YYYY/00000', '00000', 'MMYYYY', 1),
-(1, 'Employee Type Harian', '2000000', '000000', '', 1),
-(2, 'Employee Type Karyawan', '0000', '0000', '', 1),
-(3, 'Employee Type Outsourcing', 'A000', '000', '', 1),
-(49, 'Faktur Pajak', '010.000-YY.00000000', '00000000', 'YY', 1),
-(32, 'General Journal', 'JU/MM/YYYY/000000000', '000000000', 'YYYY', 1),
-(20, 'Goods Issue', '00000/GI/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(17, 'Goods Receipt', '00000/GR/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(48, 'Invoice Customer', '00000/INV/MM/YYYY', '00000', 'MMYYYY', 1),
-(56, 'Journal Adjustment', '0000/JA/MM/YY', '0000', 'MMYY', 1),
-(37, 'Kode Barang', 'YYMMMTPMGMGO00000', '00000', 'MTPMGMGOMMYY', 1),
-(38, 'Kode Jaringan', 'YYMM000000', '000000', 'MMYY', 1),
-(15, 'Permit Exit', '0000/005/PME/MONROM/YYYY', '0000', 'MMYYYY', 1),
-(16, 'Permit In', '0000/005/PMI/MONROM/YYYY', '0000', 'MMYYYY', 1),
-(31, 'Petty Cash', 'BKK/MM/YYYY/00000', '00000', 'MMYYYY', 1),
-(34, 'Project', 'YYCC.PT.PP.MM000', '000', 'CCPTPPMMYY', 1),
-(19, 'Purchase Order', 'NWPO/000000/YY', '000000', 'YY', 1),
-(21, 'Purchase Order Customer', '00000/POC/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(4, 'Purchase Requisition', '00000/PUR01/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(22, 'Sales Order', '00000/SO/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(40, 'Sales Order Jaringan', 'SO/N/MM/YY/00000', '00000', 'MMYY', 1),
-(39, 'Sales Order Vast', 'SO/V/MM/YY/00000', '00000', 'MMYY', 1),
-(5, 'Sickness Transaction', '000/001/MONROM/YYYY', '000', 'MMYYYY', 1),
-(43, 'SPK No', 'SPKMMYY00000', '00000', 'MMYY', 1),
-(42, 'SRF Jaringan', 'SRF/N/MM/YY/000000', '000000', 'YY', 1),
-(41, 'SRF Vast', 'SRF/V/MM/YY/000000', '000000', 'YY', 1),
-(30, 'Transfer Stock', '00000/TS/MONROM/YYYY', '00000', 'MMYYYY', 1),
-(45, 'Trouble Ticket No', '0000/OPS/TTI/MMYY', '0000', 'MMYY', 1);
-
-DROP TABLE IF EXISTS `snrodet`;
-CREATE TABLE IF NOT EXISTS `snrodet` (
-  `snrodid` int(11) NOT NULL AUTO_INCREMENT,
-  `snroid` int(11) NOT NULL,
-  `curdd` int(11) DEFAULT NULL,
-  `curmm` int(11) DEFAULT NULL,
-  `curyy` int(11) DEFAULT NULL,
-  `curvalue` int(11) DEFAULT NULL,
-  `curcc` varchar(5) DEFAULT NULL,
-  `curpt` varchar(5) DEFAULT NULL,
-  `curpp` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`snrodid`) USING BTREE,
-  KEY `fk_snrod_snroid` (`snroid`),
-  KEY `ix_snrodet` (`snrodid`,`snroid`,`curdd`,`curmm`,`curyy`,`curvalue`,`curcc`,`curpt`,`curpp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
 DROP TABLE IF EXISTS `translock`;
 CREATE TABLE IF NOT EXISTS `translock` (
   `translockid` int(11) NOT NULL AUTO_INCREMENT,
@@ -1229,12 +1118,8 @@ CREATE TABLE IF NOT EXISTS `translock` (
   `tableid` int(11) DEFAULT NULL,
   `lockedby` varchar(50) DEFAULT NULL,
   `lockeddate` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`translockid`),
-  KEY `ix_translock` (`translockid`,`menuname`,`tableid`,`lockedby`,`lockeddate`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
-INSERT INTO `translock` (`translockid`, `menuname`, `tableid`, `lockedby`, `lockeddate`) VALUES
-(1, 'company', 1, 'admin', NULL);
+  PRIMARY KEY (`translockid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `translog`;
 CREATE TABLE IF NOT EXISTS `translog` (
@@ -1247,8 +1132,7 @@ CREATE TABLE IF NOT EXISTS `translog` (
   PRIMARY KEY (`translogid`),
   KEY `ix_username` (`username`),
   KEY `ix_createddate` (`createddate`),
-  KEY `ix_useraction` (`useraction`),
-  KEY `ix_translog` (`translogid`,`username`,`createddate`,`useraction`)
+  KEY `ix_useraction` (`useraction`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `useraccess`;
@@ -1267,8 +1151,7 @@ CREATE TABLE IF NOT EXISTS `useraccess` (
   KEY `ix_realname` (`realname`),
   KEY `ix_usernamepass` (`username`,`password`),
   KEY `ix_userlang` (`username`,`languageid`),
-  KEY `fk_useraccess_lang` (`languageid`),
-  KEY `ix_useraccess` (`useraccessid`,`username`,`realname`,`password`,`salt`,`email`,`phoneno`,`languageid`,`recordstatus`)
+  KEY `fk_useraccess_lang` (`languageid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 INSERT INTO `useraccess` (`useraccessid`, `username`, `realname`, `password`, `salt`, `email`, `phoneno`, `languageid`, `recordstatus`) VALUES
@@ -1281,8 +1164,7 @@ CREATE TABLE IF NOT EXISTS `usergroup` (
   `groupaccessid` int(11) NOT NULL,
   PRIMARY KEY (`usergroupid`),
   KEY `fk_usergroup_user` (`useraccessid`),
-  KEY `fk_usergroup_group` (`groupaccessid`),
-  KEY `ix_usergroup` (`usergroupid`,`useraccessid`,`groupaccessid`)
+  KEY `fk_usergroup_group` (`groupaccessid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `usergroup` (`usergroupid`, `useraccessid`, `groupaccessid`) VALUES
@@ -1295,8 +1177,7 @@ CREATE TABLE IF NOT EXISTS `usertodo` (
   `menuname` varchar(50) NOT NULL,
   `docno` varchar(50) NOT NULL DEFAULT '0',
   `recordstatus` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`usertodoid`),
-  KEY `ix_usertodo` (`usertodoid`,`username`,`menuname`,`docno`,`recordstatus`)
+  PRIMARY KEY (`usertodoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `yiisession`;
@@ -1308,7 +1189,8 @@ CREATE TABLE IF NOT EXISTS `yiisession` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `yiisession` (`id`, `expire`, `data`) VALUES
-('26q0pplo5hlf7eier42thv0fa1', 1363275799, 'a458ffbadb8ba7f186312b95d52901ef__id|s:5:"admin";a458ffbadb8ba7f186312b95d52901ef__name|s:5:"admin";a458ffbadb8ba7f186312b95d52901ef__states|a:0:{}');
+('07te1eiqqt7nn64950fnbv1ln5', 1363226279, 'a458ffbadb8ba7f186312b95d52901ef__id|s:5:"admin";a458ffbadb8ba7f186312b95d52901ef__name|s:5:"admin";a458ffbadb8ba7f186312b95d52901ef__states|a:0:{}'),
+('4aqma6662mffb9pehk69d7t5e1', 1363226043, '');
 
 
 ALTER TABLE `catalogsys`
@@ -1328,9 +1210,6 @@ ALTER TABLE `groupmenuauth`
 
 ALTER TABLE `province`
   ADD CONSTRAINT `fk_province_country` FOREIGN KEY (`countryid`) REFERENCES `country` (`countryid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE `snrodet`
-  ADD CONSTRAINT `fk_snrod_snroid` FOREIGN KEY (`snroid`) REFERENCES `snro` (`snroid`);
 
 ALTER TABLE `useraccess`
   ADD CONSTRAINT `fk_useraccess_lang` FOREIGN KEY (`languageid`) REFERENCES `language` (`languageid`) ON DELETE NO ACTION ON UPDATE NO ACTION;

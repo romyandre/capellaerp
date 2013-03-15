@@ -276,3 +276,21 @@ margin-top:50px;
 	margin-left:-20px;
 	margin-bottom: 30px;
 }
+#module-pnl
+{
+margin-top:100px;
+position:absolute;
+width:20%;
+margin-left: -10px;
+}
+#module-pnl ul li {
+	list-style-type: none;
+	display: inline-block;
+	padding-right: 10px;
+	margin-left:0px;
+}
+#module-pnl ul  {	
+	margin-left:-10px;
+	margin-bottom: 30px;
+	font-size:10px;
+}

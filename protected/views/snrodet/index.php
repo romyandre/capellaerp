@@ -153,6 +153,9 @@ $this->widget('ToolbarButton',array('isCreate'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
 ?> 
+		<?php
+$this->widget('RecentUpdate',array('menuname'=>$this->menuname));
+?>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
