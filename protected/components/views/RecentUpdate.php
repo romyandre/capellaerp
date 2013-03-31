@@ -1,6 +1,6 @@
 <div id="module-pnl"> <!-- tambahan baru -->
 <div class="well">
-					<h3>Recent Update</h3>
+					<h3><?php echo Catalogsys::model()->GetCatalog('recentupdate') ?></h3>
 					<ul>
 					<?php
 					$translog = Translog::model()->findallbysql('select * from translog where menuname = "'.$this->menuname.'" order by createddate desc');

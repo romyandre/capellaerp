@@ -160,10 +160,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'selectableRows'=>1,
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
-	  array(
-		'class'=>'CCheckBoxColumn',
-		'id'=>'groupaccessid',
-	  ),
 	  array(            
             'name'=>'groupname',
             'type'=>'raw', 

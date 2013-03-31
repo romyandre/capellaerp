@@ -329,9 +329,14 @@ if((Yii::app()->user->id == null) || (Yii::app()->user->id == 'Guest')) {
 	  }
 	  else
 	  {
-	  require_once("pdf.php");
-			$this->connection=Yii::app()->db;    
-			$this->pdf = new PDF();
+		$user = Useraccess::model()->findbyattributes(array('username'=>Yii::app()->user->id));
+		  if ($user !== null)
+		  {
+			Yii::app()->theme = $user->theme;
+		  }
+		require_once("pdf.php");
+		$this->connection=Yii::app()->db;    
+		$this->pdf = new PDF();
 	  }
 	}
 

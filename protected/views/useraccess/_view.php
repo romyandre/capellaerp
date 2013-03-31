@@ -10,6 +10,8 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
 <div class="rowdata">
 	<span class="cell">Real Name</span>
     <span class="cell"><?php echo $model->realname;?></span>
+</div>
+<div class="rowdata">
 	<span class="cell">User Name</span>
     <span class="cell"><?php echo $model->username;?></span>
 </div>

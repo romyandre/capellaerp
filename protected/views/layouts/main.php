@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -13,16 +13,12 @@
 
 <div class="container" id="page">
 	<?php 
-	$this->widget('bootstrap.widgets.TbNavbar', array(
-'brand' => 'Capella ERP System',
-'items' => array(
-array(
-'class' => 'bootstrap.widgets.TbMenu',
-'items' => array(
-				array('label'=>'Home', 'url'=>array('/site/index'),'active'=>true),		
-				array('label'=>'System', 'url'=>array('/system/index'), 'visible'=>Groupmenu::model()->GetReadMenu('system'),
+	$this->widget('application.extensions.mbmenu.MbMenu',array(
+            'items'=>array(
+				array('label'=>'Home', 'url'=>array('/site/index'),'image'=>Yii::app()->request->baseUrl.'/images/home.png'),
+                array('label'=>'System','visible'=>Groupmenu::model()->GetReadMenu('system'),
 					'items'=>array(
-						array('label'=>'Object Authentication','visible'=>Groupmenu::model()->GetReadMenu('objectauth'),
+						array('label'=>'Authentication','visible'=>Groupmenu::model()->GetReadMenu('objectauth'),
 							'items'=>array(
 								array('label'=>'User Access - sua', 'url'=>array('/useraccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('useraccess')),
 								array('label'=>'Menu Access - soma', 'url'=>array('/menuaccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('menuaccess')),
@@ -340,7 +336,8 @@ array(
 					)),			
 			),
 	)
-)));?>
+		);
+?>
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,

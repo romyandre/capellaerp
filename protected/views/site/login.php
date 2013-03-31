@@ -3,10 +3,9 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 ?>
 <div id="login">
 <div class="form">
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-'id'=>'horizontalForm',
-'type'=>'horizontal',
-'htmlOptions'=>array('class'=>'well'),
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'login-form',
+	'enableAjaxValidation'=>true,
 )); ?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
@@ -27,7 +26,7 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 	</div>
 
 	<div class="row buttons">
-		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Login')); ?>
+		<?php echo CHtml::submitButton('Login'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

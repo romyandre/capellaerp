@@ -8,11 +8,11 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Capella ERP Indonesia',
-
+	'theme'=>'classic',
 	// preloading 'log' component
-	'preload'=>array(
+	/*'preload'=>array(
 		'bootstrap'
-	),
+	),*/
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -36,10 +36,10 @@ return array(
 
 	// application components
 	'components'=>array(
-		'bootstrap' => array(
+		/*'bootstrap' => array(
 			'class' => 'ext.bootstrap.components.Bootstrap',
 			'responsiveCss' => true,
-		),
+		),*/
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -51,10 +51,10 @@ return array(
     ),	
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-		'connectionString' => 'mysql:host=localhost;dbname=capella',
+		'connectionString' => 'mysql:host=localhost;dbname=capella3',
 		'emulatePrepare' => true,
-		'username' => 'capella',
-		'password' => 'capella',
+		'username' => 'capella3',
+		'password' => 'capella3',
 		'charset' => 'utf8',
 		'initSQLs'=>array('set names utf8'),
 		//'enableProfiling'=>true,

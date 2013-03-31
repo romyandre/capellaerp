@@ -32,6 +32,11 @@ class SiteController extends Controller
         if (Yii::app()->user->id != '')
         {
           $this->layout='//layouts/column1';
+		  $user = Useraccess::model()->findbyattributes(array('username'=>Yii::app()->user->id));
+		  if ($user !== null)
+		  {
+			Yii::app()->theme = $user->theme;
+		  }
           $this->render('index');
         }
         else

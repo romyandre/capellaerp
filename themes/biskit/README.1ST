@@ -1,0 +1,34 @@
+README for Artisteer 3.0 -based Theme – “Biskit”
+Created: Jun 1, 2012
+
+Requirements: 
+-----------------
+Artisteer requires a custom menu called ArtMenu.php provided in the theme zip file.  
+Copy ArtMenu.php to your protected/components directory BEFORE using the theme.  
+
+The contents of the zip file should be unzipped in your themes directory as usual.
+
+in config/main.php, add configuration:
+...
+	'theme'=>'biskit', // biskit is sub directory name under theme directory
+...
+
+Optional Configuration:
+The header displayed on all themed pages includes an art-logo-name and art-logo-text (i.e. the subtitle).  By default, the theme will use the application name set in the protected/config/main.php file.  If the art-logo-name and art-logo-text parameters are set in the config file, these will be used.  Sample settings are provided below:
+        'params'=>array(
+                ...
+                'art-logo-name'=>'PERFECTING.',
+                'art-logo-text'=>'THE RESULTS',
+        ),
+
+OTHER: 
+----------
+The main and 1-column layout is provided. 
+
+Also included is an index.php file in the ../views/site directory.  This displays a sample 
+with examples of the various style settings when you first install the theme.  Most likely 
+you'll want to rename this file and use your own index.php under the protected/views/site 
+directory.  
+
+Lastly, a index.html, home.html and other sample files are included in the css directory.  You can best understand how to use Artisteer markup by studying the 
+provided layouts and page.html file.
