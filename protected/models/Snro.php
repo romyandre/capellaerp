@@ -66,7 +66,7 @@ class Snro extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'snroid' => 'ID',
+			'snroid' => 'Data',
 			'description' => 'Description',
 			'formatdoc' => 'Format Doc',
 			'formatno' => 'Format No',

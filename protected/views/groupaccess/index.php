@@ -1,7 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Groupaccesses',
-);
 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
 ?>
 <script type="text/javascript">
@@ -13,7 +10,6 @@ function adddata() {
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Groupaccess_groupaccessid').val('');
@@ -22,7 +18,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -38,21 +34,20 @@ function editdata(value) {
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 $('#Groupaccess_groupaccessid').val(data.groupaccessid);
                 $('#Groupaccess_groupname').val(data.groupname);
                 if (data.recordstatus == '1') {
-                    document.forms[1].elements[3].checked = true;
+                    document.forms[0].elements[3].checked = true;
                 } else {
-                    document.forms[1].elements[3].checked = false;
+                    document.forms[0].elements[3].checked = false;
                 }
                     $('#createdialog').dialog('open');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -76,7 +71,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -149,14 +144,10 @@ $this->widget('ToolbarButton',array('isCreate'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
 ?>
-		<?php
-$this->widget('RecentUpdate',array('menuname'=>$this->menuname));
-?>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
-	'hideHeader'=>true,
 	'selectableRows'=>1,
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(

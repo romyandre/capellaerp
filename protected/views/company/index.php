@@ -11,7 +11,6 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Company_companyid').val('');
@@ -32,7 +31,7 @@ $('#Company_rightlogofile').val('');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -49,7 +48,6 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 $('#Company_companyid').val(data.companyid);
@@ -74,7 +72,7 @@ $('#currencyname').val(data.currencyname);
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -98,7 +96,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -173,13 +171,9 @@ $this->widget('ToolbarButton',array('isCreate'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
 ?>
-		<?php
-$this->widget('RecentUpdate',array('menuname'=>$this->menuname));
-?>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
-	'hideHeader'=>true,
 'selectableRows'=>1,
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(

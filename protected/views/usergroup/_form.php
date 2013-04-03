@@ -100,12 +100,11 @@ $groupaccess = new Groupaccess('searchwstatus');
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
 			}
         }')); ?></span>
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
@@ -119,7 +118,7 @@ $groupaccess = new Groupaccess('searchwstatus');
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
 			}
         }')); ?></span>
 </div>	

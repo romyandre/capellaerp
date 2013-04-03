@@ -64,7 +64,7 @@ class Catalogsys extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'catalogsysid' => 'ID',
+			'catalogsysid' => 'Data',
 			'languageid' => 'Language',
 			'catalogname' => 'Catalog ',
 			'catalogval' => 'Catalog Value',

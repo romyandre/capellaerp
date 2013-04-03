@@ -39,11 +39,10 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 $('#Menuauth_menuauthid').val(data.menuauthid);
-$$('#Menuauth_menuobject').val(data.menuobject);
+$('#Menuauth_menuobject').val(data.menuobject);
 if(data.recordstatus=='1')
 {document.forms[0].elements[3].checked=true;}
 else
@@ -52,7 +51,7 @@ else
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -69,14 +68,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;return false;}

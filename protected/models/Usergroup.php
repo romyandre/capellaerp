@@ -67,11 +67,23 @@ class Usergroup extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'usergroupid' => 'ID',
+			'usergroupid' => 'Data',
 			'useraccessid' => 'User Access',
 			'groupaccessid' => 'Group Access',
 		);
 	}
+	
+	private function comparedb($criteria)
+	{
+		if (isset($_GET['username']))
+{
+	$criteria->compare('useraccess.username',$_GET['username'],true);
+}
+		if (isset($_GET['groupname']))
+{
+	$criteria->compare('groupaccess.groupname',$_GET['groupname'],true);
+}
+}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -84,6 +96,7 @@ class Usergroup extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 		$criteria->with=array('useraccess','groupaccess');
+		$this->comparedb($criteria);
 		$criteria->compare('usergroupid',$this->usergroupid);
 		$criteria->compare('useraccess.username',$this->useraccessid,true);
 		$criteria->compare('groupaccess.groupname',$this->groupaccessid,true);
@@ -102,6 +115,7 @@ class Usergroup extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 		$criteria->with=array('useraccess','groupaccess');
+		$this->comparedb($criteria);
 		$criteria->condition='recordstatus=1';
 		$criteria->compare('usergroupid',$this->usergroupid);
 		$criteria->compare('useraccess.username',$this->useraccessid,true);

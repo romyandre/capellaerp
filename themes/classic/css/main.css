@@ -16,7 +16,7 @@ body
 
 #header
 {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	border-top: 3px solid #C9E0ED;
 }
@@ -39,12 +39,6 @@ margin-top: 50px;
 	font-size: 0.8em;
 	text-align: center;
 	border-top: 1px solid #C9E0ED;
-}
-
-#logo
-{
-	padding: 10px 20px;
-	font-size: 200%;
 }
 
 #mainmenu

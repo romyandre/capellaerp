@@ -65,9 +65,9 @@ class Currency extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'currencyid' => 'ID',
+			'currencyid' => 'Data',
 			'countryid' => 'Country',
-			'currencyname' => 'Currency ',
+			'currencyname' => 'Currency',
 			'symbol' => 'Symbol',
 			'recordstatus' => 'Recordstatus',
 		);

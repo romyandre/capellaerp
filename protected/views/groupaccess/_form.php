@@ -26,12 +26,11 @@ echo CHtml::link($imghelp,'#',array(
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
 			}
         }')); ?></span>
 		<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
@@ -40,12 +39,11 @@ echo CHtml::link($imghelp,'#',array(
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
 			}
         }')); ?></span>
 </div>

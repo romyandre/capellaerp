@@ -68,9 +68,9 @@ class Company extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'companyid' => 'ID',
-			'companyname' => 'Company ',
-			'address' => 'Address ',
+			'companyid' => 'Data',
+			'companyname' => 'Company',
+			'address' => 'Address',
 			'city' => 'City',
 			'zipcode' => 'Zip Code',
 			'taxno' => 'Tax No',

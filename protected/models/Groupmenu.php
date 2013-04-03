@@ -72,7 +72,7 @@ class Groupmenu extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'groupmenuid' => 'ID',
+			'groupmenuid' => 'Data',
 			'groupaccessid' => 'Group Access',
 			'menuaccessid' => 'Menu Access',
 			'isread' => 'Is Read',

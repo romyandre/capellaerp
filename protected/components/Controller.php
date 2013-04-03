@@ -125,17 +125,16 @@ class Controller extends CController
 
     public function GetSMessage($catalogname)
     {
-      $messages='';
-      $openbracpos = strpos((string)$catalogname,'<');
-      $closebracpos = strpos((string)$catalogname,'>');
-      $catalogname = substr((string)$catalogname,$openbracpos,$closebracpos-$openbracpos);
+      $messages='';  
+	  $catalogname = str_replace('<','',(string)$catalogname);
+      $catalogname = trim(str_replace('>','',(string)$catalogname));
       $message=Catalogsys::model()->findbysql("select a.*
 			from catalogsys a
 			inner join messages b on b.messagesid = a.messagesid 
 			inner join language c on c.languageid = a.languageid 
 			inner join useraccess d on d.languageid = c.languageid 
 			where lower(b.messagename) = lower('". $catalogname."') and d.username = '". Yii::app()->user->id . "'");
-      if ($message != null) {
+      if ($message !== null) {
         $messages = $message->catalogval;
       } else {
         $messages = $catalogname;

@@ -1,5 +1,5 @@
 <?php
-$this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'id'=>$model->translockid,
+$this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','id'=>$model->translockid,
 	'isDelete'=>true,'isDownload'=>true));
 ?>
 <div id="tabledata">

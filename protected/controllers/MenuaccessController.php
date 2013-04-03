@@ -34,13 +34,12 @@ protected $menuname = 'menuaccess';
 	public function actionUpdate()
 	{
 	  parent::actionUpdate();
-      $id=$_POST['id'];
-      $model=$this->loadModel($id[0]);
+      $model=$this->loadModel($_POST['id']);
       if ($model != null)
       {
-        if ($this->CheckDataLock($this->menuname, $id[0]) == false)
+        if ($this->CheckDataLock($this->menuname, $_POST['id']) == false)
         {
-          $this->InsertLock($this->menuname, $id[0]);
+          $this->InsertLock($this->menuname, $_POST['id']);
             echo CJSON::encode(array(
                 'status'=>'success',
 				'menuaccessid'=>$model->menuaccessid,
@@ -103,7 +102,7 @@ protected $menuname = 'menuaccess';
               {
 			  $this->InsertTranslog();
                 $this->DeleteLock($this->menuname, $_POST['Menuaccess']['menuaccessid']);
-                $this->GetSMessage('sumansertsuccess');
+                $this->GetSMessage('insertsuccess');
               }
               else
               {

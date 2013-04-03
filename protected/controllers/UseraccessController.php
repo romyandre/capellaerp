@@ -38,13 +38,12 @@ class UseraccessController extends Controller
 	public function actionUpdate()
 	{
       parent::actionUpdate();
-      $id=$_POST['id'];
-      $model=$this->loadModel($id[0]);
+      $model=$this->loadModel($_POST['id']);
       if ($model != null)
       {
-        if ($this->CheckDataLock($this->menuname, $id[0]) == false)
+        if ($this->CheckDataLock($this->menuname, $_POST['id']) == false)
         {
-          $this->InsertLock($this->menuname, $id[0]);
+          $this->InsertLock($this->menuname, $_POST['id']);
           echo CJSON::encode(array(
               'status'=>'success',
               'useraccessid'=>$model->useraccessid,
@@ -53,8 +52,6 @@ class UseraccessController extends Controller
               'realname'=>$model->realname,
               'email'=>$model->email,
               'recordstatus'=>$model->recordstatus,
-			  'employeeid'=>$model->employeeid,
-				'fullname'=>($model->employee!==null)?$model->employee->fullname:"",
               ));
           Yii::app()->end();
         }
@@ -119,7 +116,7 @@ class UseraccessController extends Controller
             {
 				$this->InsertTranslog();
               $this->DeleteLock($this->menuname, $_POST['Useraccess']['useraccessid']);
-              $this->GetSMessage('suainsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {

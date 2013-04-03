@@ -75,7 +75,7 @@ class Useraccess extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'useraccessid' => 'ID',
+			'useraccessid' => 'Data',
 			'username' => 'User',
 			'realname' => 'Real',
 			'password' => 'Password',

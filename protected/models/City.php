@@ -72,9 +72,9 @@ class City extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'cityid' => 'ID',
+			'cityid' => 'Data',
 			'provinceid' => 'Province',
-			'cityname' => 'City ',
+			'cityname' => 'City',
 			'recordstatus' => 'Record Status',
 		);
 	}

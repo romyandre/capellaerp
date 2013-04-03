@@ -14,14 +14,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -70,26 +69,21 @@ function searchdata()
 <?php $this->endWidget();?>
 <h1><?php echo Catalogsys::model()->GetCatalog('translock') ?></h1>
 		<?php
-$this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=translock/upload',
+$this->widget('ToolbarButton',array(
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
 ?>
-		<?php
-$this->widget('RecentUpdate',array('menuname'=>$this->menuname));
-?>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
-	'hideHeader'=>true,
 'selectableRows'=>1,
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            
-            'name'=>'translogid',
+            'name'=>'translockid',
             'type'=>'raw', 
             'value'=>array($this,'gridData'), 
         ),		

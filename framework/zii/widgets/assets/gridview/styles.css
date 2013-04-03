@@ -6,7 +6,6 @@
 .grid-view
 {
 	padding: 0px 0;
-	margin-left:210px;
 }
 
 .grid-view table.items
@@ -104,7 +103,7 @@
 
 .grid-view .pager
 {
-	 margin-top:70px;
+
 }
 
 .grid-view .empty

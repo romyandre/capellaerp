@@ -36,7 +36,7 @@ class Menuauth extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('menuaccessid, menuobject, recordstatus', 'required'),
+			array('menuobject, recordstatus', 'required'),
 			array('recordstatus', 'numerical', 'integerOnly'=>true),
 			array('menuobject', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -62,10 +62,18 @@ class Menuauth extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'menuauthid' => 'ID',
+			'menuauthid' => 'Data',
 			'menuobject' => 'Menu Object',
 			'recordstatus' => 'Record Status',
 		);
+	}
+	
+	private function comparedb($criteria)
+	{
+		if (isset($_GET['menuobject']))
+{
+	$criteria->compare('menuobject',$_GET['menuobject'],true);
+}
 	}
 
 	/**
@@ -78,6 +86,7 @@ class Menuauth extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+		$this->comparedb($criteria);
 		$criteria->compare('menuauthid',$this->menuauthid,true);
 		$criteria->compare('menuobject',$this->menuobject,true);
 		$criteria->compare('recordstatus',$this->recordstatus);

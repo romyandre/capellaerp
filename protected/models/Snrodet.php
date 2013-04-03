@@ -64,7 +64,7 @@ class Snrodet extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'snrodid' => 'ID',
+			'snrodid' => 'Data',
 			'snroid' => 'Description',
 			'curdd' => 'Current Date',
 			'curmm' => 'Current Month',

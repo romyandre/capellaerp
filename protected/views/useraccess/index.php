@@ -44,16 +44,15 @@ function editdata(value)
 					'dataType'=>'json',
 					'success'=>"function(data)
 					{
-		document.getElementById('messages').innerHTML = '';
 						if (data.status == 'success')
 						{
 		$('#Useraccess_useraccessid').val(data.useraccessid);
 $('#Useraccess_username').val(data.username);$('#Useraccess_realname').val(data.realname);
 $('#Useraccess_email').val(data.email);$('#passhide').val(data.password);
 $('#Useraccess_password').val('');if(data.recordstatus=='1')
-{document.forms[0].elements[10].checked=true;}
+{document.forms[0].elements[7].checked=true;}
 else
-{document.forms[0].elements[10].checked=false;}
+{document.forms[0].elements[7].checked=false;}
                     $('#createdialog').dialog('open');
                 }
                 else
@@ -156,13 +155,9 @@ $this->widget('ToolbarButton',array('isCreate'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
 ?>
-		<?php
-$this->widget('RecentUpdate',array('menuname'=>$this->menuname));
-?>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
-	'hideHeader'=>true,
 	'selectableRows'=>1,
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(

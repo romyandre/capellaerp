@@ -69,8 +69,8 @@ class Groupaccess extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'groupaccessid' => 'ID',
-			'groupname' => 'Group ',
+			'groupaccessid' => 'Data',
+			'groupname' => 'Group',
 			'recordstatus' => 'Record Status',
 		);
 	}

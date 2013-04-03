@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
 <div class="container" id="page">
 	<?php 
 	$this->widget('application.extensions.mbmenu.MbMenu',array(
@@ -338,14 +337,20 @@
 	)
 		);
 ?>
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
-
 	<?php echo $content; ?>
-
+<?php
+    $this->widget('ext.etoastr.EToastr',array(
+        'flashMessagesOnly'=>true, //default to false
+        'message'=>'will be ignored', //because flashOnlyMessages is true
+        //the options passed to the plugin
+        'options'=>array(
+            'positionClass'=>'toast-top-right',
+            'fadeOut'   =>  1000,
+            'timeOut'   =>  10000,
+            'fadeIn'    =>  1000
+            )
+        ));
+    ?>
 	<div class="clear"></div>
 
 	<div id="footer">

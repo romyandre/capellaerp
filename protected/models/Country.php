@@ -67,9 +67,9 @@ class Country extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'countryid' => 'ID',
+			'countryid' => 'Data',
 			'countrycode' => 'Country Code',
-			'countryname' => 'Country ',
+			'countryname' => 'Country',
 			'recordstatus' => 'Record Status',
 		);
 	}

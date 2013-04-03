@@ -64,7 +64,7 @@ class Menuaccess extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'menuaccessid' => 'ID',
+			'menuaccessid' => 'Data',
 			'menucode' => 'Menu Code',
 			'menuname' => 'Menu',
 			'menuurl' => 'Menu Url',

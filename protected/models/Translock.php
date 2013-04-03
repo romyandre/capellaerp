@@ -63,7 +63,7 @@ class Translock extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'translockid' => 'ID',
+			'translockid' => 'Data',
 			'menuname' => 'Menu ',
 			'tableid' => 'Table ID',
 			'lockedby' => 'Locked By',

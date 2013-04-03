@@ -65,7 +65,7 @@ class Workflow extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'workflowid' => 'ID',
+			'workflowid' => 'Data',
 			'wfname' => 'Workflow ',
 			'wfdesc' => 'Description',
 			'wfminstat' => 'Min Status',

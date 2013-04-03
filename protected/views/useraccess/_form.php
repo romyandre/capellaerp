@@ -8,12 +8,16 @@
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'realname'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'realname',array('size'=>50,'maxlength'=>50)); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'username'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'username',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'password'); ?><?php echo CHtml::hiddenField('passhide',''); ?></span>
 <span class="cell"><?php echo $form->passwordField($model,'password',array('size'=>50,'maxlength'=>50)); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'email'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?></span>
 </div>
@@ -28,13 +32,11 @@
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
-			}
+toastr.info(x.div);				}
         }')); ?></span>
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('useraccess/cancelwrite'),
@@ -42,13 +44,11 @@
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
-			}
+toastr.info(x.div);				}
         }')); ?></span>
 </div>
 </div>

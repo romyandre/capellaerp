@@ -50,9 +50,9 @@ $('#Menuaccess_menuaccessid').val(data.menuaccessid);
                 $('#Menuaccess_menuurl').val(data.menuurl);
                 $('#Menuaccess_description').val(data.description);
                 if (data.recordstatus == '1') {
-                    document.forms[1].elements[6].checked = true;
+                    document.forms[0].elements[6].checked = true;
                 } else {
-                    document.forms[1].elements[6].checked = false;
+                    document.forms[0].elements[6].checked = false;
                 }
                     $('#createdialog').dialog('open');
                 }
@@ -157,14 +157,10 @@ $this->widget('ToolbarButton',array('isCreate'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
 ?>
-		<?php
-$this->widget('RecentUpdate',array('menuname'=>$this->menuname));
-?>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
-	'hideHeader'=>true,
 	'selectableRows'=>1,
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(

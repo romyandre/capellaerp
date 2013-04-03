@@ -22,7 +22,6 @@ protected $menuname = 'snro';
         {
             echo CJSON::encode(array(
                 'status'=>'success',
-                'divcreate'=>$this->renderPartial('_form', array('model'=>$model), true)
 				));
             Yii::app()->end();
         }
@@ -36,13 +35,12 @@ protected $menuname = 'snro';
 	public function actionUpdate()
 	{
 	  parent::actionUpdate();
-      $id=$_POST['id'];
-      $model=$this->loadModel($id[0]);
+      $model=$this->loadModel($_POST['id']);
       if ($model != null)
       {
-        if ($this->CheckDataLock($this->menuname, $id[0]) == false)
+        if ($this->CheckDataLock($this->menuname, $_POST['id']) == false)
         {
-          $this->InsertLock($this->menuname, $id[0]);
+          $this->InsertLock($this->menuname, $_POST['id']);
             echo CJSON::encode(array(
                 'status'=>'success',
 				'snroid'=>$model->snroid,
@@ -100,7 +98,7 @@ protected $menuname = 'snro';
             {
 			$this->InsertTranslog();
               $this->DeleteLock($this->menuname, $_POST['Snro']['snroid']);
-              $this->GetSMessage('agjinsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {

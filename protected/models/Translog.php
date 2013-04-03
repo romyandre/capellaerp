@@ -66,7 +66,7 @@ class Translog extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'translogid' => 'ID',
+			'translogid' => 'Data',
 			'username' => 'User',
 			'useraction' => 'Action',
 			'createddate' => 'Created Date',

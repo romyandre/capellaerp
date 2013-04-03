@@ -35,13 +35,12 @@ class MenuauthController extends Controller
 	public function actionUpdate()
 	{
 	  parent::actionUpdate();
-      $id=$_POST['id'];
-      $model=$this->loadModel($id[0]);
+      $model=$this->loadModel($_POST['id']);
       if ($model != null)
       {
-        if ($this->CheckDataLock($this->menuname, $id[0]) == false)
+        if ($this->CheckDataLock($this->menuname, $_POST['id']) == false)
         {
-          $this->InsertLock($this->menuname, $id[0]);
+          $this->InsertLock($this->menuname, $_POST['id']);
             echo CJSON::encode(array(
                 'status'=>'success',
 				'menuauthid'=>$model->menuauthid,
@@ -97,7 +96,7 @@ class MenuauthController extends Controller
               {
 				$this->InsertTranslog();
                 $this->DeleteLock($this->menuname, $_POST['Menuauth']['menuauthid']);
-                $this->GetSMessage('sumansertsuccess');
+                $this->GetSMessage('insertsuccess');
               }
               else
               {

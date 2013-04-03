@@ -61,7 +61,7 @@ class Language extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'languageid' => 'ID',
+			'languageid' => 'Data',
 			'languagename' => 'Language ',
 			'recordstatus' => 'Record Status',
 		);
