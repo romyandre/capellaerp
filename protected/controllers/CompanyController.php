@@ -78,8 +78,7 @@ class CompanyController extends Controller
     public function actionCancelWrite()
     {
       $this->DeleteLockCloseForm($this->menuname, $_POST['Company'], $_POST['Company']['companyid']);
-    }
-	
+    }	
 
 	public function actionWrite()
 	{
@@ -188,62 +187,6 @@ if (isset($_GET['pageSize']))
                     'currency'=>$this->currency
 		));
 	}	
-	
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-	  $allowedExtensions = array("csv");
-	  $sizeLimit = (int)Yii::app()->params['sizeLimit'];// maximum file size in bytes
-	  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-	  $result = $uploader->handleUpload($folder,true);
-	  $row = 0;
-	  if (($handle = fopen($folder.$uploader->file->getName(), "r")) !== FALSE) {
-		  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if ($row>0) {
-			  $model=Company::model()->findByPk((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Company();
-			  }
-			  $model->absstatusid = (int)$data[0];
-			  $model->shortstat = $data[1];
-			  $model->longstat = $data[2];
-			  $model->isin = (int)$data[3];
-			  $model->priority = (int)$data[4];
-			  $model->recordstatus = (int)$data[5];
-			  try
-			  {
-				if(!$model->save())
-				{
-				  $errormessage=$model->getErrors();
-				  if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-				}
-			  }
-			  catch (Exception $e)
-			  {
-				$errormessage=$e->getMessage();
-				if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-			  }
-			}
-			$row++;
-		  }
-		  fclose($handle);
-	  }
-	  $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-	  echo $result;
-  }
 
 	public function actionDownload()
 	{
@@ -259,10 +202,6 @@ if (isset($_GET['pageSize']))
 
 		$this->pdf->title='Company';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
 
 		$this->pdf->colalign=array('C','C','C','C','C','C');
 		$this->pdf->setwidths(array(40,60,20,20,20,20));

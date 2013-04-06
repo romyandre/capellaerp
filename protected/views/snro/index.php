@@ -110,7 +110,7 @@ function searchdata()
 }
 </script>
 <script type="text/javascript">
-function downloaddata() {
+function downloaddata(value) {
 	window.open('index.php?r=snro/download&id='+value);
 }
 </script>
@@ -153,7 +153,6 @@ function downloaddata() {
 <h1><?php echo Catalogsys::model()->GetCatalog('snro') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=snro/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
@@ -164,6 +163,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
 'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            

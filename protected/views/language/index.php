@@ -15,10 +15,8 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
-                    $('#createdialog div.divcreate').html(data.div);
 					$('#Language_languageid').val('');
 					$('#Language_languagename').val('');
                           // Here is the trick: on submit-> once again this function!
@@ -26,7 +24,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -44,7 +42,6 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Language_languageid').val(data.languageid);
@@ -59,7 +56,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -158,6 +155,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
   'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
     array(            

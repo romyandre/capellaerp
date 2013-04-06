@@ -106,6 +106,10 @@ $groupaccess = new Groupaccess('searchwstatus');
 			  $("#createdialog").dialog("close");
               toastr.info(x.div);
 			}
+			else
+			{
+				toastr.error(x.div);
+			}
         }')); ?></span>
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('usergroup/cancelwrite'),
@@ -119,6 +123,10 @@ $groupaccess = new Groupaccess('searchwstatus');
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
               toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
 			}
         }')); ?></span>
 </div>	

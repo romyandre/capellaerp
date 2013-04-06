@@ -15,7 +15,6 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Snrodet_snrodid').val('');
@@ -28,7 +27,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -46,7 +45,6 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Snrodet_snrodid').val(data.snrodid);
@@ -59,7 +57,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -158,10 +156,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
 'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            
-            'name'=>'companyname',
+            'name'=>'snrodid',
             'type'=>'raw', 
             'value'=>array($this,'gridData'), 
         ),		

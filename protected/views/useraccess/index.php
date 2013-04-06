@@ -14,7 +14,6 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Useraccess_useraccessid').val('');
@@ -27,7 +26,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -57,7 +56,7 @@ else
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -74,14 +73,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -149,7 +147,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('useraccess') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=useraccess/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
@@ -159,6 +156,8 @@ $this->widget('ToolbarButton',array('isCreate'=>true,
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
 	'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            

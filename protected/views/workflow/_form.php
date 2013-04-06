@@ -9,12 +9,16 @@
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'wfname'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'wfname',array('size'=>20,'maxlength'=>20)); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'wfdesc'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'wfdesc',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'wfminstat'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'wfminstat'); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'wfmaxstat'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'wfmaxstat'); ?></span>
 </div>
@@ -29,12 +33,15 @@
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
 			}
         }')); ?></span>
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
@@ -43,13 +50,17 @@
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
 			}
+else
+			{
+				toastr.error(x.div);
+			}			
+			
         }')); ?></span>
 </div>
 </div>

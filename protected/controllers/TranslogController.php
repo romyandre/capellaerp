@@ -39,19 +39,16 @@ class TranslogController extends Controller
 
 		$this->pdf->title='Transaction Log List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
 
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->setaligns(array('C','C','C','C','C','C','C'));
-		$this->pdf->setwidths(array(20,20,30,30,30,30,30));
-		$this->pdf->Row(array('User Name','Model','User Action','Created Date','Field Name','New Value','Old Value'));
-		$this->pdf->setaligns(array('L','L','L','L','L','L','L'));
+		$this->pdf->colalign=array('C','C','C','C','C','C','C');
+		$this->pdf->setwidths(array(20,20,50,50,30,20,30));
+		$this->pdf->colheader=array('User Name','User Action','New Data','Old Data','Menu Name','Created Date');
+		$this->pdf->RowHeader();
+		$this->pdf->coldetailalign=array('L','L','L','L','L','L','L');
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['username'],$row1['model'],$row1['useraction'],$row1['createddate'],
-			$row1['fieldname'],$row1['fieldnewvalue'],$row1['fieldoldvalue']));
+		  $this->pdf->row(array($row1['username'],$row1['useraction'],$row1['newdata'],
+			$row1['olddata'],$row1['menuname'],$row1['createddate']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();

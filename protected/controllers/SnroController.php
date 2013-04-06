@@ -157,62 +157,6 @@ protected $menuname = 'snro';
 		));
 	}
 
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-	  $allowedExtensions = array("csv");
-	  $sizeLimit = (int)Yii::app()->params['sizeLimit'];// maximum file size in bytes
-	  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-	  $result = $uploader->handleUpload($folder,true);
-	  $row = 0;
-	  if (($handle = fopen($folder.$uploader->file->getName(), "r")) !== FALSE) {
-		  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if ($row>0) {
-			  $model=Snro::model()->findByPk((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Snro();
-			  }
-			  $model->snroid = (int)$data[0];
-			  $model->description = $data[1];
-			  $model->formatdoc = $data[2];
-			  $model->formatno = (int)$data[3];
-			  $model->repeatby = (int)$data[4];
-			  $model->recordstatus = (int)$data[5];
-			  try
-			  {
-				if(!$model->save())
-				{
-				  $errormessage=$model->getErrors();
-				  if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-				}
-			  }
-			  catch (Exception $e)
-			  {
-				$errormessage=$e->getMessage();
-				if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-			  }
-			}
-			$row++;
-		  }
-		  fclose($handle);
-	  }
-	  $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-	  echo $result;
-  }
-
   public function actionDownload()
 	{
 		parent::actionDownload();
@@ -226,15 +170,11 @@ protected $menuname = 'snro';
 
 		$this->pdf->title='SNRO List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->setaligns(array('C','C','C'));
-		$this->pdf->setwidths(array(60,50,40));
-		$this->pdf->Row(array('Description','Format Doc','Format No'));
-		$this->pdf->setaligns(array('L','L','L'));
+		$this->pdf->colalign=array('C','C','C');
+		$this->pdf->setwidths(array(60,70,40));
+		$this->pdf->colheader=array('Description','Format Doc','Format No');
+		$this->pdf->RowHeader();
+		$this->pdf->coldetailalign=array('L','L','L');
 		foreach($dataReader as $row1)
 		{
 		  $this->pdf->row(array($row1['description'],$row1['formatdoc'],$row1['formatno']));

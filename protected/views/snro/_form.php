@@ -7,29 +7,29 @@
 <?php echo $form->hiddenField($model,'snroid'); ?>
 	<div id="tabledata">
 <div class="rowdata">		
-<span class="cell"><?php echo $form->labelEx($model,'description'); ?>
-		<span class="cell"><?php echo $form->textField($model,'description',array('size'=>50,'maxlength'=>50)); ?>
+<span class="cell"><?php echo $form->labelEx($model,'description'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'description',array('size'=>50,'maxlength'=>50)); ?></span>
 	</div>
 
 	<div class="rowdata">
-		<span class="cell"><?php echo $form->labelEx($model,'formatdoc'); ?>
-		<span class="cell"><?php echo $form->textField($model,'formatdoc',array('size'=>50,'maxlength'=>50)); ?>
+		<span class="cell"><?php echo $form->labelEx($model,'formatdoc'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'formatdoc',array('size'=>50,'maxlength'=>50)); ?></span>
 	</div>
 
 	<div class="rowdata">
-		<span class="cell"><?php echo $form->labelEx($model,'formatno'); ?>
-		<span class="cell"><?php echo $form->textField($model,'formatno',array('size'=>10,'maxlength'=>10)); ?>
+		<span class="cell"><?php echo $form->labelEx($model,'formatno'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'formatno',array('size'=>10,'maxlength'=>10)); ?></span>
 		<?php echo $form->error($model,'formatno'); ?>
 	</div>
 
 	<div class="rowdata">
-		<span class="cell"><?php echo $form->labelEx($model,'repeatby'); ?>
-		<span class="cell"><?php echo $form->textField($model,'repeatby',array('size'=>30,'maxlength'=>30)); ?>
+		<span class="cell"><?php echo $form->labelEx($model,'repeatby'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'repeatby',array('size'=>30,'maxlength'=>30)); ?></span>
 	</div>
 
 	<div class="rowdata">
-		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?>
+		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
+		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 
 	<div class="rowdata">
@@ -45,6 +45,10 @@
 			$("#createdialog").dialog("close");
 			  toastr.info(x.div);
 			}
+			else
+			{
+				toastr.error(x.div);
+			}
         }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('snro/cancelwrite'),
 	  array(
@@ -56,6 +60,10 @@
 			  $.fn.yiiGridView.update("datagrid");			  
 			$("#createdialog").dialog("close");
 			  toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
 			}
         }')); ?></span>
 </div>

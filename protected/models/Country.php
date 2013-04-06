@@ -73,6 +73,18 @@ class Country extends CActiveRecord
 			'recordstatus' => 'Record Status',
 		);
 	}
+	
+	private function comparedb($criteria)
+	{
+		if (isset($_GET['countrycode']))
+{
+	$criteria->compare('countrycode',$_GET['countrycode'],true);
+}
+		if (isset($_GET['countryname']))
+{
+	$criteria->compare('countryname',$_GET['countryname'],true);
+}
+}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -84,6 +96,7 @@ class Country extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+		$this->comparedb($criteria);
 		$criteria->compare('countryid',$this->countryid);
 		$criteria->compare('countrycode',$this->countrycode,true);
 		$criteria->compare('countryname',$this->countryname,true);
@@ -107,6 +120,7 @@ class Country extends CActiveRecord
 
 		$criteria=new CDbCriteria;
     $criteria->condition='recordstatus=1';
+	$this->comparedb($criteria);
 		$criteria->compare('countryid',$this->countryid);
 		$criteria->compare('countrycode',$this->countrycode,true);
 		$criteria->compare('countryname',$this->countryname,true);

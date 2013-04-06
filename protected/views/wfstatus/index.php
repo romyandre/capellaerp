@@ -14,7 +14,6 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Company_companyid').val('');
@@ -27,7 +26,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -44,7 +43,6 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Wfstatus_wfstatusid').val(data.wfstatusid);
@@ -64,7 +62,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -81,14 +79,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -167,6 +164,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
   'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
    array(            

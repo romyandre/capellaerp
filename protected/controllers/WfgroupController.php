@@ -67,9 +67,6 @@ class WfgroupController extends Controller
               'wfbefstat'=>$model->wfbefstat,
               'wfrecstat'=>$model->wfrecstat,
 			  'recordstatus'=>$model->recordstatus,
-			  'div'=>$this->renderPartial('_form', array('model'=>$model,
-				'workflow'=>$this->workflow,
-				'groupaccess'=>$this->groupaccess), true)
 			  ));
 		  Yii::app()->end();
         }
@@ -113,6 +110,8 @@ class WfgroupController extends Controller
           if ((int)$_POST['Wfgroup']['wfgroupid'] > 0)
           {
             $model=$this->loadModel($_POST['Wfgroup']['wfgroupid']);
+			$this->olddata = $model->attributes;
+			$this->useraction='update';
             $model->workflowid = $_POST['Wfgroup']['workflowid'];
             $model->groupaccessid = $_POST['Wfgroup']['groupaccessid'];
             $model->wfbefstat = $_POST['Wfgroup']['wfbefstat'];
@@ -123,13 +122,17 @@ class WfgroupController extends Controller
           {
             $model = new Wfgroup();
             $model->attributes=$_POST['Wfgroup'];
+			$this->olddata = $model->attributes;
+			$this->useraction='new';
           }
+		  $this->newdata = $model->attributes;
           try
           {
             if($model->save())
             {
+				$this->InsertTranslog();
               $this->DeleteLock($this->menuname, $_POST['Wfgroup']['wfgroupid']);
-              $this->GetSMessage('scoinsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {
@@ -207,86 +210,24 @@ class WfgroupController extends Controller
 				from wfgroup a
 left join workflow b on b.workflowid = a.workflowid
 left join groupaccess c on c.groupaccessid = a.groupaccessid				";
-		if ($_GET['id'] !== '') {
-				$sql = $sql . "where a.positionid = ".$_GET['id'];
+		if ($_GET['id'] !== '0') {
+				$sql = $sql . "where a.wfgroupid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
 		$dataReader=$command->queryAll();
 
 		$this->pdf->title='Workflow Group List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->colalign=array('C');
-		$this->pdf->setwidths(array(90));
+		$this->pdf->colalign=array('C','C','C','C','C');
+		$this->pdf->setwidths(array(40,50,40,30,30));
 		$this->pdf->colheader=array('Workflow Name','Description','Group Name','Before Status','After Status');
 		$this->pdf->Rowheader();
-		$this->pdf->coldetailalign=array('L');
+		$this->pdf->coldetailalign=array('L','L','L','L','L');
 		foreach($dataReader as $row1)
 		{
 		  $this->pdf->row(array($row1['wfname'],$row1['wfdesc'],$row1['groupname'],$row1['wfbefstat'],$row1['wfrecstat']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();
-	}
-
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  Yii::import("ext.EAjaxUpload.qqFileUploader");
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-	  $allowedExtensions = array("csv");
-	  $sizeLimit = (int)Yii::app()->params['sizeLimit'];// maximum file size in bytes
-	  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-	  $result = $uploader->handleUpload($folder,true);
-	  $row = 0;
-	  if (($handle = fopen($folder.$uploader->file->getName(), "r")) !== FALSE) {
-		  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if ($row>0) {
-			  $model=Wfgroup::model()->findByPk((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Wfgroup();
-			  }
-			  $model->wfgroupid = (int)$data[0];
-			  $model->wfgroupname = $data[1];
-			  $model->absin = $data[2];
-			  $model->absout = $data[3];
-			  $model->workflowid = (int)$data[4];
-			  $model->recordstatus = 1;
-			  try
-			  {
-				if(!$model->save())
-				{
-				  $errormessage=$model->getErrors();
-				  if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-				}
-			  }
-			  catch (Exception $e)
-			  {
-				$errormessage=$e->getMessage();
-				if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-			  }
-			}
-			$row++;
-		  }
-		  fclose($handle);
-	  }
-	  $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-	  echo $result;
 	}
 }

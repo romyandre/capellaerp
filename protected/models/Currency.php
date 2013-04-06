@@ -72,6 +72,22 @@ class Currency extends CActiveRecord
 			'recordstatus' => 'Recordstatus',
 		);
 	}
+	
+	private function comparedb($criteria)
+	{
+		if (isset($_GET['countryname']))
+{
+	$criteria->compare('country.countryname',$_GET['countryname'],true);
+}
+		if (isset($_GET['currencyname']))
+{
+	$criteria->compare('currencyname',$_GET['currencyname'],true);
+}
+if (isset($_GET['symbol']))
+{
+	$criteria->compare('symbol',$_GET['symbol'],true);
+}
+}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -84,6 +100,7 @@ class Currency extends CActiveRecord
 
 		$criteria=new CDbCriteria;
     $criteria->with=array('country');
+	$this->comparedb($criteria);
 		$criteria->compare('t.currencyid',$this->currencyid);
 		$criteria->compare('country.countryname',$this->countryid,true);
 		$criteria->compare('t.currencyname',$this->currencyname,true);
@@ -109,6 +126,7 @@ class Currency extends CActiveRecord
 		$criteria=new CDbCriteria;
     $criteria->condition='t.recordstatus=1';
     $criteria->with=array('country');
+	$this->comparedb($criteria);
 		$criteria->compare('t.currencyid',$this->currencyid);
 		$criteria->compare('country.countryname',$this->countryid,true);
 		$criteria->compare('t.currencyname',$this->currencyname,true);

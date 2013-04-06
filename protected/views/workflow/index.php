@@ -15,7 +15,6 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Workflow_workflowid').val('');
@@ -27,7 +26,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -45,7 +44,6 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Workflow_workflowid').val(data.workflowid);
@@ -66,7 +64,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -111,7 +109,7 @@ function helpdata(value) {
 }
 </script>
 <script type="text/javascript">
-function downloaddata() {
+function downloaddata(value) {
 	window.open('index.php?r=workflow/download&id='+value);
 }
 </script>
@@ -154,7 +152,6 @@ function downloaddata() {
 <h1><?php echo Catalogsys::model()->GetCatalog('workflow') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=workflow/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
@@ -166,6 +163,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$model->search(),
 	'hideHeader'=>true,
 'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            

@@ -97,7 +97,7 @@ protected $menuname = 'workflow';
             {
 			$this->InsertTranslog();
               $this->DeleteLock($this->menuname, $_POST['Workflow']['workflowid']);
-              $this->GetSMessage('swfinsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {
@@ -169,15 +169,11 @@ if (isset($_GET['pageSize']))
 
 		$this->pdf->title='Workflow List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->setaligns(array('C','C','C','C'));
+		$this->pdf->colalign=array('C','C','C','C');
 		$this->pdf->setwidths(array(70,70,20,20));
-		$this->pdf->Row(array('Workflow Name','Description','Min Status','Max Status'));
-		$this->pdf->setaligns(array('L','L','L','L'));
+		$this->pdf->colheader=array('Workflow Name','Description','Min Status','Max Status');
+		$this->pdf->RowHeader();
+		$this->pdf->coldetailalign=array('L','L','L','L');
 		foreach($dataReader as $row1)
 		{
 		  $this->pdf->row(array($row1['wfname'],$row1['wfdesc'],$row1['wfminstat'],$row1['wfmaxstat']));

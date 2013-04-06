@@ -37,7 +37,7 @@ class Catalogsys extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('languageid, catalogname, catalogval, recordstatus', 'required'),
+			array('languageid, messagesid, catalogval, recordstatus', 'required'),
 			array('languageid, recordstatus,messagesid', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -66,12 +66,27 @@ class Catalogsys extends CActiveRecord
 		return array(
 			'catalogsysid' => 'Data',
 			'languageid' => 'Language',
-			'catalogname' => 'Catalog ',
 			'catalogval' => 'Catalog Value',
 			'recordstatus' => 'Record Status',
 			'messagesid'=>'Messages'
 		);
 	}
+	
+	private function comparedb($criteria)
+	{
+		if (isset($_GET['languagename']))
+{
+	$criteria->compare('language.languagename',$_GET['languagename'],true);
+}
+		if (isset($_GET['messagename']))
+{
+	$criteria->compare('messages.messagename',$_GET['messagename'],true);
+}
+		if (isset($_GET['catalogval']))
+{
+	$criteria->compare('catalogval',$_GET['catalogval'],true);
+}
+}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -84,9 +99,9 @@ class Catalogsys extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 $criteria->with=array('language','messages');
+$this->comparedb($criteria);
 		$criteria->compare('catalogsysid',$this->catalogsysid);
 		$criteria->compare('language.languagename',$this->languageid,true);
-		$criteria->compare('catalogname',$this->catalogname,true);
 		$criteria->compare('catalogval',$this->catalogval,true);
 		$criteria->compare('recordstatus',$this->recordstatus);
 		$criteria->compare('messages.messagename',$this->messagesid,true);

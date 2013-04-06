@@ -4,42 +4,30 @@
 	'id'=>'parameter-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-<?php
-$imghelp=CHtml::image(Yii::app()->request->baseUrl.'/images/help.png');
-echo CHtml::link($imghelp,'#',array(
-   'style'=>'cursor: pointer; text-decoration: underline;',
-   'onclick'=>"{helpdata(2)}",
-));  ?>
-
 <?php echo $form->hiddenField($model,'parameterid'); ?>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'paramname'); ?>
-		<?php echo $form->textField($model,'paramname',array('size'=>30,'maxlength'=>30)); ?>
-		<?php echo $form->error($model,'paramname'); ?>
+	<div id="tabledata">
+<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'paramname'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'paramname',array('size'=>30,'maxlength'=>30)); ?></span>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'paramvalue'); ?>
-		<?php echo $form->textField($model,'paramvalue',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'paramvalue'); ?>
+	<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'paramvalue'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'paramvalue',array('size'=>50,'maxlength'=>50)); ?></span>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'description'); ?>
+	<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'description'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'description',array('size'=>50,'maxlength'=>50)); ?></span>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'recordstatus'); ?>
-		<?php echo $form->checkBox($model,'recordstatus'); ?>
-		<?php echo $form->error($model,'recordstatus'); ?>
+	<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
+		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 
-	<table>
-      <tr>
-        <td colspan="2" align="center">
+<div class="rowdata">
+<span class="cell">
 		<?php echo CHtml::ajaxSubmitButton('Save',
 		array('parameter/write'),
 	  array(
@@ -51,8 +39,12 @@ echo CHtml::link($imghelp,'#',array(
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);			}
-        }')); ?>
-		<?php echo CHtml::ajaxSubmitButton('Cancel',
+else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?></span>
+<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('parameter/cancelwrite'),
 	  array(
 	  'success'=>'function(data)
@@ -63,9 +55,12 @@ toastr.info(x.div);			}
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);			}
-        }')); ?>
-        </td>
-      </tr>
-    </table>
+else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?></span>
+		</div>
+		</div>
 <?php $this->endWidget(); ?>
 </div><!-- form -->

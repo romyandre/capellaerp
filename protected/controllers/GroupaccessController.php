@@ -94,7 +94,7 @@ protected $menuname = 'groupaccess';
             {
 			$this->InsertTranslog();
               $this->DeleteLock($this->menuname, $_POST['Groupaccess']['groupaccessid']);
-              $this->GetSMessage('sugainsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {
@@ -162,10 +162,6 @@ if (isset($_GET['pageSize']))
 
 		$this->pdf->title='Group Access List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
 
 		$this->pdf->colalign = array('C');
 		$this->pdf->setwidths(array(90));

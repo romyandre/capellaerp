@@ -19,6 +19,10 @@
 <span class="cell"><?php echo $form->textField($model,'menuurl',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'menuicon'); ?></span>
+<span class="cell"><?php echo $form->textField($model,'menuicon',array('size'=>50,'maxlength'=>50)); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'description'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'description'); ?></span>
 </div>
@@ -38,8 +42,11 @@
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);			}
-     }')); ?></span>
-<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+else
+			{
+				toastr.error(x.div);
+			}
+     }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('menuaccess/cancelwrite'),
 	  array(
 	  'success'=>'function(data)
@@ -50,6 +57,10 @@ toastr.info(x.div);			}
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);			}
+else
+			{
+				toastr.error(x.div);
+			}
         }')); ?></span>
 </div>
 </div>

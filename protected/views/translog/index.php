@@ -14,14 +14,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -32,7 +31,7 @@ function refreshdata()
 {$.fn.yiiGridView.update('datagrid');return false;}
 </script>
 <script type="text/javascript">
-function downloaddata() {
+function downloaddata(value) {
 	window.open('index.php?r=translog/download&id='+value);
 }
 </script>
@@ -86,6 +85,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
 'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            

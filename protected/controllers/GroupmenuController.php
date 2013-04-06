@@ -126,7 +126,7 @@ class GroupmenuController extends Controller
             {
 			$this->InsertTranslog();
               $this->DeleteLock($this->menuname, $_POST['Groupmenu']['groupmenuid']);
-              $this->GetSMessage('sogmnsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {
@@ -196,12 +196,8 @@ left join menuaccess c on c.menuaccessid = a.menuaccessid				";
 
 		$this->pdf->title='Group Menu List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
 
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->colaling=array('C','C','C','C','C','C','C','C');
+		$this->pdf->colalign=array('C','C','C','C','C','C','C','C');
 		$this->pdf->setwidths(array(40,40,10,10,10,20,20,20));
 		$this->pdf->colheader=array('Group Name','Menu Name','Read','Write','Post','Reject','Upload','Download');
 		$this->pdf->RowHeader();

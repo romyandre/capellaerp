@@ -119,8 +119,11 @@
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);			
 			}
-        }')); ?></span>
-<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+			else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('groupmenu/cancelwrite'),
 	  array(
 	  'success'=>'function(data)
@@ -132,6 +135,10 @@ toastr.info(x.div);
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);			
 }
+else
+			{
+				toastr.error(x.div);
+			}
         }')); ?></span>
 </div>
 </div>

@@ -78,6 +78,18 @@ class City extends CActiveRecord
 			'recordstatus' => 'Record Status',
 		);
 	}
+	
+	private function comparedb($criteria)
+	{
+		if (isset($_GET['provincename']))
+{
+	$criteria->compare('province.provincename',$_GET['provincename'],true);
+}
+		if (isset($_GET['cityname']))
+{
+	$criteria->compare('cityname',$_GET['cityname'],true);
+}
+}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -90,6 +102,7 @@ class City extends CActiveRecord
 
 		$criteria=new CDbCriteria;
         $criteria->with=array('province');
+		$this->comparedb($criteria);
 		$criteria->compare('cityid',$this->cityid);
 		$criteria->compare('province.provincename',$this->provinceid,true);
 		$criteria->compare('cityname',$this->cityname,true);
@@ -114,6 +127,7 @@ class City extends CActiveRecord
 		$criteria=new CDbCriteria;
         $criteria->with=array('province');
     $criteria->condition='t.recordstatus=1';
+	$this->comparedb($criteria);
 		$criteria->compare('t.cityid',$this->cityid);
 		$criteria->compare('province.provincename',$this->provinceid,true);
 		$criteria->compare('t.cityname',$this->cityname,true);

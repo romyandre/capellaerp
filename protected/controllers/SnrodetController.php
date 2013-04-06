@@ -156,10 +156,6 @@ left join snro b on b.snroid = a.snroid				";
 
 		$this->pdf->title='SNRO Detail List';
 		$this->pdf->AddPage('P');
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
 		$this->pdf->colalign = array('C','C','C','C','C','C','C','C');
 		$this->pdf->setwidths(array(60,15,15,15,20,20,20,20));
 		$this->pdf->colheader =array('Description','Day','Month','Year','Current CC','Current PT','Current PP','Current Value');

@@ -13,7 +13,7 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
 </div>
 <div class="rowdata">
 	<span class="cell">Workflow Description</span>
-    <span class="cell"><?php echo ($model->workflow!==null)?$model->workflow->wfdesc;?></span>
+    <span class="cell"><?php echo ($model->workflow!==null)?$model->workflow->wfdesc:'';?></span>
 </div>
 <div class="rowdata">
 	<span class="cell">Workflow Status Value</span>

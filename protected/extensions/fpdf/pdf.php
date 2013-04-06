@@ -224,6 +224,7 @@ else
 	
 	function RowHeader()
 	{
+	$this->setFont('Arial','B',8);
 		$this->setaligns($this->colalign);
 		//Calculate the height of the row
 		$nb=0;
@@ -260,6 +261,7 @@ else
 		//Go to the next line
 		$this->Ln($h);
 		$this->setaligns($this->coldetailalign);
+		$this->setFont('Arial','',8);
 	}
 
 	function CheckPageBreak($h)

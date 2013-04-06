@@ -71,7 +71,7 @@ function searchdata()
 		<?php
 $this->widget('ToolbarButton',array(
 	'isSearch'=>true,
-	'isDownload'=>true,'isRefresh'=>true,
+	'isDownload'=>false,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
 	'isRecordPage'=>true,'PageSize'=>$pageSize,'OnChange'=>"$.fn.yiiGridView.update('datagrid',{data:{pageSize: $(this).val() }})"));
 ?>
@@ -80,6 +80,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
 'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            

@@ -14,7 +14,6 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Menuauth_menuobject').val('');
@@ -22,7 +21,7 @@ document.getElementById('messages').innerHTML = '';
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -140,7 +139,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('menuauth') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=menuauth/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
@@ -149,12 +147,13 @@ $this->widget('ToolbarButton',array('isCreate'=>true,
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
-	'hideHeader'=>true,
 'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		array(            
-            'name'=>'menuobject',
+            'name'=>'menuauthid',
             'type'=>'raw', 
             'value'=>array($this,'gridData'), 
         ),		

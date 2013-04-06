@@ -40,10 +40,10 @@ class Menuaccess extends CActiveRecord
 			array('menucode, menuname, menuurl, recordstatus', 'required'),
 			array('recordstatus', 'numerical', 'integerOnly'=>true),
 			array('menucode', 'length', 'max'=>10),
-			array('menuname, menuurl,description', 'length', 'max'=>50),
+			array('menuname, menuurl,description,menuicon', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('menuaccessid, menucode, menuname, menuurl, recordstatus,description', 'safe', 'on'=>'search'),
+			array('menuaccessid, menucode, menuname, menuurl, menuicon,recordstatus,description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,6 +68,7 @@ class Menuaccess extends CActiveRecord
 			'menucode' => 'Menu Code',
 			'menuname' => 'Menu',
 			'menuurl' => 'Menu Url',
+			'menuicon' => 'Menu Icon',
             'description'=> 'Description',
 			'recordstatus' => 'Record Status',
 		);

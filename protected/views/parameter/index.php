@@ -25,7 +25,7 @@ function adddata()
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -43,7 +43,6 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-			document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Parameter_parameterid').val(data.parameterid);
@@ -51,16 +50,16 @@ function editdata(value)
 					$('#Parameter_paramvalue').val(data.paramvalue);
 					$('#Parameter_description').val(data.description);
 					 if (data.recordstatus == '1') {
-                    document.forms[1].elements[5].checked = true;
+                    document.forms[0].elements[5].checked = true;
                 } else {
-                    document.forms[1].elements[5].checked = false;
+                    document.forms[10].elements[5].checked = false;
                 }
                           // Here is the trick: on submit-> once again this function!
                     $('#createdialog').dialog('open');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -77,14 +76,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -155,7 +153,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('parameter') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=parameter/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
@@ -166,6 +163,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
   'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
     array(            

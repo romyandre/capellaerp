@@ -19,16 +19,12 @@
 
 <body>
 
-<div class="container" id="page">
+<div class="container" id="pageempty">
 	
 	<?php echo $content; ?>
 
 	<div class="clear"></div>
 
-	<div id="footer">
-		Copyright &copy; 2011-2013 CV Prisma Data Abadi<br/>
-		All Rights Reserved.<br/>
-	</div><!-- footer -->
 	<div id="messages"></div>
 
 </div><!-- page -->

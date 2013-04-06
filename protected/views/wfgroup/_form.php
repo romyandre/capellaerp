@@ -8,8 +8,8 @@
 	<div id="tabledata">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'groupaccessid'); ?>
-<?php echo $form->hiddenField($model,'groupaccessid'); ?>
-    <input type="text" name="groupname" id="groupname" readonly >
+<?php echo $form->hiddenField($model,'groupaccessid'); ?></span>
+<span class="cell">    <input type="text" name="groupname" id="groupname" readonly >
     <?php $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array('id'=>'groupaccess_dialog',
                 // additional javascript options for the dialog plugin
@@ -43,11 +43,12 @@
     echo CHtml::Button('...',
                           array('onclick'=>'$("#groupaccess_dialog").dialog("open"); return false;',
                        ))?>	</span>
-
+</div>
+<div class="rowdata">
 <span class="cell">
 		<?php echo $form->labelEx($model,'workflowid'); ?>
-<?php echo $form->hiddenField($model,'workflowid'); ?>
-    <input type="text" name="wfdesc" id="wfdesc" readonly >
+<?php echo $form->hiddenField($model,'workflowid'); ?></span>
+    <span class="cell"><input type="text" name="wfdesc" id="wfdesc" readonly >
     <?php $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array('id'=>'workflow_dialog',
                 // additional javascript options for the dialog plugin
@@ -86,19 +87,16 @@
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'wfbefstat'); ?></span>
 		<span class="cell"><?php echo $form->textField($model,'wfbefstat'); ?></span>
-		<span class="cell"><?php echo $form->error($model,'wfbefstat'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'wfrecstat'); ?></span>
 		<span class="cell"><?php echo $form->textField($model,'wfrecstat'); ?></span>
-		<span class="cell"><?php echo $form->error($model,'wfrecstat'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
 		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
-		<span class="cell"><?php echo $form->error($model,'recordstatus'); ?></span>
 	</div>
 	
 	<div class="rowdata">
@@ -108,12 +106,15 @@
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
 			}
         }')); ?></span>
 		<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
@@ -127,7 +128,11 @@
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
 			}
         }')); ?></span>
 	</div>

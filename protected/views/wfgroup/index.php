@@ -14,7 +14,6 @@ function adddata()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-				document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Wfgroup_wfgroupid').val('');
@@ -28,7 +27,7 @@ function adddata()
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -45,7 +44,6 @@ function editdata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 					$('#Wfgroup_wfgroupid').val(data.wfgroupid);
@@ -63,7 +61,7 @@ else
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -80,14 +78,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -158,7 +155,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('wfgroup') ?></h1>
 <?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=wfgroup/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
@@ -169,6 +165,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->Search(),
   'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
     array(            

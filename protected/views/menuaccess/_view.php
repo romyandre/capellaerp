@@ -20,6 +20,10 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
     <span class="cell"><?php echo $model->menuurl;?></span>
 </div>
 <div class="rowdata">
+	<span class="cell">Icon</span>
+    <span class="cell"><img src="<?php echo Yii::app()->request->baseUrl.'/images/'.$model->menuicon;?>"></span>
+</div>
+<div class="rowdata">
 	<span class="cell">Description</span>
     <span class="cell"><?php echo $model->description;?></span>
 </div>

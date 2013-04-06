@@ -19,51 +19,67 @@
 					'items'=>array(
 						array('label'=>'Authentication','visible'=>Groupmenu::model()->GetReadMenu('objectauth'),
 							'items'=>array(
-								array('label'=>'User Access - sua', 'url'=>array('/useraccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('useraccess')),
-								array('label'=>'Menu Access - soma', 'url'=>array('/menuaccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('menuaccess')),
-								array('label'=>'Menu Object - sumo', 'url'=>array('/menuauth/index'),'visible'=>Groupmenu::model()->GetReadMenu('menuauth')),
-								array('label'=>'Group Access - soga', 'url'=>array('/groupaccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupaccess')),
-								array('label'=>'Group Menu Object - sogmo', 'url'=>array('/groupmenuauth/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupmenuauth')),
-								array('label'=>'User Group - soug', 'url'=>array('/usergroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('usergroup')),
-								array('label'=>'Group Menu - sogm', 'url'=>array('/groupmenu/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupmenu')),
+								array('label'=>'User Access', 'url'=>array('/useraccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('useraccess')),
+								array('label'=>'Menu Access', 'url'=>array('/menuaccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('menuaccess')),
+								array('label'=>'Menu Object', 'url'=>array('/menuauth/index'),'visible'=>Groupmenu::model()->GetReadMenu('menuauth')),
+								array('label'=>'Group Access', 'url'=>array('/groupaccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupaccess')),
+								array('label'=>'Group Menu Object', 'url'=>array('/groupmenuauth/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupmenuauth')),
+								array('label'=>'User Group', 'url'=>array('/usergroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('usergroup')),
+								array('label'=>'Group Menu', 'url'=>array('/groupmenu/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupmenu')),
 							)
 						),
-						array('label'=>'Company - sco', 'url'=>array('/company/index'),'visible'=>Groupmenu::model()->GetReadMenu('company')),
-						array('label'=>'Transaction Log - stl', 'url'=>array('/translog/index'),'visible'=>Groupmenu::model()->GetReadMenu('translog')),
-						array('label'=>'Transaction Lock - stlck', 'url'=>array('/translock/index'),'visible'=>Groupmenu::model()->GetReadMenu('translock')),
-						array('label'=>'Specific Number Range Object - ssnro', 'url'=>array('/snro/index'),'visible'=>Groupmenu::model()->GetReadMenu('snro')),
-						array('label'=>'Detail of Specific Number Range Object - ssnrodet', 'url'=>array('/snrodet/index'),'visible'=>Groupmenu::model()->GetReadMenu('snrodet')),
-						array('label'=>'Workflow - swf', 'url'=>array('/workflow/index'),'visible'=>Groupmenu::model()->GetReadMenu('workflow')),
-						array('label'=>'Workflow Group - swfg', 'url'=>array('/wfgroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('wfgroup')),
-						array('label'=>'Workflow Status - swfs', 'url'=>array('/wfstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('wfstatus')),
-						array('label'=>'Parameter - sp', 'url'=>array('/parameter/index'),'visible'=>Groupmenu::model()->GetReadMenu('parameter')),
-						array('label'=>'Language - sla', 'url'=>array('/language/index'),'visible'=>Groupmenu::model()->GetReadMenu('language')),
-						array('label'=>'Catalog Translation - sct', 'url'=>array('/catalogsys/index'),'visible'=>Groupmenu::model()->GetReadMenu('catalogsys')),
+						array('label'=>'Company', 'url'=>array('/company/index'),'visible'=>Groupmenu::model()->GetReadMenu('company')),
+						array('label'=>'Transaction Log', 'url'=>array('/translog/index'),'visible'=>Groupmenu::model()->GetReadMenu('translog')),
+						array('label'=>'Transaction Lock', 'url'=>array('/translock/index'),'visible'=>Groupmenu::model()->GetReadMenu('translock')),
+						array('label'=>'Specific Number Range Object', 'url'=>array('/snro/index'),'visible'=>Groupmenu::model()->GetReadMenu('snro')),
+						array('label'=>'Detail of Specific Number Range Object', 'url'=>array('/snrodet/index'),'visible'=>Groupmenu::model()->GetReadMenu('snrodet')),
+						array('label'=>'Workflow', 'url'=>array('/workflow/index'),'visible'=>Groupmenu::model()->GetReadMenu('workflow')),
+						array('label'=>'Workflow Group', 'url'=>array('/wfgroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('wfgroup')),
+						array('label'=>'Workflow Status', 'url'=>array('/wfstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('wfstatus')),
+						array('label'=>'Parameter', 'url'=>array('/parameter/index'),'visible'=>Groupmenu::model()->GetReadMenu('parameter')),
+						array('label'=>'Language', 'url'=>array('/language/index'),'visible'=>Groupmenu::model()->GetReadMenu('language')),
+						array('label'=>'Messages', 'url'=>array('/messages/index'),'visible'=>Groupmenu::model()->GetReadMenu('messages')),
+						array('label'=>'Catalog Translation', 'url'=>array('/catalogsys/index'),'visible'=>Groupmenu::model()->GetReadMenu('catalogsys')),
 					)
 				),
 				array('label'=>'Common','visible'=>Groupmenu::model()->GetReadMenu('common'),
 					'items'=>array(
 						array('label'=>'Citizen','visible'=>Groupmenu::model()->GetReadMenu('citizen'),
 							'items'=>array(
-								array('label'=>'Country - cco', 'url'=>array('/country/index'),'visible'=>Groupmenu::model()->GetReadMenu('country')),
-								array('label'=>'Province - cpr', 'url'=>array('/province/index'),'visible'=>Groupmenu::model()->GetReadMenu('province')),
-								array('label'=>'City - ccci', 'url'=>array('/city/index'),'visible'=>Groupmenu::model()->GetReadMenu('city')),
-								array('label'=>'Subdistrict - ccsd', 'url'=>array('/subdistrict/index'),'visible'=>Groupmenu::model()->GetReadMenu('subdistrict')),
-								array('label'=>'Sub Subdistrict - ccssd', 'url'=>array('/kelurahan/index'),'visible'=>Groupmenu::model()->GetReadMenu('kelurahan')),
-								array('label'=>'SPT Indonesian Tax', 'url'=>array('/sptwil/index'),'visible'=>Groupmenu::model()->GetReadMenu('sptwil')),
+								array('label'=>'Country', 'url'=>array('/country/index'),'visible'=>Groupmenu::model()->GetReadMenu('country')),
+								array('label'=>'Province', 'url'=>array('/province/index'),'visible'=>Groupmenu::model()->GetReadMenu('province')),
+								array('label'=>'City', 'url'=>array('/city/index'),'visible'=>Groupmenu::model()->GetReadMenu('city')),
+								array('label'=>'Subdistrict', 'url'=>array('/subdistrict/index'),'visible'=>Groupmenu::model()->GetReadMenu('subdistrict')),
+								array('label'=>'Sub Subdistrict', 'url'=>array('/kelurahan/index'),'visible'=>Groupmenu::model()->GetReadMenu('kelurahan')),
 							)
 						),
-								array('label'=>'Currency - ccu', 'url'=>array('/currency/index'),'visible'=>Groupmenu::model()->GetReadMenu('currency')),
-								array('label'=>'Currency Rate - ccur', 'url'=>array('/currencyrate/index'),'visible'=>Groupmenu::model()->GetReadMenu('currencyrate')),
-								array('label'=>'Address Type - coab', 'url'=>array('/addresstype/index'),'visible'=>Groupmenu::model()->GetReadMenu('addresstype')),
-								array('label'=>'Contact Type - ccty', 'url'=>array('/contacttype/index'),'visible'=>Groupmenu::model()->GetReadMenu('contacttype')),
-								array('label'=>'Identity Type - cit', 'url'=>array('/identitytype/index'),'visible'=>Groupmenu::model()->GetReadMenu('identitytype')),
-								array('label'=>'Rome Type - cro', 'url'=>array('/romawi/index'),'visible'=>Groupmenu::model()->GetReadMenu('romawi')),
-								array('label'=>'Industry - cin', 'url'=>array('/industry/index'),'visible'=>Groupmenu::model()->GetReadMenu('industry')),
-								array('label'=>'Plant - cpl', 'url'=>array('/plant/index'),'visible'=>Groupmenu::model()->GetReadMenu('plant')),
-								array('label'=>'Address Book - aap', 'url'=>array('/addressbook/index'),'visible'=>Groupmenu::model()->GetReadMenu('addressbook')),
-								array('label'=>'Insurance - cins','url'=>array('/insurance/index'),'visible'=>Groupmenu::model()->GetReadMenu('insurance')),
-								array('label'=>'Bank - cobn','url'=>array('/bank/index'),'visible'=>Groupmenu::model()->GetReadMenu('bank')),							
+						array('label'=>'Currency', 'url'=>array('/currency/index'),'visible'=>Groupmenu::model()->GetReadMenu('currency')),
+						array('label'=>'Address Type', 'url'=>array('/addresstype/index'),'visible'=>Groupmenu::model()->GetReadMenu('addresstype')),
+						array('label'=>'Contact Type - ccty', 'url'=>array('/contacttype/index'),'visible'=>Groupmenu::model()->GetReadMenu('contacttype')),
+						array('label'=>'Identity Type - cit', 'url'=>array('/identitytype/index'),'visible'=>Groupmenu::model()->GetReadMenu('identitytype')),
+						array('label'=>'Rome Type - cro', 'url'=>array('/romawi/index'),'visible'=>Groupmenu::model()->GetReadMenu('romawi')),
+						array('label'=>'Industry - cin', 'url'=>array('/industry/index'),'visible'=>Groupmenu::model()->GetReadMenu('industry')),
+						array('label'=>'Plant - cpl', 'url'=>array('/plant/index'),'visible'=>Groupmenu::model()->GetReadMenu('plant')),
+						array('label'=>'Storage Location - isl', 'url'=>array('/sloc/index'),'visible'=>Groupmenu::model()->GetReadMenu('sloc')),
+						array('label'=>'Unit of Measure - ium', 'url'=>array('/unitofmeasure/index'),'visible'=>Groupmenu::model()->GetReadMenu('unitofmeasure')),
+						array('label'=>'Material Master','visible'=>Groupmenu::model()->GetReadMenu('materialmaster'),
+							'items'=>array(
+								array('label'=>'Material Type - pmmt', 'url'=>array('/materialtype/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialtype')),
+								array('label'=>'Material Group - pmmg', 'url'=>array('/materialgroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialgroup')),
+								array('label'=>'Material Status - pmms', 'url'=>array('/materialstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialstatus')),
+								array('label'=>'Ownership - mmow', 'url'=>array('/ownership/index'),'visible'=>Groupmenu::model()->GetReadMenu('ownership')),
+								array('label'=>'Material Main Data - mmmd', 'url'=>array('/product/index'),'visible'=>Groupmenu::model()->GetReadMenu('product')),
+								array('label'=>'Material Detail Data - mmpb', 'url'=>array('/productbasic/index'),'visible'=>Groupmenu::model()->GetReadMenu('productbasic')),
+								array('label'=>'Material Purchasing Data - mmpr', 'url'=>array('/productpurchase/index'),'visible'=>Groupmenu::model()->GetReadMenu('productpurchase')),
+								array('label'=>'Material Storage Location Data - mmpp', 'url'=>array('/productplant/index'),'visible'=>Groupmenu::model()->GetReadMenu('productplant')),
+								array('label'=>'Material Unit Conversion - mmpc', 'url'=>array('/productconversion/index'),'visible'=>Groupmenu::model()->GetReadMenu('productconversion')),
+							)
+						),
+						array('label'=>'Supplier - mms', 'visible'=>Groupmenu::model()->GetReadMenu('supplier'),'url'=>array('/supplier/index')),
+						array('label'=>'Customer - scu','visible'=>Groupmenu::model()->GetReadMenu('customer'),'url'=>array('/customer/index')),
+						array('label'=>'Address Book - aap', 'url'=>array('/addressbook/index'),'visible'=>Groupmenu::model()->GetReadMenu('addressbook')),
+						array('label'=>'Insurance - cins','url'=>array('/insurance/index'),'visible'=>Groupmenu::model()->GetReadMenu('insurance')),
+						array('label'=>'Bank - cobn','url'=>array('/bank/index'),'visible'=>Groupmenu::model()->GetReadMenu('bank')),							
 					)
 				),
 				array('label'=>'Accounting','visible'=>Groupmenu::model()->GetReadMenu('accounting'),
@@ -253,26 +269,10 @@
 					'items'=>array(
 						array('label'=>'Purchasing Organization - ppo', 'url'=>array('/purchasingorg/index'),'visible'=>Groupmenu::model()->GetReadMenu('purchasingorg')),
 						array('label'=>'Purchasing Group - ppg', 'url'=>array('/purchasinggroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('purchasinggroup')),
-						array('label'=>'Material Master','visible'=>Groupmenu::model()->GetReadMenu('materialmaster'),
-							'items'=>array(
-								array('label'=>'Material Type - pmmt', 'url'=>array('/materialtype/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialtype')),
-								array('label'=>'Material Group - pmmg', 'url'=>array('/materialgroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialgroup')),
-								array('label'=>'Material Status - pmms', 'url'=>array('/materialstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialstatus')),
-								array('label'=>'Ownership - mmow', 'url'=>array('/ownership/index'),'visible'=>Groupmenu::model()->GetReadMenu('ownership')),
-								array('label'=>'Material Main Data - mmmd', 'url'=>array('/product/index'),'visible'=>Groupmenu::model()->GetReadMenu('product')),
-								array('label'=>'Material Detail Data - mmpb', 'url'=>array('/productbasic/index'),'visible'=>Groupmenu::model()->GetReadMenu('productbasic')),
-								array('label'=>'Material Purchasing Data - mmpr', 'url'=>array('/productpurchase/index'),'visible'=>Groupmenu::model()->GetReadMenu('productpurchase')),
-								array('label'=>'Material Storage Location Data - mmpp', 'url'=>array('/productplant/index'),'visible'=>Groupmenu::model()->GetReadMenu('productplant')),
-								array('label'=>'Material Unit Conversion - mmpc', 'url'=>array('/productconversion/index'),'visible'=>Groupmenu::model()->GetReadMenu('productconversion')),
-							)
-						),
-						array('label'=>'Supplier - mms', 'visible'=>Groupmenu::model()->GetReadMenu('supplier'),'url'=>array('/supplier/index')),
 					)
 				),
 				array('label'=>'Inventory','visible'=>Groupmenu::model()->GetReadMenu('inventory'),
 					'items'=>array(
-						array('label'=>'Storage Location - isl', 'url'=>array('/sloc/index'),'visible'=>Groupmenu::model()->GetReadMenu('sloc')),
-						array('label'=>'Unit of Measure - ium', 'url'=>array('/unitofmeasure/index'),'visible'=>Groupmenu::model()->GetReadMenu('unitofmeasure')),
 						array('label'=>'Requested By - ireby', 'url'=>array('/requestedby/index'),'visible'=>Groupmenu::model()->GetReadMenu('requestedby')),
 						array('label'=>'Form Request (goods/service/delivery)', 'visible'=>Groupmenu::model()->GetReadMenu('reportda'),
 							'items'=>array(
@@ -316,7 +316,6 @@
 				),
 				array('label'=>'Order','visible'=>Groupmenu::model()->GetReadMenu('ordermanagement'),
 					'items'=>array(
-						array('label'=>'Customer - scu','visible'=>Groupmenu::model()->GetReadMenu('customer'),'url'=>array('/customer/index')),
 						array('label'=>'Sales Order - sdso', 'url'=>array('/soheader/index'),'visible'=>Groupmenu::model()->GetReadMenu('soheader')),
 						array('label'=>'Report Sales Order - sdrso', 'url'=>array('/reportso/index'),'visible'=>Groupmenu::model()->GetReadMenu('soheader')),
 					)
@@ -337,6 +336,28 @@
 	)
 		);
 ?>
+<div id="leftbar">
+<h1>Favourite</h1>
+<?php
+$menus = Groupmenu::model()->findallbysql('select a.*
+	from groupmenu a
+	inner join menuaccess b on b.menuaccessid = a.menuaccessid
+	inner join usergroup c on c.groupaccessid = a.groupaccessid
+	inner join useraccess d on d.useraccessid = c.useraccessid
+	inner join usermenu e on e.useraccessid = d.useraccessid and e.menuaccessid = b.menuaccessid
+	where lower(d.username) = lower("'. Yii::app()->user->id.'") and a.isread = 1'); 
+
+	foreach ($menus as $menu)
+	{
+	echo '<div id="icon">';
+    echo "<a href='index.php?r=".$menu->menuaccess->menuurl."'><img src='".Yii::app()->request->baseUrl."/images/".$menu->menuaccess->menuicon."'></img></a>";
+	echo '<div class="iconname">';
+	echo $menu->menuaccess->description;
+	echo '</div>';
+	echo "</div>";
+	}
+?>
+</div>
 	<?php echo $content; ?>
 <?php
     $this->widget('ext.etoastr.EToastr',array(
@@ -344,21 +365,14 @@
         'message'=>'will be ignored', //because flashOnlyMessages is true
         //the options passed to the plugin
         'options'=>array(
-            'positionClass'=>'toast-top-right',
+            'positionClass'=>'toast-bottom-right',
             'fadeOut'   =>  1000,
-            'timeOut'   =>  10000,
+            'timeOut'   =>  2000,
             'fadeIn'    =>  1000
             )
         ));
     ?>
 	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; 2011-2013 CV Prisma Data Abadi<br/>
-		All Rights Reserved.<br/>
-	</div><!-- footer -->
-	<div id="messages"></div>
-
 </div><!-- page -->
 
 </body>

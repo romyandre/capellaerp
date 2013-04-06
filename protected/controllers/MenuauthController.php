@@ -149,11 +149,6 @@ if (isset($_GET['pageSize']))
 		));
 	}
 
-public function actionUpload()
-  {
-      parent::actionUpload();
-  }
-
   public function actionDownload()
 	{
 		parent::actionDownload();
@@ -167,15 +162,11 @@ public function actionUpload()
 
 		$this->pdf->title='Menu Authentication List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->setaligns(array('C','C'));
+		$this->pdf->colalign=array('C','C');
 		$this->pdf->setwidths(array(70,50));
-		$this->pdf->Row(array('Menu Name','Menu Object'));
-		$this->pdf->setaligns(array('L','L'));
+		$this->pdf->colheader=array('Menu Name','Menu Object');
+		$this->pdf->RowHeader();
+		$this->pdf->coldetailalign=array('L','L');
 		foreach($dataReader as $row1)
 		{
 		  $this->pdf->row(array($row1['menuobject']));

@@ -37,8 +37,11 @@
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);				}
-        }')); ?></span>
-<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('useraccess/cancelwrite'),
 	  array(
 	  'success'=>'function(data)
@@ -49,6 +52,10 @@ toastr.info(x.div);				}
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
 toastr.info(x.div);				}
+else
+			{
+				toastr.error(x.div);
+			}
         }')); ?></span>
 </div>
 </div>

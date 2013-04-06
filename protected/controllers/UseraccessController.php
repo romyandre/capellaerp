@@ -144,11 +144,6 @@ class UseraccessController extends Controller
 
 		$this->pdf->title='User Access List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
 		$this->pdf->colalign = array('C','C','C','C');
 		$this->pdf->setwidths(array(40,50,50,40));
 		$this->pdf->colheader = array('Username','Real Name','Email','Phone No');
@@ -198,68 +193,6 @@ if (isset($_GET['pageSize']))
 		$this->render('index',array(
 			'model'=>$model,
 		));
-	}
-
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  Yii::import("ext.EAjaxUpload.qqFileUploader");
-
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-	  $allowedExtensions = array("csv");
-	  $sizeLimit = (int)Yii::app()->params['sizeLimit'];// maximum file size in bytes
-	  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-	  $result = $uploader->handleUpload($folder,true);
-	  $row = 0;
-	  if (($handle = fopen($folder.$uploader->file->getName(), "r")) !== FALSE) {
-		  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if ($row>0) {
-			  $model=$this->loadModel((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Addressbook();
-			  }
-			  $model->fullname = $data[1];
-			  $model->iscustomer = (int)$data[2];
-			  $model->isemployee = (int)$data[3];
-			  $model->isapplicant = (int)$data[4];
-			  $model->isvendor = (int)$data[5];
-			  $model->isinsurance = (int)$data[6];
-			  $model->isbank = (int)$data[7];
-			  $model->ishospital = (int)$data[8];
-			  $model->iscatering = (int)$data[9];
-			  $model->recordstatus = (int)$data[10];
-			  try
-			  {
-				if(!$model->save())
-				{
-				  $errormessage=$model->getErrors();
-				  if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-				}
-			  }
-			  catch (Exception $e)
-			  {
-				$errormessage=$e->getMessage();
-				if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-			  }
-			}
-			$row++;
-		  }
-		  fclose($handle);
-	  }
-	  $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-	  echo $result;
 	}
 
 	/**

@@ -89,7 +89,7 @@ protected $menuname = 'language';
             {
 			$this->InsertTranslog();
               $this->DeleteLock($this->menuname, $_POST['Language']['languageid']);
-              $this->GetSMessage('slainsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {
@@ -148,59 +148,6 @@ if (isset($_GET['pageSize']))
 		));
 	}
 
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-	  $allowedExtensions = array("csv");
-	  $sizeLimit = (int)Yii::app()->params['sizeLimit'];// maximum file size in bytes
-	  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-	  $result = $uploader->handleUpload($folder,true);
-	  $row = 0;
-	  if (($handle = fopen($folder.$uploader->file->getName(), "r")) !== FALSE) {
-		  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if ($row>0) {
-			  $model=Language::model()->findByPk((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Language();
-			  }
-			  $model->languageid = (int)$data[0];
-			  $model->languagename = $data[1];
-			  $model->recordstatus = (int)$data[2];
-			  try
-			  {
-				if(!$model->save())
-				{
-				  $errormessage=$model->getErrors();
-				  if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-				}
-			  }
-			  catch (Exception $e)
-			  {
-				$errormessage=$e->getMessage();
-				if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-			  }
-			}
-			$row++;
-		  }
-		  fclose($handle);
-	  }
-	  $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-	  echo $result;
-  }
-
 	 public function actionDownload()
 	{
 		parent::actionDownload();
@@ -214,10 +161,6 @@ if (isset($_GET['pageSize']))
 
 		$this->pdf->title='Language List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
 
 		$this->pdf->colalign = array('C');
 		$this->pdf->setwidths(array(90));

@@ -32,12 +32,15 @@
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
 			}
         }')); ?></span>
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
@@ -46,12 +49,15 @@
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
 			  $.fn.yiiGridView.update("datagrid");
 			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+              toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
 			}
         }')); ?></span>
 </div>

@@ -13,19 +13,19 @@ function adddata() {
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 $('#Menuaccess_menuaccessid').val('');
                 $('#Menuaccess_menuname').val('');
                 $('#Menuaccess_menucode').val('');
                 $('#Menuaccess_menuurl').val('');
+				$('#Menuaccess_menuicon').val('');
                 $('#Menuaccess_description').val('');
                     $('#createdialog').dialog('open');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -41,24 +41,24 @@ function editdata(value) {
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
 $('#Menuaccess_menuaccessid').val(data.menuaccessid);
                 $('#Menuaccess_menuname').val(data.menuname);
                 $('#Menuaccess_menucode').val(data.menucode);
                 $('#Menuaccess_menuurl').val(data.menuurl);
+				$('#Menuaccess_menuicon').val(data.menuicon);
                 $('#Menuaccess_description').val(data.description);
                 if (data.recordstatus == '1') {
-                    document.forms[0].elements[6].checked = true;
+                    document.forms[0].elements[7].checked = true;
                 } else {
-                    document.forms[0].elements[6].checked = false;
+                    document.forms[0].elements[7].checked = false;
                 }
                     $('#createdialog').dialog('open');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -75,14 +75,13 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
                 {
-                    document.getElementById('messages').innerHTML = data.div;
+                    toastr.error(data.div);
                 }
             } ",
             ))?>;
@@ -151,7 +150,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('menuaccess') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=menuaccess/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",
@@ -162,10 +160,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datagrid',
 	'dataProvider'=>$model->search(),
 	'selectableRows'=>1,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
 	'template'=>'{pager}<br>{items}{pager}',
 	'columns'=>array(
 		  array(            
-            'name'=>'menuname',
+            'name'=>'menuaccessid',
             'type'=>'raw', 
             'value'=>array($this,'gridData'), 
         ),		

@@ -154,61 +154,6 @@ protected $menuname = 'parameter';
 		));
 	}
 
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-	  $allowedExtensions = array("csv");
-	  $sizeLimit = (int)Yii::app()->params['sizeLimit'];// maximum file size in bytes
-	  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-	  $result = $uploader->handleUpload($folder,true);
-	  $row = 0;
-	  if (($handle = fopen($folder.$uploader->file->getName(), "r")) !== FALSE) {
-		  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if ($row>0) {
-			  $model=Parameter::model()->findByPk((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Parameter();
-			  }
-			  $model->parameterid = (int)$data[0];
-			  $model->paramname = $data[1];
-			  $model->paramvalue = $data[2];
-			  $model->description = $data[3];
-			  $model->recordstatus = (int)$data[4];
-			  try
-			  {
-				if(!$model->save())
-				{
-				  $errormessage=$model->getErrors();
-				  if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-				}
-			  }
-			  catch (Exception $e)
-			  {
-				$errormessage=$e->getMessage();
-				if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-			  }
-			}
-			$row++;
-		  }
-		  fclose($handle);
-	  }
-	  $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-	  echo $result;
-  }
-
   public function actionDownload()
 	{
 		parent::actionDownload();
@@ -222,15 +167,11 @@ protected $menuname = 'parameter';
 
 		$this->pdf->title='Parameter List';
 		$this->pdf->AddPage('P');
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
 		$this->pdf->colalign = array('C','C','C');
 		$this->pdf->setwidths(array(40,70,70));
 		$this->pdf->colheader = array('Parameter Name','Description','Parameter Value');
 		$this->pdf->RowHeader();
 		$this->pdf->coldetailalign = array('L','L','L');
-		$this->pdf->setFont('Arial','',8);
 		foreach($dataReader as $row1)
 		{
 		  $this->pdf->row(array($row1['paramname'],$row1['description'],$row1['paramvalue']));

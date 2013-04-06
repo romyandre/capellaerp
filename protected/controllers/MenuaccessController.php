@@ -46,6 +46,7 @@ protected $menuname = 'menuaccess';
 				'menuname'=>$model->menuname,
 				'menucode'=>$model->menucode,
 				'menuurl'=>$model->menuurl,
+				'menuicon'=>$model->menuicon,
                 'description'=>$model->description,
 				'recordstatus'=>$model->recordstatus,
 				));
@@ -56,7 +57,7 @@ protected $menuname = 'menuaccess';
 	
 	protected function gridData($data,$row)
   {     
-    $model = menuaccess::model()->findByPk($data->menuaccessid); 
+    $model = Menuaccess::model()->findByPk($data->menuaccessid); 
     return $this->renderPartial('_view',array('model'=>$model),true); 
   }
 
@@ -85,6 +86,7 @@ protected $menuname = 'menuaccess';
             $model->menuname = $_POST['Menuaccess']['menuname'];
             $model->menucode = $_POST['Menuaccess']['menucode'];
             $model->menuurl = $_POST['Menuaccess']['menuurl'];
+			$model->menuicon = $_POST['Menuaccess']['menuicon'];
             $model->description = $_POST['Menuaccess']['description'];
             $model->recordstatus = $_POST['Menuaccess']['recordstatus'];
           }
@@ -168,19 +170,15 @@ if (isset($_GET['pageSize']))
 
 		$this->pdf->title='Menu Access List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
 
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->colalign = array('C');
-		$this->pdf->setwidths(array(90));
+		$this->pdf->colalign = array('C','C','C','C');
+		$this->pdf->setwidths(array(30,30,90,40));
 		$this->pdf->colheader=array('Menu Code','Menu Name','Description','Menu Url');
 		$this->pdf->Rowheader();
-		$this->pdf->coldetailalign=array('L');
+		$this->pdf->coldetailalign=array('L','L','L','L');
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['menucode'],$row1['menuname'],$row1['menuname']));
+		  $this->pdf->row(array($row1['menucode'],$row1['menuname'],$row1['description'],$row1['menuname']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();
