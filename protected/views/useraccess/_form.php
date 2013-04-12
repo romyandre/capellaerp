@@ -22,6 +22,61 @@
 <span class="cell"><?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?></span>
 </div>
 <div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'languageid'); ?><?php echo $form->hiddenField($model,'languageid'); ?></span>
+	  <span class="cell"><input type="text" name="languagename" id="languagename" readonly >
+    <?php
+      $this->beginWidget('zii.widgets.jui.CJuiDialog',
+       array(   'id'=>'language_dialog',
+                // additional javascript options for the dialog plugin
+                'options'=>array(
+                                'title'=>Yii::t('app','Language'),
+                                'width'=>'auto',
+                                'autoOpen'=>false,
+                                'modal'=>true,
+                                ),
+                        ));
+$language=new Language('search');
+	$language->unsetAttributes();  // clear any default values
+		if(isset($_GET['Language']))
+			$language->attributes=$_GET['Language'];
+
+    $this->widget('zii.widgets.grid.CGridView', array(
+      'id'=>'language-grid',
+      'dataProvider'=>$language->Searchwstatus(),
+      'filter'=>$language,
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',      'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
+      'columns'=>array(
+        array(
+          'header'=>'',
+          'type'=>'raw',
+        /* Here is The Button that will send the Data to The MAIN FORM */
+          'value'=>'CHtml::Button("V",
+          array("name" => "send_absschedule",
+          "id" => "send_absschedule",
+          "onClick" => "$(\"#language_dialog\").dialog(\"close\"); $(\"#languagename\").val(\"$data->languagename\"); $(\"#Catalogsys_languageid\").val(\"$data->languageid\");
+		  "))',
+          ),
+        array('name'=>'languageid', 'visible'=>false,
+        'value'=>'$data->languageid','htmlOptions'=>array('width'=>'1%')),
+        'languagename',
+        ),
+    ));
+
+    $this->endWidget('zii.widgets.jui.CJuiDialog');
+    echo CHtml::Button('...',
+                          array('onclick'=>'$("#language_dialog").dialog("open"); return false;',
+                       ))?></span>
+	</div>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'theme'); ?></span>
+<span class="cell"><?php echo $form->textField($model,'theme',array('size'=>50,'maxlength'=>50)); ?></span>
+</div>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'background'); ?></span>
+<span class="cell"><?php echo $form->textField($model,'background',array('size'=>50,'maxlength'=>50)); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
 <span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 </div>

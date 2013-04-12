@@ -25,6 +25,8 @@
       'id'=>'groupaccess-grid',
       'dataProvider'=>$groupaccess->Searchwstatus(),
       'filter'=>$groupaccess,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
@@ -46,6 +48,8 @@
     echo CHtml::Button('...',
                           array('onclick'=>'$("#groupaccess_dialog").dialog("open"); return false;',
                        ))?></span>
+					   </div>
+					   <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'menuaccessid'); ?><?php echo $form->hiddenField($model,'menuaccessid'); ?></span>
 <span class="cell">	  <input type="text" name="menuname" id="menuname" readonly >
     <?php
@@ -64,6 +68,8 @@
       'id'=>'menuaccess-grid',
       'dataProvider'=>$menuaccess->Searchwstatus(),
       'filter'=>$menuaccess,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
@@ -91,18 +97,24 @@
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'isread'); ?></span>
 <span class="cell"><?php echo $form->checkBox($model,'isread'); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'iswrite'); ?></span>
 <span class="cell"><?php echo $form->checkBox($model,'iswrite'); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'ispost'); ?></span>
 <span class="cell"><?php echo $form->checkBox($model,'ispost'); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'isreject'); ?></span>
 <span class="cell"><?php echo $form->checkBox($model,'isreject'); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'isdownload'); ?></span>
 <span class="cell"><?php echo $form->checkBox($model,'isdownload'); ?></span>
+</div>
+<div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'isupload'); ?></span>
 <span class="cell"><?php echo $form->checkBox($model,'isupload'); ?></span>
 </div>

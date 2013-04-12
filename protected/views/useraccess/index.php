@@ -22,6 +22,10 @@ function adddata()
 					$('#Useraccess_email').val('');
 					$('#passhide').val('');
 					$('#Useraccess_password').val('');
+					$('#Useraccess_theme').val('');
+					$('#Useraccess_background').val('');
+					$('#Useraccess_languageid').val('');
+					$('#languagename').val('');
                     $('#createdialog').dialog('open');
                 }
                 else
@@ -48,10 +52,15 @@ function editdata(value)
 		$('#Useraccess_useraccessid').val(data.useraccessid);
 $('#Useraccess_username').val(data.username);$('#Useraccess_realname').val(data.realname);
 $('#Useraccess_email').val(data.email);$('#passhide').val(data.password);
-$('#Useraccess_password').val('');if(data.recordstatus=='1')
-{document.forms[0].elements[7].checked=true;}
+$('#Useraccess_password').val('');
+					$('#Useraccess_theme').val(data.theme);
+					$('#Useraccess_background').val(data.background);
+					$('#Useraccess_languageid').val(data.languageid);
+					$('#languagename').val(data.languagename);
+if(data.recordstatus=='1')
+{document.forms[0].elements[12].checked=true;}
 else
-{document.forms[0].elements[7].checked=false;}
+{document.forms[0].elements[12].checked=false;}
                     $('#createdialog').dialog('open');
                 }
                 else
@@ -75,6 +84,7 @@ function deletedata(value)
             {
                 if (data.status == 'success')
                 {
+					toastr.info(data.div);
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else

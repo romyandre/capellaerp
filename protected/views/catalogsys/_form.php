@@ -7,8 +7,8 @@
 <?php echo $form->hiddenField($model,'catalogsysid'); ?>
 	<div id="tabledata">
 <div class="rowdata">
-<span class="cell"><?php echo $form->labelEx($model,'languageid'); ?></span>
-	  <span class="cell"><?php echo $form->hiddenField($model,'languageid'); ?><input type="text" name="languagename" id="languagename" readonly >
+<span class="cell"><?php echo $form->labelEx($model,'languageid'); ?><?php echo $form->hiddenField($model,'languageid'); ?></span>
+	  <span class="cell"><input type="text" name="languagename" id="languagename" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'language_dialog',
@@ -20,12 +20,12 @@
                                 'modal'=>true,
                                 ),
                         ));
-
     $this->widget('zii.widgets.grid.CGridView', array(
       'id'=>'language-grid',
       'dataProvider'=>$language->Searchwstatus(),
       'filter'=>$language,
-      'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',      'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
           'header'=>'',
@@ -67,7 +67,8 @@
       'id'=>'messages-grid',
       'dataProvider'=>$messages->Searchwstatus(),
       'filter'=>$messages,
-      'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
+	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',      'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
           'header'=>'',

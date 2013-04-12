@@ -66,15 +66,22 @@ function editdata(value)
 <script type="text/javascript">
 function deletedata(value)
 {
-    <?php
-	echo CHtml::ajax(array(
-			'url'=>array('language/delete'),
+<?php echo CHtml::ajax(array(
+			'url'=>array('translock/delete'),
             'data'=> array('id'=>'js:value'),
             'type'=>'post',
             'dataType'=>'json',
             'success'=>"function(data)
             {
-js:$.fn.yiiGridView.update('datagrid');
+                if (data.status == 'success')
+                {
+					toastr.info(data.div);
+                    js:$.fn.yiiGridView.update('datagrid');
+                }
+                else
+                {
+                    toastr.error(data.div);
+                }
             } ",
             ))?>;
     return false;

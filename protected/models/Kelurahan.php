@@ -114,7 +114,7 @@ $this->comparedb($criteria);
 
 		$criteria=new CDbCriteria;
 $criteria->with=array('subdistrict');
-$this->comparedb($criteria);		$criteria->condition='recordstatus=1';
+$this->comparedb($criteria);		$criteria->condition='t.recordstatus=1';
 		$criteria->compare('kelurahanid',$this->kelurahanid);
 		$criteria->compare('subdistrictid',$this->subdistrictid);
 		$criteria->compare('kelurahanname',$this->kelurahanname,true);

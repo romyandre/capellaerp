@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Inang: 127.0.0.1
--- Waktu pembuatan: 06 Apr 2013 pada 15.30
+-- Waktu pembuatan: 08 Apr 2013 pada 16.29
 -- Versi Server: 5.5.27
 -- Versi PHP: 5.4.7
 
@@ -743,7 +743,7 @@ CREATE TABLE IF NOT EXISTS `catalogsys` (
   PRIMARY KEY (`catalogsysid`),
   KEY `ix_catalogsys` (`languageid`,`messagesid`,`catalogsysid`,`recordstatus`) USING BTREE,
   KEY `FK_catalogsys_mess` (`messagesid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=105 ;
 
 --
 -- Dumping data untuk tabel `catalogsys`
@@ -822,7 +822,38 @@ INSERT INTO `catalogsys` (`catalogsysid`, `languageid`, `messagesid`, `catalogva
 (70, 1, 70, 'Currency harus diisi', 1),
 (71, 1, 71, 'Symbol harus diisi', 1),
 (72, 1, 72, 'Jenis Alamat', 1),
-(73, 1, 73, 'Address Type harus diisi', 1);
+(73, 1, 73, 'Address Type harus diisi', 1),
+(74, 1, 74, 'Jenis Kontak', 1),
+(75, 1, 75, 'Contact Type harus diisi', 1),
+(76, 1, 76, 'Jenis Identitas', 1),
+(77, 1, 77, 'Huruf Romawi', 1),
+(78, 1, 78, 'Identity Type harus diisi', 1),
+(79, 1, 79, 'Bulan dalam kalendar Masehi harus diisi', 1),
+(80, 1, 80, 'Bulan dalam huruf romawi harus diisi', 1),
+(81, 1, 81, 'Jenis Industri', 1),
+(82, 1, 82, 'Industry harus diisi', 1),
+(83, 1, 83, 'Plant', 1),
+(84, 1, 84, 'Plant Code harus diisi', 1),
+(85, 1, 85, 'Description harus diisi', 1),
+(86, 1, 86, 'Gudang', 1),
+(87, 1, 87, 'Sloc Code harus diisi', 1),
+(88, 1, 88, 'Satuan', 1),
+(89, 1, 89, 'UOM Code harus diisi', 1),
+(90, 1, 90, 'Material Type Code harus diisi', 1),
+(91, 1, 91, 'Jenis Material', 1),
+(92, 1, 92, 'Grup Material / Jasa', 1),
+(93, 1, 93, 'Kode Grup Material harus diisi', 1),
+(94, 1, 94, 'Status Material / Jasa', 1),
+(95, 1, 95, 'Material Status harus diisi', 1),
+(96, 1, 96, 'Status Kepemilikan Material', 1),
+(97, 1, 97, 'Ownership harus diisi', 1),
+(98, 1, 98, 'Main Data', 1),
+(99, 1, 99, 'Basic Data', 1),
+(100, 1, 100, 'Material / Service harus diisi', 1),
+(101, 1, 101, 'Base UOM harus diisi', 1),
+(102, 1, 102, 'Material Group harus diisi', 1),
+(103, 1, 103, 'Purchasing Data', 1),
+(104, 1, 104, 'Plant / Storage Location', 1);
 
 -- --------------------------------------------------------
 
@@ -1301,6 +1332,36 @@ CREATE TABLE IF NOT EXISTS `company` (
 INSERT INTO `company` (`companyid`, `companyname`, `address`, `city`, `zipcode`, `taxno`, `currencyid`, `faxno`, `phoneno`, `webaddress`, `email`, `leftlogofile`, `rightlogofile`, `recordstatus`) VALUES
 (1, 'CV Prisma Data Abadi', 'Ruko Taman Harapan Baru\r\nJl. Taman Harapan Baru Utara Blok N No 6', 'Bekasi', '17131', '', 40, '', '021-90488878 / 087875097026', 'http://www.prismadataabadi.com', 'admin@prismadataabadi.com', 'logo.jpg', NULL, 1),
 (2, 'CV Prisma Tour and Travel', 'Ruko Taman Harapan Baru\r\nJl. Taman Harapan Baru Utara Blok N no 6', 'Bekasi', '17131', '', 40, '', '', '', '', NULL, NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `contacttype`
+--
+
+DROP TABLE IF EXISTS `contacttype`;
+CREATE TABLE IF NOT EXISTS `contacttype` (
+  `contacttypeid` int(11) NOT NULL AUTO_INCREMENT,
+  `contacttypename` varchar(50) NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`contacttypeid`),
+  UNIQUE KEY `uq_contacttype` (`contacttypename`),
+  KEY `ix_contacttype` (`contacttypeid`,`contacttypename`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data untuk tabel `contacttype`
+--
+
+INSERT INTO `contacttype` (`contacttypeid`, `contacttypename`, `recordstatus`) VALUES
+(1, 'Direktur', 1),
+(2, 'Marketing Manager', 1),
+(3, 'IT Manager', 1),
+(4, 'Manager', 1),
+(5, 'Purchasing staff', 1),
+(6, 'Purchasing Manager', 1),
+(7, 'Sales Marketing', 1),
+(8, 'Mechanical Engineer', 1);
 
 -- --------------------------------------------------------
 
@@ -1803,7 +1864,7 @@ CREATE TABLE IF NOT EXISTS `groupmenu` (
   UNIQUE KEY `uq_groupmenu_gm` (`groupaccessid`,`menuaccessid`),
   KEY `ix_groupmenu` (`groupmenuid`,`groupaccessid`,`menuaccessid`,`isread`,`iswrite`,`ispost`,`isreject`,`isupload`,`isdownload`),
   KEY `FK_groupmenu_menu` (`menuaccessid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data untuk tabel `groupmenu`
@@ -1839,7 +1900,23 @@ INSERT INTO `groupmenu` (`groupmenuid`, `groupaccessid`, `menuaccessid`, `isread
 (27, 1, 27, 1, 1, 1, 1, 1, 1),
 (28, 1, 28, 1, 1, 1, 1, 1, 1),
 (29, 1, 29, 1, 1, 1, 1, 1, 1),
-(30, 1, 30, 1, 1, 1, 1, 1, 1);
+(30, 1, 30, 1, 1, 1, 1, 1, 1),
+(31, 1, 31, 1, 1, 1, 1, 1, 1),
+(32, 1, 32, 1, 1, 1, 1, 1, 1),
+(33, 1, 33, 1, 1, 1, 1, 1, 1),
+(34, 1, 34, 1, 1, 1, 1, 1, 1),
+(35, 1, 35, 1, 1, 1, 1, 1, 1),
+(36, 1, 36, 1, 1, 1, 1, 1, 1),
+(37, 1, 37, 1, 1, 1, 1, 1, 1),
+(38, 1, 38, 1, 1, 1, 1, 1, 1),
+(48, 1, 39, 1, 1, 1, 1, 1, 1),
+(49, 1, 40, 1, 1, 1, 1, 1, 1),
+(50, 1, 41, 1, 1, 1, 1, 1, 1),
+(51, 1, 42, 1, 1, 1, 1, 1, 1),
+(52, 1, 43, 1, 1, 1, 1, 1, 1),
+(53, 1, 44, 1, 1, 1, 1, 1, 1),
+(54, 1, 45, 1, 1, 1, 1, 1, 1),
+(55, 1, 46, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1859,6 +1936,57 @@ CREATE TABLE IF NOT EXISTS `groupmenuauth` (
   KEY `fk_groupmenuauth_2` (`menuauthid`),
   KEY `ix_gma` (`groupmenuauthid`,`groupaccessid`,`menuauthid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `identitytype`
+--
+
+DROP TABLE IF EXISTS `identitytype`;
+CREATE TABLE IF NOT EXISTS `identitytype` (
+  `identitytypeid` int(11) NOT NULL AUTO_INCREMENT,
+  `identitytypename` varchar(50) NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`identitytypeid`),
+  UNIQUE KEY `uq_identitytype` (`identitytypename`),
+  KEY `ix_identitytype` (`identitytypeid`,`identitytypename`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `identitytype`
+--
+
+INSERT INTO `identitytype` (`identitytypeid`, `identitytypename`, `recordstatus`) VALUES
+(1, 'Kartu Tanda Penduduk (KTP)', 1),
+(2, 'Surat Ijin Mengemudi tipe A (SIM A)', 1),
+(3, 'Passport', 1),
+(4, 'Surat Ijin Mengemudi tipe C (SIM C)', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `industry`
+--
+
+DROP TABLE IF EXISTS `industry`;
+CREATE TABLE IF NOT EXISTS `industry` (
+  `industryid` int(11) NOT NULL AUTO_INCREMENT,
+  `industryname` varchar(50) NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`industryid`),
+  UNIQUE KEY `uq_industry` (`industryname`),
+  KEY `ix_industry` (`industryid`,`industryname`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `industry`
+--
+
+INSERT INTO `industry` (`industryid`, `industryname`, `recordstatus`) VALUES
+(1, 'Industri Makanan/Minuman', 1),
+(2, 'Industri Otomotif', 1),
+(3, 'Industri Perbankan', 1);
 
 -- --------------------------------------------------------
 
@@ -11340,6 +11468,133 @@ INSERT INTO `language` (`languageid`, `languagename`, `recordstatus`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `materialgroup`
+--
+
+DROP TABLE IF EXISTS `materialgroup`;
+CREATE TABLE IF NOT EXISTS `materialgroup` (
+  `materialgroupid` int(11) NOT NULL AUTO_INCREMENT,
+  `materialgroupcode` varchar(10) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `parentmatgroupid` int(11) DEFAULT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  `materialtypeid` int(10) NOT NULL,
+  PRIMARY KEY (`materialgroupid`),
+  KEY `ix_materialgroup` (`materialgroupid`,`materialgroupcode`,`description`,`parentmatgroupid`,`recordstatus`,`materialtypeid`),
+  KEY `uq_materialgroup` (`materialgroupcode`),
+  KEY `FK_matgroup_1` (`materialtypeid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+
+--
+-- Dumping data untuk tabel `materialgroup`
+--
+
+INSERT INTO `materialgroup` (`materialgroupid`, `materialgroupcode`, `description`, `parentmatgroupid`, `recordstatus`, `materialtypeid`) VALUES
+(1, '1', 'TOOLS AND EQUIPMENT', 1, 1, 1),
+(2, '2', 'MANUAL VALVE & SAFETY VALVE', 1, 1, 1),
+(3, '3', 'CONTROL VALVE & INSTRUMENT', 1, 1, 1),
+(4, '4', 'BOILER TUBE, PIPE & PLATE', 1, 1, 1),
+(5, '5', 'INSULATION & FIRE BRICKS', 1, 1, 1),
+(6, '6', 'CONSUMABLE, CHEMICAL & FILTER', 6, 1, 1),
+(7, '7', 'FREIGH & FORWARDER', 7, 1, 1),
+(8, '8', 'OTHER', 1, 1, 1),
+(9, '9', 'SUBCONTRACTOR', 1, 1, 1),
+(10, 'IDU 3', 'TES SYSTEM CHASIS', 1, 0, 1),
+(11, 'HISBN', 'HUB, ISBN', 1, 1, 1),
+(12, 'NETWORK EQ', 'NETWORK EQUIPMENT', 1, 1, 1),
+(13, 'UTILITY', 'UTILITY', 1, 1, 1),
+(14, 'SCPC', 'SCPC SYSTEM', 1, 1, 1),
+(15, 'ODU FEEDHO', 'FEED ASSY CROSSPOL / Feed Horn', 1, 1, 1),
+(16, 'CARD TPC', 'TPC CARD', 1, 1, 1),
+(17, 'CARD ELAN', 'ELAN CARD', 1, 1, 1),
+(18, 'CARD IFM', 'IFM CARD', 1, 1, 1),
+(19, 'J B', 'JUNCTION BOX', 1, 1, 1),
+(20, 'CARD ICM', 'ICM CARD', 1, 1, 1),
+(21, 'CARD VDPC', 'VDPC CARD', 1, 1, 1),
+(22, 'CARD PLC23', 'PLC 232 CARD', 1, 1, 1),
+(23, 'EFDAT', 'EFDATA', 1, 1, 1),
+(24, 'ODU RFT RF', 'RFT - RFU', 1, 1, 1),
+(25, 'ODU LNB', 'LNB', 1, 1, 1),
+(26, 'ODU LNA', 'LNA', 1, 1, 1),
+(27, 'CARD CU', 'CHANNEL UNIT CARD', 1, 1, 1),
+(28, 'CARD RFM', 'RFM CARD', 1, 1, 1),
+(29, 'ODU CANIST', 'REFLEKTOR SUPPORT / Canister', 1, 1, 1),
+(30, 'ODU CANIST', 'REFLEKTOR SUPPORT  / Canister', 1, 1, 1),
+(31, 'ODU MOUNTI', 'MOUNTING TURNBUCKLE', 1, 1, 1),
+(32, 'ODU CANIST', 'REFLEKTOR SUPPORT / Canister', 1, 1, 1),
+(33, 'RF HUB', 'DEHYDRATOR', 1, 1, 1),
+(34, 'DW7000H', 'DW7000Hub', 1, 1, 1),
+(35, 'DW7000', 'DW7000', 1, 1, 1),
+(36, '10', 'Modem', 1, 0, 1),
+(37, 'MDM', 'Modem', 1, 0, 1),
+(38, 'MDM1', 'Modem HN', 1, 0, 1),
+(39, 'MDM2', 'Modem HX', 1, 0, 1),
+(40, 'R', 'Router', 1, 0, 1),
+(41, 'R1', 'Cisco 1811', 1, 0, 1),
+(42, 'R2', 'Cisco 1721', 1, 0, 1),
+(43, 'R3', 'Juniper SSG5', 1, 0, 1),
+(44, 'J001', 'Maintenance Gedung', 1, 0, 2),
+(45, 'J002', 'maintenance Kendaraan Operasional', 1, 0, 2),
+(46, '50000', 'INSULATIONS AND FIREBRICKS', 7, 0, 1),
+(47, '50000', 'INSULATIONS AND FIREBRICKS', 7, 0, 1),
+(48, '60000', 'CHEMICAL, FILTER AND CONSUMABLE', 47, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `materialstatus`
+--
+
+DROP TABLE IF EXISTS `materialstatus`;
+CREATE TABLE IF NOT EXISTS `materialstatus` (
+  `materialstatusid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `materialstatusname` varchar(50) NOT NULL,
+  `recordstatus` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`materialstatusid`),
+  UNIQUE KEY `uq_materialstatus` (`materialstatusname`),
+  KEY `ix_materialstatus` (`materialstatusid`,`materialstatusname`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `materialstatus`
+--
+
+INSERT INTO `materialstatus` (`materialstatusid`, `materialstatusname`, `recordstatus`) VALUES
+(1, 'Service', 1),
+(2, 'Good', 1),
+(3, 'Obsolete', 1),
+(4, 'Under Repair', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `materialtype`
+--
+
+DROP TABLE IF EXISTS `materialtype`;
+CREATE TABLE IF NOT EXISTS `materialtype` (
+  `materialtypeid` int(11) NOT NULL AUTO_INCREMENT,
+  `materialtypecode` varchar(5) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`materialtypeid`),
+  UNIQUE KEY `uq_materialtype` (`materialtypecode`),
+  KEY `ix_materialtype` (`materialtypeid`,`materialtypecode`,`description`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `materialtype`
+--
+
+INSERT INTO `materialtype` (`materialtypeid`, `materialtypecode`, `description`, `recordstatus`) VALUES
+(1, 'P', 'Produksi', 1),
+(2, 'N', 'Non Produksi', 1),
+(3, 'ATK', 'ALAT TULIS KANTOR', 1),
+(4, 'V', 'VSat', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `menuaccess`
 --
 
@@ -11358,7 +11613,7 @@ CREATE TABLE IF NOT EXISTS `menuaccess` (
   KEY `ix_description` (`description`),
   KEY `ix_menuurl` (`menuurl`),
   KEY `ix_menuaccess` (`menuaccessid`,`menucode`,`menuname`,`description`,`menuurl`,`recordstatus`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data untuk tabel `menuaccess`
@@ -11394,7 +11649,23 @@ INSERT INTO `menuaccess` (`menuaccessid`, `menucode`, `menuname`, `description`,
 (27, 'ccsd', 'subdistrict', 'Subdistrict', '/subdistrict', 'subdistrict.png', 1),
 (28, 'ccssd', 'kelurahan', 'Sub Subdistrict', '/kelurahan', 'kelurahan.png', 1),
 (29, 'ccu', 'currency', 'Currency', '/currency', 'currency.png', 1),
-(30, 'coab', 'addresstype', 'Address Type', '/addresstype', 'addresstype.png', 1);
+(30, 'coab', 'addresstype', 'Address Type', '/addresstype', 'addresstype.png', 1),
+(31, 'ccty', 'contacttype', 'Contact Type', '/contacttype', 'contacttype.png', 1),
+(32, 'cit', 'identitytype', 'Identity Type', '/identitytype', 'identitytype.png', 1),
+(33, 'cro', 'romawi', 'Romawi', '/romawi', 'romawi.png', 1),
+(34, 'cin', 'industry', 'Industry', '/industry', 'industry.png', 1),
+(35, 'cpl', 'plant', 'Plant', '/plant', 'plant.png', 1),
+(36, 'isl', 'sloc', 'Storage Location', '/sloc', 'sloc.png', 1),
+(37, 'ium', 'unitofmeasure', 'Unit of Measure', '/unitofmeasure', 'unitofmeasure.png', 1),
+(38, 'materialma', 'materialmaster', 'Material Master', '/materialmaster', 'materialmaster.png', 1),
+(39, 'pmmt', 'materialtype', 'Material Type', '/materialtype', 'materialtype.png', 1),
+(40, 'pmmg', 'materialgroup', 'Material Group', '/materialgroup', 'materialgroup.png', 1),
+(41, 'pmms', 'materialstatus', 'Material Status', '/materialstatus', 'materialstatus.png', 1),
+(42, 'mmow', 'ownership', 'Ownership', '/ownership', 'ownership.png', 1),
+(43, 'mmmd', 'product', 'Material Master - Main Data', '/product', 'product.png', 1),
+(44, 'mmpb', 'productbasic', 'Material Master - Basic Data', '/productbasic', 'productbasic.png', 1),
+(45, 'mmpr', 'productpurchase', 'Material Master - Purchasing Data', '/productpurchase', 'productpurchase.png', 1),
+(46, 'mmpp', 'productplant', 'Material Master - Plant / Storage Location', '/productplant', 'productplant.png', 1);
 
 -- --------------------------------------------------------
 
@@ -11435,7 +11706,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`messagesid`),
   UNIQUE KEY `uq_messages_name` (`messagename`),
   KEY `ix_messages` (`messagesid`,`messagename`,`description`,`recordstatus`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=105 ;
 
 --
 -- Dumping data untuk tabel `messages`
@@ -11514,7 +11785,63 @@ INSERT INTO `messages` (`messagesid`, `messagename`, `description`, `recordstatu
 (70, 'emptycurrencyname', 'emptycurrencyname', 1),
 (71, 'emptysymbol', 'emptysymbol', 1),
 (72, 'addresstype', 'addresstype', 1),
-(73, 'emptyaddresstypename', 'emptyaddresstypename', 1);
+(73, 'emptyaddresstypename', 'emptyaddresstypename', 1),
+(74, 'contacttype', 'contacttype', 1),
+(75, 'emptycontacttypename', 'emptycontacttypename', 1),
+(76, 'identitytype', 'identitytype', 1),
+(77, 'romawi', 'romawi', 1),
+(78, 'emptyidentitytypename', 'emptyidentitytypename', 1),
+(79, 'emptycalendarmonth', 'emptycalendarmonth', 1),
+(80, 'emptyromemonth', 'emptyromemonth', 1),
+(81, 'industry', 'Industry', 1),
+(82, 'emptyindustryname', 'emptyindustryname', 1),
+(83, 'plant', 'Plant', 1),
+(84, 'emptyplantcode', 'emptyplantcode', 1),
+(85, 'emptydescription', 'emptydescription', 1),
+(86, 'sloc', 'sloc', 1),
+(87, 'emptysloccode', 'emptysloccode', 1),
+(88, 'unitofmeasure', 'unitofmeasure', 1),
+(89, 'emptyuomcode', 'emptyuomcode', 1),
+(90, 'emptymaterialtypecode', 'emptymaterialtypecode', 1),
+(91, 'materialtype', 'materialtype', 1),
+(92, 'materialgroup', 'materialgroup', 1),
+(93, 'emptymaterialgroupcode', 'emptymaterialgroupcode', 1),
+(94, 'materialstatus', 'materialstatus', 1),
+(95, 'emptymaterialstatusname', 'emptymaterialstatusname', 1),
+(96, 'ownership', 'ownership', 1),
+(97, 'emptyownershipname', 'emptyownershipname', 1),
+(98, 'product', 'product', 1),
+(99, 'productbasic', 'productbasic', 1),
+(100, 'emptyproductid', 'emptyproductid', 1),
+(101, 'emptybaseuom', 'emptybaseuom', 1),
+(102, 'emptymaterialgroupid', 'emptymaterialgroupid', 1),
+(103, 'productpurchase', 'productpurchase', 1),
+(104, 'productplant', 'productplant', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ownership`
+--
+
+DROP TABLE IF EXISTS `ownership`;
+CREATE TABLE IF NOT EXISTS `ownership` (
+  `ownershipid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ownershipname` varchar(50) NOT NULL,
+  `recordstatus` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`ownershipid`),
+  UNIQUE KEY `uq_ownership` (`ownershipname`),
+  KEY `ix_ownership` (`ownershipid`,`ownershipname`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `ownership`
+--
+
+INSERT INTO `ownership` (`ownershipid`, `ownershipname`, `recordstatus`) VALUES
+(1, 'Rent', 1),
+(2, 'Asset', 1),
+(3, 'Sharing', 1);
 
 -- --------------------------------------------------------
 
@@ -11582,6 +11909,853 @@ INSERT INTO `parameter` (`parameterid`, `paramname`, `paramvalue`, `description`
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `plant`
+--
+
+DROP TABLE IF EXISTS `plant`;
+CREATE TABLE IF NOT EXISTS `plant` (
+  `plantid` int(11) NOT NULL AUTO_INCREMENT,
+  `plantcode` varchar(5) NOT NULL,
+  `description` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`plantid`),
+  UNIQUE KEY `uq_plant` (`plantcode`),
+  KEY `ix_plant` (`plantid`,`plantcode`,`description`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `plant`
+--
+
+INSERT INTO `plant` (`plantid`, `plantcode`, `description`, `recordstatus`) VALUES
+(1, 'JKT', 'Jakarta', 1),
+(2, 'BKS', 'Bekasi', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `productid` int(11) NOT NULL AUTO_INCREMENT,
+  `isstock` int(11) DEFAULT '1',
+  `productname` varchar(250) NOT NULL,
+  `productpic` varchar(250) DEFAULT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`productid`),
+  UNIQUE KEY `uq_product` (`productname`),
+  KEY `ix_product` (`productid`,`isstock`,`productname`,`productpic`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=291 ;
+
+--
+-- Dumping data untuk tabel `product`
+--
+
+INSERT INTO `product` (`productid`, `isstock`, `productname`, `productpic`, `recordstatus`) VALUES
+(1, 1, 'Laptop Dell Vostro A840n', NULL, 1),
+(2, 1, 'Baterai Compatible Dell Vostro A840', NULL, 1),
+(3, 1, 'Adaptor HP 3477 (ori)', NULL, 1),
+(4, 1, 'Tinta HP 21', NULL, 1),
+(5, 1, 'USB Flash Disk 4 Gb, Kingstone', NULL, 1),
+(6, 1, 'Tinta HP Color, Data Print', NULL, 1),
+(7, 1, 'Tinta HP Black, Data Print', NULL, 1),
+(8, 1, 'Processor Intel P4, 3.0Ghz', NULL, 1),
+(9, 1, 'Processor Intel P4, 2.6Ghz', NULL, 1),
+(10, 1, 'Mainboard LGA DDR2', NULL, 1),
+(11, 1, 'Sound Card', NULL, 1),
+(12, 1, 'Memory DDR I, 512Mb', NULL, 1),
+(13, 1, 'Kaki  Heat Sink', NULL, 1),
+(14, 1, 'TP Link 941 ND', NULL, 1),
+(15, 1, 'Modem CMDA Smartfren AC682', NULL, 1),
+(16, 1, 'Modem GSM Huawei E173', NULL, 1),
+(17, 1, 'Keyboard+mouse USB Optic, Komic', NULL, 1),
+(18, 1, 'Memory DDR II, 1Gb, pc6400, Vgen', NULL, 1),
+(19, 1, 'Card Reader, All in one, STD', NULL, 1),
+(20, 1, 'USB Flash Disk 8 Gb, Kingstone', NULL, 1),
+(21, 1, 'Head Set, Bufftech', NULL, 1),
+(22, 1, 'Extention USB, 1.5m', NULL, 1),
+(23, 1, 'Tabung CD, Kapasitas 100 cd', NULL, 1),
+(24, 1, 'Tabung CD, Kapasitas 50 cd', NULL, 1),
+(25, 1, 'Cable Power PC', NULL, 1),
+(26, 1, 'USB Hub Bintang', NULL, 1),
+(27, 1, 'USB Hub Jari', NULL, 1),
+(28, 1, 'Cable VGA, 1.5m', NULL, 1),
+(29, 1, 'Modem GSM Huawei E1550', NULL, 1),
+(30, 1, 'Cable Power Notebook', NULL, 1),
+(32, 1, 'Speaker Genius', NULL, 1),
+(33, 1, 'Adaptor Acer 19V, 3.42A Original', NULL, 1),
+(34, 1, 'Game Pad Double', NULL, 1),
+(35, 1, 'Tinta HP 60 Black', NULL, 1),
+(36, 1, 'Tinta HP 60 Color', NULL, 1),
+(37, 1, 'Sevice', NULL, 1),
+(38, 1, 'Casing Harddisk 2.5 inch, SATA', NULL, 1),
+(39, 0, 'Service Umum', NULL, 1),
+(40, 1, 'Adaptor Universal', NULL, 1),
+(41, 1, 'Stabillizer, 1000ma, Matsunaga', NULL, 1),
+(42, 1, 'Quickcam Logitech C170', NULL, 1),
+(43, 1, 'Stabillizer, 500ma, Star-x', NULL, 1),
+(44, 1, 'Adaptor HP 19V, 4.74A', NULL, 1),
+(45, 1, 'Pembersih LCD', NULL, 1),
+(46, 1, 'Screen Protector 14 inch', NULL, 1),
+(47, 1, 'keyboard Protector 10 inch', NULL, 1),
+(48, 1, 'Modem CDMA Esia Max-D', NULL, 1),
+(49, 1, 'Mouse Pad Bantal', NULL, 1),
+(50, 1, 'Monitor LED 18,5 inch, AOC', NULL, 1),
+(51, 1, 'Keyboard Logitech MK 100', NULL, 1),
+(52, 1, 'Mainboard ASUS P5G41 TM LX-3', NULL, 1),
+(53, 1, 'Mouse Logitech MK100', NULL, 1),
+(54, 1, 'Power Supply Mentari (Sun) 450 W', NULL, 1),
+(55, 1, 'Connector RJ 45 AMP', NULL, 1),
+(56, 1, 'Connector RJ 45 Standard', NULL, 1),
+(57, 1, 'Game Pad Single Getar', NULL, 1),
+(58, 1, 'Mouse Pad Std', NULL, 1),
+(59, 1, 'Printer HP 1050 (All in One)', NULL, 1),
+(60, 1, 'Mouse USB Optic', NULL, 1),
+(61, 1, 'Keyboard+mouse PS2 Optic', NULL, 1),
+(62, 1, 'Mouse USB Optic, Logitech', NULL, 1),
+(63, 1, 'Speaker Bufftech', NULL, 1),
+(64, 1, 'Head Set, Mix Style', NULL, 1),
+(65, 1, 'Crimping Tools', NULL, 1),
+(66, 1, 'Mainboard Pentium 3', NULL, 1),
+(67, 1, 'DVD-R, Verbatim', NULL, 1),
+(68, 1, 'CD-R, Verbatim', NULL, 1),
+(69, 1, 'CD-R, Pro Data', NULL, 1),
+(70, 1, 'VGA card 64mb AGP', NULL, 1),
+(71, 1, 'Processor Intel P3', NULL, 1),
+(72, 1, 'VGA card 128mb PCI Express', NULL, 1),
+(73, 1, 'Mainboard Pentium IV DDR I', NULL, 1),
+(74, 1, 'Monitor LED 18.5 inch, Advance', NULL, 1),
+(75, 1, 'Speaker Logitech Z110', NULL, 1),
+(76, 1, 'Memory DDR III, 1Gb, Vgen', NULL, 1),
+(77, 1, 'Pasta Processor', NULL, 1),
+(78, 1, 'Printer HP 3608', NULL, 1),
+(79, 1, 'keyboard Protector 14 inch', NULL, 1),
+(80, 1, 'Tinta HP 802 Black', NULL, 1),
+(81, 1, 'Memory DDR II, 2Gb, pc6400, Vgen', NULL, 1),
+(82, 1, 'Tinta Botol RED, Canon', NULL, 1),
+(83, 1, 'Mouse Tarik', NULL, 1),
+(84, 1, 'Mainboard G41, Cardex', NULL, 1),
+(85, 1, 'Casing PC, Acer', NULL, 1),
+(86, 1, 'Tinta HP 22', NULL, 1),
+(87, 1, 'Monitor LED 15.6 inch, Advance', NULL, 1),
+(88, 1, 'TV Tuner LCD/LED, Gadmei', NULL, 1),
+(89, 1, 'Keyboard PS2 Optic', NULL, 1),
+(90, 1, 'Keyboard USB Optic, Komic', NULL, 1),
+(91, 1, 'Mouse PS2 Optic', NULL, 1),
+(92, 1, 'Mouse USB Optic, Komic', NULL, 1),
+(93, 1, 'Mainboard Asus P5KPL-AM SE', NULL, 1),
+(94, 1, 'Harddisk 3.5 inch 80 GB SATA, Seagate', NULL, 1),
+(95, 1, 'Memory DDRII 1 GB, Deam', NULL, 1),
+(96, 1, 'VGA Card 512 MB Geforce 9300 GS, Cardex Axle', NULL, 1),
+(97, 1, 'Monitor CRT 17 inch, Samsung', NULL, 1),
+(98, 1, 'Casing PC, E-Tech / E-Case', NULL, 1),
+(99, 1, 'Processor Intel Dual Core E2200 2,2 GHz', NULL, 1),
+(100, 1, 'VGa Card 512 MB tc ATI Radeon HD420, Forsa ', NULL, 1),
+(101, 1, 'DVD-RW SATA, Samsung', NULL, 1),
+(102, 1, 'Adaptor Toshiba 19v 3,42 A', NULL, 1),
+(103, 1, 'Mainboard G31, Cardex', NULL, 1),
+(104, 1, 'Tinta Botol Black, Canon', NULL, 1),
+(105, 1, 'Memory DDR III, 2Gb, Vgen', NULL, 1),
+(106, 1, 'Mainboard ASUS P8H61', NULL, 1),
+(107, 1, 'DVD-RW, SATA, Lite on', NULL, 1),
+(108, 1, 'DVD-RW, IDE, Lite on', NULL, 1),
+(109, 1, 'Modem ADSL, Astec', NULL, 1),
+(110, 1, 'VGA card 1Gb, PCI Express', NULL, 1),
+(111, 1, 'VGA card 512 MB, ATI Radeon PCI Express', NULL, 1),
+(112, 1, 'USB LAN', NULL, 1),
+(113, 1, 'Hardisk 40 GB, IDE', NULL, 1),
+(114, 1, 'Adaptor HP 18.5V, 3.5A Jarum Original', NULL, 1),
+(115, 1, 'Speaker Simbadda 5100', NULL, 1),
+(116, 1, 'Casing Sim-X', NULL, 1),
+(117, 1, 'Adaptor 19V, 3.43A', NULL, 1),
+(118, 1, 'USB Bluetooth', NULL, 1),
+(119, 1, 'Soft Case Note book 14 inch', NULL, 1),
+(120, 1, 'Soft Case Note book 10 inch', NULL, 1),
+(121, 1, 'Soft Case Note book 12 inch', NULL, 1),
+(122, 1, 'Tinta HP 74', NULL, 1),
+(123, 1, 'Tinta HP 75', NULL, 1),
+(124, 1, 'Tinta HP 27', NULL, 1),
+(125, 1, 'Tinta HP 28', NULL, 1),
+(126, 1, 'Printer Canon IP 2770', NULL, 1),
+(127, 1, 'Stiker Skin Note book 10 inch', NULL, 1),
+(128, 1, 'Printer HP 2000', NULL, 1),
+(129, 1, 'Casing Harddisk 3.5 inch, IDE', NULL, 1),
+(130, 1, 'Adaptor 19V, 1.58A', NULL, 1),
+(131, 1, 'Micro SD Card, 4Gb Vgen', NULL, 1),
+(132, 1, 'Micro SD Card, 2Gb Vgen', NULL, 1),
+(133, 1, 'Mainboard 478 ', NULL, 1),
+(134, 1, 'Hardisk 20 GB, IDE', NULL, 1),
+(135, 1, 'DVD Combo Samsung', NULL, 1),
+(136, 1, 'Processor Intel Dual Core 1.8Ghz', NULL, 1),
+(137, 1, 'Processor LGA Intel Pentium IV 2.8 Ghz', NULL, 1),
+(138, 1, 'Processor LGA Intel Pentium IV 3.0 Ghz', NULL, 1),
+(139, 1, 'Modem ZTE', NULL, 1),
+(140, 1, 'Keyboard Numeric', NULL, 1),
+(141, 1, 'Fan LGA', NULL, 1),
+(142, 1, 'Casing ATX', NULL, 1),
+(143, 0, 'Ongkos Kirim TIKI/JNE', NULL, 1),
+(144, 1, 'Processor Intel Core 2 Duo, E7500', NULL, 1),
+(145, 1, 'Harddisk 3.5 inch 250 GB SATA, Western Digital (WDC)', NULL, 1),
+(146, 1, 'Hardisk 500 GB, SATA, Seagate', NULL, 1),
+(147, 1, 'Casing Infinity K61', NULL, 1),
+(148, 1, 'Power Supply Venom 650 W', NULL, 1),
+(149, 1, 'USB TV Tuner, Gadmei', NULL, 1),
+(150, 1, 'Processor Intel Core 2 Duo, 1.8Ghz', NULL, 1),
+(151, 1, 'VGA card 1Gb, Ge Force 9300, Forsa', NULL, 1),
+(152, 1, 'Harddisk 2.5 inch, 160 Gb,SATA, Seagate', NULL, 1),
+(153, 1, 'Processor 478 2.8 Ghz', NULL, 1),
+(154, 1, 'CD-RW, Image', NULL, 1),
+(155, 1, 'Mouse Wireless', NULL, 1),
+(156, 1, 'Tinta Botol Black, Epson', NULL, 1),
+(157, 1, 'Tinta Botol Color, Epson', NULL, 1),
+(158, 1, 'Cable Power SATA', NULL, 1),
+(159, 1, 'Cable SATA', NULL, 1),
+(160, 1, 'TV Tuner CRT', NULL, 1),
+(161, 1, 'Fan Notebook 3 Kipas', NULL, 1),
+(162, 1, 'Wireless Router, D-Link DR600', NULL, 1),
+(163, 1, 'Memory Sodim, DDR III, 2Gb, PC 6400, Vgen', NULL, 1),
+(164, 1, 'Tinta Canon 810', NULL, 1),
+(165, 1, 'Tinta Canon 811', NULL, 1),
+(166, 1, 'Head Set, Skull Candy blue', NULL, 1),
+(167, 1, 'Ear Phone', NULL, 1),
+(168, 1, 'Cable HDMI', NULL, 1),
+(169, 1, 'USB Flash Disk 2 Gb, Deam', NULL, 1),
+(170, 1, 'VGA card 512mb AGP', NULL, 1),
+(171, 1, 'Tinta Botol Yellow, Canon', NULL, 1),
+(172, 1, 'Processor Intel Core I3 2100', NULL, 1),
+(173, 1, 'Mouse USB, Genius', NULL, 1),
+(174, 1, 'Memory DDR III, 4Gb, Vgen', NULL, 1),
+(175, 1, 'UPS ICA, CP 682B 1200VA', NULL, 1),
+(176, 1, 'Wireless Router, TP-Link 340', NULL, 1),
+(177, 1, 'Switch Hub TP link 5 Port', NULL, 1),
+(178, 1, 'Lampu LCD 12.1 Inch', NULL, 1),
+(179, 1, 'Tinta Botol Blue, Canon', NULL, 1),
+(180, 1, 'Processor Intel Dual Core 1.6 GHz (Tray)', NULL, 1),
+(181, 1, 'Power Supply, 500W, LyOn', NULL, 1),
+(182, 1, 'Mainboard Dell', NULL, 1),
+(183, 1, 'Monitor LCD 17 inch, Dell', NULL, 1),
+(184, 1, 'Baterai Original Dell D670', NULL, 1),
+(185, 1, 'Harddisk 3,5 inch 160 GB SATA, Seagate', NULL, 1),
+(186, 1, 'Casing PC Dell', NULL, 1),
+(187, 1, 'Motherboard Savio G41, LGA', NULL, 1),
+(188, 1, 'Memory DDR III, 1Gb, PC 10600, DEAM ', NULL, 1),
+(189, 1, 'Harddisk 3.5 inch 500 GB SATA, Seagate', NULL, 1),
+(190, 1, 'Modem GSM Telkom Flash', NULL, 1),
+(191, 1, 'Wireless Router TP Link WN740N', NULL, 1),
+(192, 1, 'VGA Card INNO 3D 9300 GS, 512Mb', NULL, 1),
+(193, 1, 'DVDRW External + TV', NULL, 1),
+(194, 1, 'Cable Printer Paralel', NULL, 1),
+(195, 1, 'CISS C58', NULL, 1),
+(196, 1, 'Head Cleaner', NULL, 1),
+(197, 1, 'Mainboard G41, Savvio', NULL, 1),
+(198, 1, 'Processor Intel Core 2 Duo 2.0 GHz (Tray)', NULL, 1),
+(199, 1, 'Casing Fan', NULL, 1),
+(200, 1, 'Keyboard Logitech MK 120', NULL, 1),
+(201, 1, 'Mouse Logitech MK 120', NULL, 1),
+(202, 1, 'Baterai CMOS', NULL, 1),
+(203, 0, 'Customized Software, Capella', NULL, 1),
+(204, 1, 'Standard Software, Capella', NULL, 1),
+(205, 1, 'Adaptor Dell 19.5V - 3.34A Jarum Original', NULL, 1),
+(206, 1, 'Stiker Skin Notebook 14 inch', NULL, 1),
+(207, 1, 'Mouse Pad Karet', NULL, 1),
+(208, 1, 'Kertas Photo A4 240', NULL, 1),
+(209, 1, 'Headset S-Pro', NULL, 1),
+(210, 1, 'Headset M Tech 01', NULL, 1),
+(211, 1, 'Tinta Epson Colour Data Print', NULL, 1),
+(212, 1, 'Tinta Epson Black, Data Print', NULL, 1),
+(213, 1, 'Tinta Canon Colour, Data Print', NULL, 1),
+(214, 1, 'Tinta Canon Black, Data Print', NULL, 1),
+(215, 1, 'LED Notebook 10.1 inch ', NULL, 1),
+(216, 1, 'Tinta Botol Black Canon, Pink', NULL, 1),
+(217, 1, 'Tinta Botol Red Canon, Pink', NULL, 1),
+(218, 1, 'Tinta Botol Blue Canon, Pink', NULL, 1),
+(219, 1, 'Tinta Botol Yellow Canon, Pink', NULL, 1),
+(220, 1, 'Tempat CD Tipis', NULL, 1),
+(221, 1, 'Tas Notebook 10 inch', NULL, 1),
+(222, 1, 'Cable Printer HP Laser Jet 1100', NULL, 1),
+(223, 1, 'Engsel Toshiba Satellite M300', NULL, 1),
+(224, 0, 'Service Flexible', NULL, 1),
+(225, 1, 'Adaptor HP Mini 19v - 1,58A Compatible', NULL, 1),
+(226, 1, 'Adaptor Dell 19.5v - 4.62A Jarum Original', NULL, 1),
+(227, 1, 'Adaptor ASUS 19v - 3.42A Original', NULL, 1),
+(228, 0, 'Install Ulang dan Backup Data PC', NULL, 1),
+(229, 0, 'Instalasi Hardware', NULL, 1),
+(230, 0, 'Install Ulang tanpa Backup Data PC', NULL, 1),
+(231, 0, 'Install Driver Printer', NULL, 1),
+(232, 0, 'Install Driver Kamera', NULL, 1),
+(233, 0, 'Install Driver Wifi', NULL, 1),
+(234, 1, 'Processor Intel P4 2.8 GHz', NULL, 1),
+(235, 1, 'Fan 478', NULL, 1),
+(236, 0, 'Service Printer', NULL, 1),
+(237, 1, 'Mainboard G31, ECS', NULL, 1),
+(238, 1, 'Monitor LED 16 inch, LG', NULL, 1),
+(239, 1, 'DVD RW, LG', NULL, 1),
+(240, 1, 'USB Penyedot debu', NULL, 1),
+(241, 1, 'Laptop Dell Latitude D620', NULL, 1),
+(242, 0, 'Install Driver Sound Card', NULL, 1),
+(243, 0, 'Refill Black', NULL, 1),
+(244, 0, 'Refill Colour', NULL, 1),
+(245, 1, 'Monitor LED 16 inch, AOC', NULL, 1),
+(246, 0, 'Install Ulang dan Backup Data Laptop', NULL, 1),
+(247, 0, 'Install Ulang tanpa Backup Data Laptop', NULL, 1),
+(248, 0, 'Service Laptop', NULL, 1),
+(249, 0, 'Service Memory', NULL, 1),
+(250, 0, 'Cleaning PC', NULL, 1),
+(251, 1, 'LCD Laptop 10 inch, Acer', NULL, 1),
+(252, 0, 'Service Mainboard', NULL, 1),
+(253, 0, 'Install Driver Modem', NULL, 1),
+(254, 0, 'Install Game', NULL, 1),
+(255, 1, 'Memory DDR I 256 MB', NULL, 1),
+(256, 1, 'Printer HP Deskjet 1000', NULL, 1),
+(257, 0, 'Service Scanner', NULL, 1),
+(258, 0, 'Install Software', NULL, 1),
+(259, 0, 'Diskon', NULL, 1),
+(260, 1, 'Fan Notebook 1 kipas', NULL, 1),
+(261, 1, 'Harddisk 3.5 inch 250 GB SATA Repaired, Seagate', NULL, 1),
+(262, 1, 'Harddisk 2.5 inch 320 GB, WDC', NULL, 1),
+(263, 1, 'Memory Card MMC 1 GB, VGen', NULL, 1),
+(264, 1, 'Memory Card Micro SD 1 GB, VGen', NULL, 1),
+(265, 1, 'Memory Card Micro SD 2 GB, VGen', NULL, 1),
+(266, 1, 'Memory Card Micro SD 4 GB, VGen', NULL, 1),
+(267, 1, 'Memory Card MMC 2 GB, VGen', NULL, 1),
+(268, 1, 'Memory Card Mini SD 2 GB, VGen', NULL, 1),
+(269, 0, 'Pengetikan', NULL, 1),
+(270, 1, 'Memory Card Micro SD 16 GB, Vgen', NULL, 1),
+(271, 0, 'Pembuatan Domain', NULL, 1),
+(272, 0, 'Pembuatan Hosting 100 MB', NULL, 1),
+(273, 1, 'Tinta Canon 40 Black', NULL, 1),
+(274, 1, 'Tinta Canon 41 Colour', NULL, 1),
+(275, 1, 'Tinta Canon 830 Black', NULL, 1),
+(276, 1, 'Tinta Canon 831 Colour', NULL, 1),
+(277, 1, 'Tinta HP 802 Colour', NULL, 1),
+(278, 1, 'Tinta HP 704 Black', NULL, 1),
+(279, 1, 'Tinta HP 704 Colour', NULL, 1),
+(280, 1, 'Tinta HP 703 Black', NULL, 1),
+(281, 1, 'Tinta HP 703 Colour', NULL, 1),
+(282, 1, 'Memory DDR II sodim, 1Gb, Vgen', NULL, 1),
+(283, 1, 'Memory DDR III sodim, 1Gb, Vgen', NULL, 1),
+(284, 0, 'print B / W', NULL, 1),
+(285, 1, 'tas note book 14 inch', NULL, 1),
+(286, 1, 'productname', NULL, 1),
+(287, 1, 'Cable cat 6 Panduit (lan)', NULL, 1),
+(288, 1, 'Tombol Power Samsung NC 100', NULL, 1),
+(289, 1, 'engsel Acer 4720', NULL, 1),
+(290, 1, 'Monitor CRT 17 inch, Advance', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `productbasic`
+--
+
+DROP TABLE IF EXISTS `productbasic`;
+CREATE TABLE IF NOT EXISTS `productbasic` (
+  `productbasicid` int(11) NOT NULL AUTO_INCREMENT,
+  `productid` int(11) NOT NULL,
+  `baseuom` int(11) DEFAULT NULL,
+  `materialgroupid` int(11) DEFAULT NULL,
+  `oldmatno` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
+  `grossweight` decimal(10,0) DEFAULT '0',
+  `weightunit` int(11) DEFAULT NULL,
+  `netweight` decimal(10,4) DEFAULT '0.0000',
+  `volume` decimal(10,4) DEFAULT '0.0000',
+  `volumeunit` int(11) DEFAULT NULL,
+  `sizedimension` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `materialpackage` int(11) DEFAULT NULL,
+  `recordstatus` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`productbasicid`),
+  UNIQUE KEY `uq_productbasic` (`productid`),
+  KEY `ix_productbasic` (`productbasicid`,`productid`,`baseuom`,`materialgroupid`,`oldmatno`,`grossweight`,`weightunit`,`netweight`,`volume`,`volumeunit`,`sizedimension`,`materialpackage`,`recordstatus`),
+  KEY `FK_productbasic_2` (`materialgroupid`),
+  KEY `FK_productbasic_3` (`weightunit`),
+  KEY `FK_productbasic_4` (`volumeunit`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=185 ;
+
+--
+-- Dumping data untuk tabel `productbasic`
+--
+
+INSERT INTO `productbasic` (`productbasicid`, `productid`, `baseuom`, `materialgroupid`, `oldmatno`, `grossweight`, `weightunit`, `netweight`, `volume`, `volumeunit`, `sizedimension`, `materialpackage`, `recordstatus`) VALUES
+(1, 1, 3, 8, 'old', 0, 1, 1.0000, 1.0000, 12, 'size', NULL, 1),
+(2, 2, 3, NULL, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(6, 3, 3, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(7, 4, 2, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(8, 5, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(9, 6, 11, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(10, 7, 11, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(11, 8, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(12, 9, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(13, 10, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(14, 11, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(15, 12, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(16, 13, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(17, 14, 3, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(18, 15, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(19, 16, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(20, 17, 14, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(23, 18, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(24, 19, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(25, 20, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(26, 21, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(27, 22, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(28, 23, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(29, 24, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(30, 25, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(31, 26, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(32, 27, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(33, 28, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(34, 29, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(35, 30, 2, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(36, 32, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(37, 33, 2, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(38, 34, 3, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(39, 35, 2, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(40, 36, 2, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(41, 37, 10, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(47, 38, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(48, 40, 3, 2, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(49, 41, 3, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(50, 43, 3, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(51, 42, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(52, 44, 3, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(53, 45, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(54, 46, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(55, 47, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(56, 49, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(57, 48, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(58, 50, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(59, 58, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(60, 60, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(61, 61, 14, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(62, 62, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(63, 63, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(64, 64, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(65, 65, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(66, 54, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(67, 67, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(68, 68, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(69, 69, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(70, 66, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(71, 70, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(72, 71, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(73, 51, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(74, 53, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(75, 55, 2, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(76, 56, 2, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(77, 57, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(78, 72, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(79, 73, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(80, 74, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(81, 75, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(82, 76, 2, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(83, 77, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(84, 78, 3, 6, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(88, 79, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(89, 80, 11, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(90, 81, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(91, 82, 15, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(92, 83, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(93, 84, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(94, 85, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(95, 86, 11, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(96, 87, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(97, 88, 3, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(98, 89, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(99, 90, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(100, 91, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(101, 92, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(102, 105, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(103, 108, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(104, 107, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(105, 109, 3, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(106, 101, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(107, 110, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(108, 111, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(109, 112, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(110, 113, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(111, 114, 3, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(112, 115, 3, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(113, 116, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(114, 117, 3, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(115, 119, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(116, 120, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(117, 121, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(118, 144, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(119, 145, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(120, 142, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(125, 52, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(126, 106, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(127, 118, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(128, 146, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(129, 147, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(130, 148, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(131, 149, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(132, 150, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(133, 151, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(134, 152, 3, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(135, 153, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(136, 154, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(138, 155, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(139, 156, 15, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(140, 157, 15, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(141, 158, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(142, 159, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(143, 160, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(144, 161, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(148, 162, 3, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(149, 163, 2, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(150, 164, 11, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(151, 165, 11, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(152, 166, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(153, 167, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(154, 168, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(155, 169, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(156, 170, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(162, 174, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(163, 175, 3, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(164, 176, 3, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(165, 177, 3, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(166, 178, 3, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(167, 104, 15, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(169, 171, 15, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(170, 179, 15, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(171, 187, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(172, 188, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(173, 191, 3, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(175, 192, 3, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(176, 193, 3, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(177, 282, 2, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(178, 283, 2, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(179, 284, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(180, 285, 2, 8, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(181, 287, 6, 5, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(182, 288, 2, 7, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(183, 289, 2, 4, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1),
+(184, 290, 2, 3, '', 0, NULL, 0.0000, 0.0000, NULL, '', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `productplant`
+--
+
+DROP TABLE IF EXISTS `productplant`;
+CREATE TABLE IF NOT EXISTS `productplant` (
+  `productplantid` int(11) NOT NULL AUTO_INCREMENT,
+  `productid` int(11) NOT NULL,
+  `slocid` int(11) NOT NULL,
+  `unitofissue` int(11) DEFAULT NULL,
+  `isautolot` tinyint(4) DEFAULT '1',
+  `storagebin` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `pickingarea` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `sled` int(11) DEFAULT NULL,
+  `snroid` int(11) DEFAULT NULL,
+  `recordstatus` tinyint(3) unsigned DEFAULT '1',
+  PRIMARY KEY (`productplantid`),
+  UNIQUE KEY `uq_productplant` (`productid`,`slocid`,`unitofissue`) USING BTREE,
+  KEY `ix_productplant` (`productplantid`,`productid`,`slocid`,`unitofissue`,`isautolot`,`storagebin`,`pickingarea`,`sled`,`snroid`,`recordstatus`),
+  KEY `FK_productplant_1` (`snroid`),
+  KEY `FK_productplant_2` (`unitofissue`),
+  KEY `FK_productplant_3` (`slocid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=279 ;
+
+--
+-- Dumping data untuk tabel `productplant`
+--
+
+INSERT INTO `productplant` (`productplantid`, `productid`, `slocid`, `unitofissue`, `isautolot`, `storagebin`, `pickingarea`, `sled`, `snroid`, `recordstatus`) VALUES
+(2, 2, 2, 3, 1, '', '', NULL, 14, 1),
+(3, 3, 2, 3, 1, '', '', NULL, 14, 1),
+(4, 4, 2, 2, 1, '', '', NULL, 14, 1),
+(5, 5, 2, 2, 1, '', '', NULL, 14, 1),
+(6, 6, 2, 11, 1, '', '', NULL, 14, 1),
+(7, 7, 2, 11, 1, '', '', NULL, 14, 1),
+(8, 8, 2, 3, 1, '', '', NULL, 14, 1),
+(9, 9, 2, 3, 1, '', '', NULL, 14, 1),
+(10, 10, 2, 3, 1, '', '', NULL, 14, 1),
+(11, 11, 2, 2, 1, '', '', NULL, 14, 1),
+(12, 12, 2, 2, 1, '', '', NULL, 14, 1),
+(13, 13, 2, 2, 1, '', '', NULL, 14, 1),
+(14, 14, 2, 3, 1, '', '', NULL, 14, 1),
+(18, 15, 2, 2, 1, '', '', NULL, 14, 1),
+(19, 16, 2, 2, 1, '', '', NULL, 14, 1),
+(20, 17, 2, 14, 1, '', '', NULL, 14, 1),
+(21, 18, 2, 2, 1, '', '', NULL, 14, 1),
+(22, 19, 2, 2, 1, '', '', NULL, 14, 1),
+(23, 20, 2, 2, 1, '', '', NULL, 14, 1),
+(24, 21, 2, 2, 1, '', '', NULL, 14, 1),
+(25, 22, 2, 2, 1, '', '', NULL, 14, 1),
+(26, 23, 2, 2, 1, '', '', NULL, 14, 1),
+(27, 24, 2, 2, 1, '', '', NULL, 14, 1),
+(28, 25, 2, 2, 1, '', '', NULL, 14, 1),
+(29, 26, 2, 2, 1, '', '', NULL, 14, 1),
+(30, 27, 2, 2, 1, '', '', NULL, 14, 1),
+(31, 28, 2, 2, 1, '', '', NULL, 14, 1),
+(32, 29, 2, 2, 1, '', '', NULL, 14, 1),
+(33, 30, 2, 2, 1, '', '', NULL, 14, 1),
+(34, 34, 2, 3, 0, '', '', NULL, 14, 1),
+(35, 33, 2, 2, 1, '', '', NULL, 14, 1),
+(37, 35, 2, 2, 1, '', '', NULL, 14, 1),
+(38, 36, 2, 2, 1, '', '', NULL, 14, 1),
+(39, 37, 2, 10, 1, '', '', NULL, 14, 1),
+(40, 38, 2, 2, 1, '', '', NULL, 14, 1),
+(41, 40, 2, 3, 1, '', '', NULL, 14, 1),
+(42, 41, 2, 3, 1, '', '', NULL, 14, 1),
+(43, 43, 2, 3, 1, '', '', NULL, 14, 1),
+(44, 42, 2, 2, 1, '', '', NULL, 14, 1),
+(45, 44, 2, 3, 1, '', '', NULL, 14, 1),
+(46, 45, 2, 2, 1, '', '', NULL, 14, 1),
+(47, 46, 2, 2, 1, '', '', NULL, 14, 1),
+(48, 47, 2, 2, 1, '', '', NULL, 14, 1),
+(49, 49, 2, 2, 1, '', '', NULL, 14, 1),
+(50, 48, 2, 2, 1, '', '', NULL, 14, 1),
+(51, 50, 2, 3, 1, '', '', NULL, 14, 1),
+(52, 58, 2, 2, 1, '', '', NULL, 14, 1),
+(53, 60, 2, 2, 1, '', '', NULL, 14, 1),
+(54, 61, 2, 14, 1, '', '', NULL, 14, 1),
+(55, 62, 2, 2, 1, '', '', NULL, 14, 1),
+(56, 63, 2, 2, 1, '', '', NULL, 14, 1),
+(57, 64, 2, 2, 1, '', '', NULL, 14, 1),
+(58, 65, 2, 2, 1, '', '', NULL, 14, 1),
+(59, 54, 2, 3, 1, '', '', NULL, 14, 1),
+(61, 68, 2, 2, 1, '', '', NULL, 14, 1),
+(62, 69, 2, 2, 1, '', '', NULL, 14, 1),
+(63, 66, 2, 3, 1, '', '', NULL, 14, 1),
+(64, 70, 2, 2, 1, '', '', NULL, 14, 1),
+(65, 71, 2, 2, 1, '', '', NULL, 14, 1),
+(66, 51, 2, 2, 1, '', '', NULL, 14, 1),
+(67, 67, 2, 2, 0, '', '', NULL, 14, 1),
+(68, 55, 2, 2, 1, '', '', NULL, 14, 1),
+(69, 56, 2, 2, 1, '', '', NULL, 14, 1),
+(70, 57, 2, 2, 1, '', '', NULL, 14, 1),
+(71, 72, 2, 2, 1, '', '', NULL, 14, 1),
+(72, 73, 2, 2, 1, '', '', NULL, 14, 1),
+(73, 74, 2, 3, 1, '', '', NULL, 14, 1),
+(74, 75, 2, 2, 1, '', '', NULL, 14, 1),
+(75, 76, 2, 2, 1, '', '', NULL, 14, 1),
+(76, 77, 2, 2, 1, '', '', NULL, 14, 1),
+(77, 78, 2, 3, 1, '', '', NULL, 14, 1),
+(78, 79, 2, 2, 1, '', '', NULL, 14, 1),
+(79, 80, 2, 11, 1, '', '', NULL, 14, 1),
+(80, 81, 2, 2, 1, '', '', NULL, 14, 1),
+(81, 82, 2, 3, 1, '', '', NULL, 14, 1),
+(82, 82, 2, 15, 1, '', '', NULL, 14, 1),
+(83, 84, 2, 3, 1, '', '', NULL, 14, 1),
+(84, 85, 2, 3, 1, '', '', NULL, 14, 1),
+(85, 86, 2, 11, 1, '', '', NULL, 14, 1),
+(86, 87, 2, 2, 1, '', '', NULL, 14, 1),
+(87, 88, 2, 3, 1, '', '', NULL, 14, 1),
+(88, 89, 2, 2, 1, '', '', NULL, 14, 1),
+(89, 90, 2, 2, 1, '', '', NULL, 14, 1),
+(90, 91, 2, 2, 1, '', '', NULL, 14, 1),
+(91, 92, 2, 2, 1, '', '', NULL, 14, 1),
+(92, 105, 2, 2, 1, '', '', NULL, 14, 1),
+(93, 108, 2, 3, 1, '', '', NULL, 14, 1),
+(94, 107, 2, 3, 1, '', '', NULL, 14, 1),
+(95, 109, 2, 3, 1, '', '', NULL, 14, 1),
+(96, 101, 2, 3, 1, '', '', NULL, 14, 1),
+(97, 110, 2, 2, 1, '', '', NULL, 14, 1),
+(98, 111, 2, 2, 1, '', '', NULL, 14, 1),
+(99, 112, 2, 2, 1, '', '', NULL, 14, 1),
+(100, 113, 2, 3, 1, '', '', NULL, 14, 1),
+(101, 114, 2, 3, 1, '', '', NULL, 14, 1),
+(102, 115, 2, 3, 1, '', '', NULL, 14, 1),
+(103, 116, 2, 2, 1, '', '', NULL, 14, 1),
+(104, 117, 2, 3, 1, '', '', NULL, 14, 1),
+(105, 119, 2, 2, 1, '', '', NULL, 14, 1),
+(106, 120, 2, 2, 1, '', '', NULL, 14, 1),
+(107, 121, 2, 2, 1, '', '', NULL, 14, 1),
+(108, 144, 2, 2, 1, '', '', NULL, 14, 1),
+(109, 145, 2, 3, 1, '', '', NULL, 14, 1),
+(110, 142, 2, 2, 1, '', '', NULL, 14, 1),
+(111, 52, 2, 2, 1, '', '', NULL, 14, 1),
+(112, 106, 2, 3, 1, '', '', NULL, 14, 1),
+(113, 118, 2, 2, 1, '', '', NULL, 14, 1),
+(114, 146, 2, 3, 1, '', '', NULL, 14, 1),
+(115, 147, 2, 2, 1, '', '', NULL, 14, 1),
+(116, 148, 2, 3, 1, '', '', NULL, 14, 1),
+(117, 149, 2, 2, 1, '', '', NULL, 14, 1),
+(118, 150, 2, 3, 1, '', '', NULL, 14, 1),
+(119, 151, 2, 2, 1, '', '', NULL, 14, 1),
+(120, 152, 2, 3, 1, '', '', NULL, 14, 1),
+(121, 153, 2, 2, 1, '', '', NULL, 14, 1),
+(122, 154, 2, 2, 1, '', '', NULL, 14, 1),
+(123, 155, 2, 2, 1, '', '', NULL, 14, 1),
+(124, 156, 2, 15, 1, '', '', NULL, 14, 1),
+(125, 157, 2, 15, 1, '', '', NULL, 14, 1),
+(126, 158, 2, 2, 1, '', '', NULL, 14, 1),
+(127, 159, 2, 2, 1, '', '', NULL, 14, 1),
+(128, 160, 2, 3, 1, '', '', NULL, 14, 1),
+(129, 161, 2, 2, 1, '', '', NULL, 14, 1),
+(130, 162, 2, 3, 1, '', '', NULL, 14, 1),
+(131, 163, 2, 2, 1, '', '', NULL, 14, 1),
+(132, 164, 2, 11, 1, '', '', NULL, 14, 1),
+(133, 165, 2, 11, 1, '', '', NULL, 14, 1),
+(134, 166, 2, 11, 1, '', '', NULL, 14, 1),
+(135, 167, 2, 2, 1, '', '', NULL, 14, 1),
+(136, 168, 2, 2, 1, '', '', NULL, 14, 1),
+(137, 169, 2, 2, 1, '', '', NULL, 14, 1),
+(138, 170, 2, 2, 1, '', '', NULL, 14, 1),
+(139, 174, 2, 2, 1, '', '', NULL, 14, 1),
+(140, 175, 2, 3, 1, '', '', NULL, 14, 1),
+(141, 176, 2, 3, 1, '', '', NULL, 14, 1),
+(142, 177, 2, 3, 1, '', '', NULL, 14, 1),
+(143, 178, 2, 3, 1, '', '', NULL, 14, 1),
+(144, 104, 2, 15, 1, '', '', NULL, 14, 1),
+(145, 171, 2, 15, 1, '', '', NULL, 14, 1),
+(146, 179, 2, 15, 1, '', '', NULL, 14, 1),
+(147, 187, 2, 3, 1, '', '', NULL, 14, 1),
+(148, 188, 2, 3, 1, '', '', NULL, 14, 1),
+(149, 191, 2, 3, 1, '', '', NULL, 14, 1),
+(150, 192, 2, 3, 1, '', '', NULL, 14, 1),
+(151, 193, 2, 3, 1, '', '', NULL, 14, 1),
+(153, 1, 2, 3, 1, '', '', NULL, 14, 1),
+(154, 130, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(155, 102, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(156, 202, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(157, 184, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(158, 194, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(159, 199, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(160, 129, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(161, 161, 2, 3, 1, '', '', NULL, 14, 1),
+(162, 98, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(163, 195, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(164, 203, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(165, 135, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(166, 141, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(167, 185, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(168, 189, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(169, 94, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(170, 134, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(171, 196, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(172, 200, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(173, 140, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(174, 133, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(175, 93, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(176, 182, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(177, 103, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(178, 197, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(179, 95, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(180, 132, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(181, 131, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(182, 190, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(183, 139, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(184, 97, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(185, 183, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(186, 201, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(187, 83, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(188, 173, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(189, 143, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(190, 181, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(191, 126, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(192, 59, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(193, 128, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(194, 198, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(195, 172, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(196, 180, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(197, 136, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(198, 99, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(199, 137, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(200, 138, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(201, 39, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(202, 204, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(203, 127, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(204, 124, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(205, 125, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(206, 122, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(207, 123, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(208, 96, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(209, 100, 2, 3, 1, NULL, NULL, NULL, 14, 1),
+(217, 205, 2, 3, 1, '', '', NULL, 14, 1),
+(218, 206, 2, 3, 0, '', '', NULL, 14, 1),
+(219, 207, 2, 3, 0, '', '', NULL, 14, 1),
+(220, 208, 2, 3, 0, '', '', NULL, 14, 1),
+(221, 209, 2, 3, 0, '', '', NULL, 14, 1),
+(222, 210, 2, 3, 0, '', '', NULL, 14, 1),
+(223, 211, 2, 3, 0, '', '', NULL, 14, 1),
+(224, 212, 2, 3, 0, '', '', NULL, 14, 1),
+(225, 213, 2, 3, 0, '', '', NULL, 14, 1),
+(226, 214, 2, 3, 0, '', '', NULL, 14, 1),
+(227, 215, 2, 3, 0, '', '', NULL, 14, 1),
+(228, 216, 2, 3, 0, '', '', NULL, 14, 1),
+(229, 217, 2, 3, 0, '', '', NULL, 14, 1),
+(230, 218, 2, 3, 0, '', '', NULL, 14, 1),
+(231, 219, 2, 3, 0, '', '', NULL, 14, 1),
+(232, 220, 2, 2, 0, '', '', NULL, 14, 1),
+(233, 221, 2, 3, 0, '', '', NULL, 14, 1),
+(234, 222, 2, 3, 0, '', '', NULL, 14, 1),
+(235, 223, 2, 3, 0, '', '', NULL, 14, 1),
+(236, 225, 2, 3, 0, '', '', NULL, 14, 1),
+(237, 226, 2, 3, 0, '', '', NULL, 14, 1),
+(238, 227, 2, 3, 1, '', '', NULL, 14, 1),
+(240, 234, 2, 3, 1, '', '', NULL, 14, 1),
+(241, 235, 2, 3, 1, '', '', NULL, 14, 1),
+(242, 237, 2, 3, 1, '', '', NULL, 14, 1),
+(243, 238, 2, 3, 1, '', '', NULL, 14, 1),
+(244, 239, 2, 3, 1, '', '', NULL, 14, 1),
+(245, 240, 2, 3, 0, '', '', NULL, 14, 1),
+(246, 241, 2, 3, 1, '', '', NULL, 14, 1),
+(247, 245, 2, 3, 1, '', '', NULL, 14, 1),
+(248, 251, 2, 3, 1, '', '', NULL, 14, 1),
+(249, 255, 2, 3, 1, '', '', NULL, 14, 1),
+(250, 256, 2, 3, 1, '', '', NULL, 14, 1),
+(251, 260, 2, 3, 1, '', '', NULL, 14, 1),
+(252, 261, 2, 3, 1, '', '', NULL, 14, 1),
+(253, 262, 2, 3, 1, '', '', NULL, 14, 1),
+(254, 263, 2, 3, 1, '', '', NULL, 14, 1),
+(255, 264, 2, 3, 1, '', '', NULL, 14, 1),
+(256, 265, 2, 3, 1, '', '', NULL, 14, 1),
+(257, 266, 2, 3, 1, '', '', NULL, 14, 1),
+(258, 267, 2, 3, 1, '', '', NULL, 14, 1),
+(259, 268, 2, 3, 1, '', '', NULL, 14, 1),
+(260, 270, 2, 3, 1, '', '', NULL, 14, 1),
+(261, 53, 2, 3, 1, '', '', NULL, 14, 1),
+(262, 273, 2, 3, 1, '', '', NULL, 14, 1),
+(263, 274, 2, 3, 1, '', '', NULL, 14, 1),
+(264, 275, 2, 3, 1, '', '', NULL, 14, 1),
+(265, 276, 2, 3, 1, '', '', NULL, 14, 1),
+(266, 277, 2, 3, 1, '', '', NULL, 14, 1),
+(267, 278, 2, 3, 1, '', '', NULL, 14, 1),
+(268, 279, 2, 3, 1, '', '', NULL, 14, 1),
+(269, 280, 2, 3, 1, '', '', NULL, 14, 1),
+(270, 281, 2, 3, 1, '', '', NULL, 14, 1),
+(271, 282, 2, 2, 0, '', '', NULL, NULL, 1),
+(272, 283, 2, 2, 0, '', '', NULL, NULL, 1),
+(273, 284, 2, 2, 0, '', '', NULL, NULL, 1),
+(274, 285, 2, 2, 0, '', '', NULL, NULL, 1),
+(275, 287, 2, 6, 0, '', '', NULL, NULL, 1),
+(276, 289, 2, 2, 0, '', '', NULL, NULL, 1),
+(277, 288, 2, 2, 0, '', '', NULL, NULL, 1),
+(278, 290, 2, 2, 0, '', '', NULL, NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `productpurchase`
+--
+
+DROP TABLE IF EXISTS `productpurchase`;
+CREATE TABLE IF NOT EXISTS `productpurchase` (
+  `productpurchaseid` int(11) NOT NULL AUTO_INCREMENT,
+  `productid` int(11) NOT NULL,
+  `plantid` int(11) NOT NULL,
+  `orderunit` int(11) NOT NULL,
+  `validfrom` date NOT NULL,
+  `validto` date NOT NULL,
+  `isautoPO` tinyint(4) NOT NULL,
+  `recordstatus` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`productpurchaseid`),
+  UNIQUE KEY `uq_productpurchase` (`productid`,`plantid`,`orderunit`),
+  KEY `FK_productpurchase_1` (`plantid`),
+  KEY `ix_productpurchase` (`productpurchaseid`,`productid`,`plantid`,`orderunit`,`validfrom`,`validto`,`isautoPO`,`recordstatus`) USING BTREE,
+  KEY `FK_productpurchase_2` (`orderunit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `province`
 --
 
@@ -11633,6 +12807,68 @@ INSERT INTO `province` (`provinceid`, `countryid`, `provincename`, `recordstatus
 (28, 92, 'SUMATERA BARAT', 1),
 (29, 92, 'SUMATERA SELATAN', 1),
 (30, 92, 'SUMATERA UTARA', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `romawi`
+--
+
+DROP TABLE IF EXISTS `romawi`;
+CREATE TABLE IF NOT EXISTS `romawi` (
+  `romawiid` int(11) NOT NULL AUTO_INCREMENT,
+  `monthcal` int(11) NOT NULL,
+  `monthrm` varchar(10) NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`romawiid`),
+  UNIQUE KEY `uq_romawi` (`monthcal`),
+  KEY `ix_romawi` (`romawiid`,`monthcal`,`monthrm`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data untuk tabel `romawi`
+--
+
+INSERT INTO `romawi` (`romawiid`, `monthcal`, `monthrm`, `recordstatus`) VALUES
+(1, 1, 'I', 1),
+(2, 2, 'II', 1),
+(3, 3, 'III', 1),
+(4, 4, 'IV', 1),
+(5, 5, 'V', 1),
+(6, 6, 'VI', 1),
+(7, 7, 'VII', 1),
+(8, 8, 'VIII', 1),
+(9, 9, 'IX', 1),
+(10, 10, 'X', 1),
+(11, 11, 'XI', 1),
+(12, 12, 'XII', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sloc`
+--
+
+DROP TABLE IF EXISTS `sloc`;
+CREATE TABLE IF NOT EXISTS `sloc` (
+  `slocid` int(11) NOT NULL AUTO_INCREMENT,
+  `plantid` int(11) NOT NULL,
+  `sloccode` varchar(5) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  `snroid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`slocid`),
+  UNIQUE KEY `uq_sloc` (`sloccode`),
+  KEY `ix_sloc` (`slocid`,`plantid`,`sloccode`,`description`,`recordstatus`,`snroid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `sloc`
+--
+
+INSERT INTO `sloc` (`slocid`, `plantid`, `sloccode`, `description`, `recordstatus`, `snroid`) VALUES
+(1, 1, 'ATK', 'Gudang ATK', 1, 0),
+(2, 1, 'BD', 'Gudang barang dagang jakarta', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -21263,16 +22499,13 @@ CREATE TABLE IF NOT EXISTS `translock` (
   `lockeddate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`translockid`),
   KEY `ix_translock` (`translockid`,`menuname`,`tableid`,`lockedby`,`lockeddate`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=155 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=159 ;
 
 --
 -- Dumping data untuk tabel `translock`
 --
 
 INSERT INTO `translock` (`translockid`, `menuname`, `tableid`, `lockedby`, `lockeddate`) VALUES
-(22, 'snro', 2, 'admin', '2013-04-02 19:56:01'),
-(23, 'snro', 2, 'admin', '2013-04-02 19:56:13'),
-(24, 'snro', 3, 'admin', '2013-04-02 19:56:20'),
 (25, 'snro', 2, 'admin', '2013-04-02 19:56:38'),
 (26, 'snro', 5, 'admin', '2013-04-02 19:57:21'),
 (27, 'menuaccess', 2, 'admin', '2013-04-02 19:57:31'),
@@ -21298,9 +22531,6 @@ INSERT INTO `translock` (`translockid`, `menuname`, `tableid`, `lockedby`, `lock
 (120, 'company', 1, 'admin', '2013-04-04 09:42:27'),
 (121, 'company', 1, 'admin', '2013-04-04 09:42:36'),
 (122, 'company', 1, 'admin', '2013-04-04 09:43:51'),
-(123, 'useraccess', 1, 'admin', '2013-04-04 10:26:49'),
-(124, 'useraccess', 1, 'admin', '2013-04-04 10:31:51'),
-(126, 'menuaccess', 1, 'admin', '2013-04-04 13:12:53'),
 (131, 'usergroup', 1, 'admin', '2013-04-04 16:37:11'),
 (139, 'company', 1, 'admin', '2013-04-04 17:14:36'),
 (140, 'company', 1, 'admin', '2013-04-04 17:21:20'),
@@ -21313,7 +22543,11 @@ INSERT INTO `translock` (`translockid`, `menuname`, `tableid`, `lockedby`, `lock
 (150, 'catalogsys', 1, 'admin', '2013-04-05 14:46:57'),
 (151, 'province', 1, 'admin', '2013-04-05 16:00:41'),
 (152, 'province', 1, 'admin', '2013-04-05 16:02:42'),
-(154, 'company', 1, 'admin', '2013-04-06 18:42:22');
+(154, 'company', 1, 'admin', '2013-04-06 18:42:22'),
+(155, 'productbasic', 1, 'admin', '2013-04-08 09:38:27'),
+(156, 'productbasic', 1, 'admin', '2013-04-08 09:38:45'),
+(157, 'productbasic', 1, 'admin', '2013-04-08 09:38:58'),
+(158, 'productbasic', 1, 'admin', '2013-04-08 09:39:14');
 
 -- --------------------------------------------------------
 
@@ -21336,7 +22570,7 @@ CREATE TABLE IF NOT EXISTS `translog` (
   KEY `ix_createddate` (`createddate`),
   KEY `ix_useraction` (`useraction`),
   KEY `ix_translog` (`translogid`,`username`,`createddate`,`useraction`,`menuname`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=133 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=239 ;
 
 --
 -- Dumping data untuk tabel `translog`
@@ -21469,7 +22703,169 @@ INSERT INTO `translog` (`translogid`, `username`, `createddate`, `useraction`, `
 (129, 'admin', '2013-04-06 18:53:08', 'new', 'addresstype addresstype 1 ', 'addresstype addresstype 1 ', 'messages', 0),
 (130, 'admin', '2013-04-06 18:53:23', 'update', '1 72 Jenis Alamat 1 ', '1 72 Jenis Alamat 1 ', 'catalogsys', 0),
 (131, 'admin', '2013-04-06 20:13:06', 'new', 'emptyaddresstypename emptyaddresstypename 1 ', 'emptyaddresstypename emptyaddresstypename 1 ', 'messages', 0),
-(132, 'admin', '2013-04-06 20:13:25', 'update', '1 73 Address Type harus diisi 1 ', '1 73 Address Type harus diisi 1 ', 'catalogsys', 0);
+(132, 'admin', '2013-04-06 20:13:25', 'update', '1 73 Address Type harus diisi 1 ', '1 73 Address Type harus diisi 1 ', 'catalogsys', 0),
+(133, 'admin', '2013-04-06 21:38:17', 'new', '1 ccty contacttype /contacttype contacttype.png Contact Type ', '1 ccty contacttype /contacttype contacttype.png Contact Type ', 'menuaccess', 0),
+(134, 'admin', '2013-04-06 21:38:41', 'new', '1 1 1 1 1 1 1 31 ', '1 1 1 1 1 1 1 31 ', 'groupmenu', 0),
+(135, 'admin', '2013-04-06 22:21:34', 'new', 'contacttype contacttype 1 ', 'contacttype contacttype 1 ', 'messages', 0),
+(136, 'admin', '2013-04-06 22:21:52', 'update', '1 74 Jenis Kontak 1 ', '1 74 Jenis Kontak 1 ', 'catalogsys', 0),
+(137, 'admin', '2013-04-06 22:22:19', 'new', 'emptycontacttypename emptycontacttypename 1 ', 'emptycontacttypename emptycontacttypename 1 ', 'messages', 0),
+(138, 'admin', '2013-04-06 22:22:38', 'update', '1 75 Contact Type harus diisi 1 ', '1 75 Contact Type harus diisi 1 ', 'catalogsys', 0),
+(139, 'admin', '2013-04-06 22:48:57', 'new', '1 cit identitytype /identitytype identitytype.png Identity Type ', '1 cit identitytype /identitytype identitytype.png Identity Type ', 'menuaccess', 0),
+(140, 'admin', '2013-04-06 22:49:11', 'new', '1 1 1 1 1 1 1 32 ', '1 1 1 1 1 1 1 32 ', 'groupmenu', 0),
+(141, 'admin', '2013-04-07 05:50:40', 'new', 'identitytype identitytype 1 ', 'identitytype identitytype 1 ', 'messages', 0),
+(142, 'admin', '2013-04-07 05:51:12', 'update', '1 76 Jenis Identitas 1 ', '1 76 Jenis Identitas 1 ', 'catalogsys', 0),
+(143, 'admin', '2013-04-07 06:13:14', 'new', '1 cro romawi /romawi romawi.png Romawi ', '1 cro romawi /romawi romawi.png Romawi ', 'menuaccess', 0),
+(144, 'admin', '2013-04-07 06:13:38', 'new', '1 1 1 1 1 1 1 33 ', '1 1 1 1 1 1 1 33 ', 'groupmenu', 0),
+(145, 'admin', '2013-04-07 06:13:57', 'new', 'romawi romawi 1 ', 'romawi romawi 1 ', 'messages', 0),
+(146, 'admin', '2013-04-07 06:14:19', 'update', '1 77 Huruf Romawi 1 ', '1 77 Huruf Romawi 1 ', 'catalogsys', 0),
+(147, 'admin', '2013-04-07 06:14:40', 'new', 'emptyidentitytypename emptyidentitytypename 1 ', 'emptyidentitytypename emptyidentitytypename 1 ', 'messages', 0),
+(148, 'admin', '2013-04-07 06:14:59', 'update', '1 78 Identity Type harus diisi 1 ', '1 78 Identity Type harus diisi 1 ', 'catalogsys', 0),
+(149, 'admin', '2013-04-07 06:33:54', 'new', 'emptycalendarmonth emptycalendarmonth 1 ', 'emptycalendarmonth emptycalendarmonth 1 ', 'messages', 0),
+(150, 'admin', '2013-04-07 06:34:28', 'update', '1 79 Bulan dalam kalendar Masehi harus diisi 1 ', '1 79 Bulan dalam kalendar Masehi harus diisi 1 ', 'catalogsys', 0),
+(151, 'admin', '2013-04-07 06:34:43', 'new', 'emptyromemonth emptyromemonth 1 ', 'emptyromemonth emptyromemonth 1 ', 'messages', 0),
+(152, 'admin', '2013-04-07 06:35:09', 'update', '1 80 Bulan dalam huruf romawi harus diisi 1 ', '1 80 Bulan dalam huruf romawi harus diisi 1 ', 'catalogsys', 0),
+(153, 'admin', '2013-04-07 07:15:04', 'new', '1 cin industry /industry industry.png Industry ', '1 cin industry /industry industry.png Industry ', 'menuaccess', 0),
+(154, 'admin', '2013-04-07 07:16:32', 'new', '1 1 1 1 1 1 1 34 ', '1 1 1 1 1 1 1 34 ', 'groupmenu', 0),
+(155, 'admin', '2013-04-07 07:16:49', 'new', 'industry Industry 1 ', 'industry Industry 1 ', 'messages', 0),
+(156, 'admin', '2013-04-07 07:17:26', 'update', '1 81 Jenis Industri 1 ', '1 81 Jenis Industri 1 ', 'catalogsys', 0),
+(157, 'admin', '2013-04-07 07:28:07', 'update', '1 system system System /system system.png 1', '1 system system System /system system.png 1', 'menuaccess', 0),
+(158, 'admin', '2013-04-07 07:34:39', 'new', 'emptyindustryname emptyindustryname 1 ', 'emptyindustryname emptyindustryname 1 ', 'messages', 0),
+(159, 'admin', '2013-04-07 07:35:06', 'update', '1 82 Industry harus diisi 1 ', '1 82 Industry harus diisi 1 ', 'catalogsys', 0),
+(160, 'admin', '2013-04-07 07:42:54', 'update', '1 Industri Makanan/Minuman 1', '1 Industri Makanan/Minuman 1', 'industry', 0),
+(161, 'admin', '2013-04-07 07:43:10', 'update', '1 Industri Makanan/Minuman 1', '1 Industri Makanan/Minuman 1', 'industry', 0),
+(162, 'admin', '2013-04-07 07:48:30', 'new', '1 cpl plant /plant plant.png Plant ', '1 cpl plant /plant plant.png Plant ', 'menuaccess', 0),
+(163, 'admin', '2013-04-07 07:48:52', 'new', '1 1 1 1 1 1 1 35 ', '1 1 1 1 1 1 1 35 ', 'groupmenu', 0),
+(164, 'admin', '2013-04-07 08:42:33', 'new', 'plant Plant 1 ', 'plant Plant 1 ', 'messages', 0),
+(165, 'admin', '2013-04-07 08:43:04', 'update', '1 83 Plant 1 ', '1 83 Plant 1 ', 'catalogsys', 0),
+(166, 'admin', '2013-04-07 08:43:41', 'new', 'emptyplantcode emptyplantcode 1 ', 'emptyplantcode emptyplantcode 1 ', 'messages', 0),
+(167, 'admin', '2013-04-07 08:44:09', 'update', '1 84 Plant Code harus diisi 1 ', '1 84 Plant Code harus diisi 1 ', 'catalogsys', 0),
+(168, 'admin', '2013-04-07 08:44:45', 'new', 'emptydescription emptydescription 1 ', 'emptydescription emptydescription 1 ', 'messages', 0),
+(169, 'admin', '2013-04-07 08:45:06', 'update', '1 85 Description harus diisi 1 ', '1 85 Description harus diisi 1 ', 'catalogsys', 0),
+(170, 'admin', '2013-04-07 08:53:47', 'new', '1 isl sloc /sloc sloc.png Storage Location ', '1 isl sloc /sloc sloc.png Storage Location ', 'menuaccess', 0),
+(171, 'admin', '2013-04-07 08:54:11', 'new', '1 1 1 1 1 1 1 36 ', '1 1 1 1 1 1 1 36 ', 'groupmenu', 0),
+(172, 'admin', '2013-04-07 08:54:33', 'new', 'sloc sloc 1 ', 'sloc sloc 1 ', 'messages', 0),
+(173, 'admin', '2013-04-07 08:54:55', 'update', '1 86 Gudang 1 ', '1 86 Gudang 1 ', 'catalogsys', 0),
+(174, 'admin', '2013-04-07 09:31:14', 'new', 'emptysloccode emptysloccode 1 ', 'emptysloccode emptysloccode 1 ', 'messages', 0),
+(175, 'admin', '2013-04-07 09:32:12', 'update', '1 87 Sloc Code harus diisi 1 ', '1 87 Sloc Code harus diisi 1 ', 'catalogsys', 0),
+(176, 'admin', '2013-04-07 09:41:45', 'new', '1 ium unitofmeasure /unitofmeasure unitofmeasure.png Unit of Measure ', '1 ium unitofmeasure /unitofmeasure unitofmeasure.png Unit of Measure ', 'menuaccess', 0),
+(177, 'admin', '2013-04-07 09:42:21', 'new', '1 1 1 1 1 1 1 37 ', '1 1 1 1 1 1 1 37 ', 'groupmenu', 0),
+(178, 'admin', '2013-04-07 09:55:14', 'new', 'unitofmeasure unitofmeasure 1 ', 'unitofmeasure unitofmeasure 1 ', 'messages', 0),
+(179, 'admin', '2013-04-07 09:55:31', 'update', '1 88 Satuan 1 ', '1 88 Satuan 1 ', 'catalogsys', 0),
+(180, 'admin', '2013-04-07 09:56:01', 'new', 'emptyuomcode emptyuomcode 1 ', 'emptyuomcode emptyuomcode 1 ', 'messages', 0),
+(181, 'admin', '2013-04-07 09:56:19', 'update', '1 89 UOM Code harus diisi 1 ', '1 89 UOM Code harus diisi 1 ', 'catalogsys', 0),
+(182, 'admin', '2013-04-07 10:06:36', 'new', '1 materialma materialmaster /materialmaster materialmaster.png Material Master ', '1 materialma materialmaster /materialmaster materialmaster.png Material Master ', 'menuaccess', 0),
+(183, 'admin', '2013-04-07 10:15:50', 'new', '1 1 1 1 1 1 1 38 ', '1 1 1 1 1 1 1 38 ', 'groupmenu', 0),
+(184, 'admin', '2013-04-07 10:26:43', 'new', '1 pmmt materialtype /materialtype materialtype.png Material Type ', '1 pmmt materialtype /materialtype materialtype.png Material Type ', 'menuaccess', 0),
+(185, 'admin', '2013-04-07 10:27:00', 'new', '1 1 1 1 1 1 1 39 ', '1 1 1 1 1 1 1 39 ', 'groupmenu', 0),
+(186, 'admin', '2013-04-07 10:31:38', 'new', 'emptymaterialtypecode emptymaterialtypecode 1 ', 'emptymaterialtypecode emptymaterialtypecode 1 ', 'messages', 0),
+(187, 'admin', '2013-04-07 10:32:00', 'update', '1 90 Material Type Code harus diisi 1 ', '1 90 Material Type Code harus diisi 1 ', 'catalogsys', 0),
+(188, 'admin', '2013-04-07 10:38:59', 'new', 'materialtype materialtype 1 ', 'materialtype materialtype 1 ', 'messages', 0),
+(189, 'admin', '2013-04-07 10:39:23', 'update', '1 91 Jenis Material 1 ', '1 91 Jenis Material 1 ', 'catalogsys', 0),
+(190, 'admin', '2013-04-07 12:01:14', 'update', '1 admin Administrator 7ae0afad7fd47b372fd7c444b3afe251 4f08d56f6ff6e3.40159955 director@prismadataabadi.com  1 1 classic background.jpg', '1 admin Administrator 7ae0afad7fd47b372fd7c444b3afe251 4f08d56f6ff6e3.40159955 director@prismadataabadi.com  1 1 classic background.jpg', 'useraccess', 0),
+(191, 'admin', '2013-04-07 12:05:22', 'new', '1 pmmg materialgroup /materialgroup materialgroup.png Material Group ', '1 pmmg materialgroup /materialgroup materialgroup.png Material Group ', 'menuaccess', 0),
+(192, 'admin', '2013-04-07 12:05:56', 'new', '1 1 1 1 1 1 1 40 ', '1 1 1 1 1 1 1 40 ', 'groupmenu', 0),
+(193, 'admin', '2013-04-07 12:27:37', 'new', 'materialgroup materialgroup 1 ', 'materialgroup materialgroup 1 ', 'messages', 0),
+(194, 'admin', '2013-04-07 12:27:58', 'update', '1 92 Grup Material / Jasa 1 ', '1 92 Grup Material / Jasa 1 ', 'catalogsys', 0),
+(195, 'admin', '2013-04-07 12:28:33', 'new', 'emptymaterialgroupcode emptymaterialgroupcode 1 ', 'emptymaterialgroupcode emptymaterialgroupcode 1 ', 'messages', 0),
+(196, 'admin', '2013-04-07 12:28:57', 'update', '1 93 Kode Grup Material harus diisi 1 ', '1 93 Kode Grup Material harus diisi 1 ', 'catalogsys', 0),
+(197, 'admin', '2013-04-07 13:31:17', 'new', '1 pmms materialstatus /materialstatus materialstatus.png Material Status ', '1 pmms materialstatus /materialstatus materialstatus.png Material Status ', 'menuaccess', 0),
+(198, 'admin', '2013-04-07 13:32:06', 'new', '1 1 1 1 1 1 1 41 ', '1 1 1 1 1 1 1 41 ', 'groupmenu', 0),
+(199, 'admin', '2013-04-07 14:05:30', 'new', 'materialstatus materialstatus 1 ', 'materialstatus materialstatus 1 ', 'messages', 0),
+(200, 'admin', '2013-04-07 14:05:49', 'update', '1 94 Status Material / Jasa 1 ', '1 94 Status Material / Jasa 1 ', 'catalogsys', 0),
+(201, 'admin', '2013-04-07 14:06:25', 'new', 'emptymaterialstatusname emptymaterialstatusname 1 ', 'emptymaterialstatusname emptymaterialstatusname 1 ', 'messages', 0),
+(202, 'admin', '2013-04-07 14:06:44', 'update', '1 95 Material Status harus diisi 1 ', '1 95 Material Status harus diisi 1 ', 'catalogsys', 0),
+(203, 'admin', '2013-04-07 14:07:00', 'update', '1 Service 1', '1 Service 1', 'materialstatus', 0),
+(204, 'admin', '2013-04-07 14:08:32', 'update', '1 Service 1', '1 Service 1', 'materialstatus', 0),
+(205, 'admin', '2013-04-07 17:00:07', 'update', '1 Service 1', '1 Service 1', 'materialstatus', 0),
+(206, 'admin', '2013-04-07 17:28:36', 'new', '1 mmow ownership /ownership ownership.png Ownership ', '1 mmow ownership /ownership ownership.png Ownership ', 'menuaccess', 0),
+(207, 'admin', '2013-04-07 17:29:02', 'new', '1 1 1 1 1 1 1 42 ', '1 1 1 1 1 1 1 42 ', 'groupmenu', 0),
+(208, 'admin', '2013-04-07 17:29:08', 'new', 'ownership ownership 1 ', 'ownership ownership 1 ', 'messages', 0),
+(209, 'admin', '2013-04-07 17:29:39', 'update', '1 96 Status Kepemilikan Material 1 ', '1 96 Status Kepemilikan Material 1 ', 'catalogsys', 0),
+(210, 'admin', '2013-04-07 19:14:42', 'update', '1 Rent 1', '1 Rent 1', 'ownership', 0),
+(211, 'admin', '2013-04-07 19:15:04', 'new', 'emptyownershipname emptyownershipname 1 ', 'emptyownershipname emptyownershipname 1 ', 'messages', 0),
+(212, 'admin', '2013-04-07 19:15:22', 'update', '1 97 Ownership harus diisi 1 ', '1 97 Ownership harus diisi 1 ', 'catalogsys', 0),
+(213, 'admin', '2013-04-07 19:25:32', 'new', '1 mmmd product /product product.png Material Master - Main Data ', '1 mmmd product /product product.png Material Master - Main Data ', 'menuaccess', 0),
+(214, 'admin', '2013-04-07 19:25:46', 'new', '1 1 1 1 1 1 1 43 ', '1 1 1 1 1 1 1 43 ', 'groupmenu', 0),
+(215, 'admin', '2013-04-07 19:25:53', 'new', 'product product 1 ', 'product product 1 ', 'messages', 0),
+(216, 'admin', '2013-04-07 19:44:55', 'update', '1 98 Material Master - Main Data 1 ', '1 98 Material Master - Main Data 1 ', 'catalogsys', 0),
+(217, 'admin', '2013-04-08 07:54:26', 'new', '1 mmpb productbasic /productbasic productbasic.png Material Master - Basic Data ', '1 mmpb productbasic /productbasic productbasic.png Material Master - Basic Data ', 'menuaccess', 0),
+(218, 'admin', '2013-04-08 07:54:43', 'new', '1 1 1 1 1 1 1 44 ', '1 1 1 1 1 1 1 44 ', 'groupmenu', 0),
+(219, 'admin', '2013-04-08 07:55:22', 'new', 'productbasic productbasic 1 ', 'productbasic productbasic 1 ', 'messages', 0),
+(220, 'admin', '2013-04-08 07:55:40', 'update', '1 99 Material Master - Basic Data 1 ', '1 99 Material Master - Basic Data 1 ', 'catalogsys', 0),
+(221, 'admin', '2013-04-08 08:46:14', 'new', 'emptyproductid emptyproductid 1 ', 'emptyproductid emptyproductid 1 ', 'messages', 0),
+(222, 'admin', '2013-04-08 08:48:42', 'update', '1 100 Material / Service harus diisi 1 ', '1 100 Material / Service harus diisi 1 ', 'catalogsys', 0),
+(223, 'admin', '2013-04-08 08:48:57', 'new', 'emptybaseuom emptybaseuom 1 ', 'emptybaseuom emptybaseuom 1 ', 'messages', 0),
+(224, 'admin', '2013-04-08 08:49:20', 'update', '1 101 Base UOM harus diisi 1 ', '1 101 Base UOM harus diisi 1 ', 'catalogsys', 0),
+(225, 'admin', '2013-04-08 09:37:56', 'new', 'emptymaterialgroupid emptymaterialgroupid 1 ', 'emptymaterialgroupid emptymaterialgroupid 1 ', 'messages', 0),
+(226, 'admin', '2013-04-08 09:38:14', 'update', '1 102 Material Group harus diisi 1 ', '1 102 Material Group harus diisi 1 ', 'catalogsys', 0),
+(227, 'admin', '2013-04-08 12:47:57', 'new', '1 mmpr productpurchase /productpurchase productpurchase.png Material Master - Purchasing Data ', '1 mmpr productpurchase /productpurchase productpurchase.png Material Master - Purchasing Data ', 'menuaccess', 0),
+(228, 'admin', '2013-04-08 12:49:38', 'new', '1 1 1 1 1 1 1 45 ', '1 1 1 1 1 1 1 45 ', 'groupmenu', 0),
+(229, 'admin', '2013-04-08 12:50:01', 'new', 'productpurchase productpurchase 1 ', 'productpurchase productpurchase 1 ', 'messages', 0),
+(230, 'admin', '2013-04-08 12:50:20', 'update', '1 103 Material Master - Purchasing Data 1 ', '1 103 Material Master - Purchasing Data 1 ', 'catalogsys', 0),
+(231, 'admin', '2013-04-08 16:22:49', 'update', '103 1 103 Purchasing Data 0', '103 1 103 Material Master - Purchasing Data 1', 'catalogsys', 0),
+(232, 'admin', '2013-04-08 16:23:04', 'update', '98 1 98 Main Data 1', '98 1 98 Material Master - Main Data 1', 'catalogsys', 0),
+(233, 'admin', '2013-04-08 16:23:13', 'update', '99 1 99 Basic Data 1', '99 1 99 Material Master - Basic Data 1', 'catalogsys', 0),
+(234, 'admin', '2013-04-08 16:23:21', 'update', '103 1 103 Purchasing Data 1', '103 1 103 Purchasing Data 0', 'catalogsys', 0),
+(235, 'admin', '2013-04-08 16:25:00', 'new', '1 mmpp productplant /productplant productplant.png Material Master - Plant / Storage Location ', '1 mmpp productplant /productplant productplant.png Material Master - Plant / Storage Location ', 'menuaccess', 0),
+(236, 'admin', '2013-04-08 16:25:18', 'new', '1 1 1 1 1 1 1 46 ', '1 1 1 1 1 1 1 46 ', 'groupmenu', 0),
+(237, 'admin', '2013-04-08 17:53:11', 'new', 'productplant productplant 1 ', 'productplant productplant 1 ', 'messages', 0),
+(238, 'admin', '2013-04-08 17:53:33', 'update', '1 104 Plant / Storage Location 1 ', '1 104 Plant / Storage Location 1 ', 'catalogsys', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `unitofmeasure`
+--
+
+DROP TABLE IF EXISTS `unitofmeasure`;
+CREATE TABLE IF NOT EXISTS `unitofmeasure` (
+  `unitofmeasureid` int(11) NOT NULL AUTO_INCREMENT,
+  `uomcode` varchar(5) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `recordstatus` tinyint(4) NOT NULL,
+  PRIMARY KEY (`unitofmeasureid`),
+  UNIQUE KEY `uq_uom` (`uomcode`),
+  KEY `ix_uom` (`unitofmeasureid`,`uomcode`,`description`,`recordstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data untuk tabel `unitofmeasure`
+--
+
+INSERT INTO `unitofmeasure` (`unitofmeasureid`, `uomcode`, `description`, `recordstatus`) VALUES
+(1, 'Kg', 'Kilogram', 1),
+(2, 'Pcs', 'Pcs', 1),
+(3, 'Unit', 'Unit', 1),
+(4, 'Box', 'Box', 1),
+(5, 'Lusin', 'Lusin', 1),
+(6, 'Mtr', 'Meter', 1),
+(7, 'Roll', 'Roll', 1),
+(8, 'Feet', 'Feet', 1),
+(9, 'm2', 'meter persegi', 1),
+(10, 'Lot', 'Lot', 1),
+(11, 'Pack', 'Pack', 1),
+(12, 'M3', 'Meter Cubic', 1),
+(13, 'CL', 'Coly', 1),
+(14, 'Ltr', 'Liter', 1),
+(15, 'Pail', 'Pail', 1),
+(16, 'Jrg', 'Jerigen', 1),
+(17, 'klg', 'kaleng', 1),
+(18, 'Hour', 'Hour', 1),
+(19, 'Prsn', 'Person', 1),
+(20, 'Lbr', 'Lembar', 1),
+(21, 'Btg', 'Batang', 1),
+(22, 'Tbg', 'Tabung', 1),
+(23, 'Set', 'Set', 1),
+(24, 'Day', 'hari', 1),
+(25, 'Sack', 'Karung', 1),
+(26, 'PSG', 'Pasang', 1),
+(27, 'Dus', 'Dus', 1),
+(28, 'Disc', 'Discount', 1),
+(29, 'Rim', 'Rim', 1),
+(30, 'Ton', 'Ton', 1),
+(31, 'IKT', 'Ikat', 1),
+(32, 'Drum', 'Drum', 1),
+(33, 'Weeks', 'Weeks', 1);
 
 -- --------------------------------------------------------
 
@@ -21489,6 +22885,7 @@ CREATE TABLE IF NOT EXISTS `useraccess` (
   `languageid` int(11) DEFAULT NULL,
   `recordstatus` tinyint(4) DEFAULT NULL,
   `theme` varchar(50) DEFAULT 'classic',
+  `background` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`useraccessid`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   KEY `ix_realname` (`realname`),
@@ -21502,8 +22899,8 @@ CREATE TABLE IF NOT EXISTS `useraccess` (
 -- Dumping data untuk tabel `useraccess`
 --
 
-INSERT INTO `useraccess` (`useraccessid`, `username`, `realname`, `password`, `salt`, `email`, `phoneno`, `languageid`, `recordstatus`, `theme`) VALUES
-(1, 'admin', 'Administrator', '7ae0afad7fd47b372fd7c444b3afe251', '4f08d56f6ff6e3.40159955', 'director@prismadataabadi.com', NULL, 1, 1, 'classic');
+INSERT INTO `useraccess` (`useraccessid`, `username`, `realname`, `password`, `salt`, `email`, `phoneno`, `languageid`, `recordstatus`, `theme`, `background`) VALUES
+(1, 'admin', 'Administrator', '7ae0afad7fd47b372fd7c444b3afe251', '4f08d56f6ff6e3.40159955', 'director@prismadataabadi.com', NULL, 1, 1, 'classic', 'background.jpg');
 
 -- --------------------------------------------------------
 
@@ -21980,8 +23377,7 @@ CREATE TABLE IF NOT EXISTS `yiisession` (
 --
 
 INSERT INTO `yiisession` (`id`, `expire`, `data`) VALUES
-('3f1kk88eh4apkavml2eg3q0g54', 1365255449, 'fa77eb4f3f85e1feaf5766fe925f6319__id|s:5:"admin";fa77eb4f3f85e1feaf5766fe925f6319__name|s:5:"admin";fa77eb4f3f85e1feaf5766fe925f6319__states|a:0:{}'),
-('ko43namiobmi1br98ghgsrggo6', 1365254768, '');
+('84rahu0n8l6uh115tph4bn8kv1', 1365422636, 'fa77eb4f3f85e1feaf5766fe925f6319__id|s:5:"admin";fa77eb4f3f85e1feaf5766fe925f6319__name|s:5:"admin";fa77eb4f3f85e1feaf5766fe925f6319__states|a:0:{}fa77eb4f3f85e1feaf5766fe925f6319Yii.CWebUser.flashcounters|a:0:{}');
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -22019,6 +23415,37 @@ ALTER TABLE `groupmenuauth`
 --
 ALTER TABLE `kelurahan`
   ADD CONSTRAINT `FK_kelurahan_1` FOREIGN KEY (`subdistrictid`) REFERENCES `subdistrict` (`subdistrictid`);
+
+--
+-- Ketidakleluasaan untuk tabel `materialgroup`
+--
+ALTER TABLE `materialgroup`
+  ADD CONSTRAINT `FK_matgroup_1` FOREIGN KEY (`materialtypeid`) REFERENCES `materialtype` (`materialtypeid`);
+
+--
+-- Ketidakleluasaan untuk tabel `productbasic`
+--
+ALTER TABLE `productbasic`
+  ADD CONSTRAINT `FK_productbasic_1` FOREIGN KEY (`productid`) REFERENCES `product` (`productid`),
+  ADD CONSTRAINT `FK_productbasic_2` FOREIGN KEY (`materialgroupid`) REFERENCES `materialgroup` (`materialgroupid`),
+  ADD CONSTRAINT `FK_productbasic_3` FOREIGN KEY (`weightunit`) REFERENCES `unitofmeasure` (`unitofmeasureid`),
+  ADD CONSTRAINT `FK_productbasic_4` FOREIGN KEY (`volumeunit`) REFERENCES `unitofmeasure` (`unitofmeasureid`);
+
+--
+-- Ketidakleluasaan untuk tabel `productplant`
+--
+ALTER TABLE `productplant`
+  ADD CONSTRAINT `FK_productplant_1` FOREIGN KEY (`snroid`) REFERENCES `snro` (`snroid`),
+  ADD CONSTRAINT `FK_productplant_2` FOREIGN KEY (`unitofissue`) REFERENCES `unitofmeasure` (`unitofmeasureid`),
+  ADD CONSTRAINT `FK_productplant_3` FOREIGN KEY (`slocid`) REFERENCES `sloc` (`slocid`);
+
+--
+-- Ketidakleluasaan untuk tabel `productpurchase`
+--
+ALTER TABLE `productpurchase`
+  ADD CONSTRAINT `FK_productpurchase_1` FOREIGN KEY (`plantid`) REFERENCES `plant` (`plantid`),
+  ADD CONSTRAINT `FK_productpurchase_2` FOREIGN KEY (`orderunit`) REFERENCES `unitofmeasure` (`unitofmeasureid`),
+  ADD CONSTRAINT `FK_productpurchase_3` FOREIGN KEY (`productid`) REFERENCES `product` (`productid`);
 
 --
 -- Ketidakleluasaan untuk tabel `province`

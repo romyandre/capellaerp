@@ -75,7 +75,15 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-js:$.fn.yiiGridView.update('datagrid');
+                if (data.status == 'success')
+                {
+					toastr.info(data.div);
+                    js:$.fn.yiiGridView.update('datagrid');
+                }
+                else
+                {
+                    toastr.error(data.div);
+                }
             } ",
             ))?>;
     return false;
@@ -145,7 +153,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('messages') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=messages/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",

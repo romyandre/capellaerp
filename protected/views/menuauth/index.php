@@ -69,6 +69,7 @@ function deletedata(value)
             {
                 if (data.status == 'success')
                 {
+					toastr.info(data.div);
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else

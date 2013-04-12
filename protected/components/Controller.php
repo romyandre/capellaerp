@@ -72,55 +72,26 @@ class Controller extends CController
 
     public function GetMessage($catalogname,$othertext='')
     {
-      $messages='';
-      if (is_array($catalogname) == false)
-      {
-        $openbracpos = strpos((string)$catalogname,"<");
-        if ($openbracpos == true)
-        {
-          $closebracpos = strpos((string)$catalogname,">");
-          $catalogname = substr((string)$catalogname,$openbracpos,$closebracpos-$openbracpos);
-        }
-        $message=Catalogsys::model()->findbysql("select a.*
+      $catalogname = str_replace('<','',(string)$catalogname);
+      $catalogname = trim(str_replace('>','',(string)$catalogname));
+	  if (strpos($catalogname,'Duplicate entry') == true)
+	  {
+		$catalogname = 'Duplicate entry';
+		}
+         $message=Catalogsys::model()->findbysql("select a.*
 			from catalogsys a
 			inner join messages b on b.messagesid = a.messagesid 
 			inner join language c on c.languageid = a.languageid 
 			inner join useraccess d on d.languageid = c.languageid 
 			where lower(b.messagename) = lower('". $catalogname."') and d.username = '". Yii::app()->user->id . "'");
-        if ($message != null)
-        {
-          $messages = $message->catalogval;
-        } else
-        {
-          if (strpos($catalogname,'Duplicate entry') == true) {
-            $catalogname = 'Duplicate entry';
-          }
-          $message=Catalogsys::model()->findbysql("select a.*
-			from catalogsys a
-			inner join messages b on b.messagesid = a.messagesid 
-			inner join language c on c.languageid = a.languageid 
-			inner join useraccess d on d.languageid = c.languageid 
-			where lower(b.messagename) = lower('". $catalogname."') and d.username = '". Yii::app()->user->id . "'");
-          if ($message != null)
-          {
-            $messages = $message->catalogval;
-          } else
-            $messages = $catalogname;
-        }
-       echo CJSON::encode(array(
-                  'status'=>'failure',
-                  'div'=> $messages.' '.$othertext
-                  ));
-        Yii::app()->end();
-      } 
-      else if (is_array($catalogname) == true)
-      {
+			if ($message !==null) {
+			$catalogname = $message->catalogval;
+			}
         echo CJSON::encode(array(
                 'status'=>'failure',
-                'div'=> (string)$catalogname.' '.$othertext
+                'div'=> (string)$catalogname
                 ));
             Yii::app()->end();
-      }
     }
 
     public function GetSMessage($catalogname)

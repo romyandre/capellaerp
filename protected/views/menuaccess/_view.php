@@ -21,7 +21,7 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
 </div>
 <div class="rowdata">
 	<span class="cell">Icon</span>
-    <span class="cell"><img src="<?php echo Yii::app()->request->baseUrl.'/images/'.$model->menuicon;?>"></span>
+    <span class="cell"><img style="width:24px;height:24px" src="<?php echo Yii::app()->request->baseUrl.'/images/'.$model->menuicon;?>"></span>
 </div>
 <div class="rowdata">
 	<span class="cell">Description</span>

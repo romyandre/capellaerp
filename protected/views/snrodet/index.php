@@ -75,9 +75,17 @@ function deletedata(value)
             'dataType'=>'json',
             'success'=>"function(data)
             {
-$.fn.yiiGridView.update('datagrid');
+                if (data.status == 'success')
+                {
+					toastr.info(data.div);
+                    js:$.fn.yiiGridView.update('datagrid');
+                }
+                else
+                {
+                    toastr.error(data.div);
+                }
             } ",
-            ))?>;	
+            ))?>;
     return false;
 }
 </script>

@@ -72,7 +72,7 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'director@prismadataabadi.com',
-		'defaultPageSize'=>5,
+		'defaultPageSize'=>3,
 		'defaultnumberqty'=>'#,##0.00',
 'defaultnumberprice'=>'#,##0.0000',
 'dateviewfromdb'=>'d-M-Y',

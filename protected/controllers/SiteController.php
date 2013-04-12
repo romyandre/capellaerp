@@ -37,7 +37,7 @@ class SiteController extends Controller
 		  {
 			Yii::app()->theme = $user->theme;
 		  }
-          $this->render('index');
+          $this->render('index',array('user'=>$user));
         }
         else
         {

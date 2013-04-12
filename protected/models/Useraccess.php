@@ -47,12 +47,12 @@ class Useraccess extends CActiveRecord
 		return array(
 			array('username, realname, salt, email, recordstatus', 'required'),
 			array('recordstatus,languageid', 'numerical', 'integerOnly'=>true),
-			array('username', 'length', 'max'=>50),
+			array('username,theme,background', 'length', 'max'=>50),
 			array('realname, email', 'length', 'max'=>100),
 			array('password, salt', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('useraccessid, username, realname, password, salt, languageid,email, recordstatus', 'safe', 'on'=>'search'),
+			array('useraccessid, username, realname, password, theme,salt, languageid,email, recordstatus', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +83,8 @@ class Useraccess extends CActiveRecord
 			'email' => 'Email',
 			'recordstatus' => 'Record Status',
 			'languageid'=>'Language',
+			'theme'=>'Theme',
+			'background'=>'Background'
 		);
 	}
 	
@@ -95,6 +97,14 @@ class Useraccess extends CActiveRecord
 		if (isset($_GET['username']))
 {
 	$criteria->compare('username',$_GET['username'],true);
+}
+if (isset($_GET['theme']))
+{
+	$criteria->compare('theme',$_GET['theme'],true);
+}
+if (isset($_GET['background']))
+{
+	$criteria->compare('theme',$_GET['background'],true);
 }
 	}
 

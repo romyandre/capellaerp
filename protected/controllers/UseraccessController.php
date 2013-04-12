@@ -51,6 +51,10 @@ class UseraccessController extends Controller
               'password'=>$model->password,
               'realname'=>$model->realname,
               'email'=>$model->email,
+			  'theme'=>$model->theme,
+			  'languageid'=>$model->languageid,
+			  'languagename'=>($model->language!==null)?$model->language->languagename:'',
+			  'background'=>$model->background,
               'recordstatus'=>$model->recordstatus,
               ));
           Yii::app()->end();
@@ -78,6 +82,7 @@ class UseraccessController extends Controller
                 array(array($_POST['Useraccess']['realname'],'emptyrealname','emptystring'),
             array($_POST['Useraccess']['username'],'emptyusername','emptystring'),
             array($_POST['Useraccess']['email'],'emptyemailname','emptystring'),
+            array($_POST['Useraccess']['languageid'],'emptylanguagename','emptystring'),
             )
         );
         if ($messages == '') {
@@ -89,6 +94,9 @@ class UseraccessController extends Controller
 			$this->useraction='update';
             $model->username = $_POST['Useraccess']['username'];
             $model->realname = $_POST['Useraccess']['realname'];
+			            $model->theme = $_POST['Useraccess']['theme'];
+            $model->languageid = $_POST['Useraccess']['languageid'];
+            $model->background = $_POST['Useraccess']['background'];
             if ($_POST['Useraccess']['password'] == '')
             {
               $model->password = $oldpass;

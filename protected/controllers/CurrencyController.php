@@ -153,10 +153,10 @@ if (isset($_GET['pageSize']))
 	public function actionDownload()
 	{
 		parent::actionDownload();
-		$sql = "select countryname,currencyname,symbol,i18n
+		$sql = "select countryname,currencyname,symbol
 				from currency a
 left join country b on b.countryid = a.countryid				";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.currencyid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
@@ -164,18 +164,14 @@ left join country b on b.countryid = a.countryid				";
 
 		$this->pdf->title='Currency List';
 		$this->pdf->AddPage('P');
-		$this->pdf->setFont('Arial','B',12);
-
-		// definisi font
-		$this->pdf->setFont('Arial','B',8);
-
-		$this->pdf->setaligns(array('C','C','C','C'));
-		$this->pdf->setwidths(array(80,50,30,30));
-		$this->pdf->Row(array('Country Name','Currency Name','Symbol','i18n'));
-		$this->pdf->setaligns(array('L','L','L','L'));
+		$this->pdf->colalign=array('C','C','C','C');
+		$this->pdf->setwidths(array(60,80,30,30));
+		$this->pdf->colheader=array('Country Name','Currency Name','Symbol');
+		$this->pdf->RowHeader();
+		$this->pdf->coldetailalign=array('L','L','L','L');
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['countryname'],$row1['currencyname'],$row1['symbol'],$row1['i18n']));
+		  $this->pdf->row(array($row1['countryname'],$row1['currencyname'],$row1['symbol']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();

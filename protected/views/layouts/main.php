@@ -26,6 +26,7 @@
 								array('label'=>'Group Menu Object', 'url'=>array('/groupmenuauth/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupmenuauth')),
 								array('label'=>'User Group', 'url'=>array('/usergroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('usergroup')),
 								array('label'=>'Group Menu', 'url'=>array('/groupmenu/index'),'visible'=>Groupmenu::model()->GetReadMenu('groupmenu')),
+								array('label'=>'User Menu', 'url'=>array('/usermenu/index'),'visible'=>Groupmenu::model()->GetReadMenu('usermenu')),
 							)
 						),
 						array('label'=>'Company', 'url'=>array('/company/index'),'visible'=>Groupmenu::model()->GetReadMenu('company')),
@@ -55,40 +56,40 @@
 						),
 						array('label'=>'Currency', 'url'=>array('/currency/index'),'visible'=>Groupmenu::model()->GetReadMenu('currency')),
 						array('label'=>'Address Type', 'url'=>array('/addresstype/index'),'visible'=>Groupmenu::model()->GetReadMenu('addresstype')),
-						array('label'=>'Contact Type - ccty', 'url'=>array('/contacttype/index'),'visible'=>Groupmenu::model()->GetReadMenu('contacttype')),
-						array('label'=>'Identity Type - cit', 'url'=>array('/identitytype/index'),'visible'=>Groupmenu::model()->GetReadMenu('identitytype')),
-						array('label'=>'Rome Type - cro', 'url'=>array('/romawi/index'),'visible'=>Groupmenu::model()->GetReadMenu('romawi')),
-						array('label'=>'Industry - cin', 'url'=>array('/industry/index'),'visible'=>Groupmenu::model()->GetReadMenu('industry')),
-						array('label'=>'Plant - cpl', 'url'=>array('/plant/index'),'visible'=>Groupmenu::model()->GetReadMenu('plant')),
-						array('label'=>'Storage Location - isl', 'url'=>array('/sloc/index'),'visible'=>Groupmenu::model()->GetReadMenu('sloc')),
-						array('label'=>'Unit of Measure - ium', 'url'=>array('/unitofmeasure/index'),'visible'=>Groupmenu::model()->GetReadMenu('unitofmeasure')),
+						array('label'=>'Contact Type', 'url'=>array('/contacttype/index'),'visible'=>Groupmenu::model()->GetReadMenu('contacttype')),
+						array('label'=>'Identity Type', 'url'=>array('/identitytype/index'),'visible'=>Groupmenu::model()->GetReadMenu('identitytype')),
+						array('label'=>'Rome Type', 'url'=>array('/romawi/index'),'visible'=>Groupmenu::model()->GetReadMenu('romawi')),
+						array('label'=>'Industry', 'url'=>array('/industry/index'),'visible'=>Groupmenu::model()->GetReadMenu('industry')),
+						array('label'=>'Plant', 'url'=>array('/plant/index'),'visible'=>Groupmenu::model()->GetReadMenu('plant')),
+						array('label'=>'Storage Location', 'url'=>array('/sloc/index'),'visible'=>Groupmenu::model()->GetReadMenu('sloc')),
+						array('label'=>'Unit of Measure', 'url'=>array('/unitofmeasure/index'),'visible'=>Groupmenu::model()->GetReadMenu('unitofmeasure')),
 						array('label'=>'Material Master','visible'=>Groupmenu::model()->GetReadMenu('materialmaster'),
 							'items'=>array(
-								array('label'=>'Material Type - pmmt', 'url'=>array('/materialtype/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialtype')),
-								array('label'=>'Material Group - pmmg', 'url'=>array('/materialgroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialgroup')),
-								array('label'=>'Material Status - pmms', 'url'=>array('/materialstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialstatus')),
-								array('label'=>'Ownership - mmow', 'url'=>array('/ownership/index'),'visible'=>Groupmenu::model()->GetReadMenu('ownership')),
-								array('label'=>'Material Main Data - mmmd', 'url'=>array('/product/index'),'visible'=>Groupmenu::model()->GetReadMenu('product')),
-								array('label'=>'Material Detail Data - mmpb', 'url'=>array('/productbasic/index'),'visible'=>Groupmenu::model()->GetReadMenu('productbasic')),
-								array('label'=>'Material Purchasing Data - mmpr', 'url'=>array('/productpurchase/index'),'visible'=>Groupmenu::model()->GetReadMenu('productpurchase')),
-								array('label'=>'Material Storage Location Data - mmpp', 'url'=>array('/productplant/index'),'visible'=>Groupmenu::model()->GetReadMenu('productplant')),
-								array('label'=>'Material Unit Conversion - mmpc', 'url'=>array('/productconversion/index'),'visible'=>Groupmenu::model()->GetReadMenu('productconversion')),
+								array('label'=>'Material Type', 'url'=>array('/materialtype/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialtype')),
+								array('label'=>'Material Group', 'url'=>array('/materialgroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialgroup')),
+								array('label'=>'Material Status', 'url'=>array('/materialstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialstatus')),
+								array('label'=>'Ownership', 'url'=>array('/ownership/index'),'visible'=>Groupmenu::model()->GetReadMenu('ownership')),
+								array('label'=>'Material Main Data', 'url'=>array('/product/index'),'visible'=>Groupmenu::model()->GetReadMenu('product')),
+								array('label'=>'Material Detail Data', 'url'=>array('/productbasic/index'),'visible'=>Groupmenu::model()->GetReadMenu('productbasic')),
+								array('label'=>'Material Purchasing Data', 'url'=>array('/productpurchase/index'),'visible'=>Groupmenu::model()->GetReadMenu('productpurchase')),
+								array('label'=>'Material Storage Location Data', 'url'=>array('/productplant/index'),'visible'=>Groupmenu::model()->GetReadMenu('productplant')),
+								array('label'=>'Material Unit Conversion', 'url'=>array('/productconversion/index'),'visible'=>Groupmenu::model()->GetReadMenu('productconversion')),
 							)
 						),
-						array('label'=>'Supplier - mms', 'visible'=>Groupmenu::model()->GetReadMenu('supplier'),'url'=>array('/supplier/index')),
+						array('label'=>'Address Book', 'url'=>array('/addressbook/index'),'visible'=>Groupmenu::model()->GetReadMenu('addressbook')),
+						array('label'=>'Supplier', 'visible'=>Groupmenu::model()->GetReadMenu('supplier'),'url'=>array('/supplier/index')),
 						array('label'=>'Customer - scu','visible'=>Groupmenu::model()->GetReadMenu('customer'),'url'=>array('/customer/index')),
-						array('label'=>'Address Book - aap', 'url'=>array('/addressbook/index'),'visible'=>Groupmenu::model()->GetReadMenu('addressbook')),
 						array('label'=>'Insurance - cins','url'=>array('/insurance/index'),'visible'=>Groupmenu::model()->GetReadMenu('insurance')),
 						array('label'=>'Bank - cobn','url'=>array('/bank/index'),'visible'=>Groupmenu::model()->GetReadMenu('bank')),							
 					)
 				),
 				array('label'=>'Accounting','visible'=>Groupmenu::model()->GetReadMenu('accounting'),
 					'items'=>array(
-						array('label'=>'Accounting Period - aap', 'url'=>array('/accperiod/index'),'visible'=>Groupmenu::model()->GetReadMenu('accperiod')),
-						array('label'=>'Account Type - aat', 'url'=>array('/accounttype/index'),'visible'=>Groupmenu::model()->GetReadMenu('accounttype')),
-						array('label'=>'Payment Method - apt', 'url'=>array('/paymentmethod/index'),'visible'=>Groupmenu::model()->GetReadMenu('paymentmethod')),
-						array('label'=>'Tax - atx', 'url'=>array('/tax/index'),'visible'=>Groupmenu::model()->GetReadMenu('tax')),
-						array('label'=>'Chart of Account - aacc', 'url'=>array('/account/index'),'visible'=>Groupmenu::model()->GetReadMenu('account')),
+						array('label'=>'Accounting Period', 'url'=>array('/accperiod/index'),'visible'=>Groupmenu::model()->GetReadMenu('accperiod')),
+						array('label'=>'Account Type', 'url'=>array('/accounttype/index'),'visible'=>Groupmenu::model()->GetReadMenu('accounttype')),
+						array('label'=>'Payment Method', 'url'=>array('/paymentmethod/index'),'visible'=>Groupmenu::model()->GetReadMenu('paymentmethod')),
+						array('label'=>'Tax', 'url'=>array('/tax/index'),'visible'=>Groupmenu::model()->GetReadMenu('tax')),
+						array('label'=>'Chart of Account', 'url'=>array('/account/index'),'visible'=>Groupmenu::model()->GetReadMenu('account')),
 						array('label'=>'General Journal', 'visible'=>Groupmenu::model()->GetReadMenu('reportgl'),
 									'items'=>array(
 										array('label'=>'General Journal - agj', 'url'=>array('/genjournal/index'),'visible'=>Groupmenu::model()->GetReadMenu('genjournal')),
@@ -337,7 +338,6 @@
 		);
 ?>
 <div id="leftbar">
-<h1>Favourite</h1>
 <?php
 $menus = Groupmenu::model()->findallbysql('select a.*
 	from groupmenu a
@@ -350,7 +350,7 @@ $menus = Groupmenu::model()->findallbysql('select a.*
 	foreach ($menus as $menu)
 	{
 	echo '<div id="icon">';
-    echo "<a href='index.php?r=".$menu->menuaccess->menuurl."'><img src='".Yii::app()->request->baseUrl."/images/".$menu->menuaccess->menuicon."'></img></a>";
+    echo "<a href='index.php?r=".$menu->menuaccess->menuurl."'><img style='width:64px;height:64px;' src='".Yii::app()->request->baseUrl."/images/".$menu->menuaccess->menuicon."'></img></a>";
 	echo '<div class="iconname">';
 	echo $menu->menuaccess->description;
 	echo '</div>';

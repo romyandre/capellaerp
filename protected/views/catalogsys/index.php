@@ -50,9 +50,9 @@ $('#Catalogsys_messagesid').val(data.messagesid);
 $('#messagename').val(data.messagename);
 $('#Catalogsys_catalogval').val(data.catalogval);
 if(data.recordstatus=='1')
-{document.forms[0].elements[8].checked=true;}
+{document.forms[0].elements[9].checked=true;}
 else
-{document.forms[0].elements[8].checked=false;}
+{document.forms[0].elements[9].checked=false;}
                     $('#createdialog').dialog('open');
                 }
                 else
@@ -75,6 +75,7 @@ function deletedata(value)
             {
                 if (data.status == 'success')
                 {
+					toastr.info(data.div);
                     js:$.fn.yiiGridView.update('datagrid');
                 }
                 else
