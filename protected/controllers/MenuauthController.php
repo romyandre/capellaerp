@@ -152,7 +152,7 @@ if (isset($_GET['pageSize']))
   public function actionDownload()
 	{
 		parent::actionDownload();
-		$sql = "select b.menuname,a.menuobject
+		$sql = "select a.menuobject
 				from menuauth a ";
 		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.menuauthid = ".$_GET['id'];
@@ -164,7 +164,7 @@ if (isset($_GET['pageSize']))
 		$this->pdf->AddPage('P');
 		$this->pdf->colalign=array('C','C');
 		$this->pdf->setwidths(array(70,50));
-		$this->pdf->colheader=array('Menu Name','Menu Object');
+		$this->pdf->colheader=array('Menu Object');
 		$this->pdf->RowHeader();
 		$this->pdf->coldetailalign=array('L','L');
 		foreach($dataReader as $row1)

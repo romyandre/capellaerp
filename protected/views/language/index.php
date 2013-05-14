@@ -19,6 +19,7 @@ function adddata()
                 {
 					$('#Language_languageid').val('');
 					$('#Language_languagename').val('');
+					$('#Language_formatdate').val('');
                           // Here is the trick: on submit-> once again this function!
                     $('#createdialog').dialog('open');
                 }
@@ -46,10 +47,11 @@ function editdata(value)
                 {
 					$('#Language_languageid').val(data.languageid);
 					$('#Language_languagename').val(data.languagename);
+					$('#Language_formatdate').val(data.formatdate);
 					 if (data.recordstatus == '1') {
-                    document.forms[0].elements[3].checked = true;
+                    document.forms[0].elements[4].checked = true;
                 } else {
-                    document.forms[0].elements[3].checked = false;
+                    document.forms[0].elements[4].checked = false;
                 }
                           // Here is the trick: on submit-> once again this function!
                     $('#createdialog').dialog('open');
@@ -151,7 +153,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('language') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=language/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",

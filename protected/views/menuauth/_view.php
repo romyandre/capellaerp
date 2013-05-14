@@ -5,14 +5,14 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
 <div id="tabledata">
 <div class="rowdata">
 	<span class="cell">ID</span>
-    <span class="cell"><?php echo $model->menuauthid;?></span>
+    <span class="cellcontent"><?php echo $model->menuauthid;?></span>
 </div>
 <div class="rowdata">
 	<span class="cell">Menu Object</span>
-    <span class="cell"><?php echo $model->menuobject;?></span>
+    <span class="cellcontent"><?php echo $model->menuobject;?></span>
 </div>
 <div class="rowdata">
 	<span class="cell">Status</span>
-    <span class="cell"><?php echo ($model->recordstatus==1)?Catalogsys::model()->getcatalog("active"):Catalogsys::model()->getcatalog("notactive");?></span>
+    <span class="cellcontent"><?php echo ($model->recordstatus==1)?Catalogsys::model()->getcatalog("active"):Catalogsys::model()->getcatalog("notactive");?></span>
 </div>
 </div>

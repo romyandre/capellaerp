@@ -7,23 +7,23 @@
 <div id="tabledata">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'realname'); ?></span>
-<span class="cell"><?php echo $form->textField($model,'realname',array('size'=>50,'maxlength'=>50)); ?></span>
+<span class="cellcontent"><?php echo $form->textField($model,'realname',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'username'); ?></span>
-<span class="cell"><?php echo $form->textField($model,'username',array('size'=>50,'maxlength'=>50)); ?></span>
+<span class="cellcontent"><?php echo $form->textField($model,'username',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'password'); ?><?php echo CHtml::hiddenField('passhide',''); ?></span>
-<span class="cell"><?php echo $form->passwordField($model,'password',array('size'=>50,'maxlength'=>50)); ?></span>
+<span class="cellcontent"><?php echo $form->passwordField($model,'password',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'email'); ?></span>
-<span class="cell"><?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?></span>
+<span class="cellcontent"><?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'languageid'); ?><?php echo $form->hiddenField($model,'languageid'); ?></span>
-	  <span class="cell"><input type="text" name="languagename" id="languagename" readonly >
+	  <span class="cellcontent"><input type="text" name="languagename" id="languagename" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'language_dialog',
@@ -70,15 +70,15 @@ $language=new Language('search');
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'theme'); ?></span>
-<span class="cell"><?php echo $form->textField($model,'theme',array('size'=>50,'maxlength'=>50)); ?></span>
+<span class="cellcontent"><?php echo $form->textField($model,'theme',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'background'); ?></span>
-<span class="cell"><?php echo $form->textField($model,'background',array('size'=>50,'maxlength'=>50)); ?></span>
+<span class="cellcontent"><?php echo $form->textField($model,'background',array('size'=>50,'maxlength'=>50)); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
-<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
+<span class="cellcontent"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',

@@ -5,7 +5,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 <?php echo $form->hiddenField($model,'accountid'); ?>
-	<div id="tabledata">
+	<div id="tabledialog">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'accounttypeid'); ?>
 		<?php echo $form->hiddenField($model,'accounttypeid'); ?></span>

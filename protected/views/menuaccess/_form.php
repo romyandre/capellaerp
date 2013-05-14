@@ -5,7 +5,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 <?php echo $form->hiddenField($model,'menuaccessid'); ?>
-<div id="tabledata">
+<div id="tabledialog">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'menucode'); ?></span>
 <span class="cell"><?php echo $form->textField($model,'menucode',array('size'=>10,'maxlength'=>10)); ?></span>

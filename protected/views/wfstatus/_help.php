@@ -1,2 +1,1 @@
-<h1>Pendahuluan</h1>
-Modul Blood Type digunakan untuk mendaftarkan golongan darah.
+<?php echo Catalogsys::model()->getcatalog('wfstatushelp'); ?>

@@ -116,6 +116,10 @@ if (isset($_GET['accounttypename']))
 		$criteria=new CDbCriteria;
 		$criteria->with=array('parentaccount','currency','accounttype');
 		$this->comparedb($criteria);
+		$criteria->compare('t.accountcode',$this->accountcode,true);
+		$criteria->compare('t.accountname',$this->accountname,true);
+		$criteria->compare('currency.currencyname',$this->currencyid,true);
+		$criteria->compare('accounttype.accounttypename',$this->accounttypeid,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 'pagination'=>array(
@@ -134,6 +138,10 @@ if (isset($_GET['accounttypename']))
 		$criteria->with=array('parentaccount','currency','accounttype');
 		$criteria->condition='t.recordstatus=1';
 		$this->comparedb($criteria);
+		$criteria->compare('t.accountcode',$this->accountcode,true);
+		$criteria->compare('t.accountname',$this->accountname,true);
+		$criteria->compare('currency.currencyname',$this->currencyid,true);
+		$criteria->compare('accounttype.accounttypename',$this->accounttypeid,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 'pagination'=>array(

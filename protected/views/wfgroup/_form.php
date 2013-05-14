@@ -24,6 +24,8 @@
         'id'=>'groupaccess-grid',
         'dataProvider'=>$groupaccess->searchwstatus(),
         'filter'=>$groupaccess,
+			'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
         'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
         'columns'=>array(
         array(
@@ -63,6 +65,8 @@
         'id'=>'workflow-grid',
         'dataProvider'=>$workflow->searchwstatus(),
         'filter'=>$workflow,
+			'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
         'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
         'columns'=>array(
         array(
@@ -116,8 +120,7 @@
 			{
 				toastr.error(x.div);
 			}
-        }')); ?></span>
-		<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('wfgroup/cancelwrite'),
 	  array(
 	  'success'=>'function(data)

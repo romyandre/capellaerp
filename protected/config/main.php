@@ -9,10 +9,6 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Capella ERP Indonesia',
 	'theme'=>'classic',
-	// preloading 'log' component
-	/*'preload'=>array(
-		'bootstrap'
-	),*/
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -40,6 +36,10 @@ return array(
 			'class' => 'ext.bootstrap.components.Bootstrap',
 			'responsiveCss' => true,
 		),*/
+		'format'=>array(
+			'class'=>'application.components.Formatter',
+		
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -72,17 +72,11 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'director@prismadataabadi.com',
+		'datetodb'=>'Y-m-d',
+		'dateviewcjui'=>'dd-M-yy',
+		'dateviewfromdb'=>'d-m-Y',
 		'defaultPageSize'=>3,
-		'defaultnumberqty'=>'#,##0.00',
-'defaultnumberprice'=>'#,##0.0000',
-'dateviewfromdb'=>'d-M-Y',
-        'dateviewcjui'=>'dd-mm-yy',
-        'dateviewgrid'=>'dd-MM-yyyy',
-        'datetodb'=>'Y-m-d',
-        'timeviewfromdb'=>'h:m',
-        'datetimeviewfromdb'=>'d-M-Y h:i',
-        'timeviewcjui'=>'h:m',
-        'datetimeviewgrid'=>'dd-MM-yyyy H:m',
-        'datetimetodb'=>'Y-m-d h:i',
+				'defaultYearFrom'=>date('Y')-1,
+		'defaultYearTo'=>date('Y'),
 	),
 );

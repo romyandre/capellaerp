@@ -48,9 +48,11 @@
                         ));
 
     $this->widget('zii.widgets.grid.CGridView', array(
-      'id'=>'catering-grid',
+      'id'=>'currency-grid',
       'dataProvider'=>$currency->Searchwstatus(),
       'filter'=>$currency,
+	  	  	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
@@ -73,7 +75,7 @@
 
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
-                          array('onclick'=>'$("#currency_dialog").dialog("open"); return false;',
+                          array('onclick'=>'$.fn.yiiGridView.update("currency-grid");$("#currency_dialog").dialog("open"); return false;',
                        ))?>	</span>
 </div>
 <div class="rowdata">

@@ -5,69 +5,58 @@
 	'enableAjaxValidation'=>false,
 	'htmlOptions'=>array('enctype'=>'multipart/form-data')
 )); ?>
-<?php
-$imghelp=CHtml::image(Yii::app()->request->baseUrl.'/images/help.png');
-echo CHtml::link($imghelp,'#',array(
-   'style'=>'cursor: pointer; text-decoration: underline;',
-   'onclick'=>"{helpdata(2)}",
-));  ?>
-
 <?php echo $form->hiddenField($model,'productid'); ?>
-	
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'productname'); ?>
-		<?php echo $form->textArea($model,'productname',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'productname'); ?>
+	<div id="tabledata">
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'productname'); ?></span>
+		<span class="cell"><?php echo $form->textArea($model,'productname',array('rows'=>6, 'cols'=>50)); ?></span>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'isstock'); ?>
-		<?php echo $form->checkBox($model,'isstock'); ?>
-		<?php echo $form->error($model,'isstock'); ?>
+	<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'isstock'); ?></span>
+		<span class="cell"><?php echo $form->checkBox($model,'isstock'); ?></span>
 	</div>
 
-		<div class="row">
-		<?php echo $form->labelEx($model,'recordstatus'); ?>
-    <?php echo $form->checkBox($model,'recordstatus'); ?>
-		<?php echo $form->error($model,'recordstatus'); ?>
+		<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
+    <span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 
-	<table>
-      <tr>
-        <td colspan="2" align="center">
-		<?php echo CHtml::ajaxSubmitButton('Save',
+	<div class="rowdata">
+<span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',
 		array('product/write'),
 	  array(
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
-			  $.fn.yiiGridView.update("datagrid");
-			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+				$.fn.yiiGridView.update("datagrid");
+				$("#createdialog").dialog("close");
+				toastr.info(x.div);
 			}
-        }')); ?>
-		<?php echo CHtml::ajaxSubmitButton('Cancel',
+			else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('product/cancelwrite'),
 	  array(
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
-			  $.fn.yiiGridView.update("datagrid");
-			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+				$.fn.yiiGridView.update("datagrid");			  
+				$("#createdialog").dialog("close");
+				toastr.info(x.div);
 			}
-        }')); ?>
-        </td>
-      </tr>
-    </table>
+			else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?></span>
+</div>
+</div>   
 <?php $this->endWidget(); ?>
 </div><!-- form -->

@@ -5,10 +5,9 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 <?php echo $form->hiddenField($model,'accperiodid'); ?>
-	<div id="tabledata">
+	<div id="tabledialog">
 <div class="rowdata">
-<span class="cell">
-		<?php echo $form->labelEx($model,'period'); ?>
+<span class="cell"><?php echo $form->labelEx($model,'period'); ?></span>
 		<span class="cell"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
               'attribute'=>'period',
               'model'=>$model,
@@ -24,12 +23,12 @@
                   'style'=>'height:20px',
                   'size'=>'10',
               ),
-          ));?>
+          ));?></span>
 	</div>
 
-	<div class="row">
-		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?>
+	<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
+		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',
@@ -48,7 +47,7 @@
 			{
 				toastr.error(x.div);
 			}
-        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
+        }')); ?></span><span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('accperiod/cancelwrite'),
 	  array(
 	  'success'=>'function(data)

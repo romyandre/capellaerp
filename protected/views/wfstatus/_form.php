@@ -30,6 +30,8 @@ $workflow->unsetAttributes();  // clear any default values
                     'id'=>'workflow-grid',
                     'dataProvider'=>$workflow->search(),
                     'filter'=>$workflow,
+						'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
                     'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
                     'columns'=>array(
                       array(
@@ -78,8 +80,7 @@ $workflow->unsetAttributes();  // clear any default values
 			{
 				toastr.error(x.div);
 			}
-        }')); ?></span>
-<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('wfstatus/cancelwrite'),
 	  array(
 	  'success'=>'function(data)

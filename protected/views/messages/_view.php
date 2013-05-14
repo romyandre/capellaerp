@@ -5,14 +5,14 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
 <div id="tabledata">
 <div class="rowdata">
 	<span class="cell">ID</span>
-    <span class="cell"><?php echo $model->messagesid;?></span>
+    <span class="cellcontent"><?php echo $model->messagesid;?></span>
 </div>
 <div class="rowdata">
 	<span class="cell">Message</span>
-    <span class="cell"><?php echo $model->messagename;?></span>
+    <span class="cellcontent"><?php echo $model->messagename;?></span>
 </div>
 <div class="rowdata">
 	<span class="cell">Description</span>
-    <span class="cell"><?php echo $model->description;?></span>
+    <span class="cellcontent"><?php echo $model->description;?></span>
 </div>
 </div>

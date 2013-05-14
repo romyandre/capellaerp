@@ -45,14 +45,14 @@ class Useraccess extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, realname, salt, email, recordstatus', 'required'),
+			array('username, realname, salt, email,recordstatus', 'required'),
 			array('recordstatus,languageid', 'numerical', 'integerOnly'=>true),
 			array('username,theme,background', 'length', 'max'=>50),
 			array('realname, email', 'length', 'max'=>100),
 			array('password, salt', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('useraccessid, username, realname, password, theme,salt, languageid,email, recordstatus', 'safe', 'on'=>'search'),
+			array('useraccessid, username, realname, password,theme,salt, languageid,email, recordstatus', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,6 +68,106 @@ class Useraccess extends CActiveRecord
 			'language' => array(self::BELONGS_TO, 'Language', 'languageid'),
 		);
 	}
+	
+	public function getformatdate()
+	{
+		$formatdate = 'dd-mm-yyyy';
+		$menu = Language::model()->findbysql("select formatdate 
+		from useraccess a 
+		inner join language b on b.languageid = a.languageid
+		where lower(username) = '".Yii::app()->user->id."'");
+		if ($menu != null)
+		{
+			$formatdate = $menu->formatdate;
+		}
+		return $formatdate;
+	}
+	
+	public function getformatqty()
+	{
+		$formatdate = '#,##0.00';
+		$menu = Language::model()->findbysql("select formatqty 
+		from useraccess a 
+		inner join language b on b.languageid = a.languageid
+		where lower(username) = '".Yii::app()->user->id."'");
+		if ($menu != null)
+		{
+			$formatdate = $menu->formatdate;
+		}
+		return $formatdate;
+	}
+	
+	public function getformatcurrency()
+	{
+		$formatdate = '#,##0.0000';
+		$menu = Language::model()->findbysql("select formatcurrency 
+		from useraccess a 
+		inner join language b on b.languageid = a.languageid
+		where lower(username) = '".Yii::app()->user->id."'");
+		if ($menu != null)
+		{
+			$formatdate = $menu->formatdate;
+		}
+		return $formatdate;
+	}
+	
+	public function getformatdec()
+	{
+		$formatdate = '.';
+		$menu = Language::model()->findbysql("select formatdec 
+		from useraccess a 
+		inner join language b on b.languageid = a.languageid
+		where lower(username) = '".Yii::app()->user->id."'");
+		if ($menu != null)
+		{
+			$formatdate = $menu->formatdate;
+		}
+		return $formatdate;
+	}
+	
+	public function getformatperiod()
+	{
+		$formatdate = '.';
+		$menu = Language::model()->findbysql("select formatperiod 
+		from useraccess a 
+		inner join language b on b.languageid = a.languageid
+		where lower(username) = '".Yii::app()->user->id."'");
+		if ($menu != null)
+		{
+			$formatdate = $menu->formatdate;
+		}
+		return $formatdate;
+	}
+	
+	public function getqtydecimal()
+	{
+		$formatdate = '.';
+		$menu = Language::model()->findbysql("select qtydecimal 
+		from useraccess a 
+		inner join language b on b.languageid = a.languageid
+		where lower(username) = '".Yii::app()->user->id."'");
+		if ($menu != null)
+		{
+			$formatdate = $menu->formatdate;
+		}
+		return $formatdate;
+	}
+	
+	public function getcurrdecimal()
+	{
+		$formatdate = '.';
+		$menu = Language::model()->findbysql("select currdecimal 
+		from useraccess a 
+		inner join language b on b.languageid = a.languageid
+		where lower(username) = '".Yii::app()->user->id."'");
+		if ($menu != null)
+		{
+			$formatdate = $menu->formatdate;
+		}
+		return $formatdate;
+	}
+	
+	
 
 	/**
 	 * @return array customized attribute labels (name=>label)

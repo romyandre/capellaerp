@@ -122,7 +122,7 @@ class AccountController extends Controller
             {
 			$this->InsertTranslog();
               $this->DeleteLock($this->menuname,$_POST['Account']['accountid']);
-              $this->GetSMessage('aaccinsertsuccess');
+              $this->GetSMessage('insertsuccess');
             }
             else
             {
@@ -192,7 +192,7 @@ class AccountController extends Controller
 				left join accounttype c on c.accounttypeid = a.accounttypeid
 				left join currency d on d.currencyid = a.currencyid
 				where a.parentaccountid = ".$accountid." and accounttypename = 'Detail'
-				order by cast(replace(a.accountcode,'.','') as decimal) ";
+				order by a.accountcode ";
 		$command=$this->connection->createCommand($sql);
 		$dataReader=$command->queryAll();
 		foreach($dataReader as $row)
@@ -210,7 +210,7 @@ inner join account b on b.parentaccountid = a.accountid
 left join accounttype c on c.accounttypeid = a.accounttypeid
 left join currency d on d.currencyid = a.currencyid
 where accounttypename = 'Header' ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "and a.accountid = ".$_GET['id'];
 		}
 		$sql = $sql . " order by a.accountcode ";

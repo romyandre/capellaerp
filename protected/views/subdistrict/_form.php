@@ -29,6 +29,8 @@ $city=new City('searchwstatus');
       'id'=>'product-grid',
       'dataProvider'=>$city->Searchwstatus(),
       'filter'=>$city,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(

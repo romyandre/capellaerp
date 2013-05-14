@@ -26,6 +26,8 @@
       'id'=>'plant-grid',
       'dataProvider'=>$plant->searchwstatus(),
       'filter'=>$plant,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(

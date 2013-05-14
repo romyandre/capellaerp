@@ -242,4 +242,21 @@ if (isset($_GET['email']))
 			  }
 			  return $a;
 	}
+	
+	public function getsymbol()
+	{
+		$a = 0;
+		$connection=Yii::app()->db;
+			  try
+			  {
+				$sql = 'select symbol from company a left join currency b on b.currencyid = a.currencyid limit 1';
+				$command=$connection->createCommand($sql);
+				$row = $command->queryrow();
+				$a = $row['symbol'];
+				}
+			  catch(Exception $e) // an exception is raised if a query fails
+			  {
+			  }
+			  return $a;
+	}
 }

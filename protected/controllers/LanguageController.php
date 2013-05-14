@@ -45,6 +45,7 @@ protected $menuname = 'language';
                 'status'=>'success',
 				'languageid'=>$model->languageid,
 				'languagename'=>$model->languagename,
+				'formatdate'=>$model->formatdate,
 				'recordstatus'=>$model->recordstatus,
 				));
             Yii::app()->end();
@@ -63,7 +64,9 @@ protected $menuname = 'language';
 	  if(isset($_POST['Language']))
 	  {
         $messages = $this->ValidateData(
-                array(array($_POST['Language']['languagename'],'emptylanguagename','emptystring'),
+                array(
+				array($_POST['Language']['languagename'],'emptylanguagename','emptystring'),
+				array($_POST['Language']['formatdate'],'emptyformatdate','emptystring'),
             )
         );
         if ($messages == '') {
@@ -73,6 +76,7 @@ protected $menuname = 'language';
 		  $this->olddata = $model->attributes;
 			$this->useraction='update';
 		  $model->languagename = $_POST['Language']['languagename'];
+		  $model->formatdate = $_POST['Language']['formatdate'];
 		  $model->recordstatus = $_POST['Language']['recordstatus'];
 		}
 		else
@@ -153,13 +157,13 @@ if (isset($_GET['pageSize']))
 		parent::actionDownload();
 		$sql = "select languagename
 				from language a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.languageid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
 		$dataReader=$command->queryAll();
 
-		$this->pdf->title='Language List';
+		$this->pdf->title='Language';
 		$this->pdf->AddPage('P');
 
 		$this->pdf->colalign = array('C');

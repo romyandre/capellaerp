@@ -92,6 +92,14 @@ recordstatus,accpiutangid,taxno', 'safe', 'on'=>'search'),
 {
 	$criteria->compare('fullname',$_GET['fullname'],true);
 }
+if ($_GET['contactphoneno'] !== '')
+{
+	$criteria->compare('addresscontact.phoneno',$_GET['contactphoneno'],true);
+}
+if ($_GET['addressphoneno'] !== '')
+{
+	$criteria->compare('address.phoneno',$_GET['addressphoneno'],true);
+}
 }
 
 	/**

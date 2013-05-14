@@ -191,7 +191,7 @@ if (isset($_GET['pageSize']))
 	public function actionDownload()
 	{
 		parent::actionDownload();
-		$sql = "select companyname, address, city, zipcode, taxno, b.currencyname
+		$sql = "select companyname, address, city, zipcode, taxno, b.currencyname,a.faxno,a.phoneno,a.webaddress,a.email,a.taxno,a.leftlogofile,a.rightlogofile
 				from company a 
 				left join currency b on b.currencyid = a.currencyid ";
 		if ($_GET['id'] !== '0') {
@@ -201,17 +201,17 @@ if (isset($_GET['pageSize']))
 		$dataReader=$command->queryAll();
 
 		$this->pdf->title='Company';
-		$this->pdf->AddPage('P');
+		$this->pdf->AddPage('L');
 
-		$this->pdf->colalign=array('C','C','C','C','C','C');
-		$this->pdf->setwidths(array(40,60,20,20,20,20));
-		$this->pdf->colheader =array('Company Name','Address','City','Zip Code','Tax No','Currency');
+		$this->pdf->colalign=array('C','C','C','C','C','C','C','C','C');
+		$this->pdf->setwidths(array(40,60,20,20,20,20,25,40,40));
+		$this->pdf->colheader =array('Company Name','Address','City','Zip Code','Tax No','Currency','Phone No','Email','Web Address');
 		$this->pdf->Rowheader();
-		$this->pdf->coldetailalign = array('L','L','L','L','L','L');
+		$this->pdf->coldetailalign = array('L','L','L','L','L','L','L','L','L');
 		foreach($dataReader as $row1)
 		{
 		  $this->pdf->row(array($row1['companyname'],$row1['address'],$row1['city'],$row1['zipcode']
-		  ,$row1['taxno'],$row1['currencyname']));
+		  ,$row1['taxno'],$row1['currencyname'],$row1['phoneno'],$row1['email'],$row1['webaddress']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();

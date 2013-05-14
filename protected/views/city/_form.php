@@ -12,7 +12,7 @@
 	  <span class="cell"><input type="text" name="provincename" id="provincename" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
-       array(   'id'=>'catering_dialog',
+       array(   'id'=>'province_dialog',
                 // additional javascript options for the dialog plugin
                 'options'=>array(
                                 'title'=>Yii::t('app','Province'),
@@ -23,9 +23,11 @@
                         ));
 
     $this->widget('zii.widgets.grid.CGridView', array(
-      'id'=>'catering-grid',
+      'id'=>'province-grid',
       'dataProvider'=>$province->Searchwstatus(),
       'filter'=>$province,
+	  	  	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
@@ -46,7 +48,7 @@
 
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
-                          array('onclick'=>'$("#catering_dialog").dialog("open"); return false;',
+                          array('onclick'=>'$.fn.yiiGridView.update("province-grid");$("#province_dialog").dialog("open"); return false;',
                        ))?></span>
 	</div>
 

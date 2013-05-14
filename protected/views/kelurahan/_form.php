@@ -31,6 +31,8 @@
       'id'=>'subdistrict-grid',
       'dataProvider'=>$subdistrict->Searchwstatus(),
       'filter'=>$subdistrict,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
@@ -45,13 +47,6 @@
           ),
 	array('name'=>'subdistrictid', 'visible'=>false,'value'=>'$data->subdistrictid','htmlOptions'=>array('width'=>'1%')),
         'subdistrictname',
-        array(
-          'class'=>'CCheckBoxColumn',
-          'name'=>'recordstatus',
-          'selectableRows'=>'0',
-          'header'=>'Record Status',
-          'checked'=>'$data->recordstatus'
-        ),
         ),
     ));
 

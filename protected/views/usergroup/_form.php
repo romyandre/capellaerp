@@ -7,7 +7,7 @@
 		<div id="tabledata">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'useraccessid'); ?><?php echo $form->hiddenField($model,'useraccessid'); ?></span>
-<span class="cell"><input type="text" name="username" id="username" readonly >
+<span class="cellcontent"><input type="text" name="username" id="username" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'useraccess_dialog',
@@ -27,6 +27,8 @@ $useraccess = new Useraccess('searchwstatus');
       'id'=>'useraccess-grid',
       'dataProvider'=>$useraccess->search(),
       'filter'=>$useraccess,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
@@ -51,7 +53,7 @@ $useraccess = new Useraccess('searchwstatus');
 </div>
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'groupaccessid'); ?><?php echo $form->hiddenField($model,'groupaccessid'); ?></span>
-<span class="cell"><input type="text" name="groupname" id="groupname" readonly>
+<span class="cellcontent"><input type="text" name="groupname" id="groupname" readonly>
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'groupaccess_dialog',
@@ -71,6 +73,8 @@ $groupaccess = new Groupaccess('searchwstatus');
       'id'=>'groupaccess-grid',
       'dataProvider'=>$groupaccess->Search(),
       'filter'=>$groupaccess,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(
@@ -110,8 +114,7 @@ $groupaccess = new Groupaccess('searchwstatus');
 			{
 				toastr.error(x.div);
 			}
-        }')); ?></span>
-<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('usergroup/cancelwrite'),
 	  array(
 	  'success'=>'function(data)

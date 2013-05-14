@@ -78,6 +78,18 @@ class Controller extends CController
 	  {
 		$catalogname = 'Duplicate entry';
 		}
+		if (strpos($catalogname,'periodover') == true)
+	  {
+		$catalogname = 'Period Over';
+		}
+		if (strpos($catalogname,'flowapppr') == true)
+	  {
+		$catalogname = 'Error Approval Workflow';
+		}
+		if (strpos($catalogname,'PROCEDURE') == true)
+	  {
+		$catalogname = 'Database Procedure does not exists';
+		}
          $message=Catalogsys::model()->findbysql("select a.*
 			from catalogsys a
 			inner join messages b on b.messagesid = a.messagesid 
@@ -288,6 +300,7 @@ if((Yii::app()->user->id == null) || (Yii::app()->user->id == 'Guest')) {
       }
       echo CJSON::encode(array(
           'status'=>'success',
+		  'div'=>'Cancel Form'
           ));
       Yii::app()->end();
     }

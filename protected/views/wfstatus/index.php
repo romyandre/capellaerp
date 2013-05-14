@@ -154,7 +154,6 @@ function downloaddata(value) {
 <h1><?php echo Catalogsys::model()->GetCatalog('wfstatus') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=wfstatus/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",

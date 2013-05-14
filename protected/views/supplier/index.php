@@ -124,28 +124,6 @@ function downloaddata(value) {
 	window.open('index.php?r=supplier/download&id='+value);
 }
 </script>
-<script>
-function opendataaddress(dialog,datagrid,id)
-{
-	$.fn.yiiGridView.update(datagrid, {
-                    data: {
-                        "Supplieraddress[addressbookid]": id,
-                    }});
-	$('#'+dialog).dialog('open');
-    return false;
-}
-</script>
-<script>
-function opendatacontact(dialog,datagrid,id)
-{
-	$.fn.yiiGridView.update(datagrid, {
-                    data: {
-                        "Suppliercontact[addressbookid]": id,
-                    }});
-	$('#'+dialog).dialog('open');
-    return false;
-}
-</script>
 <?php $this->beginWidget('zii.widgets.jui.CJuiDialog', array( // the dialog
     'id'=>'createdialog',
     'options'=>array(

@@ -32,7 +32,7 @@ return false;}
 function editdata(value)
 {
 <?php echo CHtml::ajax(array(
-			'url'=>array('company/update'),
+			'url'=>array('currency/update'),
             'data'=> array('id'=>'js:value'),
             'type'=>'post',
             'dataType'=>'json',

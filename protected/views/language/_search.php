@@ -9,6 +9,10 @@
     <span class="cell"><input type="text" name="search_language" id="search_language"></span>
 </div>
 <div class="rowdata">
+	<span class="cell">Date Format</span>
+    <span class="cell"><input type="text" name="search_formatdate" id="search_formatdate"></span>
+</div>
+<div class="rowdata">
 <span class="cell">
 <?php
 $imgsearch=CHtml::image(Yii::app()->request->baseUrl.'/images/search.png');
@@ -17,7 +21,8 @@ echo CHtml::link($imgsearch,'#',array(
 		   'onclick'=>'{
 				$.fn.yiiGridView.update("datagrid", {
                     data: {
-                        "languagename": $("#search_languagename").val(),
+                        "languagename": $("#search_language").val(),
+						"formatdate": $("#search_formatdate").val(),
                     }
 					});
 				$("#searchdialog").dialog("close");

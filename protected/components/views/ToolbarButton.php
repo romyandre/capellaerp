@@ -96,11 +96,10 @@
 		echo CHtml :: closeTag('li');
 	};
 	?>
-	<div class="recordpage">
-	<?php
+	<li>
+	<div class="recordpage"><?php
 	if ($this->isRecordPage == true) {
-	?>
-		Record/page<?php echo CHtml::textField('',Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),array('size'=>'5',
+	?>Record/page<?php echo CHtml::textField('',Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),array('size'=>'5',
 			// change 'user-grid' to the actual id of your grid!!
 			'onchange'=>$this->OnChange,
 						'id'=>'recordpage',
@@ -108,7 +107,7 @@
 		  ));
 	};
 	?>
-	</div>
+	</div></li>
 			</ul>
 </div>
 <div id="toolbarform">

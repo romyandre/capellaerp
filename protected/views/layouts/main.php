@@ -17,6 +17,7 @@
 				array('label'=>'Home', 'url'=>array('/site/index'),'image'=>Yii::app()->request->baseUrl.'/images/home.png'),
                 array('label'=>'System','visible'=>Groupmenu::model()->GetReadMenu('system'),
 					'items'=>array(
+						array('label'=>'Language', 'url'=>array('/language/index'),'visible'=>Groupmenu::model()->GetReadMenu('language')),
 						array('label'=>'Authentication','visible'=>Groupmenu::model()->GetReadMenu('objectauth'),
 							'items'=>array(
 								array('label'=>'User Access', 'url'=>array('/useraccess/index'),'visible'=>Groupmenu::model()->GetReadMenu('useraccess')),
@@ -38,7 +39,6 @@
 						array('label'=>'Workflow Group', 'url'=>array('/wfgroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('wfgroup')),
 						array('label'=>'Workflow Status', 'url'=>array('/wfstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('wfstatus')),
 						array('label'=>'Parameter', 'url'=>array('/parameter/index'),'visible'=>Groupmenu::model()->GetReadMenu('parameter')),
-						array('label'=>'Language', 'url'=>array('/language/index'),'visible'=>Groupmenu::model()->GetReadMenu('language')),
 						array('label'=>'Messages', 'url'=>array('/messages/index'),'visible'=>Groupmenu::model()->GetReadMenu('messages')),
 						array('label'=>'Catalog Translation', 'url'=>array('/catalogsys/index'),'visible'=>Groupmenu::model()->GetReadMenu('catalogsys')),
 					)
@@ -78,9 +78,7 @@
 						),
 						array('label'=>'Address Book', 'url'=>array('/addressbook/index'),'visible'=>Groupmenu::model()->GetReadMenu('addressbook')),
 						array('label'=>'Supplier', 'visible'=>Groupmenu::model()->GetReadMenu('supplier'),'url'=>array('/supplier/index')),
-						array('label'=>'Customer - scu','visible'=>Groupmenu::model()->GetReadMenu('customer'),'url'=>array('/customer/index')),
-						array('label'=>'Insurance - cins','url'=>array('/insurance/index'),'visible'=>Groupmenu::model()->GetReadMenu('insurance')),
-						array('label'=>'Bank - cobn','url'=>array('/bank/index'),'visible'=>Groupmenu::model()->GetReadMenu('bank')),							
+						array('label'=>'Customer','visible'=>Groupmenu::model()->GetReadMenu('customer'),'url'=>array('/customer/index')),
 					)
 				),
 				array('label'=>'Accounting','visible'=>Groupmenu::model()->GetReadMenu('accounting'),
@@ -90,22 +88,22 @@
 						array('label'=>'Payment Method', 'url'=>array('/paymentmethod/index'),'visible'=>Groupmenu::model()->GetReadMenu('paymentmethod')),
 						array('label'=>'Tax', 'url'=>array('/tax/index'),'visible'=>Groupmenu::model()->GetReadMenu('tax')),
 						array('label'=>'Chart of Account', 'url'=>array('/account/index'),'visible'=>Groupmenu::model()->GetReadMenu('account')),
-						array('label'=>'General Journal', 'visible'=>Groupmenu::model()->GetReadMenu('reportgl'),
+						array('label'=>'General Journal', 'visible'=>Groupmenu::model()->GetReadMenu('generaljournal'),
 									'items'=>array(
-										array('label'=>'General Journal - agj', 'url'=>array('/genjournal/index'),'visible'=>Groupmenu::model()->GetReadMenu('genjournal')),
-										array('label'=>'Report General Journal - agjrep', 'url'=>array('/reportgl/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportgl')),
+										array('label'=>'General Journal', 'url'=>array('/genjournal/index'),'visible'=>Groupmenu::model()->GetReadMenu('genjournal')),
+										array('label'=>'Report General Journal', 'url'=>array('/reportgl/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportgl')),
 									)
 								),
-						array('label'=>'Account Payable', 'visible'=>Groupmenu::model()->GetReadMenu('ap'),
+						array('label'=>'Account Payable', 'visible'=>Groupmenu::model()->GetReadMenu('accountpayable'),
 									'items'=>array(
-												array('label'=>'Invoice - aiap', 'visible'=>Groupmenu::model()->GetReadMenu('invoiceap'),'url'=>array('/invoiceap/index')),
-												array('label'=>'Report Invoice - agjrep', 'visible'=>Groupmenu::model()->GetReadMenu('repinvap'),'url'=>array('/repinvap/index')),
+												array('label'=>'Invoice', 'visible'=>Groupmenu::model()->GetReadMenu('invoiceap'),'url'=>array('/invoiceap/index')),
+												array('label'=>'Report Invoice', 'visible'=>Groupmenu::model()->GetReadMenu('repinvap'),'url'=>array('/repinvap/index')),
 												array('label'=>'Request Payment Report - arprp', 'visible'=>Groupmenu::model()->GetReadMenu('repreqpay'),'url'=>array('/repreqpay/index')),
 												array('label'=>'Realization Payment Report - arprr', 'visible'=>Groupmenu::model()->GetReadMenu('reprealpay'),'url'=>array('/reprealpay/index')),
 												array('label'=>'VAT Input Report - arvir', 'visible'=>Groupmenu::model()->GetReadMenu('repvatinput'),'url'=>array('/repvatinput/index')),
 									)
 								),
-						array('label'=>'Account Receivable', 'visible'=>Groupmenu::model()->GetReadMenu('ar'),
+						array('label'=>'Account Receivable', 'visible'=>Groupmenu::model()->GetReadMenu('accountreceivable'),
 									'items'=>array(
 												array('label'=>'Invoice - aiar', 'visible'=>Groupmenu::model()->GetReadMenu('invoicear'),'url'=>array('/invoicear/index')),
 												array('label'=>'Report Invoice - agjrep', 'visible'=>Groupmenu::model()->GetReadMenu('repinvar'),'url'=>array('/repinvar/index')),
@@ -134,12 +132,12 @@
 										array('label'=>'Reconciliation Bank Report - cbrbr', 'visible'=>Groupmenu::model()->GetReadMenu('reprekonbank'),'url'=>array('/reprekonbank/index')),
 									)
 								),
-						array('label'=>'Reports','visible'=>!Yii::app()->user->isGuest,
+						array('label'=>'Reports','visible'=>Groupmenu::model()->GetReadMenu('reportacc'),
 									'items'=>array(					
 										array('label'=>'General Ledger', 'url'=>array('/genledger/index'),'visible'=>Groupmenu::model()->GetReadMenu('genledger')),
 										array('label'=>'VAT In', 'url'=>array('/reportppnmasuk/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportppnmasuk')),
 										array('label'=>'VAT Out', 'url'=>array('/reportppnkeluar/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportppnkeluar')),
-										array('label'=>'Profit / Loss (standard)  - ','url'=>array('/repprofitloss/index'),	'visible'=>Groupmenu::model()->GetReadMenu('repprofitloss')),
+										array('label'=>'Profit / Loss (standard)','url'=>array('/repprofitloss/index'),	'visible'=>Groupmenu::model()->GetReadMenu('repprofitloss')),
 										array('label'=>'Balance Sheet (standard)','url'=>array('/repneraca/index'),	'visible'=>Groupmenu::model()->GetReadMenu('repneraca')),
 									)
 								),
@@ -268,26 +266,34 @@
 				),
 				array('label'=>'Purchasing','visible'=>Groupmenu::model()->GetReadMenu('purchasing'),
 					'items'=>array(
-						array('label'=>'Purchasing Organization - ppo', 'url'=>array('/purchasingorg/index'),'visible'=>Groupmenu::model()->GetReadMenu('purchasingorg')),
-						array('label'=>'Purchasing Group - ppg', 'url'=>array('/purchasinggroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('purchasinggroup')),
+						array('label'=>'Purchasing Organization', 'url'=>array('/purchasingorg/index'),'visible'=>Groupmenu::model()->GetReadMenu('purchasingorg')),
+						array('label'=>'Purchasing Group', 'url'=>array('/purchasinggroup/index'),'visible'=>Groupmenu::model()->GetReadMenu('purchasinggroup')),
+						array('label'=>'Price List History', 'url'=>array('/purchinforec/index'),'visible'=>Groupmenu::model()->GetReadMenu('purchinforec')),
+						array('label'=>'Purchase Order', 'visible'=>Groupmenu::model()->GetReadMenu('purchaseorder'),
+							'items'=>array(
+								array('label'=>'Purchase Order','url'=>array('/poheader/index'),'visible'=>Groupmenu::model()->GetReadMenu('poheader')),
+								array('label'=>'PO Report','url'=>array('/reportpo/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportpo')),
+								array('label'=>'PO Summary Report','url'=>array('/repposummary/index'),'visible'=>Groupmenu::model()->GetReadMenu('repposummary'))
+							)
+						)
 					)
 				),
 				array('label'=>'Inventory','visible'=>Groupmenu::model()->GetReadMenu('inventory'),
 					'items'=>array(
-						array('label'=>'Requested By - ireby', 'url'=>array('/requestedby/index'),'visible'=>Groupmenu::model()->GetReadMenu('requestedby')),
-						array('label'=>'Form Request (goods/service/delivery)', 'visible'=>Groupmenu::model()->GetReadMenu('reportda'),
+						array('label'=>'Requested By', 'url'=>array('/requestedby/index'),'visible'=>Groupmenu::model()->GetReadMenu('requestedby')),
+						array('label'=>'Form Request (goods/service/delivery)', 'visible'=>Groupmenu::model()->GetReadMenu('formrequest'),
 							'items'=>array(
-								array('label'=>'Form Request (goods/service/delivery) - ida', 'url'=>array('/deliveryadvice/index'),'visible'=>Groupmenu::model()->GetReadMenu('deliveryadvice')),
-								array('label'=>'Report Form Request (goods/service/delivery) - irda', 'url'=>array('/reportda/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportda')),
+								array('label'=>'Form Request (goods/service/delivery)', 'url'=>array('/deliveryadvice/index'),'visible'=>Groupmenu::model()->GetReadMenu('deliveryadvice')),
+								array('label'=>'Form Request Report (goods/service/delivery)', 'url'=>array('/reportda/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportda')),
 							)
 						),
-						array('label'=>'Purchase Requisition','visible'=>Groupmenu::model()->GetReadMenu('reportpr'),
+						array('label'=>'Purchase Requisition','visible'=>Groupmenu::model()->GetReadMenu('purchrequest'),
 							'items'=>array(
-								array('label'=>'Purchase Requisition - ipr', 'url'=>array('/prheader/index'),'visible'=>Groupmenu::model()->GetReadMenu('prheader')),
-                                array('label'=>'Report PR', 'url'=>array('/reportpr/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportpr')),
+								array('label'=>'Purchase Requisition', 'url'=>array('/prheader/index'),'visible'=>Groupmenu::model()->GetReadMenu('prheader')),
+                                array('label'=>'Purchase Request Report', 'url'=>array('/reportpr/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportpr')),
 							)
 						),
-						array('label'=>'Goods Received', Groupmenu::model()->GetReadMenu('reportgr'), 
+						array('label'=>'Goods Received', Groupmenu::model()->GetReadMenu('goodsreceived'), 
 							'items'=>array(							
 								array('label'=>'Goods Received', 'visible'=>Groupmenu::model()->GetReadMenu('grheader'), 'url'=>array('/grheader/index')),
 								array('label'=>'Report GR', 'url'=>array('/reportgr/index'),'visible'=>Groupmenu::model()->GetReadMenu('reportgr'))
@@ -359,6 +365,9 @@ $menus = Groupmenu::model()->findallbysql('select a.*
 ?>
 </div>
 	<?php echo $content; ?>
+	<div id="rightbar">
+	User Online<br>User Chat<br>User Todo
+	</div>
 <?php
     $this->widget('ext.etoastr.EToastr',array(
         'flashMessagesOnly'=>true, //default to false

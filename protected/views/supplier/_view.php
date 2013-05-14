@@ -17,7 +17,7 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
 </div>
 <div class="rowdata">
 <span class="cell">Address</span>
-<span class="cell">
+<span class="cellcontent">
 <div id='tabledetail'>
 <?php $supplieraddress = Supplieraddress::model()->findallbyattributes(array('addressbookid'=>$model->addressbookid)); 
 echo "<div class='rowheader'>";
@@ -50,6 +50,9 @@ foreach ($supplieraddress as $sa)
 echo "<div class='rowheader'>";
  echo "<span class='celldetail'>Contact Type</span>";
  echo "<span class='celldetail'>Contact</span>";
+ echo "<span class='celldetail'>Phone No</span>";
+ echo "<span class='celldetail'>Mobile Phone</span>";
+ echo "<span class='celldetail'>Email</span>";
  echo "</div>";
 
 foreach ($supplieraddress as $sa)
@@ -57,6 +60,9 @@ foreach ($supplieraddress as $sa)
  echo "<div class='rowdetail'>";
  echo "<span class='celldetail'>".($sa->contacttype!==null)?$sa->contacttype->contacttypename:''."</span>";
  echo "<span class='celldetail'>".$sa->addresscontactname."</span>";
+ echo "<span class='celldetail'>".$sa->phoneno."</span>";
+ echo "<span class='celldetail'>".$sa->mobilephone."</span>";
+ echo "<span class='celldetail'>".$sa->emailaddress."</span>";
  echo "</div>";
 }
 ?>

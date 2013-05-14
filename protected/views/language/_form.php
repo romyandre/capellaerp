@@ -5,10 +5,15 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 <?php echo $form->hiddenField($model,'languageid'); ?>
-	<div id="tabledata">
+	<div id="tabledialog">
 <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'languagename'); ?></span>
 		<span class="cell"><?php echo $form->textField($model,'languagename',array('size'=>30,'maxlength'=>30)); ?></span>
+	</div>
+	
+	<div class="rowdata">
+		<span class="cell"><?php echo $form->labelEx($model,'formatdate'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'formatdate',array('size'=>30,'maxlength'=>10)); ?></span>
 	</div>
 
 	<div class="rowdata">
@@ -31,8 +36,7 @@ else
 			{
 				toastr.error(x.div);
 			}
-        }')); ?></span>
-<span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('language/cancelwrite'),
 	  array(
 	  'success'=>'function(data)

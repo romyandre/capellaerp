@@ -29,6 +29,8 @@ $country=new Country('searchwstatus');
       'id'=>'product-grid',
       'dataProvider'=>$country->Searchwstatus(),
       'filter'=>$country,
+	  	'pager' => array('cssFile' => Yii::app()->theme->baseUrl . '/css/main.css'),
+'cssFile' => Yii::app()->theme->baseUrl . '/css/main.css',
       'template'=>'{summary}{pager}<br>{items}{pager}{summary}',
       'columns'=>array(
         array(

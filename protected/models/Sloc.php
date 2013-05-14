@@ -154,7 +154,7 @@ $this->comparedb($criteria);
 $criteria->with=array('plant');
 $this->comparedb($criteria);
 		$criteria->condition="t.recordstatus=1 and 
-slocid in (select gm.menuvalueid from groupaccess c
+slocid in (select gm.menuvalue from groupaccess c
 inner join usergroup d on d.groupaccessid = c.groupaccessid
 inner join useraccess e on e.useraccessid = d.useraccessid
 inner join groupmenuauth gm on gm.groupaccessid = c.groupaccessid

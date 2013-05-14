@@ -35,12 +35,13 @@ class Language extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('languagename, recordstatus', 'required'),
+			array('languagename, formatdate,recordstatus', 'required'),
 			array('recordstatus', 'numerical', 'integerOnly'=>true),
+			array('formatdate', 'length', 'max'=>10),
 			array('languagename', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('languageid, languagename, recordstatus', 'safe', 'on'=>'search'),
+			array('languageid, languagename, formatdate,recordstatus', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,9 +64,22 @@ class Language extends CActiveRecord
 		return array(
 			'languageid' => 'Data',
 			'languagename' => 'Language ',
+			'formatdate' => 'Date Format',
 			'recordstatus' => 'Record Status',
 		);
 	}
+	
+	private function comparedb($criteria)
+	{
+		if (isset($_GET['languagename']))
+{
+	$criteria->compare('languagename',$_GET['languagename'],true);
+}
+if (isset($_GET['formatdate']))
+{
+	$criteria->compare('formatdate',$_GET['formatdate'],true);
+}
+}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -77,8 +91,10 @@ class Language extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+		$this->comparedb($criteria);
 		$criteria->compare('languageid',$this->languageid);
 		$criteria->compare('languagename',$this->languagename,true);
+		$criteria->compare('formatdate',$this->formatdate,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 'pagination'=>array(
@@ -98,9 +114,11 @@ class Language extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+	$this->comparedb($criteria);
     $criteria->condition='recordstatus=1';
 		$criteria->compare('languageid',$this->languageid);
 		$criteria->compare('languagename',$this->languagename,true);
+		$criteria->compare('formatdate',$this->formatdate,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 'pagination'=>array(
