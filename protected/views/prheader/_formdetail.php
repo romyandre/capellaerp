@@ -11,7 +11,7 @@
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'productid'); ?>
 <?php echo $form->hiddenField($model,'productid'); ?></span>
-       <span class="cell"><input type="text" name="product_name" id="productname" title="Account name" style="width: 200px" readonly >
+       <span class="cellform"><input type="text" name="product_name" id="productname" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'product_dialog',
@@ -54,12 +54,12 @@
 	</div>
           <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'qty'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'qty'); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'qty'); ?></span>
 	</div>
           <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'unitofmeasureid'); ?>
 <?php echo $form->hiddenField($model,'unitofmeasureid'); ?></span>
-	  <span class="cell"><input type="text" name="product_name" id="uomcode" title="Account name" readonly >
+	  <span class="cellform"><input type="text" name="product_name" id="uomcode" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'uom_dialog',
@@ -97,13 +97,17 @@
 
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
-                          array('onclick'=>'$("#uom_dialog").dialog("open"); return false;',
+                          array('onclick'=>'$.fn.yiiGridView.update("uom-grid", {
+                    data: {
+                        "productid": $("#Prdetail_productid").val(),
+                    }
+                });$("#uom_dialog").dialog("open"); return false;',
                        ))?></span>
 	</div>
           <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'requestedbyid'); ?>
 <?php echo $form->hiddenField($model,'requestedbyid'); ?></span>
-	  <span class="cell"><input type="text" name="reqbyname" id="reqbyname" title="Account name" readonly >
+	  <span class="cellform"><input type="text" name="reqbyname" id="reqbyname" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'req_dialog',
@@ -147,7 +151,7 @@
 	</div>
             <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'reqdate'); ?></span>
-		<span class="cell"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		<span class="cellform"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
               'attribute'=>'reqdate',
               'model'=>$model,
               // additional javascript options for the date picker plugin
@@ -164,7 +168,7 @@
 	</div>
            <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'itemtext'); ?></span>
-		<span class="cell"><?php echo $form->textArea($model,'itemtext',array('rows'=>6, 'cols'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textArea($model,'itemtext',array('rows'=>6, 'cols'=>30)); ?></span>
 	</div>
 	<div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',

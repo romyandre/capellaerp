@@ -360,19 +360,16 @@ protected $menuname = 'genjournal';
 	  $this->pdf->setFont('Arial','B',8);
 
 	  // menuliskan tabel
-	  $connection=Yii::app()->db;
     $sql = "select a.referenceno,a.journalnote,a.journaldate,a.genjournalid,a.journalno,a.recordstatus
       from genjournal a ";
-	  if ($_GET['id'] !== '') {
+	  if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.genjournalid = ".$_GET['id'];
 		}
-    $command=$connection->createCommand($sql);
-    $dataReader=$command->queryAll();
+		$command=$this->connection->createCommand($sql);
+		$dataReader=$command->queryAll();;
 
     foreach($dataReader as $row)
     {
-		if ($this->checkprint($this->menuname,'prigenjournal',$row['recordstatus']))
-		{
       $this->pdf->setFont('Arial','B',10);
 	  $this->pdf->Rect(10,60,190,25);
       $this->pdf->text(15,$this->pdf->gety()+5,'No ');$this->pdf->text(50,$this->pdf->gety()+5,': '.$row['journalno']);
@@ -385,7 +382,7 @@ protected $menuname = 'genjournal';
         left join account b on b.accountid = a.accountid
         left join currency c on c.currencyid = a.currencyid
         where genjournalid = ".$row['genjournalid'];
-      $command1=$connection->createCommand($sql1);
+      $command1=$this->connection->createCommand($sql1);
       $dataReader1=$command1->queryAll();
 
 	  $this->pdf->SetY($this->pdf->gety()+25);
@@ -411,7 +408,6 @@ protected $menuname = 'genjournal';
       $this->pdf->text(10,$this->pdf->gety()+40,'------------ ');$this->pdf->text(170,$this->pdf->gety()+40,'------------');
 
       $this->pdf->CheckNewPage(10);
-      }
 	 }
 
     // me-render ke browser

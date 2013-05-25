@@ -48,7 +48,7 @@ foreach ($customeraddress as $sa)
  echo "<div class='rowdetail'>";
  echo "<span class='celldetail'>".$sa->product->productname."</span>";
  echo "<span class='celldetailnumeric'>".$sa->qty.$sa->unitofmeasure->uomcode."</span>";
- echo "<span class='celldetailnumeric'>".$sa->requestedby->description."</span>";
+ echo "<span class='celldetailnumeric'>".($sa->requestedby!==null?$sa->requestedby->description:'')."</span>";
  echo "<span class='celldetailnumeric'>".$sa->reqdate."</span>";
  echo "<span class='celldetailnumeric'>".$sa->poqty."</span>";
  echo "<span class='celldetail'>".$sa->itemtext."</span>";

@@ -155,7 +155,7 @@ if ($model != null)
 	parent::actionDownload();
     $sql = "select a.ownershipname
       from ownership a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.ownershipid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

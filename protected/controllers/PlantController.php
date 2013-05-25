@@ -167,12 +167,12 @@ public function actionDownload()
 
 		$this->pdf->colalign=array('C','C','C','C','C','C');
 		$this->pdf->setwidths(array(40,60,20,20,20,20));
-		$this->pdf->colheader =array('Plant Code','Plant Name');
+		$this->pdf->colheader =array('Plant Code','Description');
 		$this->pdf->Rowheader();
 		$this->pdf->coldetailalign = array('L','L','L','L','L','L');
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['plantcode'],$row1['plantname']));
+		  $this->pdf->row(array($row1['plantcode'],$row1['description']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();

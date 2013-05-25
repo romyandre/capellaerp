@@ -80,11 +80,11 @@ function editdata(value)
 					$('#materialname').val(data.materialpackagename);
 					if (data.recordstatus == '1')
 					{
-					  document.forms[0].elements[26].checked=true;
+					  document.forms[0].elements[25.checked=true;
 					}
 					else
 					{
-					  document.forms[0].elements[26].checked=false;
+					  document.forms[0].elements[25].checked=false;
 					}
                           // Here is the trick: on submit-> once again this function!
                     $('#createdialog').dialog('open');
@@ -141,7 +141,7 @@ return false;
 </script>
 <script type="text/javascript">
 function downloaddata(value) {
-	window.open('index.php?r=company/download&id='+value);
+	window.open('index.php?r=productbasic/download&id='+value);
 }
 </script><?php $this->beginWidget('zii.widgets.jui.CJuiDialog', array( // the dialog
     'id'=>'createdialog',

@@ -236,7 +236,7 @@ if ($model != null)
       left join sloc c on c.slocid = a.slocid
       left join unitofmeasure d on d.unitofmeasureid = a.unitofissue
       left join snro e on e.snroid = a.snroid ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.productplantid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

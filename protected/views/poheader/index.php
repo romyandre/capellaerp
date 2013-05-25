@@ -116,7 +116,7 @@ function approvedata(value)
     <?php
 	echo CHtml::ajax(array(
 			'url'=>array('poheader/approve'),
-            'data'=> array('id'=>'js:$.fn.yiiGridView.getSelection("datagrid")'),
+            'data'=> array('id'=>'js:value'),
             'type'=>'post',
             'dataType'=>'json',
             'success'=>"function(data)
@@ -152,18 +152,8 @@ return false;
 }
 </script>
 <script type="text/javascript">
-function showdetail() {
-    $.fn.yiiGridView.update('indatagrid', {
-                    data: {
-                        'Podetail[poheaderid]': $.fn.yiiGridView.getSelection("datagrid")[0]
-                    }
-                });
-    return false;
-}
-</script>
-<script type="text/javascript">
-function downloaddata() {
-	window.open('index.php?r=poheader/download&id='+$.fn.yiiGridView.getSelection("datagrid"));
+function downloaddata(value) {
+	window.open('index.php?r=poheader/download&id='+value);
 }
 </script>
 <?php $this->beginWidget('zii.widgets.jui.CJuiDialog', array( // the dialog

@@ -110,7 +110,7 @@ function helpdata(value) {
 }
 </script>
 <script type="text/javascript">
-function downloaddata() {
+function downloaddata(value) {
 	window.open('index.php?r=snrodet/download&id='+value);
 }
 </script>
@@ -153,7 +153,6 @@ function downloaddata() {
 <h1><?php echo Catalogsys::model()->GetCatalog('snrodet') ?></h1>
 		<?php
 $this->widget('ToolbarButton',array('isCreate'=>true,
-	'isUpload'=>true,'UrlUpload'=>'index.php?r=snrodet/upload',
 	'isSearch'=>true,
 	'isDownload'=>true,'isRefresh'=>true,
 	'isHelp'=>true,'OnClick'=>"{helpdata(1)}",

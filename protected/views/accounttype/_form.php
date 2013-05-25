@@ -8,13 +8,13 @@
 	<div id="tabledialog">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'accounttypename'); ?></span>
-		<span class="cellcontent"><?php echo $form->textField($model,'accounttypename'); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'accounttypename'); ?></span>
 	</div>
 
     <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'parentaccounttypeid'); ?>
 		<?php echo $form->hiddenField($model,'parentaccounttypeid'); ?></span>
-   <span class="cell"> <input type="text" name="parentaccounttypename" id="parentaccounttypename" readonly >
+   <span class="cellform"> <input type="text" name="parentaccounttypename" id="parentaccounttypename" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array('id'=>'parentaccounttype_dialog',

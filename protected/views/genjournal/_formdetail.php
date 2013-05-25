@@ -11,7 +11,7 @@
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'accountid'); ?>
 <?php echo $form->hiddenField($model,'accountid'); ?></span>
-	  <span class="cellcontent"><input type="text" name="account_name" id="account_name" readonly >    
+	  <span class="cellform"><input type="text" name="account_name" id="account_name" readonly >    
 <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'account_dialog',
@@ -59,18 +59,18 @@ $account=new Account('searchwstatus');
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'debit'); ?></span>
-		<span class="cellcontent"><?php echo $form->textField($model,'debit'); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'debit'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'credit'); ?></span>
-		<span class="cellcontent"><?php echo $form->textField($model,'credit'); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'credit'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'currencyid'); ?>
 <?php echo $form->hiddenField($model,'currencyid'); ?></span>
-	  <span class="cellcontent"><input type="text" name="account_name" id="currencyname" readonly >
+	  <span class="cellform"><input type="text" name="account_name" id="currencyname" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'currency_dialog',
@@ -118,12 +118,12 @@ $currency=new Currency('searchwstatus');
 
     	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'ratevalue'); ?></span>
-		<span class="cellcontent"><?php echo $form->textField($model,'ratevalue'); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'ratevalue'); ?></span>
 	</div>
 
     	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'detailnote'); ?></span>
-		<span class="cellcontent"><?php echo $form->textArea($model,'detailnote',array('cols'=>20,'rows'=>5)); ?></span>
+		<span class="cellform"><?php echo $form->textArea($model,'detailnote',array('cols'=>20,'rows'=>5)); ?></span>
 	</div>
 
 

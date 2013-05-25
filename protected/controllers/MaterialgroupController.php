@@ -221,9 +221,8 @@ left join materialtype c on c.materialtypeid = a.materialtypeid
 	parent::actionDownload();
     $sql = "select distinct a.materialgroupcode,a.description, c.materialtypecode,a.materialgroupid
 				from materialgroup a
-inner join materialgroup b on b.parentmatgroupid = a.materialgroupid
 left join materialtype c on c.materialtypeid = a.materialtypeid	";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.materialgroupid = ".$_GET['id'];
 		}
 		$sql = $sql . "  order by a.materialgroupcode ";
@@ -241,7 +240,6 @@ left join materialtype c on c.materialtypeid = a.materialtypeid	";
     {
       $this->pdf->row(array($row1['materialgroupcode'],$row1['materialtypecode'],
           $row1['description']));
-$this->coa($this->connection,$this->pdf,$row1['materialgroupid']);
     }
     // me-render ke browser
     $this->pdf->Output();

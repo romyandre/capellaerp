@@ -101,6 +101,7 @@ class Productbasic extends CActiveRecord
             'recordstatus'=>'Record Status'
 		);
 	}
+	
 	private function comparedb($criteria)
 	{
 		if (isset($_GET['productname']))

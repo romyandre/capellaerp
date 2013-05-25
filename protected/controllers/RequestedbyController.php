@@ -159,7 +159,7 @@ if (isset($_GET['pageSize']))
 	parent::actionDownload();
     $sql = "select a.requestedbycode,a.description
       from requestedby a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.requestedbyid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

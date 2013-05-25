@@ -154,7 +154,7 @@ if ($model != null)
 	parent::actionDownload();
     $sql = "select a.materialstatusname
       from materialstatus a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.materialstatusid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

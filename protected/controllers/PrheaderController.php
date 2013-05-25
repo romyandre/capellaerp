@@ -126,7 +126,7 @@ if ($model != null)
       from prheader a 
 	  left join sloc b on b.slocid = a.slocid 
 	  left join deliveryadvice c on c.deliveryadviceid = a.deliveryadviceid ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.prheaderid = ".$_GET['id'];
 		}
 		    $command=$this->connection->createCommand($sql);
@@ -267,10 +267,11 @@ $model->prdate = $_POST['Prheader']['prdate'];
 	  if(isset($_POST['Prmaterial']))
 	  {
         $messages = $this->ValidateData(
-                array(array($_POST['Prmaterial']['reqdate'],'emptyreqdate','emptystring'),
-                    array($_POST['Prmaterial']['productid'],'emptyproduct','emptystring'),
+                array(
+				    array($_POST['Prmaterial']['productid'],'emptyproductid','emptystring'),
                     array($_POST['Prmaterial']['qty'],'emptyqty','emptystring'),
-                    array($_POST['Prmaterial']['unitofmeasureid'],'emptyunitofmeasure','emptystring'),
+                    array($_POST['Prmaterial']['unitofmeasureid'],'emptyuomcode','emptystring'),
+				array($_POST['Prmaterial']['reqdate'],'emptyreqdate','emptystring'),               
             )
         );
         if ($messages == '') {

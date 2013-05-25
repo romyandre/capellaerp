@@ -150,65 +150,12 @@ if (isset($_GET['pageSize']))
 		));
 	}
 
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-	  $allowedExtensions = array("csv");
-	  $sizeLimit = (int)Yii::app()->params['sizeLimit'];// maximum file size in bytes
-	  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-	  $result = $uploader->handleUpload($folder,true);
-	  $row = 0;
-	  if (($handle = fopen($folder.$uploader->file->getName(), "r")) !== FALSE) {
-		  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if ($row>0) {
-			  $model=Messages::model()->findByPk((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Messages();
-			  }
-			  $model->messagesid = (int)$data[0];
-			  $model->messagename = $data[1];
-			  $model->recordstatus = (int)$data[2];
-			  try
-			  {
-				if(!$model->save())
-				{
-				  $errormessage=$model->getErrors();
-				  if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-				}
-			  }
-			  catch (Exception $e)
-			  {
-				$errormessage=$e->getMessage();
-				if (Yii::app()->request->isAjaxRequest)
-				  {
-					echo CJSON::encode(array(
-					  'status'=>'failure',
-					  'div'=>$errormessage
-					));
-				  }
-			  }
-			}
-			$row++;
-		  }
-		  fclose($handle);
-	  }
-	  $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-	  echo $result;
-  }
-
 	 public function actionDownload()
 	{
 		parent::actionDownload();
-		$sql = "select messagename
+		$sql = "select messagename,description
 				from messages a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.messagesid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
@@ -216,14 +163,14 @@ if (isset($_GET['pageSize']))
 
 		$this->pdf->title='Messages List';
 		$this->pdf->AddPage('P');
-		$this->pdf->colalign = array('C');
-		$this->pdf->setwidths(array(90));
-		$this->pdf->colheader = array('Messages');
+		$this->pdf->colalign = array('C','C');
+		$this->pdf->setwidths(array(60,90));
+		$this->pdf->colheader = array('Messages','Description');
 		$this->pdf->RowHeader();
-		$this->pdf->coldetailalign = array('L');
+		$this->pdf->coldetailalign = array('L','L');
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['messagename']));
+		  $this->pdf->row(array($row1['messagename'],$row1['description']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();

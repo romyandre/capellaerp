@@ -159,23 +159,33 @@ if (isset($_GET['pageSize']))
 		$sql = "select wfname,wfdesc,wfstat,wfstatusname
 				from wfstatus a
 left join workflow b on b.workflowid = a.workflowid ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.workflowid = ".$_GET['id'];
 		}
+		$sql = $sql . " order by wfname,wfstat";
 		$command=$this->connection->createCommand($sql);
 		$dataReader=$command->queryAll();
 
 		$this->pdf->title='Workflow List';
 		$this->pdf->AddPage('P');
 
-		$this->pdf->colalign = array('C');
-		$this->pdf->setwidths(array(90));
+		$this->pdf->colalign = array('C','C','C','C');
+		$this->pdf->setwidths(array(40,60,20,60));
 		$this->pdf->colheader = array('Wf Name','Wf Description','Wf Number','Wf Status');
 		$this->pdf->RowHeader();
-		$this->pdf->coldetailalign=array('L');
+		$this->pdf->coldetailalign=array('L','L','C','L');
+		$s = '';
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['wfname'],$row1['wfdesc'],$row1['wfstat'],$row1['wfstatusname']));
+			if ($s !== $row1['wfname'])
+			{
+				$s = $row1['wfname'];
+				$this->pdf->row(array($s,$row1['wfdesc'],$row1['wfstat'],$row1['wfstatusname']));
+			}
+			else
+			{
+				$this->pdf->row(array('',$row1['wfdesc'],$row1['wfstat'],$row1['wfstatusname']));
+			}
 		}
 		// me-render ke browser
 		$this->pdf->Output();

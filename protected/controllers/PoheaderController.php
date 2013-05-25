@@ -268,7 +268,7 @@ if ($model != null)
 				'poqty'=>($podetail->qty - $podetail->poqty),
 				'unitofmeasureid'=>$podetail->unitofmeasureid,
 				'uomcode'=>($podetail->unitofmeasure!==null)?$podetail->unitofmeasure->uomcode:"",
-				'slocid'=>$podetail->prheader->slocid,
+				'slocid'=>($podetail->prheader!==null?$podetail->prheader->slocid:""),
                     'itemtext'=>$podetail->itemtext,
 				'reqdate'=>date(Yii::app()->params['dateviewfromdb'], strtotime($podetail->reqdate)),
 				'description'=>($podetail->prheader!==null)?$podetail->prheader->sloc->description:"",
@@ -363,12 +363,8 @@ if ($model != null)
 
 	public function actionDeleteDetail()
 	{
-		$id=$_POST['id'];
-		foreach($id as $ids)
-		{
-		  $model=Podetail::model()->findbyPK($ids);
+		  $model=Podetail::model()->findbyPK($_POST['id']);
 		  $model->delete();
-		}
 		echo CJSON::encode(array(
                 'status'=>'success',
                 'div'=>'Data deleted'
@@ -379,9 +375,6 @@ if ($model != null)
 	public function actionApprove()
 	{
             parent::actionApprove();
-		$id=$_POST['id'];
-		foreach($id as $ids)
-		{
 			//$model=$this->loadModel($ids);
                     $a = Yii::app()->user->name;
 			$connection=Yii::app()->db;
@@ -390,7 +383,7 @@ if ($model != null)
 			  {
 				$sql = 'call ApprovePO(:vid, :vlastupdateby)';
 				$command=$connection->createCommand($sql);
-				$command->bindvalue(':vid',$ids,PDO::PARAM_INT);
+				$command->bindvalue(':vid',$_POST['id'],PDO::PARAM_INT);
 				$command->bindvalue(':vlastupdateby', $a,PDO::PARAM_STR);
 				$command->execute();
 				$transaction->commit();
@@ -401,7 +394,6 @@ if ($model != null)
 				  $transaction->rollBack();
 				  $this->GetMessage($e->getMessage());
 			  }
-		}
         Yii::app()->end();
 	}
 	
@@ -474,7 +466,7 @@ if (isset($_GET['pageSize']))
     public function actionDownload()
 	{
 	parent::actionDownload();
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = "update poheader set printke = ifnull(printke,0) + 1 
 	  where poheaderid = ".$_GET['id'];
 		} else
@@ -487,7 +479,7 @@ if (isset($_GET['pageSize']))
       from poheader a
       left join addressbook b on b.addressbookid = a.addressbookid
       left join paymentmethod c on c.paymentmethodid = a.paymentmethodid ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.poheaderid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
@@ -527,7 +519,7 @@ $this->pdf->isheader=false;
 		$contact = $row2['addresscontactname'];
 	  }
         $this->pdf->setFont('Arial','B',8);
-        $this->pdf->Rect(10,60,195,40);
+        $this->pdf->Rect(10,60,196,30);
         $this->pdf->setFont('Arial','',8);
         $this->pdf->text(15,65,'Supplier');$this->pdf->text(40,65,': '.$row['fullname']);
         $this->pdf->text(15,70,'Attention');$this->pdf->text(40,70,': '.$contact);
@@ -554,7 +546,7 @@ $this->pdf->isheader=false;
       $total = 0;
       $this->pdf->sety($this->pdf->gety()+80);
       $this->pdf->colalign = array('C','C','C','C','C','C','C','C');
-      $this->pdf->setwidths(array(15,10,50,18,23,26,18,35));
+      $this->pdf->setwidths(array(15,10,50,24,23,26,18,30));
       $this->pdf->setbordercell(array('LTRB','LTRB','LTRB','LTRB','LTRB','LTRB','LTRB','LTRB'));
 	  $this->pdf->colheader = array('Qty','Units','Item', 'Unit Price','Tax','Total','Delivery Date','Remarks');
       $this->pdf->RowHeader();
@@ -579,48 +571,6 @@ $symbol = $row1['symbol'];
 	  $this->pdf->title='';
 	  $this->pdf->checknewpage(100);
 		$this->pdf->sety($this->pdf->gety()+5);
-	  $this->pdf->setFont('Arial','BU',8);
-	  $this->pdf->text(10,$this->pdf->gety()+5,'TERM OF CONDITIONS');
-
-		$this->pdf->sety($this->pdf->gety()+10);
-      $this->pdf->setFont('Arial','B',7);
-      $this->pdf->colalign = array('C','C');
-      $this->pdf->setwidths(array(50,130));
-	  $this->pdf->iscustomborder = false;
-      $this->pdf->setbordercell(array('none','none'));
-	  $this->pdf->colheader = array('','');
-      $this->pdf->RowHeader();
-      $this->pdf->coldetailalign = array('L','L');
-	  
-	  $this->pdf->setFont('Arial','',8);
-	  $this->pdf->row(array(
-		'Material Certificate',
-		'YES [ DIKIRIM BERSAMAAN DENGAN DATANGNYA BARANG ]'
-	  ));
-	  $this->pdf->row(array(
-		'Manual Book / Catalogue',
-		'Yes / No'
-	  ));
-	  $this->pdf->row(array(
-		'Guarantee',
-		'6 Months / 12 Months'
-	  ));
-	  $this->pdf->row(array(
-		'Delivery Condition',
-		'Return if not accepted without any charge'
-	  ));
-	  $this->pdf->row(array(
-		'Payment Schedule',
-		'Every 3th Friday'
-	  ));
-	  $this->pdf->row(array(
-		'Payment Term',
-		$row['paymentname']
-	  ));
-	  $this->pdf->row(array(
-		'Note:',
-		$row['headernote']
-	  ));
 	  
 	 $this->pdf->setFont('Arial','',7);
 	 $company = Company::model()->findbysql('select * from company limit 1');
@@ -630,7 +580,7 @@ $symbol = $row1['symbol'];
       $this->pdf->text(10,$this->pdf->gety()+10,'Sincerrely Yours');
       $this->pdf->text(10,$this->pdf->gety()+15,$company->companyname);$this->pdf->text(135,$this->pdf->gety()+15,'Confirmed and Accepted by Supplier');
 	  $this->pdf->setFont('Arial','B',8);
-      $this->pdf->text(10,$this->pdf->gety()+35,'TEDDY SUJARWANTO');
+      $this->pdf->text(10,$this->pdf->gety()+35,'');
       $this->pdf->text(10,$this->pdf->gety()+36,'____________________');$this->pdf->text(135,$this->pdf->gety()+36,'__________________________');
 	  $this->pdf->setFont('Arial','',7);
       $this->pdf->text(10,$this->pdf->gety()+40,'Director');
@@ -638,10 +588,6 @@ $symbol = $row1['symbol'];
 
 	  $this->pdf->setFont('Arial','BU',7);
 	  $this->pdf->text(10,$this->pdf->gety()+55,'#Note: Mohon tidak memberikan gift atau uang kepada staff kami#');
-	  $this->pdf->setFont('Arial','',7);
-	  $this->pdf->text(10,$this->pdf->gety()+60,'NAMA PKP : '.$company->companyname);
-	  $this->pdf->text(10,$this->pdf->gety()+65,'NPWP : '.$company->taxno);
-	  $this->pdf->text(10,$this->pdf->gety()+70,'ALAMAT PKP : '.$company->address);
     }
 	  $this->pdf->Output();
 	}

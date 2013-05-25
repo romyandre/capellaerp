@@ -114,7 +114,7 @@ return false;
 </script>
 <script type="text/javascript">
 function downloaddata(value) {
-	window.open('index.php?r=company/download&id='+value);
+	window.open('index.php?r=plant/download&id='+value);
 }
 </script>
 <?php $this->beginWidget('zii.widgets.jui.CJuiDialog', array( // the dialog

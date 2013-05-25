@@ -141,6 +141,12 @@ protected $menuname = 'snrodet';
 			'model'=>$model,
 		));
 	}
+	
+	protected function gridData($data,$row)
+  {     
+    $model = Snrodet::model()->findByPk($data->snrodid); 
+    return $this->renderPartial('_view',array('model'=>$model),true); 
+  }
 
 	public function actionDownload()
 	{

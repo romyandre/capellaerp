@@ -106,7 +106,7 @@ function refreshdata()
 </script>
 <script type="text/javascript">
 function helpdata(value) {
-	j$('#helpdialog').dialog('open');
+	$('#helpdialog').dialog('open');
     return false;
 }
 </script>

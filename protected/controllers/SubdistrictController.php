@@ -154,7 +154,8 @@ if (isset($_GET['pageSize']))
   {
     parent::actionDownload();
     $sql = "select *
-				from subdistrict a ";
+				from subdistrict a 
+				inner join city b on b.cityid = a.cityid ";
 		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.subdistrictid = ".$_GET['id'];
 		}
@@ -164,14 +165,14 @@ if (isset($_GET['pageSize']))
 		$this->pdf->title='Subdistrict List';
 		$this->pdf->AddPage('P');
 
-		$this->pdf->colalign = array('C');
-		$this->pdf->setwidths(array(90));
-		$this->pdf->colheader = array('Subdistrict Name');
+		$this->pdf->colalign = array('C','C');
+		$this->pdf->setwidths(array(60,90));
+		$this->pdf->colheader = array('City','Subdistrict Name');
 		$this->pdf->RowHeader();
-		$this->pdf->coldetailalign = array('L');
+		$this->pdf->coldetailalign = array('L','L');
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['subdistrictname']));
+		  $this->pdf->row(array($row1['cityname'],$row1['subdistrictname']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();

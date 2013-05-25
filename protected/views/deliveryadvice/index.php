@@ -21,7 +21,7 @@ $('#Deliveryadvice_deliveryadviceid').val(data.deliveryadviceid);
 					$('#Deliveryadvice_headernote').val('');
 					$('#Deliveryadvice_slocid').val('');
 					$('#description').val('');
-                document.forms[2].elements[1].value = data.deliveryadviceid;
+                document.forms[1].elements[1].value = data.deliveryadviceid;
                 $.fn.yiiGridView.update('detaildatagrid', {
                     data: {
                         'Deliveryadvicedetail[deliveryadviceid]': data.deliveryadviceid

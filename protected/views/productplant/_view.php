@@ -16,6 +16,10 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
     <span class="cellcontent"><?php echo (($model->sloc!==null)?$model->sloc->sloccode:'').'-'.(($model->sloc!==null)?$model->sloc->description:'');?></span>
 </div>
 <div class="rowdata">
+	<span class="cell">SNRO</span>
+    <span class="cellcontent"><?php echo (($model->snro!==null)?$model->snro->description:'');?></span>
+</div>
+<div class="rowdata">
 	<span class="cell">Status</span>
     <span class="cellcontent"><?php echo ($model->recordstatus==1)?Catalogsys::model()->getcatalog("active"):Catalogsys::model()->getcatalog("notactive");?></span>
 </div>

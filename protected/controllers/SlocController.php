@@ -177,7 +177,7 @@ if ($model != null)
     $sql = "select b.plantcode, a.sloccode, a.description
       from sloc a
       left join plant b on b.plantid = a.plantid ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.slocid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

@@ -157,7 +157,7 @@ if (isset($_GET['pageSize']))
   {
     parent::actionDownload();
    $sql = "select *
-				from indusry a ";
+				from industry a ";
 		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.industryid = ".$_GET['id'];
 		}

@@ -7,15 +7,11 @@
 )); ?>
 <?php echo $form->hiddenField($model,'podetailid'); ?>
 <?php echo $form->hiddenField($model,'poheaderid'); ?>
-	
-
-    <table>
-      <tr>
-        <td>
-          <div class="row">
-            		<?php echo $form->labelEx($model,'prdetailid'); ?>
-<?php echo $form->hiddenField($model,'prdetailid'); ?>
-            <input type="text" name="prno" id="prno" style="width: 250px" readonly>
+	<div id="tabledata">
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'prdetailid'); ?>
+<?php echo $form->hiddenField($model,'prdetailid'); ?></span>
+            <span class="cell"><input type="text" name="prno" id="prno" style="width: 250px" readonly>
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'pr_dialog',
@@ -66,15 +62,12 @@
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$.fn.yiiGridView.update("pr-grid");$("#pr_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'prdetailid'); ?>
+                       ))?></span>
 	</div>
-        </td>
-        <td>
-          <div class="row">
-            		<?php echo $form->labelEx($model,'productid'); ?>
-<?php echo $form->hiddenField($model,'productid'); ?>
-	  <input type="text" name="productname" id="productname" style="width: 250px" readonly >
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'productid'); ?>
+<?php echo $form->hiddenField($model,'productid'); ?></span>
+	  <span class="cell"><input type="text" name="productname" id="productname" style="width: 250px" readonly >
 	  <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'product_dialog',
@@ -115,24 +108,16 @@
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$.fn.yiiGridView.update("product-grid");$("#product_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'productid'); ?>
+                       ))?></span>
 	</div>
-        </td>
-        <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'poqty'); ?>
-		<?php echo $form->textField($model,'poqty'); ?>
-		<?php echo $form->error($model,'poqty'); ?>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'poqty'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'poqty'); ?></span>
 	</div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'unitofmeasureid'); ?>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'unitofmeasureid'); ?></span>
 <?php echo $form->hiddenField($model,'unitofmeasureid'); ?>
-	  <input type="text" name="product_name" id="uomcode" title="Account name" readonly >
+	  <span class="cell"><input type="text" name="product_name" id="uomcode" title="Account name" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'uom_dialog',
@@ -171,22 +156,16 @@
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$("#uom_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'unitofmeasureid'); ?>
+                       ))?></span>
 	</div>
-        </td>
-        <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'netprice'); ?>
-		<?php echo $form->textField($model,'netprice'); ?>
-		<?php echo $form->error($model,'netprice'); ?>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'netprice'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'netprice'); ?></span>
 	</div>
-        </td>
-        <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'currencyid'); ?>
-<?php echo $form->hiddenField($model,'currencyid'); ?>
-	  <input type="text" name="product_name" id="currencyname" title="Account name" readonly >
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'currencyid'); ?>
+<?php echo $form->hiddenField($model,'currencyid'); ?></span>
+	  <span class="cell"><input type="text" name="product_name" id="currencyname" title="Account name" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'curr_dialog',
@@ -225,22 +204,17 @@
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$("#curr_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'currencyid'); ?>
+                       ))?></span>
 	</div>
-	<div class="row">
-		<?php echo $form->labelEx($model,'ratevalue'); ?>
-		<?php echo $form->textField($model,'ratevalue'); ?>
-		<?php echo $form->error($model,'ratevalue'); ?>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'ratevalue'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'ratevalue'); ?></span>
 	</div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="row">
+<div class="rowdata">
+<span class="cell">
 		<?php echo $form->labelEx($model,'slocid'); ?>
-<?php echo $form->hiddenField($model,'slocid'); ?>
-	  <input type="text" name="sloccode" id="sloccode" title="Account name" readonly >
+<?php echo $form->hiddenField($model,'slocid'); ?></span>
+	  <span class="cell"><input type="text" name="sloccode" id="sloccode" title="Account name" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'sloc_dialog',
@@ -280,15 +254,12 @@
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$("#sloc_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'unitofmeasureid'); ?>
+                       ))?></span>
 	</div>
-        </td>
-        <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'taxid'); ?>
-<?php echo $form->hiddenField($model,'taxid'); ?>
-	  <input type="text" name="product_name" id="taxcode" title="Account name" readonly >
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'taxid'); ?>
+<?php echo $form->hiddenField($model,'taxid'); ?></span>
+	  <span class="cell"><input type="text" name="product_name" id="taxcode" title="Account name" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'req_dialog',
@@ -328,14 +299,11 @@
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$("#req_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'taxid'); ?>
+                       ))?></span>
 	</div>
-        </td>
-        <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'delvdate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'delvdate'); ?></span>
+		<span class="cell"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
               'attribute'=>'delvdate',
               'model'=>$model,
               // additional javascript options for the date picker plugin
@@ -347,51 +315,55 @@
                   'style'=>'height:20px',
                   'size'=>'15',
               ),
-          ));?>
-		<?php echo $form->error($model,'delvdate'); ?>
+          ));?></span>
 	</div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'itemtext'); ?>
-		<?php echo $form->textArea($model,'itemtext',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'itemtext'); ?>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'itemtext'); ?></span>
+		<span class="cell"><?php echo $form->textArea($model,'itemtext',array('rows'=>6, 'cols'=>30)); ?></span>
 	</div>
-        </td>
-          <td>
-          <div class="row">
-		<?php echo $form->labelEx($model,'underdelvtol'); ?>
-		<?php echo $form->textField($model,'underdelvtol'); ?>
-		<?php echo $form->error($model,'underdelvtol'); ?>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'underdelvtol'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'underdelvtol'); ?></span>
 	</div>
-        </td>
-        <td>
-           <div class="row">
-		<?php echo $form->labelEx($model,'overdelvtol'); ?>
-		<?php echo $form->textField($model,'overdelvtol'); ?>
-		<?php echo $form->error($model,'overdelvtol'); ?>
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'overdelvtol'); ?></span>
+		<span class="cell"><?php echo $form->textField($model,'overdelvtol'); ?></span>
 	</div>
-        </td>
-      </tr>
-    </table>
-
-	<div class="row buttons">
-		<?php echo CHtml::ajaxSubmitButton('Save',
+<div class="rowdata">
+<span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',
 		array('poheader/writedetail'),
 	  array(
-	  'success'=>'function(data1)
+	  'success'=>'function(data)
 		{
-			var x = eval("(" + data1 + ")");
-			document.getElementById("messages").innerHTML = x.div;
+			var x = eval("(" + data + ")");
 			if (x.status == "success")
 			{
-			  $.fn.yiiGridView.update("detaildatagrid");
-			  $("#createdialog1").dialog("close");
-			document.getElementById("messages").innerHTML = "";
+				$.fn.yiiGridView.update("datagrid");
+				$("#createdialog").dialog("close");
+				toastr.info(x.div);
 			}
-        }')); ?>
-	</div>
+			else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
+		array('poheader/cancelwritedetail'),
+	  array(
+	  'success'=>'function(data)
+		{
+			var x = eval("(" + data + ")");
+			if (x.status == "success")
+			{
+				$.fn.yiiGridView.update("datagrid");			  
+				$("#createdialog").dialog("close");
+				toastr.info(x.div);
+			}
+			else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?></span>
+</div>
+</div>  
 <?php $this->endWidget(); ?>
 </div><!-- form -->

@@ -1,6 +1,6 @@
 <?php
 $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'id'=>$model->poheaderid,
-	'isDelete'=>true,'isDownload'=>true));
+	'isDelete'=>true,'isDownload'=>true,'isApprove'=>true));
 ?>
 <div id="tabledata">
 <div class="rowdata">

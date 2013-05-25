@@ -9,7 +9,7 @@
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'accounttypeid'); ?>
 		<?php echo $form->hiddenField($model,'accounttypeid'); ?></span>
-    <span class="cell"><input type="text" name="stat_name" id="accounttypename" readonly >
+    <span class="cellform"><input type="text" name="stat_name" id="accounttypename" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array('id'=>'accounttype_dialog',
@@ -54,18 +54,18 @@
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'accountname'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'accountname',array('size'=>50,'maxlength'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'accountname',array('size'=>50,'maxlength'=>50)); ?></span>
 	</div>
 
 		<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'accountcode'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'accountcode',array('size'=>20,'maxlength'=>20)); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'accountcode',array('size'=>20,'maxlength'=>20)); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'parentaccountid'); ?>
 		<?php echo $form->hiddenField($model,'parentaccountid'); ?></span>
-    <span class="cell"><input type="text" name="stat_name" id="parentaccountname" readonly >
+    <span class="cellform"><input type="text" name="stat_name" id="parentaccountname" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array('id'=>'parentaccountcode_dialog',
@@ -110,7 +110,7 @@
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'currencyid'); ?>
 		<?php echo $form->hiddenField($model,'currencyid'); ?></span>
-    <span class="cell"><input type="text" name="stat_name" id="currencyname" readonly >    
+    <span class="cellform"><input type="text" name="stat_name" id="currencyname" readonly >    
 	<?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array('id'=>'currencyname_dialog',
@@ -154,7 +154,7 @@
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',

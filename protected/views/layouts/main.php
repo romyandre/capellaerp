@@ -70,9 +70,10 @@
 								array('label'=>'Material Status', 'url'=>array('/materialstatus/index'),'visible'=>Groupmenu::model()->GetReadMenu('materialstatus')),
 								array('label'=>'Ownership', 'url'=>array('/ownership/index'),'visible'=>Groupmenu::model()->GetReadMenu('ownership')),
 								array('label'=>'Material Main Data', 'url'=>array('/product/index'),'visible'=>Groupmenu::model()->GetReadMenu('product')),
-								array('label'=>'Material Detail Data', 'url'=>array('/productbasic/index'),'visible'=>Groupmenu::model()->GetReadMenu('productbasic')),
+								array('label'=>'Material Basic Data', 'url'=>array('/productbasic/index'),'visible'=>Groupmenu::model()->GetReadMenu('productbasic')),
 								array('label'=>'Material Purchasing Data', 'url'=>array('/productpurchase/index'),'visible'=>Groupmenu::model()->GetReadMenu('productpurchase')),
 								array('label'=>'Material Storage Location Data', 'url'=>array('/productplant/index'),'visible'=>Groupmenu::model()->GetReadMenu('productplant')),
+								array('label'=>'Material Accounting Data', 'url'=>array('/productaccount/index'),'visible'=>Groupmenu::model()->GetReadMenu('productaccount')),
 								array('label'=>'Material Unit Conversion', 'url'=>array('/productconversion/index'),'visible'=>Groupmenu::model()->GetReadMenu('productconversion')),
 							)
 						),

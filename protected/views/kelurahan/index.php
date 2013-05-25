@@ -104,6 +104,13 @@ return false;
 }
 </script>
 <script type="text/javascript">
+function searchdata()
+{
+	$('#searchdialog').dialog('open');
+    return false;
+}
+</script>
+<script type="text/javascript">
 function downloaddata(value) {
 	window.open('index.php?r=kelurahan/download&id='+value);
 }

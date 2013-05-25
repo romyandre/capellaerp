@@ -18,7 +18,7 @@ $this->widget('ToolbarButton',array('cssToolbar'=>'buttongrid','isEdit'=>true,'i
 </div>
 <div class="rowdata">
 	<span class="cell">Storage</span>
-    <span class="cellcontent"><?php echo ($model->sloc!==null)?$model->sloc->sloccode:'';?></span>
+    <span class="cellcontent"><?php echo ($model->sloc!==null)?$model->sloc->sloccode."-".$model->sloc->description:'';?></span>
 </div>
 <div class="rowdata">
 	<span class="cell">Creator</span>

@@ -9,7 +9,7 @@ $form=$this->beginWidget('CActiveForm', array(
 	<div id="tabledata">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'prdate'); ?></span>
-<span class="cell"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+<span class="cellform"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
               'attribute'=>'prdate',
               'model'=>$model,
               // additional javascript options for the date picker plugin
@@ -29,7 +29,7 @@ $form=$this->beginWidget('CActiveForm', array(
           <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'slocid'); ?>
 <?php echo $form->hiddenField($model,'slocid'); ?></span>
-	  <span class="cell"><input type="text" name="sloccode" id="sloccode" readonly >
+	  <span class="cellform"><input type="text" name="sloccode" id="sloccode" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'sloc_dialog',
@@ -75,7 +75,7 @@ $form=$this->beginWidget('CActiveForm', array(
            <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'deliveryadviceid'); ?>
 <?php echo $form->hiddenField($model,'deliveryadviceid'); ?></span>
-        <span class="cell"><input type="text" name="product_name" id="dano" style="width: 200px" readonly >
+        <span class="cellform"><input type="text" name="product_name" id="dano" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'da_dialog',
@@ -132,7 +132,7 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>
 		  <div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'headernote'); ?></span>
-		<span class="cell"><?php echo $form->textArea($model,'headernote',array('rows'=>6, 'cols'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textArea($model,'headernote',array('rows'=>6, 'cols'=>30)); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',

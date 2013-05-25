@@ -6,12 +6,10 @@ $form=$this->beginWidget('CActiveForm', array(
 	'htmlOptions'=>array('enctype'=>'multipart/form-data')
 )); ?>
 <?php echo $form->hiddenField($model,'poheaderid');?>
-	<table>
-	  <tr>
-	  <td>
-		  <div class="row">
-		<?php echo $form->labelEx($model,'docdate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+	<div id="tabledata">
+<div class="rowdata">
+<span class="cell">		<?php echo $form->labelEx($model,'docdate'); ?></span>
+		<span class="cell"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
               'attribute'=>'docdate',
               'model'=>$model,
               // additional javascript options for the date picker plugin
@@ -26,15 +24,12 @@ $form=$this->beginWidget('CActiveForm', array(
                   'style'=>'height:20px',
                   'size'=>'20',
               ),
-          ));?>
-		<?php echo $form->error($model,'docdate'); ?>
+          ));?></span>
 	</div>
-		</td>
-		<td>
-		  <div class="row">
-		<?php echo $form->labelEx($model,'purchasinggroupid'); ?>
-		<?php echo $form->hiddenField($model,'purchasinggroupid'); ?>
-	  <input type="text" name="product_name" id="purchasinggroupcode" readonly >
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'purchasinggroupid'); ?>
+		<?php echo $form->hiddenField($model,'purchasinggroupid'); ?></span>
+	  <span class="cell"><input type="text" name="product_name" id="purchasinggroupcode" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'purchasinggroup_dialog',
@@ -75,15 +70,12 @@ $form=$this->beginWidget('CActiveForm', array(
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$.fn.yiiGridView.update("purchasinggroup-grid");$("#purchasinggroup_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'purchasinggroupid'); ?>
+                       ))?></span>
 	</div>
-		</td>
-        <td>
-		  <div class="row">
-		<?php echo $form->labelEx($model,'addressbookid'); ?>
-		<?php echo $form->hiddenField($model,'addressbookid'); ?>
-	  <input type="text" name="product_name" id="fullname" readonly >
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'addressbookid'); ?>
+		<?php echo $form->hiddenField($model,'addressbookid'); ?></span>
+	  <span class="cell"><input type="text" name="product_name" id="fullname" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'addressbook_dialog',
@@ -122,17 +114,12 @@ $form=$this->beginWidget('CActiveForm', array(
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$.fn.yiiGridView.update("addressbook-grid");$("#addressbook_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'addressbookid'); ?>
+                       ))?></span>
 	</div>
-		</td>
-	  </tr>
-	  <tr>
-	   <td>
-		  <div class="row">
-		<?php echo $form->labelEx($model,'paymentmethodid'); ?>
-		<?php echo $form->hiddenField($model,'paymentmethodid'); ?>
-	  <input type="text" name="product_name" id="paycode" readonly >
+<div class="rowdata">
+<span class="cell"><?php echo $form->labelEx($model,'paymentmethodid'); ?>
+		<?php echo $form->hiddenField($model,'paymentmethodid'); ?></span>
+	  <span class="cell"><input type="text" name="product_name" id="paycode" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'paymentmethod_dialog',
@@ -172,54 +159,49 @@ $form=$this->beginWidget('CActiveForm', array(
     $this->endWidget('zii.widgets.jui.CJuiDialog');
     echo CHtml::Button('...',
                           array('onclick'=>'$.fn.yiiGridView.update("paymentmethod-grid");$("#paymentmethod_dialog").dialog("open"); return false;',
-                       ))?>
-		<?php echo $form->error($model,'paymentmethodid'); ?>
+                       ))?></span>
 	</div>
-		</td>
-		<td>
-		  <div class="row">
-		<?php echo $form->labelEx($model,'headernote'); ?>
-		<?php echo $form->textArea($model,'headernote',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'headernote'); ?>
+<div class="rowdata">
+<span class="cell">
+		<?php echo $form->labelEx($model,'headernote'); ?></span>
+		<span class="cell"><?php echo $form->textArea($model,'headernote',array('rows'=>6, 'cols'=>30)); ?></span>
 	</div>
-		</td>
-	  </tr>
-	</table>
-		<table>
-      <tr>
-        <td colspan="2" align="center">
-		<?php echo CHtml::ajaxSubmitButton('Save',
+<div class="rowdata">
+<span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',
 		array('poheader/write'),
 	  array(
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
-			  $.fn.yiiGridView.update("datagrid");
-			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+				$.fn.yiiGridView.update("datagrid");
+				$("#createdialog").dialog("close");
+				toastr.info(x.div);
 			}
-        }')); ?>
-		<?php echo CHtml::ajaxSubmitButton('Cancel',
+			else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('poheader/cancelwrite'),
 	  array(
 	  'success'=>'function(data)
 		{
 			var x = eval("(" + data + ")");
-			document.getElementById("messages").innerHTML = x.div;
 			if (x.status == "success")
 			{
-			  $.fn.yiiGridView.update("datagrid");
-			  $("#createdialog").dialog("close");
-              document.getElementById("messages").innerHTML = "";
+				$.fn.yiiGridView.update("datagrid");			  
+				$("#createdialog").dialog("close");
+				toastr.info(x.div);
 			}
-        }')); ?>
-        </td>
-      </tr>
-    </table>
-
+			else
+			{
+				toastr.error(x.div);
+			}
+        }')); ?></span>
+</div>
+</div>  
 <?php $this->endWidget(); ?>
 	<?php
 	$this->widget('zii.widgets.jui.CJuiTabs', array(

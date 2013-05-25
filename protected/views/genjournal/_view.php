@@ -55,6 +55,8 @@ foreach ($customeraddress as $sa)
  echo "<span class='celldetail'>".$sa->detailnote."</span>";
  echo "</div>";
 }
+if (isset($sa))
+{
 echo "<div class='rowdetail'>";
  echo "<span class='celldetail'>Total</span>";
  echo "<span class='celldetailnumeric'>".Company::model()->getsymbol().$sa->getTotalDebit()."</span>";
@@ -62,6 +64,7 @@ echo "<div class='rowdetail'>";
  echo "<span class='celldetailnumeric'></span>";
  echo "<span class='celldetail'></span>";
  echo "</div>";
+ }
 ?>
 </div>
 </span>

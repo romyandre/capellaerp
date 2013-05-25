@@ -339,7 +339,7 @@ if (isset($_GET['pageSize']))
 	  $sql = "select a.dano,a.dadate,a.headernote,a.deliveryadviceid,b.description
       from deliveryadvice a
 left join sloc b on b.slocid = a.slocid	  ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.deliveryadviceid = ".$_GET['id'];
 		}
 		    $command=$this->connection->createCommand($sql);

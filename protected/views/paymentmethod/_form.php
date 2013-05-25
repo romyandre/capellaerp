@@ -9,22 +9,22 @@
 <div class="rowdata">
 <span class="cell">
 		<?php echo $form->labelEx($model,'paycode'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'paycode',array('size'=>5,'maxlength'=>5)); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'paycode',array('size'=>5,'maxlength'=>5)); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'paymentname'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'paymentname',array('size'=>50,'maxlength'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'paymentname',array('size'=>30,'maxlength'=>50)); ?></span>
 	</div>
 
 		<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'paydays'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'paydays'); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'paydays'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',

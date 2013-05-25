@@ -160,7 +160,7 @@ if (isset($_GET['pageSize']))
     parent::actionDownload();
     $sql = "select paycode, paymentname, paydays
 				from paymentmethod a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.paymentmethodid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

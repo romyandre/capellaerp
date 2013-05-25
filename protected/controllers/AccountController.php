@@ -195,21 +195,20 @@ class AccountController extends Controller
 				order by a.accountcode ";
 		$command=$this->connection->createCommand($sql);
 		$dataReader=$command->queryAll();
-		foreach($dataReader as $row)
+		foreach($dataReader as $row1)
 		{
-			$this->pdf->row(array($row['accountcode'],'       '.$row['accountname'],$row['accounttypename'],$row['symbol']));
+			$this->pdf->row(array($row1['accountcode'],'       '.$row1['accountname'],$row1['accounttypename'],$row1['symbol']));
 		}
   }
   
   public function actionDownload()
 	{
 		parent::actionDownload();
-		$sql = "select distinct a.accountid, a.accountcode, a.accountname,d.symbol,c.accounttypename
+		$sql = "select distinct a.accountid, a.accountcode, a.accountname,d.symbol,c.accounttypename,b.parentaccountid
 from account a
-inner join account b on b.parentaccountid = a.accountid
+left join account b on b.parentaccountid = a.accountid
 left join accounttype c on c.accounttypeid = a.accounttypeid
-left join currency d on d.currencyid = a.currencyid
-where accounttypename = 'Header' ";
+left join currency d on d.currencyid = a.currencyid ";
 		if ($_GET['id'] !== '0') {
 				$sql = $sql . "and a.accountid = ".$_GET['id'];
 		}
@@ -218,7 +217,8 @@ where accounttypename = 'Header' ";
 		$dataReader=$command->queryAll();
 
 		$this->pdf->title='Chart of Account List';
-		$this->pdf->AddPage('P');		$this->pdf->colalign = array('C','C','C','C','C'); 
+		$this->pdf->AddPage('P');		
+		$this->pdf->colalign = array('C','C','C','C','C'); 
 		$this->pdf->colheader = array('Account Code','Account Name','Account Type','Currency');
 		$this->pdf->setwidths(array(30,100,40,20));
 		$this->pdf->rowheader();
@@ -226,7 +226,6 @@ where accounttypename = 'Header' ";
 		foreach($dataReader as $row)
 		{
 			$this->pdf->row(array($row['accountcode'],$row['accountname'],$row['accounttypename'],$row['symbol']));
-			$this->coa($this->connection,$this->pdf,$row['accountid']);
 		}
 		// me-render ke browser
 		$this->pdf->Output();

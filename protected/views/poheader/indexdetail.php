@@ -16,10 +16,8 @@ function adddata1()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-				document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
-                    $('#createdialog1 div.divcreate1').html(data.div);
 					$('#Podetail_podetailid').val('');
 					$('#Podetail_productid').val('');
 					$('#productname').val('');
@@ -40,6 +38,7 @@ function adddata1()
 					$('#Podetail_overdelvtol').val('0');
 					$('#Podetail_prdetailid').val('');
 					$('#prno').val('');
+					$('#Podetail_ratevalue').val('1');
                           // Here is the trick: on submit-> once again this function!
                     $('#createdialog1 div.divcreate1 form').submit(adddata1);
                 }
@@ -64,10 +63,8 @@ function editdata1()
             'dataType'=>'json',
             'success'=>"function(data)
             {
-document.getElementById('messages').innerHTML = '';
                 if (data.status == 'success')
                 {
-                    $('#createdialog1 div.divcreate1').html(data.div);
 					$('#Podetail_podetailid').val(data.podetailid);
 					$('#Podetail_productid').val(data.productid);
 					$('#productname').val(data.productname);
@@ -86,6 +83,7 @@ document.getElementById('messages').innerHTML = '';
 					$('#Podetail_underdelvtol').val(data.underdelvtol);
 					$('#Podetail_overdelvtol').val(data.overdelvtol);
 					$('#Podetail_prdetailid').val(data.prdetailid);
+					$('#Podetail_ratevalue').val(data.ratevalue);
 					$('#prno').val(data.prno);
                           // Here is the trick: on submit-> once again this function!
                     $('#createdialog1 div.divcreate1 form').submit(editdata1);
@@ -121,7 +119,7 @@ function deletedata1()
 <script type="text/javascript">
 function generatedata() {
 	jQuery.ajax({
-        'url': '/smlive/index.php?r=poheader/generatedetail',
+        'url': 'index.php?r=poheader/generatedetail',
         'data': {
             'productid': $('#Podetail_productid').val(),
             'supplierid': $('#Poheader_addressbookid').val(),
@@ -170,7 +168,6 @@ function refreshdata1()
         'height'=>'auto',
     ),
 ));?>
-<div id="divcreate1"></div>
 <?php echo $this->renderPartial('_formdetail', array('model'=>$podetail,
 'prheader'=>$prheader,
 			'product'=>$product,

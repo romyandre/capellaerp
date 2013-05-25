@@ -159,7 +159,7 @@ protected $menuname = 'parameter';
 		parent::actionDownload();
 		$sql = "select paramname,description,paramvalue
 				from parameter a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.parameterid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

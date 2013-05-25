@@ -8,17 +8,17 @@
 	<div id="tabledata">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'requestedbycode'); ?></span>
-<span class="cell"><?php echo $form->textField($model,'requestedbycode',array('size'=>5,'maxlength'=>5)); ?></span>
+<span class="cellform"><?php echo $form->textField($model,'requestedbycode',array('size'=>5,'maxlength'=>5)); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'description'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'description',array('size'=>50,'maxlength'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'description',array('size'=>30,'maxlength'=>50)); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',

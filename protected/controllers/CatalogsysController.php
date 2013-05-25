@@ -134,10 +134,11 @@ class CatalogsysController extends Controller
 	public function actionDownload()
 	{
 		parent::actionDownload();
-		$sql = "select languagename,catalogname,catalogval
+		$sql = "select languagename,messagename,catalogval
 				from catalogsys a
-left join language b on b.languageid = a.languageid				";
-		if ($_GET['id'] !== '') {
+inner join language b on b.languageid = a.languageid 
+inner join messages c on c.messagesid = a.messagesid ";
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.catalogsysid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
@@ -152,7 +153,7 @@ left join language b on b.languageid = a.languageid				";
 		$this->pdf->coldetailalign = array('L','L','L');
 		foreach($dataReader as $row1)
 		{
-		  $this->pdf->row(array($row1['languagename'],$row1['catalogname'],$row1['catalogval']));
+		  $this->pdf->row(array($row1['languagename'],$row1['messagename'],$row1['catalogval']));
 		}
 		// me-render ke browser
 		$this->pdf->Output();

@@ -173,7 +173,7 @@ if (isset($_GET['pageSize']))
 		$sql = "select provincename,cityname
 				from city a 
 				left join province b on b.provinceid = a.provinceid ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.cityid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

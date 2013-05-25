@@ -8,7 +8,7 @@
 	<div id="tabledialog">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'period'); ?></span>
-		<span class="cell"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		<span class="cellform"><?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
               'attribute'=>'period',
               'model'=>$model,
               // additional javascript options for the date picker plugin
@@ -28,7 +28,7 @@
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',
@@ -47,7 +47,7 @@
 			{
 				toastr.error(x.div);
 			}
-        }')); ?></span><span class="cell"><?php echo CHtml::ajaxSubmitButton('Cancel',
+        }')); ?><?php echo CHtml::ajaxSubmitButton('Cancel',
 		array('accperiod/cancelwrite'),
 	  array(
 	  'success'=>'function(data)

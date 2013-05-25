@@ -234,19 +234,18 @@ if (isset($_GET['pageSize']))
 		$this->pdf->sety($this->pdf->gety()+15);
 			  $this->pdf->setFont('Arial','B',8);
     $this->pdf->colalign = array('C','C','C','C','C','C','C','C','C');
-    $this->pdf->setwidths(array(50,60,20,30,20,20,30,20,20));
+    $this->pdf->setwidths(array(50,40,40,20,20,40,20));
 	$this->pdf->colheader = array('Supplier','Delivery Time','Purchasing Group',
-        'Under Tol','Over Tol','Price','Currency','Bid Date');
+        'Under Tol','Over Tol','Price','Bid Date');
     $this->pdf->RowHeader();
-    $this->pdf->coldetailalign = array('L','L','L','L','L','L','R','L','L');
+    $this->pdf->coldetailalign = array('L','L','L','R','R','R','L');
 
 		foreach($dataReader1 as $row1)
     {
       $this->pdf->row(array($row1['fullname'],$row1['deliverytime'],
           $row1['purchasinggroupcode'],$row1['underdelvtol'],
           $row1['overdelvtol'],
-		  Yii::app()->numberFormatter->format(Yii::app()->params["defaultnumberprice"],$row1['price']),
-		  $row1['symbol'],
+		  Yii::app()->numberFormatter->formatCurrency($row1['price'],$row1['symbol']),
 		  date(Yii::app()->params['dateviewfromdb'], strtotime($row1['biddate']))));
 		  };
     }

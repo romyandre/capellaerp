@@ -37,9 +37,9 @@ class Account extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('accountname, accountcode', 'required'),
-			array('recordstatus, currencyid, accounttypeid', 'numerical', 'integerOnly'=>true),
+			array('recordstatus, currencyid, accounttypeid,parentaccountid', 'numerical', 'integerOnly'=>true),
 			array('accountcode', 'length', 'max'=>20),
-			array('accountname, parentaccountid', 'length', 'max'=>200),
+			array('accountname', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('accountid, accountname, accountcode, parentaccountid, currencyid, recordstatus,accounttypeid', 'safe', 'on'=>'search'),
@@ -54,7 +54,7 @@ class Account extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-      'parentaccount' => array(self::BELONGS_TO, 'Account', 'accountid'),
+      'parentaccount' => array(self::BELONGS_TO, 'Account', 'parentaccountid'),
       'currency' => array(self::BELONGS_TO, 'Currency', 'currencyid'),
       'accounttype' => array(self::BELONGS_TO, 'Accounttype', 'accounttypeid'),
 		);

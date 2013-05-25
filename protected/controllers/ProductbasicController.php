@@ -226,16 +226,15 @@ protected $menuname = 'productbasic';
   {
 	parent::actionDownload();
     $sql = "select a.productbasicid,b.productname,c.uomcode as baseuom,d.description,
-      a.oldmatno,d.materialgroupcode,a.oldmatno,e.divisioncode,a.grossweight,f.uomcode as weightunit,
+      a.oldmatno,d.materialgroupcode,a.oldmatno,a.grossweight,f.uomcode as weightunit,
       a.netweight,a.volume,g.uomcode as volumeunit
       from productbasic a
       left join product b on b.productid = a.productid
       left join unitofmeasure c on c.unitofmeasureid = a.baseuom
       left join materialgroup d on d.materialgroupid = a.materialgroupid
-      left join division e on e.divisionid = a.divisionid
       left join unitofmeasure f on f.unitofmeasureid = a.weightunit
       left join unitofmeasure g on g.unitofmeasureid = a.volumeunit ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.productbasicid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
@@ -246,13 +245,13 @@ protected $menuname = 'productbasic';
     $this->pdf->colalign = array('C','C','C','C','C','C','C','C','C','C');
     $this->pdf->setwidths(array(80,20,20,20,20,20,20,20,20,20));
 	$this->pdf->colheader = array('Material Name','Base UOM','Material Group','Old Material No',
-	'Division','Gross Weight','Wei Unit','Net Weight','Volume','Vol Unit');
+	'Gross Weight','Weight Unit','Net Weight','Volume','Vol Unit');
     $this->pdf->RowHeader();
     $this->pdf->coldetailalign = array('L','L','L','L','L','R','L','R','R','L');
     foreach($dataReader as $row1)
     {
       $this->pdf->row(array($row1['productname'],$row1['baseuom'],$row1['materialgroupcode'],
-          $row1['oldmatno'],$row1['divisioncode']
+          $row1['oldmatno']
           ,$row1['grossweight'],$row1['weightunit'],$row1['netweight'],$row1['volume'],
           $row1['volumeunit']));
     }

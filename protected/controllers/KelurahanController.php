@@ -167,7 +167,7 @@ if (isset($_GET['pageSize']))
 		$sql = "select subdistrictname,kelurahanname
 				from kelurahan a
 left join subdistrict b on b.subdistrictid = a.subdistrictid				";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.kelurahanid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

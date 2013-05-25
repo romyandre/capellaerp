@@ -136,7 +136,7 @@ if ($model != null)
 		parent::actionDownload();
 		$sql = "select taxcode, taxvalue, description
 				from tax a ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.taxid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);

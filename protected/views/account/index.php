@@ -20,6 +20,7 @@ $('#Account_accountid').val('');
 $('#Account_accountname').val('');$('#Account_accountcode').val('');
 $('#Account_parentaccountid').val('');$('#parentaccountname').val('');
 $('#Account_accounttypeid').val('');$('#accounttypename').val('');
+$('#Account_currencyid').val('');$('#currencyname').val('');
                     $('#createdialog').dialog('open');
                 }
                 else

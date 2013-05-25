@@ -215,14 +215,13 @@ protected $menuname = 'productpurchase';
   public function actionDownload()
   {
     parent::actionDownload();
-    $sql = "select c.productname,b.plantcode,d.uomcode as orderunit,e.purchasinggroupcode,
+    $sql = "select c.productname,b.plantcode,d.uomcode as orderunit,
       a.validfrom,a.validto
       from productpurchase a
       left join plant b on b.plantid = a.plantid
       left join product c on c.productid = a.productid
-      left join unitofmeasure d on d.unitofmeasureid = a.orderunit
-      left join purchasinggroup e on e.purchasinggroupid = a.purchasinggroupid ";
-		if ($_GET['id'] !== '') {
+      left join unitofmeasure d on d.unitofmeasureid = a.orderunit ";
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.productpurchaseid = ".$_GET['id'];
 		}
 		$command=$this->connection->createCommand($sql);
@@ -232,13 +231,12 @@ protected $menuname = 'productpurchase';
 
     $this->pdf->colalign = array('C','C','C','C','C','C');
     $this->pdf->setwidths(array(80,15,15,30,25,25));
-	$this->pdf->colheader = array('Product','Plant','Order Unit','Purchasing Group','Valid From','Valid To');
+	$this->pdf->colheader = array('Product','Plant','Order Unit','Valid From','Valid To');
     $this->pdf->RowHeader();
     $this->pdf->coldetailalign = array('L','L','L','L','L','L');
     foreach($dataReader as $row1)
     {
-      $this->pdf->row(array($row1['productname'],$row1['plantcode'],$row1['orderunit']
-          ,$row1['purchasinggroupcode'],
+      $this->pdf->row(array($row1['productname'],$row1['plantcode'],$row1['orderunit'],
 		  date(Yii::app()->params["dateviewfromdb"], strtotime($row1['validfrom'])),
 		  date(Yii::app()->params["dateviewfromdb"], strtotime($row1['validto']))));
     }

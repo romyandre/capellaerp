@@ -1,1 +1,1 @@
-<?php echo Catalogsys::model()->getcatalog('languagehelp'); ?>
+<?php echo Catalogsys::model()->getcatalog('messageshelp'); ?>

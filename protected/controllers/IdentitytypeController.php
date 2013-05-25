@@ -153,7 +153,7 @@ if ($model != null)
   {
     parent::actionDownload();
    $sql = "select *
-				from company a  ";
+				from identitytype a  ";
 		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.identitytypeid = ".$_GET['id'];
 		}
@@ -164,7 +164,7 @@ if ($model != null)
 		$this->pdf->AddPage('P');
 
 		$this->pdf->colalign=array('C','C','C','C','C','C');
-		$this->pdf->setwidths(array(40,60,20,20,20,20));
+		$this->pdf->setwidths(array(90,60,20,20,20,20));
 		$this->pdf->colheader =array('Identity Type Name');
 		$this->pdf->Rowheader();
 		$this->pdf->coldetailalign = array('L','L','L','L','L','L');

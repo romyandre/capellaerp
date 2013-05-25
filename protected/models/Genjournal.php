@@ -96,7 +96,7 @@ class Genjournal extends CActiveRecord
 
 		return new CActiveDataProvider(get_class($this), array(
 'pagination'=>array(
-        'pageSize'=> Yii::app()->user->getState('pageSize',Useraccess::model()->findbyattributes(array('username'=>Yii::app()->user->id))->pagesize),
+        'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
     ),
 			'criteria'=>$criteria,
 		));
@@ -129,7 +129,7 @@ class Genjournal extends CActiveRecord
 
 		return new CActiveDataProvider(get_class($this), array(
 'pagination'=>array(
-        'pageSize'=> Yii::app()->user->getState('pageSize',Useraccess::model()->findbyattributes(array('username'=>Yii::app()->user->id))->pagesize),
+        'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
     ),
 			'criteria'=>$criteria,
 		));
@@ -181,7 +181,7 @@ where upper(a.wfname) = upper('listjournal') and upper(e.username)=upper('".Yii:
 
 		return new CActiveDataProvider(get_class($this), array(
 'pagination'=>array(
-        'pageSize'=> Yii::app()->user->getState('pageSize',Useraccess::model()->findbyattributes(array('username'=>Yii::app()->user->id))->pagesize),
+        'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
     ),
 			'criteria'=>$criteria,
 		));

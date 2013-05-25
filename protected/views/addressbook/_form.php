@@ -8,62 +8,62 @@
 	<div id="tabledata">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'fullname'); ?></span>
-<span class="cell"><?php echo $form->textField($model,'fullname',array('size'=>50,'maxlength'=>50)); ?></span>
+<span class="cellform"><?php echo $form->textField($model,'fullname',array('size'=>30,'maxlength'=>50)); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'iscustomer'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'iscustomer'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'iscustomer'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'isemployee'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'isemployee'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'isemployee'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'isapplicant'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'isapplicant'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'isapplicant'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'isvendor'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'isvendor'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'isvendor'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'isinsurance'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'isinsurance'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'isinsurance'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'isbank'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'isbank'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'isbank'); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'ishospital'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'ishospital'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'ishospital'); ?></span>
 	</div>
 
 		<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'iscatering'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'iscatering'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'iscatering'); ?></span>
 	</div>
 
     	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'taxno'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'taxno',array('size'=>50,'maxlength'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'taxno',array('size'=>30,'maxlength'=>50)); ?></span>
 	</div>
 
     	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'abno'); ?></span>
-		<span class="cell"><?php echo $form->textField($model,'abno',array('size'=>50,'maxlength'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textField($model,'abno',array('size'=>30,'maxlength'=>50)); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',

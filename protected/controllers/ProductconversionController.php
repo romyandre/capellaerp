@@ -190,49 +190,6 @@ if (isset($_GET['pageSize']))
 		));
 	}
 
-	public function actionUpload()
-	{
-      parent::actionUpload();
-	  $folder=$_SERVER['DOCUMENT_ROOT'].Yii::app()->request->baseUrl.'/upload/';// folder for uploaded files
-		$file = $folder . basename($_FILES['uploadfile']['name']); 
-		if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file)) { 
-			echo "success";
-			$row=1;			
-			if (($handle = fopen($file, "r")) !== FALSE) {
-				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-					if ($row>1) {
-			  $model=Productconversion::model()->findByPk((int)$data[0]);
-			  if ($model=== null) {
-				$model = new Productconversion();
-			  }
-			  $model->productconversionid = (int)$data[0];
-			  $model->productid = $data[1];
-			  $model->fromuom = $data[2];
-			  $model->fromvalue = $data[3];
-			  $model->touom = $data[4];
-			  $model->tovalue = $data[5];
-			  $model->recordstatus = (int)$data[6];
-			  try
-					  {
-						if(!$model->save())
-						{
-						  echo $model->getErrors();
-						}
-					  }
-					  catch (Exception $e)
-					  {
-						echo $e->getMessage();;
-					  }
-					}
-					$row++;
-				}
-				fclose($handle);
-			}
-		} else {
-			echo Yii::t('app','directory permission');
-		}	
-  }
-
   public function actionDownload()
   {
     parent::actionDownload();
@@ -241,7 +198,7 @@ if (isset($_GET['pageSize']))
         left join unitofmeasure b on b.unitofmeasureid = a.fromuom
         left join unitofmeasure c on c.unitofmeasureid = a.touom
         left join product d on d.productid = a.productid ";
-		if ($_GET['id'] !== '') {
+		if ($_GET['id'] !== '0') {
 				$sql = $sql . "where a.productconversionid = ".$_GET['id'];
 		}
 		$sql=$sql . " order by a.productid ";

@@ -8,7 +8,7 @@
 	<div id="tabledata">
 <div class="rowdata">
 <span class="cell"><?php echo $form->labelEx($model,'languageid'); ?><?php echo $form->hiddenField($model,'languageid'); ?></span>
-	  <span class="cell"><input type="text" name="languagename" id="languagename" readonly >
+	  <span class="cellform"><input type="text" name="languagename" id="languagename" readonly >
     <?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'language_dialog',
@@ -51,7 +51,7 @@
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'catalogname'); ?></span>
-		<span class="cell"><?php echo $form->hiddenField($model,'messagesid'); ?><input type="text" name="messagename" id="messagename" readonly ><?php
+		<span class="cellform"><?php echo $form->hiddenField($model,'messagesid'); ?><input type="text" name="messagename" id="messagename" readonly ><?php
       $this->beginWidget('zii.widgets.jui.CJuiDialog',
        array(   'id'=>'messages_dialog',
                 // additional javascript options for the dialog plugin
@@ -94,12 +94,12 @@
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'catalogval'); ?></span>
-		<span class="cell"><?php echo $form->textArea($model,'catalogval',array('rows'=>6, 'cols'=>50)); ?></span>
+		<span class="cellform"><?php echo $form->textArea($model,'catalogval',array('rows'=>10, 'cols'=>30)); ?></span>
 	</div>
 
 	<div class="rowdata">
 		<span class="cell"><?php echo $form->labelEx($model,'recordstatus'); ?></span>
-		<span class="cell"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
+		<span class="cellform"><?php echo $form->checkBox($model,'recordstatus'); ?></span>
 	</div>
 <div class="rowdata">
 <span class="cell"><?php echo CHtml::ajaxSubmitButton('Save',
